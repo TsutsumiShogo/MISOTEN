@@ -15,6 +15,7 @@ public class PlayerStatus : MonoBehaviour {
         SYSTEM_MODE,
         NORMAL,
         ACTION,
+        DAMAGE,
         STATE_TRANSITION_MODE_NUM
     };
     public enum EStateTransition
@@ -33,6 +34,9 @@ public class PlayerStatus : MonoBehaviour {
         SOWING_SEEDS,   //種まき          //移動速い。連打で種まき可
         GROWING,        //成長            //移動遅い(目安6割)
         SPRAY,          //スプレー        //立ち止まってスプレー１秒くらい
+
+        //damage
+        KNOCKBACK,      //ノックバック
 
         STATE_TRANSITION_NUM
     };
@@ -102,11 +106,14 @@ public class PlayerStatus : MonoBehaviour {
         {
             return EStateTransitionMode.NORMAL;
         }
-        if (state < EStateTransition.STATE_TRANSITION_NUM)
+        if (state < EStateTransition.KNOCKBACK)
         {
             return EStateTransitionMode.ACTION;
         }
-
+        if (state < EStateTransition.STATE_TRANSITION_NUM)
+        {
+            return EStateTransitionMode.DAMAGE;
+        }
         return EStateTransitionMode.STATE_TRANSITION_MODE_NUM;
     }
 }
