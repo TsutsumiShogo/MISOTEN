@@ -5,7 +5,7 @@ public class PlayerStatus : MonoBehaviour {
 
     //========================定数定義========================
     public Color PLAYER_COLOR;              //キャラ毎で違う。初期値はUnity側からセット
-    public float DEFAULT_MOVE_SPEED = 2.0f; //毎秒移動速度
+    public float DEFAULT_MOVE_SPEED = 5.0f; //毎秒移動速度
     public float GRAWING_MOVE_PERCENT = 0.6f;//成長アクション中の移動速度を
 
 
@@ -52,7 +52,7 @@ public class PlayerStatus : MonoBehaviour {
     //プレイヤーステータス
     public SStateTransition sStateTransition;  //状態
     public float moveSpeedParam;               //移動速度
-
+    public EStateTransition testStatus;
     //========================実行関数============================
 	// Use this for initialization
 	void Awake () {
@@ -67,6 +67,7 @@ public class PlayerStatus : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        testStatus = sStateTransition.status;
 	    //マスのレベルをチェックしてレベル毎に移動速度パラメーターを更新する。
 
 	}

@@ -31,7 +31,7 @@ public class PlayerControll : MonoBehaviour {
 
         //移動処理
         rigid.velocity = yVector + moveVec;
-        moveVec = moveVec * 0.8f;
+        moveVec = moveVec * 0.95f;
     }
 
     //移動情報をセットする

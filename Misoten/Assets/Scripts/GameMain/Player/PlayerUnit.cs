@@ -11,6 +11,9 @@ public class PlayerUnit : MonoBehaviour {
 
     private PlayerStatus.EStateTransition nextState;    //次回の状態遷移先
 
+    //定数定義
+    private const float INPUT_MOVE_JUDGE_LENGTH = 0.1f;
+
     //内部変数
     private float motionTimeCount;                  //モーションの経過時間(MAX 600sc)
 
@@ -46,14 +49,20 @@ public class PlayerUnit : MonoBehaviour {
 
         //状態毎の更新を行う。
         checkNo = EveryStatusUpdate(status.GetStateTransition(), status.GetStateTransitionMode());
+
+        //状態に狂いがあったら立ちへ戻す。
+        if (checkNo < 0) status.SetStateTransition(PlayerStatus.EStateTransition.STAND);
+
+        //移動
+        controll.Move();
 	}
 
-    public void StartPlayer(int _dummy)
+    public void StartPlayer()
     {
         nextState = PlayerStatus.EStateTransition.STAND;
         ChangeStateTransitionProcess();
     }
-    public void StopPlayer(int _dummy)
+    public void StopPlayer()
     {
         nextState = PlayerStatus.EStateTransition.END;
         ChangeStateTransitionProcess();
@@ -99,6 +108,10 @@ public class PlayerUnit : MonoBehaviour {
             case PlayerStatus.EStateTransition.SPRAY:
                 break;
 
+            //damage
+            case PlayerStatus.EStateTransition.KNOCKBACK:
+                break;
+
             default:
                 break;
         }
@@ -107,7 +120,24 @@ public class PlayerUnit : MonoBehaviour {
     //状態毎に処理を行う
     private int EveryStatusUpdate(PlayerStatus.EStateTransition state, PlayerStatus.EStateTransitionMode stateMode)
     {
-        //Vector2 inputVec = inputRun.GetMove();
+        //移動入力の方向を取得
+        Vector2 inputVec = Vector2.zero;
+        if(Input.GetKey(KeyCode.RightArrow) == true)
+        {
+            inputVec.x += 1.0f;
+        }
+        if(Input.GetKey(KeyCode.LeftArrow) == true)
+        {
+            inputVec.x -= 1.0f;
+        }
+        if(Input.GetKey(KeyCode.UpArrow) == true)
+        {
+            inputVec.y += 1.0f;
+        }
+        if(Input.GetKey(KeyCode.DownArrow) == true)
+        {
+            inputVec.y -= 1.0f;
+        }
 
         //詳細な状態毎の処理
         switch (state)
@@ -123,47 +153,37 @@ public class PlayerUnit : MonoBehaviour {
 
             //normal
             case PlayerStatus.EStateTransition.STAND:
-                /*
                 //移動入力があれば歩き状態へ切り替え
                 if (inputVec.magnitude > INPUT_MOVE_JUDGE_LENGTH)
                     nextState = PlayerStatus.EStateTransition.WALK;
-                 */
+                
                 break;
             case PlayerStatus.EStateTransition.WALK:
-                /*
+                
                 //移動処理
-                controll.SetMoveVec(inputRun.GetMove());
+                controll.SetMoveVec(inputVec);
 
                 //移動入力がなければ立ち状態へ
                 if (inputVec.magnitude <= INPUT_MOVE_JUDGE_LENGTH)
                     nextState = PlayerStatus.EStateTransition.STAND;
                 else
                 {
-                    //移動入力があり、押し込みが深ければダッシュ状態へ
-                    if (inputVec.y >= INPUT_MOVE_JUDGE_LENGTH && inputRun.IsDash() == true)
+                    //移動入力があり、一定時間が立てばダッシュ状態へ
+                    if (inputVec.y >= INPUT_MOVE_JUDGE_LENGTH && motionTimeCount > 1.0f)
                     {
-                        nextState = PlayerStatus.EStateTransition.DASH;
+                        nextState = PlayerStatus.EStateTransition.RUN;
                     }
                 }
-                */
+                
                 break;
             case PlayerStatus.EStateTransition.RUN:
-                /*
+                
                 //移動処理
-                controll.SetMoveVec(inputRun.GetMove(), true);
+                controll.SetMoveVec(inputVec);
 
                 //移動入力がなければ立ち状態へ
                 if (inputVec.magnitude <= INPUT_MOVE_JUDGE_LENGTH)
                     nextState = PlayerStatus.EStateTransition.STAND;
-                else
-                {
-                    //移動入力があり、ダッシュボタンが押されていなければ歩き状態へ
-                    if (inputVec.y < INPUT_MOVE_JUDGE_LENGTH || inputRun.IsDash() == false)
-                    {
-                        nextState = PlayerStatus.EStateTransition.WALK;
-                    }
-                }
-                */
                 break;
 
             //action

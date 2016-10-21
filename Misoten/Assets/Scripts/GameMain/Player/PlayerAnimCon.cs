@@ -19,8 +19,8 @@ public class PlayerAnimCon : MonoBehaviour {
         //カメラ制御
         if (playerCamera != null)
         {
-            Vector3 camPosVec;
-            camPosVec = -transform.forward * 5.0f;
+            Vector3 camPosVec; ;
+            camPosVec = Vector3.back * 5.0f;
             camPosVec += Vector3.up * 10.0f;
 
             playerCamera.transform.position = transform.position + camPosVec;

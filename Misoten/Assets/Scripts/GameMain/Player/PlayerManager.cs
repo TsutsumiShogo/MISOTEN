@@ -45,15 +45,12 @@ public class PlayerManager : MonoBehaviour {
 
         Initpos.z += -2;
         playerUnits[2].transform.position = Initpos;
-
-        Initpos.x += 2;
-        playerUnits[3].transform.position = Initpos;
     }
 
     // Use this for initialization
     void Start()
     {
-
+        StartPlayers();
     }
 
     // Update is called once per frame
@@ -65,7 +62,7 @@ public class PlayerManager : MonoBehaviour {
     //Startのタイミングでは使用して大丈夫。各種プレイヤー本体を渡す
     public GameObject GetPlayerUnit(int playerNo)
     {
-        if (playerNo < 0 || playerNo >= 4)
+        if (playerNo < 0 || playerNo >= 3)
         {
             return null;
         }
@@ -75,18 +72,18 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
-    public void StartPlayers(int _dummy)
+    public void StartPlayers()
     {
         for (int i = 0; i < 3; ++i)
         {
-            //playerUnits[i].StartPlayer(0);
+            playerUnits[i].StartPlayer();
         }
     }
-    public void StopPlayers(int _dummy)
+    public void StopPlayers()
     {
         for (int i = 0; i < 3; ++i)
         {
-            //playerUnits[i].StopPlayer(0);
+            playerUnits[i].StopPlayer();
         }
     }
 }
