@@ -22,15 +22,17 @@ public class PlayerControll : MonoBehaviour {
     //移動処理
     public void Move()
     {
-        //高さ方向のベクトルの一時入れ物
+        //ベクトルの一時入れ物
         Vector3 yVector;
+        Vector3 xzVector;
 
         //今までかかっていた重力を保存
-        yVector = rigid.velocity;
+        yVector = xzVector = rigid.velocity;
         yVector.z = yVector.x = 0.0f;
+        xzVector.y = 0.0f;
 
         //移動処理
-        rigid.velocity = yVector + moveVec;
+        rigid.velocity = yVector + xzVector * 0.85f + (moveVec * playerStatus.DEFAULT_MOVE_SPEED) * 0.15f;
         moveVec = moveVec * 0.95f;
     }
 
@@ -41,17 +43,18 @@ public class PlayerControll : MonoBehaviour {
         moveVec.x = stick.x;
         moveVec.z = stick.y;
         moveVec.y = 0.0f;
+        moveVec.Normalize();
 
         //方向を変更
         Quaternion rot = transform.rotation;
 
         //0ベクトル回避
-        if (stick.x != 0 && stick.y != 0)
+        if (stick.x != 0 || stick.y != 0)
         {
             //回転を計算
             float angle;
-            angle = Mathf.Atan2(stick.y, stick.x);
-            rot = Quaternion.AngleAxis(angle, Vector3.up);
+            angle = Mathf.Atan2(stick.x, stick.y);
+            rot = Quaternion.AngleAxis(angle/3.1415f*180.0f, Vector3.up);
             
             //回転情報を代入
             transform.rotation = rot;

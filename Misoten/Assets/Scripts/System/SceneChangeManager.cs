@@ -96,8 +96,8 @@ public class SceneChangeManager : MonoBehaviour {
                 break;
             case ESceneNo.SCENE_GAME:
                 //ゲームメインシーンマネージャーで初期化を伝達
-                GameMainSceneManager gameManager;
-                gameManager = SceneTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GameMainSceneManager>();
+                GM_SceneManager gameManager;
+                gameManager = SceneTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GM_SceneManager>();
                 gameManager.Init();
 
                 break;

@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameMainSceneManager : MonoBehaviour {
+public class GM_SceneManager : MonoBehaviour {
 
     //==========定数定義==========
-    [SerializeField]
-    private float GAME_TIME = 300.0f;
+    public float GAME_TIME = 300.0f;
 
     //==========変数定義==========
-    [SerializeField]
-    private float gameTime;     //今のゲームの残り時間
+    public float gameTime;     //今のゲームの残り時間
 
 	public void Init() {
         gameTime = GAME_TIME;
@@ -17,6 +15,6 @@ public class GameMainSceneManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        gameTime -= Time.deltaTime;
+        gameTime += Time.deltaTime;
 	}
 }
