@@ -1,39 +1,39 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &154778
+--- !u!1 &192402
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 404816}
-  - 114: {fileID: 11432286}
-  m_Layer: 0
+  - 4: {fileID: 430736}
+  - 114: {fileID: 11462464}
+  m_Layer: 10
   m_Name: PlayerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &404816
+--- !u!4 &430736
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154778}
+  m_GameObject: {fileID: 192402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11432286
+--- !u!114 &11462464
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 154778}
+  m_GameObject: {fileID: 192402}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 861529ee3e77df241a2f0a7b259cac01, type: 3}
@@ -43,9 +43,9 @@ MonoBehaviour:
   CAMERA1: {fileID: 0}
   CAMERA2: {fileID: 0}
   SET_PLAYER_UNIT_PREFABS:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 169678, guid: 44828e0420b7b714f875e75d993dbbf9, type: 2}
+  - {fileID: 169678, guid: 44828e0420b7b714f875e75d993dbbf9, type: 2}
+  - {fileID: 169678, guid: 44828e0420b7b714f875e75d993dbbf9, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -55,5 +55,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 154778}
+  m_RootGameObject: {fileID: 192402}
   m_IsPrefabParent: 1
