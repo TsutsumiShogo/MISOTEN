@@ -3,12 +3,13 @@ using System.Collections;
 
 public class GM_MathFlowerParam : MonoBehaviour {
 
+    //定数定義
     public enum EFlowerLevel
     {
-        Level0, //種まき前
-        Level1, //植物成長中
-        Level2, //成長完了
-        Level3, //着色済み
+        Level0 = 0,     //種まき前
+        Level1,         //植物成長中
+        Level2,         //成長完了
+        Level3,         //着色済み
     };
     public enum EFlowerColor
     {
@@ -21,17 +22,65 @@ public class GM_MathFlowerParam : MonoBehaviour {
         YELLOW,
     };
 
-    public EFlowerLevel flowerLevel;
-    public EFlowerColor flowerColor;
+    //セル
+    private GM_MathCell parentCell;
+
+    //パラメータ類
+    public EFlowerLevel flowerLevel = EFlowerLevel.Level0;  //フラワーレベル
+    public EFlowerColor flowerColor = EFlowerColor.NONE;    //スプレーされた色
+    public float nowEXP = 0;                                //現在の経験値
+    public int[] MAX_EXP = new int[2];                      //最大経験値量(外部からセットされたらそれを優先する)
+
+    //初回のみ
+    void Start()
+    {
+        //親の親オブジェクトにCellスクリプトがあるので保存
+        parentCell = transform.parent.parent.GetComponent<GM_MathCell>();
+
+        //親のセルに自らを保存させる。
+        parentCell.flowerParams.Add(this);
+
+        //パラメーター初期化
+        Init();
+    }
 
 	// 初期化関数
 	public void Init () {
+        //パラメーター初期化
         flowerLevel = EFlowerLevel.Level0;
         flowerColor = EFlowerColor.NONE;
+        nowEXP = 0.0f;
+        //初期値ならマネージャーから値を取得してくる
+        if (MAX_EXP[0] == 0)
+        {
+            MAX_EXP[0] = parentCell.manager.MATH_EXP_MAX[0];    //level1→2に必要な経験値
+            MAX_EXP[1] = parentCell.manager.MATH_EXP_MAX[1];    //level2→3に必要な経験値
+        }
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    //自然成長
+    public void PrantGrowth(int _addExp)
+    {
+        //自然成長の対象でないレベルなら除外
+        if (flowerLevel == EFlowerLevel.Level0 || flowerLevel == EFlowerLevel.Level3)
+        {
+            return;
+        }
+
+        //マネージャーが指定する経験値量と一緒なら自然成長を動作させる
+        if (MAX_EXP[0] == parentCell.manager.MATH_EXP_MAX[0])
+        {
+            //経験値加算
+            nowEXP += _addExp;
+
+            //レベルアップに必要な経験値が貯まった
+            if (nowEXP > MAX_EXP[(int)flowerLevel])
+            {
+                //レベルアップ処理
+                nowEXP -= MAX_EXP[(int)flowerLevel];
+                flowerLevel++;
+            }
+        }
+
+    }
 }
