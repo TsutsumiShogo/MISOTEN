@@ -7,8 +7,8 @@ public class GM_MathCellColorControll : MonoBehaviour {
     private SpriteRenderer mathSprite;
 
     //変数定義
-    private Color nextColor;        //目標の色
-    private Color oldColor;         //前回の色
+    public Color nextColor;        //目標の色
+    public Color oldColor;         //前回の色
     private float nowTime;          //経過時間
     private float endTime;   //経過完了までに必要な時間
 
@@ -26,6 +26,7 @@ public class GM_MathCellColorControll : MonoBehaviour {
         nextColor = col;
         oldColor = col;
         nowTime = endTime = 2.0f;
+        nowTime += 0.1f;
     }
 
     void Update()
@@ -63,5 +64,6 @@ public class GM_MathCellColorControll : MonoBehaviour {
     {
         oldColor = nextColor;
         nextColor = changeColor;
+        nowTime = 0.0f;
     }
 }

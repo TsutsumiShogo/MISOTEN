@@ -23,16 +23,11 @@ public class GM_MathManager : MonoBehaviour {
     int lastUpdateCellNo = 0;
     float timeCount = 0.0f;
 
-	// Use this for initialization
-	void Start () {
-        //初期化関数
-        Init();
-	}
 
     //初期化
-    void Init()
+    public void Init()
     {
-        //各セルを通して初期化を伝達
+        //各セルを初期化
         for (int i = 0; i < cells.Count; ++i)
         {
             cells[i].Init();
@@ -52,7 +47,7 @@ public class GM_MathManager : MonoBehaviour {
             else
             {
                 //利用開始
-                cells[i].Start();
+                cells[i].CellStart();
             }
         }
     }
@@ -78,19 +73,13 @@ public class GM_MathManager : MonoBehaviour {
     //=============================公開関数=====================================
     public void StartStage(EMathStageNo stageNo)
     {
-        //STAGE2,3のみ適用
-        if (stageNo != EMathStageNo.STAGE2 && stageNo != EMathStageNo.STAGE3)
-        {
-            return;
-        }
-
         //STAGE2または3のセルを有効化する
         for (int i = 0; i < cells.Count; ++i)
         {
             if (cells[i].stageNo == stageNo)
             {
                 cells[i].gameObject.SetActive(true);
-                cells[i].Start();
+                cells[i].CellStart();
             }
         }
     }

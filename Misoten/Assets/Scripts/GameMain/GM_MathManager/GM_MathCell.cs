@@ -9,7 +9,7 @@ public class GM_MathCell : MonoBehaviour {
     //マネージャオブジェクト
     public GM_MathManager manager;
     //マス目描画スクリプト
-    private GM_MathCellColorControll mathCellColorCon;
+    public GM_MathCellColorControll mathCellColorCon;
 
 
     //このセルのステージ番号
@@ -23,7 +23,6 @@ public class GM_MathCell : MonoBehaviour {
         manager.cells.Add(this);
         //マス目描画スクリプトを保存
         mathCellColorCon = GetComponentInChildren<GM_MathCellColorControll>();
-
 	}
 	
     //ゲーム開始時に初期化
@@ -34,10 +33,12 @@ public class GM_MathCell : MonoBehaviour {
         {
             flowerParams[i].Init();
         }
+
+        //マス色管理システムを初期化
         mathCellColorCon.Init();
     }
     //セル利用開始時に呼ばれる
-    public void Start()
+    public void CellStart()
     {
         mathCellColorCon.ChangeMathColor(Color.white);
     }
