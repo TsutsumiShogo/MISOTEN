@@ -29,7 +29,7 @@ public class PlayerManager : MonoBehaviour {
 
             playerObjects[i].transform.parent = transform;
         }
-
+        
         //カメラを各プレイヤーへ渡す
         playerUnits[0].GetComponent<PlayerAnimCon>().playerCamera = CAMERA0;
         playerUnits[1].GetComponent<PlayerAnimCon>().playerCamera = CAMERA1;
