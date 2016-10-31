@@ -44,6 +44,8 @@ public class GM_MathFlowerParam : MonoBehaviour {
         Init();
     }
 
+    //======================公開関数=========================
+
 	// 初期化関数
 	public void Init () {
         //パラメーター初期化
@@ -58,7 +60,16 @@ public class GM_MathFlowerParam : MonoBehaviour {
         }
 	}
 
-    //自然成長
+    //種まき完了後これを実行してほしい。自然成長などが解放される
+    public void PrantStart()
+    {
+        if (flowerLevel == EFlowerLevel.Level0)
+        {
+            flowerLevel = EFlowerLevel.Level1;
+        }
+    }
+
+    //自然成長用の処理
     public void PrantGrowth(int _addExp)
     {
         //自然成長の対象でないレベルなら除外
@@ -73,14 +84,70 @@ public class GM_MathFlowerParam : MonoBehaviour {
             //経験値加算
             nowEXP += _addExp;
 
-            //レベルアップに必要な経験値が貯まった
-            if (nowEXP > MAX_EXP[(int)flowerLevel])
-            {
-                //レベルアップ処理
-                nowEXP -= MAX_EXP[(int)flowerLevel];
-                flowerLevel++;
-            }
+            //レベル計算
+            CalcLevel();
         }
 
+    }
+
+    //経験値加算汎用処理
+    public void AddExp(int _addExp)
+    {
+        //成長の対象でないレベルなら除外
+        if (flowerLevel == EFlowerLevel.Level0 || flowerLevel == EFlowerLevel.Level3)
+        {
+            return;
+        }
+
+        //経験値加算
+        nowEXP += _addExp;
+
+        //レベル計算
+        CalcLevel();
+    }
+
+    //レベル3の時のみ実行可能
+    public void AddColor(EFlowerColor _setFlowerColor)
+    {
+        //成長終了済みでないと通さない
+        if (flowerLevel == EFlowerLevel.Level3)
+        {
+            //色情報セット
+            flowerColor = _setFlowerColor;
+
+            //マテリアル変更処理
+            
+
+            return;
+        }
+    }
+
+    //======================非公開関数=========================
+
+    //現在経験値を元にレベル計算を行う
+    private void CalcLevel()
+    {
+        //レベルアップ対象でないレベルなら除外
+        if (flowerLevel == EFlowerLevel.Level3)
+        {
+            return;
+        }
+
+        //計算用にレベルをint型へ変換
+        int i_flowerLevel = (int)flowerLevel - 1;
+
+        //レベルアップに必要な経験値が貯まったらレベルUP
+        if (nowEXP > MAX_EXP[i_flowerLevel])
+        {
+            //レベルアップ処理
+            nowEXP -= MAX_EXP[i_flowerLevel];
+            flowerLevel++;
+
+            //レベル3へ上がったら経験値を0へ戻す
+            if (flowerLevel == EFlowerLevel.Level3)
+            {
+                nowEXP = 0;
+            }
+        }
     }
 }
