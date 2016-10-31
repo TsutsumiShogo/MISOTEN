@@ -5,6 +5,14 @@ using System.Collections.Generic;
 public class GM_MathManager : MonoBehaviour {
 
     //定数定義
+    public enum EMathStageNo
+    {
+        STAGE1,
+        STAGE2,
+        STAGE3,
+    };
+
+    //公開変数
     public int[] MATH_EXP_MAX = new int[2];
     public int ADD_GROUWTH_POINT = 2;
 
@@ -33,6 +41,20 @@ public class GM_MathManager : MonoBehaviour {
         //内部変数初期化
         lastUpdateCellNo = 0;
         timeCount = 0.0f;
+
+        //STAGE2,3のセルを無効化し、STAGE1のセルを利用開始状態へ
+        for (int i = 0; i < cells.Count; ++i)
+        {
+            if (cells[i].stageNo == EMathStageNo.STAGE2 || cells[i].stageNo == EMathStageNo.STAGE3)
+            {
+                cells[i].gameObject.SetActive(false);
+            }
+            else
+            {
+                //利用開始
+                cells[i].Start();
+            }
+        }
     }
 	
 	// Update is called once per frame
@@ -53,7 +75,28 @@ public class GM_MathManager : MonoBehaviour {
 
 	}
 
+    //=============================公開関数=====================================
+    public void StartStage(EMathStageNo stageNo)
+    {
+        //STAGE2,3のみ適用
+        if (stageNo != EMathStageNo.STAGE2 && stageNo != EMathStageNo.STAGE3)
+        {
+            return;
+        }
 
+        //STAGE2または3のセルを有効化する
+        for (int i = 0; i < cells.Count; ++i)
+        {
+            if (cells[i].stageNo == stageNo)
+            {
+                cells[i].gameObject.SetActive(true);
+                cells[i].Start();
+            }
+        }
+    }
+
+
+    //===========================非公開関数=====================================
     //植物の自然成長処理
     private void PrantGrowthProcess(bool timeCountResetFlg)
     {

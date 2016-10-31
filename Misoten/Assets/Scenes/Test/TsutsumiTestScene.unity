@@ -1063,6 +1063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GAME_TIME: 180
   gameTime: 0
+  mathManager: {fileID: 0}
 --- !u!1001 &2075609726
 Prefab:
   m_ObjectHideFlags: 0
