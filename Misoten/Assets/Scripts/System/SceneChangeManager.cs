@@ -21,6 +21,10 @@ public class SceneChangeManager : MonoBehaviour {
 
     //===========変数定義===========
 
+    //プログラム開始時のシーン番号を指定する。
+    [SerializeField]
+    private ESceneNo START_SCENE_NO;            //Unity上でセットする
+
     //現在のシーン番号
     private ESceneNo nowSceneNo;
 
@@ -32,22 +36,23 @@ public class SceneChangeManager : MonoBehaviour {
     [SerializeField]
     private List<GameObject> SceneCanvasTopObjects;
 
-
-    public bool gameChangeFlg = false;
-
 	// Use this for initialization
-	void Awake () {
-        nowSceneNo = ESceneNo.SCENE_TITLE;
-	}
+	void Start () {
+        int SCENE_NUM = (int)ESceneNo.SCENE_NUM_MAX;
 
-    void Update()
-    {
-        if (gameChangeFlg == true)
+        //最初に全てのオブジェクトを無効化する
+        for (int i = 0; i < SCENE_NUM; ++i)
         {
-            gameChangeFlg = false;
-            SceneChange(ESceneNo.SCENE_GAME);
+            SceneObjectSwitch((ESceneNo)i, false);
         }
-    }
+
+        //仮の値をセット
+        nowSceneNo = ESceneNo.SCENE_TITLE;
+
+        //START_SCENE_NOが指すシーンを有効化
+        SceneChange(START_SCENE_NO);
+
+	}
 	
     //シーンの切り替え
     public bool SceneChange(ESceneNo changeSceneNo)
@@ -58,13 +63,9 @@ public class SceneChangeManager : MonoBehaviour {
             return false;
         }
 
-        //親オブジェクトを切り替える
-        //OFF
-        SceneTopObjects[(int)nowSceneNo].SetActive(false);
-        SceneCanvasTopObjects[(int)nowSceneNo].SetActive(false);
-        //ON
-        SceneTopObjects[(int)changeSceneNo].SetActive(true);
-        SceneCanvasTopObjects[(int)changeSceneNo].SetActive(true);
+        //オブジェクトを切り替える
+        SceneObjectSwitch(nowSceneNo, false);
+        SceneObjectSwitch(changeSceneNo, true);
 
         //シーン番号切り替え
         nowSceneNo = changeSceneNo;
@@ -73,6 +74,15 @@ public class SceneChangeManager : MonoBehaviour {
         SceneStartProcess(changeSceneNo);
 
         return true;
+    }
+
+    //=====================非公開関数===========================
+
+    //シーンのアクティブを切り替える
+    private void SceneObjectSwitch(ESceneNo sceneNo, bool activeFlg)
+    {
+        SceneTopObjects[(int)sceneNo].SetActive(activeFlg);
+        SceneCanvasTopObjects[(int)sceneNo].SetActive(activeFlg);
     }
 
     //必要ないかもしれんけど一応Start関数っぽいの用意。

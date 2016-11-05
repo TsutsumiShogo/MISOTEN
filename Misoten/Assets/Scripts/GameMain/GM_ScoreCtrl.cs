@@ -61,4 +61,17 @@ public class GM_ScoreCtrl : MonoBehaviour {
     {
         return playerScore[0] + playerScore[1] + playerScore[2];
     }
+
+
+    //オブジェクト化された時のみ使用される(Unity表示用)
+    [SerializeField]
+    private int[] playerScoreReadOnly = new int[3];
+    void Update()
+    {
+        //値更新
+        for (int i = 0; i < 3; i++)
+        {
+            playerScoreReadOnly[i] = playerScore[i];
+        }
+    }
 }

@@ -17,7 +17,6 @@ public class PlayerManager : MonoBehaviour {
 
     void Awake()
     {
-        Vector3 Initpos = transform.position;
         //プレイヤーオブジェクトを生成する
         GameObject[] playerObjects;
         playerObjects = new GameObject[3];
@@ -35,6 +34,12 @@ public class PlayerManager : MonoBehaviour {
         playerUnits[1].GetComponent<PlayerAnimCon>().playerCamera = CAMERA1;
         playerUnits[2].GetComponent<PlayerAnimCon>().playerCamera = CAMERA2;
 
+    }
+
+    //初期化関数
+    public void Init()
+    {
+        Vector3 Initpos = transform.position;
         //とりあえずバラバラの位置へ
         Initpos.x += 1;
         Initpos.z += 1;
@@ -45,19 +50,12 @@ public class PlayerManager : MonoBehaviour {
 
         Initpos.z += -2;
         playerUnits[2].transform.position = Initpos;
-    }
 
-    // Use this for initialization
-    void Start()
-    {
+
+        //プレイヤー行動開始
         StartPlayers();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     //Startのタイミングでは使用して大丈夫。各種プレイヤー本体を渡す
     public GameObject GetPlayerUnit(int playerNo)
