@@ -148,6 +148,10 @@ public class GM_MathFlowerParam : MonoBehaviour {
             {
                 nowEXP = 0;
             }
+
+            //レベルアップ毎に必要な処理があればここに記述
+
+
         }
     }
 }
