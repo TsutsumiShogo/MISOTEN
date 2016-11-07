@@ -45,6 +45,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Effekseer\Plugins\Effekseer.cs" />
+     <Compile Include="Assets\Effekseer\Plugins\EffekseerEmitter.cs" />
+     <Compile Include="Assets\Effekseer\Plugins\EffekseerSystem.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_LightMove.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_SceneManager.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_ScoreCtrl.cs" />
