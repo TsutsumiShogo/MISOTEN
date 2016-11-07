@@ -12,7 +12,8 @@ public class PlayerUnit : MonoBehaviour {
     private PlayerStatus.EStateTransition nextState;    //次回の状態遷移先
 
     //定数定義
-    private const float INPUT_MOVE_JUDGE_LENGTH = 0.1f;
+    private const float INPUT_MOVE_JUDGE_LENGTH = 0.1f; //移動入力と認める傾き
+    private const float INPUT_DASH_JUDGE_LENGTH = 0.6f; //ダッシュ入力と認める傾き
 
     //内部変数
     private float motionTimeCount;                  //モーションの経過時間(MAX 600sc)
@@ -122,6 +123,7 @@ public class PlayerUnit : MonoBehaviour {
     {
         //移動入力の方向を取得
         Vector2 inputVec = Vector2.zero;
+        /*
         if(Input.GetKey(KeyCode.RightArrow) == true)
         {
             inputVec.x += 1.0f;
@@ -138,6 +140,9 @@ public class PlayerUnit : MonoBehaviour {
         {
             inputVec.y -= 1.0f;
         }
+        */
+        inputVec.x = XboxController.GetLeftX(PLAYER_NO);
+        inputVec.y = XboxController.GetLeftY(PLAYER_NO);
 
         //詳細な状態毎の処理
         switch (state)
@@ -169,7 +174,7 @@ public class PlayerUnit : MonoBehaviour {
                 else
                 {
                     //移動入力があり、一定時間が立てばダッシュ状態へ
-                    if (inputVec.y >= INPUT_MOVE_JUDGE_LENGTH && motionTimeCount > 1.0f)
+                    if (inputVec.y >= INPUT_DASH_JUDGE_LENGTH && motionTimeCount > 1.0f)
                     {
                         nextState = PlayerStatus.EStateTransition.RUN;
                     }
@@ -181,9 +186,13 @@ public class PlayerUnit : MonoBehaviour {
                 //移動処理
                 controll.SetMoveVec(inputVec);
 
+                //ダッシュ程の傾きが無ければ歩き状態へ
+                if (inputVec.magnitude <= INPUT_DASH_JUDGE_LENGTH)
+                    nextState = PlayerStatus.EStateTransition.WALK;
                 //移動入力がなければ立ち状態へ
                 if (inputVec.magnitude <= INPUT_MOVE_JUDGE_LENGTH)
                     nextState = PlayerStatus.EStateTransition.STAND;
+
                 break;
 
             //action

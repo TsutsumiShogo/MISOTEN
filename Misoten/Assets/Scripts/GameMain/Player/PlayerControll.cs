@@ -43,7 +43,11 @@ public class PlayerControll : MonoBehaviour {
         moveVec.x = stick.x;
         moveVec.z = stick.y;
         moveVec.y = 0.0f;
-        moveVec.Normalize();
+
+        if (moveVec.magnitude > 1.0f)
+        {
+            moveVec = moveVec.normalized;
+        }
 
         //方向を変更
         Quaternion rot = transform.rotation;
