@@ -8,6 +8,7 @@ public class PlayerUnit : MonoBehaviour {
     private PlayerAnimCon animCon;                  //アニメーション管理
     private PlayerStatus status;                    //状態の管理
     private PlayerControll controll;                //プレイヤーの行動を担当
+    private PlayerSprayControll sprayCon;           //スプレーオブジェクト
 
     private PlayerStatus.EStateTransition nextState;    //次回の状態遷移先
 
@@ -20,6 +21,7 @@ public class PlayerUnit : MonoBehaviour {
 
     //公開変数
     public int PLAYER_NO;
+    public GM_MathFlowerParam.EFlowerColor PLAYER_COLOR;
 
 	// Use this for initialization
 	void Awake () {
@@ -28,6 +30,7 @@ public class PlayerUnit : MonoBehaviour {
         animCon = transform.GetComponent<PlayerAnimCon>();
         status = transform.GetComponent<PlayerStatus>();
         controll = transform.GetComponent<PlayerControll>();
+        sprayCon = transform.GetComponentInChildren<PlayerSprayControll>();
 
         nextState = PlayerStatus.EStateTransition.START;
 
@@ -100,8 +103,6 @@ public class PlayerUnit : MonoBehaviour {
                 break;
 
             //action
-            case PlayerStatus.EStateTransition.WEAPON_CHANGE:
-                break;
             case PlayerStatus.EStateTransition.SOWING_SEEDS:
                 break;
             case PlayerStatus.EStateTransition.GROWING:
@@ -149,11 +150,12 @@ public class PlayerUnit : MonoBehaviour {
         {
             //system
             case PlayerStatus.EStateTransition.START:
+                inputVec = Vector2.zero;
+                controll.SetMoveVec(inputVec);
                 break;
             case PlayerStatus.EStateTransition.END:
-                Vector2 vec = Vector2.zero;
-                controll.SetMoveVec(vec);
-
+                inputVec = Vector2.zero;
+                controll.SetMoveVec(inputVec);
                 break;
 
             //normal
@@ -161,6 +163,7 @@ public class PlayerUnit : MonoBehaviour {
                 //移動入力があれば歩き状態へ切り替え
                 if (inputVec.magnitude > INPUT_MOVE_JUDGE_LENGTH)
                     nextState = PlayerStatus.EStateTransition.WALK;
+                
                 
                 break;
             case PlayerStatus.EStateTransition.WALK:
@@ -196,17 +199,20 @@ public class PlayerUnit : MonoBehaviour {
                 break;
 
             //action
-            case PlayerStatus.EStateTransition.WEAPON_CHANGE:
-                //モーション終了
-                if (motionTimeCount > 0.0f)
-                    nextState = PlayerStatus.EStateTransition.STAND;
-
-                break;
             case PlayerStatus.EStateTransition.SOWING_SEEDS:
+                //移動処理
+                controll.SetMoveVec(inputVec);
+                sprayCon.Spray(PlayerSprayControll.EPlayerSprayMode.SEED, 0.1f);
                 break;
             case PlayerStatus.EStateTransition.GROWING:
+                //移動処理
+                controll.SetMoveVec(inputVec * 0.5f);
+                sprayCon.Spray(PlayerSprayControll.EPlayerSprayMode.GRAW, 0.1f);
                 break;
             case PlayerStatus.EStateTransition.SPRAY:
+                //移動処理
+                controll.SetMoveVec(inputVec * 0.75f);
+                sprayCon.Spray(PlayerSprayControll.EPlayerSprayMode.COLOR, 0.1f);
                 break;
 
             default:
@@ -220,8 +226,48 @@ public class PlayerUnit : MonoBehaviour {
             case PlayerStatus.EStateTransitionMode.SYSTEM_MODE:
                 break;
             case PlayerStatus.EStateTransitionMode.NORMAL:
+                //スプレー切り替え
+                if (XboxController.GetButtonL(PLAYER_NO) == true)
+                {
+                    status.ChangeSprayMode(false);
+                }
+                if (XboxController.GetButtonR(PLAYER_NO) == true)
+                {
+                    status.ChangeSprayMode(true);
+                }
+
+                //スプレー入力
+                //if (XboxController.GetButtonA(PLAYER_NO) == true)
+                if(Input.GetKey(KeyCode.S) == true)
+                {
+                    //スプレーモードで遷移先切り替え
+                    switch (status.playerSprayMode)
+                    {
+                        case PlayerSprayControll.EPlayerSprayMode.SEED:
+                            nextState = PlayerStatus.EStateTransition.SOWING_SEEDS;
+                            break;
+                        case PlayerSprayControll.EPlayerSprayMode.GRAW:
+                            nextState = PlayerStatus.EStateTransition.GROWING;
+                            break;
+                        case PlayerSprayControll.EPlayerSprayMode.COLOR:
+                            nextState = PlayerStatus.EStateTransition.SPRAY;
+                            break;
+                    }
+                }
+
                 break;
             case PlayerStatus.EStateTransitionMode.ACTION:
+                //スプレー入力が無くなった
+                //if (XboxController.GetButtonA(PLAYER_NO) == false)
+                if(Input.GetKey(KeyCode.S) == false)
+                {
+                    //移動入力があれば歩き状態へ切り替え
+                    if (inputVec.magnitude > INPUT_MOVE_JUDGE_LENGTH)
+                        nextState = PlayerStatus.EStateTransition.WALK;
+                    else
+                        nextState = PlayerStatus.EStateTransition.STAND;
+                }
+
                 break;
 
             default:

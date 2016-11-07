@@ -1683,6 +1683,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &182886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 452318}
+  - 135: {fileID: 13582796}
+  - 54: {fileID: 5419054}
+  - 114: {fileID: 11410850}
+  m_Layer: 11
+  m_Name: SprayControll
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &183384
 GameObject:
   m_ObjectHideFlags: 1
@@ -2934,6 +2952,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 467538}
   m_RootOrder: 2
+--- !u!4 &452318
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182886}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 453402}
+  m_RootOrder: 1
 --- !u!4 &452942
 Transform:
   m_ObjectHideFlags: 1
@@ -2969,6 +2999,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 425846}
+  - {fileID: 452318}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &454416
@@ -4081,6 +4112,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148310}
   m_Mesh: {fileID: 4300080, guid: 75fe0b64e66fbdf41a41648829994051, type: 3}
+--- !u!54 &5419054
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182886}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!54 &5430344
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -4113,6 +4159,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11410850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3618e603b82ff448bc131f1a78c6ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11417252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4150,6 +4207,7 @@ MonoBehaviour:
   PLAYER_COLOR: {r: 1, g: 0, b: 0, a: 1}
   DEFAULT_MOVE_SPEED: 5
   GRAWING_MOVE_PERCENT: .600000024
+  playerSprayMode: 0
   moveSpeedParam: 0
   testStatus: 0
 --- !u!114 &11473302
@@ -4175,6 +4233,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PLAYER_NO: 0
+  PLAYER_COLOR: 0
+--- !u!135 &13582796
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182886}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13643052
 CapsuleCollider:
   m_ObjectHideFlags: 1

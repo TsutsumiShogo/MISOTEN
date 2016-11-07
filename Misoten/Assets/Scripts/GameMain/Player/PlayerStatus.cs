@@ -30,7 +30,6 @@ public class PlayerStatus : MonoBehaviour {
         RUN,            //移動状態
 
         //action
-        WEAPON_CHANGE,  //武器切り替え    //一応一瞬だけど用意
         SOWING_SEEDS,   //種まき          //移動速い。連打で種まき可
         GROWING,        //成長            //移動遅い(目安6割)
         SPRAY,          //スプレー        //立ち止まってスプレー１秒くらい
@@ -40,6 +39,7 @@ public class PlayerStatus : MonoBehaviour {
 
         STATE_TRANSITION_NUM
     };
+    
 
     //========================構造体定義===========================
     public struct SStateTransition
@@ -50,6 +50,7 @@ public class PlayerStatus : MonoBehaviour {
 
     //========================変数定義============================
     //プレイヤーステータス
+    public PlayerSprayControll.EPlayerSprayMode playerSprayMode;    //スプレーモード
     public SStateTransition sStateTransition;  //状態
     public float moveSpeedParam;               //移動速度
     public EStateTransition testStatus;
@@ -57,6 +58,7 @@ public class PlayerStatus : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         //初期の状態設定
+        playerSprayMode = PlayerSprayControll.EPlayerSprayMode.SEED;
         sStateTransition.stateMode = EStateTransitionMode.SYSTEM_MODE;
         sStateTransition.status = EStateTransition.START;
 
@@ -71,6 +73,28 @@ public class PlayerStatus : MonoBehaviour {
 	    //マスのレベルをチェックしてレベル毎に移動速度パラメーターを更新する。
 
 	}
+
+    //スプレーの状態を変える
+    public void ChangeSprayMode(bool _rightFlg)
+    {
+        //LRボタンで切り替える方向を変えるので
+        if (_rightFlg == true)
+        {
+            playerSprayMode++;
+            if (playerSprayMode > PlayerSprayControll.EPlayerSprayMode.COLOR)
+            {
+                playerSprayMode = PlayerSprayControll.EPlayerSprayMode.SEED;
+            }
+        }
+        else
+        {
+            playerSprayMode--;
+            if (playerSprayMode < PlayerSprayControll.EPlayerSprayMode.SEED)
+            {
+                playerSprayMode = PlayerSprayControll.EPlayerSprayMode.COLOR;
+            }
+        }
+    }
 
     //プレイヤーの状態をセットする
     public void SetStateTransition(EStateTransition state)
@@ -103,7 +127,7 @@ public class PlayerStatus : MonoBehaviour {
         {
             return EStateTransitionMode.SYSTEM_MODE;
         }
-        if (state < EStateTransition.WEAPON_CHANGE)
+        if (state < EStateTransition.SOWING_SEEDS)
         {
             return EStateTransitionMode.NORMAL;
         }

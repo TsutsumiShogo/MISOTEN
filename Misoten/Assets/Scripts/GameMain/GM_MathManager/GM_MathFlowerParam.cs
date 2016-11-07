@@ -4,6 +4,16 @@ using System.Collections;
 public class GM_MathFlowerParam : MonoBehaviour {
 
     //定数定義
+    public enum EFlowerType
+    {
+        Flower1,    //花１
+        Flower2,    //花２
+        Flower3,    //花３
+        House,      //家         //これから下は特殊経験値が必要
+        Bill,       //中ビル
+        BigBill,    //大ビル
+    };
+
     public enum EFlowerLevel
     {
         Level0 = 0,     //種まき前
@@ -26,6 +36,7 @@ public class GM_MathFlowerParam : MonoBehaviour {
     private GM_MathCell parentCell;
 
     //パラメータ類
+    public EFlowerType flowerType = EFlowerType.Flower1;
     public EFlowerLevel flowerLevel = EFlowerLevel.Level0;  //フラワーレベル
     public EFlowerColor flowerColor = EFlowerColor.NONE;    //スプレーされた色
     public float nowEXP = 0;                                //現在の経験値
@@ -52,11 +63,24 @@ public class GM_MathFlowerParam : MonoBehaviour {
         flowerLevel = EFlowerLevel.Level0;
         flowerColor = EFlowerColor.NONE;
         nowEXP = 0.0f;
-        //初期値ならマネージャーから値を取得してくる
-        if (MAX_EXP[0] == 0)
+
+        //必要経験値量情報をマネージャーから取得する
+        MAX_EXP[0] = parentCell.manager.MATH_EXP_MAX_FLOWER[0];    //level1→2に必要な経験値
+        MAX_EXP[1] = parentCell.manager.MATH_EXP_MAX_FLOWER[1];    //level2→3に必要な経験値
+        if (flowerType == EFlowerType.House)
         {
-            MAX_EXP[0] = parentCell.manager.MATH_EXP_MAX[0];    //level1→2に必要な経験値
-            MAX_EXP[1] = parentCell.manager.MATH_EXP_MAX[1];    //level2→3に必要な経験値
+            MAX_EXP[0] = parentCell.manager.MATH_EXP_MAX_HOUSE[0];    //level1→2に必要な経験値
+            MAX_EXP[1] = parentCell.manager.MATH_EXP_MAX_HOUSE[1];    //level2→3に必要な経験値
+        }
+        if (flowerType == EFlowerType.Bill)
+        {
+            MAX_EXP[0] = parentCell.manager.MATH_EXP_MAX_BILL[0];    //level1→2に必要な経験値
+            MAX_EXP[1] = parentCell.manager.MATH_EXP_MAX_BILL[1];    //level2→3に必要な経験値
+        }
+        if (flowerType == EFlowerType.BigBill)
+        {
+            MAX_EXP[0] = parentCell.manager.MATH_EXP_MAX_BIGBILL[0];    //level1→2に必要な経験値
+            MAX_EXP[1] = parentCell.manager.MATH_EXP_MAX_BIGBILL[1];    //level2→3に必要な経験値
         }
 	}
 
@@ -78,8 +102,8 @@ public class GM_MathFlowerParam : MonoBehaviour {
             return;
         }
 
-        //マネージャーが指定する経験値量と一緒なら自然成長を動作させる
-        if (MAX_EXP[0] == parentCell.manager.MATH_EXP_MAX[0])
+        //一番小さい種類の花なら自然成長を動作させる
+        if (flowerType < EFlowerType.House)
         {
             //経験値加算
             nowEXP += _addExp;
