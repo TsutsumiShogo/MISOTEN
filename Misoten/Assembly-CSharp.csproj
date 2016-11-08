@@ -45,10 +45,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scenes\Test\Script\Flower.cs" />
+     <Compile Include="Assets\Scenes\Test\Script\ObjManager.cs" />
      <Compile Include="Assets\Scenes\Test\Script\SceneInput.cs" />
      <Compile Include="Assets\Scenes\Test\Script\XboxController.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_LightMove.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_MathManager\GM_MathCell.cs" />
+     <Compile Include="Assets\Scripts\GameMain\GM_MathManager\GM_MathCellColorControll.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_MathManager\GM_MathFlowerParam.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_MathManager\GM_MathManager.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_SceneManager.cs" />
@@ -63,17 +66,11 @@
      <Compile Include="Assets\Scripts\Title\CameraMove.cs" />
      <Compile Include="Assets\Scripts\Title\CloudScroll.cs" />
      <Compile Include="Assets\Scripts\Title\PushAEffect.cs" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
