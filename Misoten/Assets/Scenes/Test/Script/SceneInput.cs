@@ -13,7 +13,7 @@ public class SceneInput : MonoBehaviour {
 	void Update () {
         if (XboxController.GetButtonA(0)){
             Debug.Log("PushA");
-            ObjManager.CreateFlower(new Vector3(Random.Range(-50.0f, 50.0f), 0.0f, Random.Range(-50.0f, 50.0f)), GM_MathFlowerParam.EFlowerColor.NONE);
+            //ObjManager.CreateFlower(new Vector3(Random.Range(-50.0f, 50.0f), 0.0f, Random.Range(-50.0f, 50.0f)), GM_MathFlowerParam.EFlowerColor.NONE);
         }
 
         if (XboxController.GetButtonB(0)){
