@@ -16,6 +16,9 @@ public class PlayerSprayControll : MonoBehaviour {
     private EPlayerSprayMode sprayMode;         //スプレーがどういう行動を起こす予定か
     private float sprayActiveTime = -0.001f;    //正でスプレーが何か行動を起こしている
 
+    [SerializeField]
+    private MeshRenderer sprayMeshRender;       //Unity上でセット
+
     void Awake()
     {
         playerUnit = transform.parent.GetComponent<PlayerUnit>();
@@ -32,6 +35,23 @@ public class PlayerSprayControll : MonoBehaviour {
         {
             sprayActiveTime -= Time.deltaTime;
         }
+
+        //スプレー描画
+        float _percent;
+        _percent = (sprayActiveTime * 100.0f) / (0.1f * 100.0f);
+
+        if (_percent < 0.0f)
+        {
+            _percent = 0.0f;
+        }
+        if (_percent > 1.0f)
+        {
+            _percent = 1.0f;
+        }
+        Color matColor;
+        matColor = sprayMeshRender.material.color;
+        matColor.a = _percent;
+        sprayMeshRender.material.color = matColor;
 	}
 
     //スプレーを起動させる
