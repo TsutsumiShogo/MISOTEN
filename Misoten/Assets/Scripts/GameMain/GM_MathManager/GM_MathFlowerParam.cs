@@ -88,13 +88,18 @@ public class GM_MathFlowerParam : MonoBehaviour {
 	}
 
     //種まき完了後これを実行してほしい。自然成長などが解放される
-    public void PrantStart()
+    public void PrantStart(int playerNo)
     {
         if (flowerLevel == EFlowerLevel.Level0)
         {
+            //レベルアップ
             flowerLevel = EFlowerLevel.Level1;
 
+            //オブジェクト生成
             objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor);
+
+            //スコア加算
+            GM_ScoreCtrl.AddPlayerScore(100, playerNo);
         }
     }
 
@@ -113,14 +118,17 @@ public class GM_MathFlowerParam : MonoBehaviour {
             //経験値加算
             nowEXP += _addExp;
 
+            //スコア加算(システム側スコア)
+            GM_ScoreCtrl.AddPlayerScore(1, 3);
+
             //レベル計算
-            CalcLevel();
+            CalcLevel(3);
         }
 
     }
 
     //経験値加算汎用処理
-    public void AddExp(int _addExp)
+    public void AddExp(int playerNo, int _addExp)
     {
         //成長の対象でないレベルなら除外
         if (flowerLevel == EFlowerLevel.Level0 || flowerLevel == EFlowerLevel.Level3)
@@ -131,12 +139,15 @@ public class GM_MathFlowerParam : MonoBehaviour {
         //経験値加算
         nowEXP += _addExp;
 
+        //スコア加算
+        GM_ScoreCtrl.AddPlayerScore(1, playerNo);
+
         //レベル計算
-        CalcLevel();
+        CalcLevel(playerNo);
     }
 
     //レベル3の時のみ実行可能
-    public void AddColor(EFlowerColor _setFlowerColor)
+    public void AddColor(int playerNo, EFlowerColor _setFlowerColor)
     {
         //成長終了済みでないと通さない
         if (flowerLevel == EFlowerLevel.Level3)
@@ -154,7 +165,7 @@ public class GM_MathFlowerParam : MonoBehaviour {
     //======================非公開関数=========================
 
     //現在経験値を元にレベル計算を行う
-    private void CalcLevel()
+    private void CalcLevel(int playerNo)
     {
         //レベルアップ対象でないレベルなら除外
         if (flowerLevel == EFlowerLevel.Level3)
@@ -171,6 +182,9 @@ public class GM_MathFlowerParam : MonoBehaviour {
             //レベルアップ処理
             nowEXP -= MAX_EXP[i_flowerLevel];
             flowerLevel++;
+
+            //スコア加算
+            GM_ScoreCtrl.AddPlayerScore(200 * (int)flowerLevel, playerNo);
 
             //レベル3へ上がったら経験値を0へ戻す
             if (flowerLevel == EFlowerLevel.Level3)

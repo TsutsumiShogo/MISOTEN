@@ -239,11 +239,7 @@ public class PlayerUnit : MonoBehaviour {
                 }
 
                 //スプレー入力
-                //if (XboxController.GetButtonA(PLAYER_NO) == true)
-                
-                
-                //if(Input.GetKey(KeyCode.S) == true)
-                if (XboxController.GetButtonHoldX(PLAYER_NO) == true)
+                if (XboxController.GetButtonHoldA(PLAYER_NO) == true)
                 {
                     //スプレーモードで遷移先切り替え
                     switch (status.playerSprayMode)
@@ -262,9 +258,26 @@ public class PlayerUnit : MonoBehaviour {
 
                 break;
             case PlayerStatus.EStateTransitionMode.ACTION:
+                //スプレーあたり判定のサイズを変化
+                Vector3 pos = transform.position;
+                Vector3 scale = Vector3.one;
+                float sprayScalePercent = 0.0f;
+
+                if (motionTimeCount < status.SPRAY_MAX_SCALE_NEED_TIME)
+                {
+                    sprayScalePercent = motionTimeCount / status.SPRAY_MAX_SCALE_NEED_TIME;
+                }
+                else
+                {
+                    sprayScalePercent = 1.0f;
+                }
+                scale.x = scale.z = sprayScalePercent;
+                pos = transform.position + (transform.forward * sprayScalePercent * 2.25f);
+                sprayCon.transform.position = pos;
+                sprayCon.transform.localScale = scale;
+
                 //スプレー入力が無くなった
-                //if (XboxController.GetButtonA(PLAYER_NO) == false)
-                if(XboxController.GetButtonHoldX(0))
+                if (XboxController.GetButtonHoldA(PLAYER_NO) == false)
                 {
                     //移動入力があれば歩き状態へ切り替え
                     if (inputVec.magnitude > INPUT_MOVE_JUDGE_LENGTH)

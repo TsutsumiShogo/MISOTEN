@@ -4,10 +4,10 @@ using System.Collections;
 public class PlayerStatus : MonoBehaviour {
 
     //========================定数定義========================
-    public Color PLAYER_COLOR;              //キャラ毎で違う。初期値はUnity側からセット
-    public float DEFAULT_MOVE_SPEED = 5.0f; //毎秒移動速度
-    public float GRAWING_MOVE_PERCENT = 0.6f;//成長アクション中の移動速度を
-
+    public Color PLAYER_COLOR;                      //キャラ毎で違う。初期値はUnity側からセット
+    public float DEFAULT_MOVE_SPEED = 5.0f;         //毎秒移動速度
+    public float GRAWING_MOVE_PERCENT = 0.6f;       //成長アクション中の移動速度を
+    public float SPRAY_MAX_SCALE_NEED_TIME = 0.5f;  //スプレーをどれだけ長押しすれば最大範囲で撒けるようになるか
 
     //状態遷移
     public enum EStateTransitionMode
