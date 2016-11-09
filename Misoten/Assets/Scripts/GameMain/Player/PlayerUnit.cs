@@ -124,24 +124,26 @@ public class PlayerUnit : MonoBehaviour {
     {
         //移動入力の方向を取得
         Vector2 inputVec = Vector2.zero;
+        
         /*
         if(Input.GetKey(KeyCode.RightArrow) == true)
         {
-            inputVec.x += 1.0f;
+            inputVec.x += 10.0f;
         }
         if(Input.GetKey(KeyCode.LeftArrow) == true)
         {
-            inputVec.x -= 1.0f;
+            inputVec.x -= 10.0f;
         }
         if(Input.GetKey(KeyCode.UpArrow) == true)
         {
-            inputVec.y += 1.0f;
+            inputVec.y += 10.0f;
         }
         if(Input.GetKey(KeyCode.DownArrow) == true)
         {
-            inputVec.y -= 1.0f;
+            inputVec.y -= 10.0f;
         }
         */
+
         inputVec.x = XboxController.GetLeftX(PLAYER_NO);
         inputVec.y = XboxController.GetLeftY(PLAYER_NO);
 
@@ -237,8 +239,11 @@ public class PlayerUnit : MonoBehaviour {
                 }
 
                 //スプレー入力
-                if (XboxController.GetButtonHoldA(PLAYER_NO) == true)
+                //if (XboxController.GetButtonA(PLAYER_NO) == true)
+                
+                
                 //if(Input.GetKey(KeyCode.S) == true)
+                if (XboxController.GetButtonHoldX(PLAYER_NO) == true)
                 {
                     //スプレーモードで遷移先切り替え
                     switch (status.playerSprayMode)
@@ -259,7 +264,7 @@ public class PlayerUnit : MonoBehaviour {
             case PlayerStatus.EStateTransitionMode.ACTION:
                 //スプレー入力が無くなった
                 //if (XboxController.GetButtonA(PLAYER_NO) == false)
-                if(Input.GetKey(KeyCode.S) == false)
+                if(XboxController.GetButtonHoldX(0))
                 {
                     //移動入力があれば歩き状態へ切り替え
                     if (inputVec.magnitude > INPUT_MOVE_JUDGE_LENGTH)
