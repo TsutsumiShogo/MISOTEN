@@ -237,8 +237,8 @@ public class PlayerUnit : MonoBehaviour {
                 }
 
                 //スプレー入力
-                //if (XboxController.GetButtonA(PLAYER_NO) == true)
-                if(Input.GetKey(KeyCode.S) == true)
+                if (XboxController.GetButtonHoldA(PLAYER_NO) == true)
+                //if(Input.GetKey(KeyCode.S) == true)
                 {
                     //スプレーモードで遷移先切り替え
                     switch (status.playerSprayMode)
