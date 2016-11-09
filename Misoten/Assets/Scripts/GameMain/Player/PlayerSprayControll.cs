@@ -12,8 +12,14 @@ public class PlayerSprayControll : MonoBehaviour {
     };
     
     //変数定義
+    private PlayerUnit playerUnit;
     private EPlayerSprayMode sprayMode;         //スプレーがどういう行動を起こす予定か
     private float sprayActiveTime = -0.001f;    //正でスプレーが何か行動を起こしている
+
+    void Awake()
+    {
+        playerUnit = transform.parent.GetComponent<PlayerUnit>();
+    }
 
     //初期化
 	void Init () {
@@ -92,7 +98,7 @@ public class PlayerSprayControll : MonoBehaviour {
     {
         GM_MathFlowerParam.EFlowerColor playerColor;
 
-        
+        playerColor = playerUnit.PLAYER_COLOR;
         //花に色を付ける
         //_flowerParam.AddColor();
     }
