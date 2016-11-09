@@ -52,7 +52,7 @@ public class PlayerSprayControll : MonoBehaviour {
         if (_flowerParam == null)
         {
             //マスと当たってなかった
-            Debug.LogWarning("PlayerSprayCon : OnTriggerStay : flowerParam == null");
+            //Debug.LogWarning("PlayerSprayCon : OnTriggerStay : flowerParam == null");
             return;
         }
 

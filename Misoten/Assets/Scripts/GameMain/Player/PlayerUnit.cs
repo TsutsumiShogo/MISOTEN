@@ -124,24 +124,26 @@ public class PlayerUnit : MonoBehaviour {
     {
         //移動入力の方向を取得
         Vector2 inputVec = Vector2.zero;
+        
         /*
         if(Input.GetKey(KeyCode.RightArrow) == true)
         {
-            inputVec.x += 1.0f;
+            inputVec.x += 10.0f;
         }
         if(Input.GetKey(KeyCode.LeftArrow) == true)
         {
-            inputVec.x -= 1.0f;
+            inputVec.x -= 10.0f;
         }
         if(Input.GetKey(KeyCode.UpArrow) == true)
         {
-            inputVec.y += 1.0f;
+            inputVec.y += 10.0f;
         }
         if(Input.GetKey(KeyCode.DownArrow) == true)
         {
-            inputVec.y -= 1.0f;
+            inputVec.y -= 10.0f;
         }
         */
+
         inputVec.x = XboxController.GetLeftX(PLAYER_NO);
         inputVec.y = XboxController.GetLeftY(PLAYER_NO);
 
@@ -238,7 +240,7 @@ public class PlayerUnit : MonoBehaviour {
 
                 //スプレー入力
                 //if (XboxController.GetButtonA(PLAYER_NO) == true)
-                if(Input.GetKey(KeyCode.S) == true)
+                if(XboxController.GetButtonHoldX(0) == true)
                 {
                     //スプレーモードで遷移先切り替え
                     switch (status.playerSprayMode)

@@ -41,7 +41,10 @@ public class GM_MathFlowerParam : MonoBehaviour {
     public EFlowerColor flowerColor = EFlowerColor.NONE;    //スプレーされた色
     public float nowEXP = 0;                                //現在の経験値
     public int[] MAX_EXP = new int[2];                      //最大経験値量(外部からセットされたらそれを優先する)
-
+    int objId;
+   
+   
+ 
     //初回のみ
     void Start()
     {
@@ -90,6 +93,8 @@ public class GM_MathFlowerParam : MonoBehaviour {
         if (flowerLevel == EFlowerLevel.Level0)
         {
             flowerLevel = EFlowerLevel.Level1;
+
+            objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor);
         }
     }
 
@@ -174,8 +179,8 @@ public class GM_MathFlowerParam : MonoBehaviour {
             }
 
             //レベルアップ毎に必要な処理があればここに記述
-
-
+            ObjectManager.LevelUp(objId, (int)flowerLevel, flowerType);
+            Debug.Log("levelup");
         }
     }
 }
