@@ -239,13 +239,11 @@ public class PlayerUnit : MonoBehaviour {
                 }
 
                 //スプレー入力
-<<<<<<< HEAD
                 //if (XboxController.GetButtonA(PLAYER_NO) == true)
-                if(XboxController.GetButtonHoldX(0) == true)
-=======
-                if (XboxController.GetButtonHoldA(PLAYER_NO) == true)
+                
+                
                 //if(Input.GetKey(KeyCode.S) == true)
->>>>>>> origin/master
+                if (XboxController.GetButtonHoldX(PLAYER_NO) == true)
                 {
                     //スプレーモードで遷移先切り替え
                     switch (status.playerSprayMode)
@@ -266,7 +264,7 @@ public class PlayerUnit : MonoBehaviour {
             case PlayerStatus.EStateTransitionMode.ACTION:
                 //スプレー入力が無くなった
                 //if (XboxController.GetButtonA(PLAYER_NO) == false)
-                if(Input.GetKey(KeyCode.S) == false)
+                if(XboxController.GetButtonHoldX(0))
                 {
                     //移動入力があれば歩き状態へ切り替え
                     if (inputVec.magnitude > INPUT_MOVE_JUDGE_LENGTH)
