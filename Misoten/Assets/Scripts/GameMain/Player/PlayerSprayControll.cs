@@ -127,7 +127,7 @@ public class PlayerSprayControll : MonoBehaviour {
     private void SowSeed(GM_MathFlowerParam _flowerParam)
     {
         //花を有効化(種まき完了)
-        _flowerParam.PrantStart(playerUnit.PLAYER_NO);
+        _flowerParam.PrantStart(playerUnit.PLAYER_NO, playerUnit.PLAYER_COLOR);
     }
 
     //植物を成長させる

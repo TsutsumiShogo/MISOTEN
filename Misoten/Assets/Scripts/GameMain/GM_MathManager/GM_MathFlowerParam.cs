@@ -88,12 +88,15 @@ public class GM_MathFlowerParam : MonoBehaviour {
 	}
 
     //種まき完了後これを実行してほしい。自然成長などが解放される
-    public void PrantStart(int playerNo)
+    public void PrantStart(int playerNo, EFlowerColor _playerColor)
     {
         if (flowerLevel == EFlowerLevel.Level0)
         {
             //レベルアップ
             flowerLevel = EFlowerLevel.Level1;
+
+            //色設定
+            flowerColor = _playerColor;
 
             //オブジェクト生成
             objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor);
