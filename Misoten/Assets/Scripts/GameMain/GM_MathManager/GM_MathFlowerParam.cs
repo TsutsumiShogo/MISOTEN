@@ -63,7 +63,14 @@ public class GM_MathFlowerParam : MonoBehaviour {
 	// 初期化関数
 	public void Init () {
         //パラメーター初期化
-        flowerLevel = EFlowerLevel.Level0;
+        if (flowerType == EFlowerType.Bill || flowerType == EFlowerType.BigBill)
+        {
+            flowerLevel = EFlowerLevel.Level1;
+        }
+        else
+        {
+            flowerLevel = EFlowerLevel.Level0;
+        }
         flowerColor = EFlowerColor.NONE;
         nowEXP = 0.0f;
 
@@ -115,14 +122,14 @@ public class GM_MathFlowerParam : MonoBehaviour {
             return;
         }
 
-        //一番小さい種類の花なら自然成長を動作させる
-        if (flowerType < EFlowerType.House)
+        //ビル以外なら自然成長を動作させる
+        if (flowerType <= EFlowerType.House)
         {
             //経験値加算
             nowEXP += _addExp;
 
             //スコア加算(システム側スコア)
-            GM_ScoreCtrl.AddPlayerScore(1, 3);
+            GM_ScoreCtrl.AddPlayerScore(_addExp, 3);
 
             //レベル計算
             CalcLevel(3);
@@ -131,7 +138,7 @@ public class GM_MathFlowerParam : MonoBehaviour {
     }
 
     //経験値加算汎用処理
-    public void AddExp(int playerNo, int _addExp)
+    public void AddExp(int playerNo, float _addExp)
     {
         //成長の対象でないレベルなら除外
         if (flowerLevel == EFlowerLevel.Level0 || flowerLevel == EFlowerLevel.Level3)
@@ -143,7 +150,7 @@ public class GM_MathFlowerParam : MonoBehaviour {
         nowEXP += _addExp;
 
         //スコア加算
-        GM_ScoreCtrl.AddPlayerScore(1, playerNo);
+        GM_ScoreCtrl.AddPlayerScore(_addExp, playerNo);
 
         //レベル計算
         CalcLevel(playerNo);

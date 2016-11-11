@@ -6,16 +6,16 @@ using System.Collections;
 public class GM_ScoreCtrl : MonoBehaviour {
 
     //プレイヤー毎のスコアポイント値
-    private static int[] playerScore = new int[4];  //1~3P と 4P(システム自然成長など)
+    private static float[] playerScore = new float[4];  //1~3P と 4P(システム自然成長など)
 
     //初期化
     static public void Reset()
     {
-        playerScore[0] = playerScore[1] = playerScore[2] = playerScore[3] = 0;
+        playerScore[0] = playerScore[1] = playerScore[2] = playerScore[3] = 0.0f;
     }
 
     //スコアを上書き
-    static public bool SetPlayerScore(int setScorePoint, int playerNo)
+    static public bool SetPlayerScore(float setScorePoint, int playerNo)
     {
         //配列の範囲外は失敗
         if (playerNo < 0 || playerNo >= 4)
@@ -30,7 +30,7 @@ public class GM_ScoreCtrl : MonoBehaviour {
     }
 
     //スコアの加算処理
-    static public bool AddPlayerScore(int addScorePoint, int playerNo)
+    static public bool AddPlayerScore(float addScorePoint, int playerNo)
     {
         //配列の範囲外は失敗
         if (playerNo < 0 || playerNo >= 4)
@@ -45,7 +45,7 @@ public class GM_ScoreCtrl : MonoBehaviour {
     }
 
     //スコアの取得
-    static public int GetPlayerScore(int playerNo)
+    static public float GetPlayerScore(int playerNo)
     {
         //配列の範囲外は失敗
         if (playerNo < 0 || playerNo >= 4)
@@ -57,7 +57,7 @@ public class GM_ScoreCtrl : MonoBehaviour {
         return playerScore[playerNo];
     }
     //全プレイヤーの合算したスコアの取得
-    static public int GetPlayersScore()
+    static public float GetPlayersScore()
     {
         return playerScore[0] + playerScore[1] + playerScore[2] + playerScore[3];
     }
@@ -71,7 +71,7 @@ public class GM_ScoreCtrl : MonoBehaviour {
         //値更新
         for (int i = 0; i < 4; i++)
         {
-            playerScoreReadOnly[i] = playerScore[i];
+            playerScoreReadOnly[i] = (int)playerScore[i];
         }
     }
 }

@@ -8,7 +8,9 @@ public class PlayerUnit : MonoBehaviour {
     private PlayerAnimCon animCon;                  //アニメーション管理
     private PlayerStatus status;                    //状態の管理
     private PlayerControll controll;                //プレイヤーの行動を担当
+
     private PlayerSprayControll sprayCon;           //スプレーオブジェクト
+    private PlayerCheckCollisionBill collisionBill; //ビルとのあたり判定チェックやビルへの操作を行う
 
     private PlayerStatus.EStateTransition nextState;    //次回の状態遷移先
 
@@ -30,7 +32,9 @@ public class PlayerUnit : MonoBehaviour {
         animCon = transform.GetComponent<PlayerAnimCon>();
         status = transform.GetComponent<PlayerStatus>();
         controll = transform.GetComponent<PlayerControll>();
+
         sprayCon = transform.GetComponentInChildren<PlayerSprayControll>();
+        collisionBill = transform.GetComponentInChildren<PlayerCheckCollisionBill>();
 
         nextState = PlayerStatus.EStateTransition.START;
 
@@ -108,6 +112,10 @@ public class PlayerUnit : MonoBehaviour {
             case PlayerStatus.EStateTransition.GROWING:
                 break;
             case PlayerStatus.EStateTransition.SPRAY:
+                break;
+
+            //billAction
+            case PlayerStatus.EStateTransition.GROWING_BILL:
                 break;
 
             //damage
@@ -217,6 +225,19 @@ public class PlayerUnit : MonoBehaviour {
                 sprayCon.Spray(PlayerSprayControll.EPlayerSprayMode.COLOR, 0.1f);
                 break;
 
+            //billAction
+            case PlayerStatus.EStateTransition.GROWING_BILL:
+                //ビルを成長させる
+                collisionBill.GrowthBill();
+                break;
+
+            //damage
+            case PlayerStatus.EStateTransition.KNOCKBACK:
+                if (motionTimeCount > 0.6f)
+                {
+                    nextState = PlayerStatus.EStateTransition.STAND;
+                }
+                break;
             default:
                 //異常検知
                 return -1;
@@ -256,6 +277,13 @@ public class PlayerUnit : MonoBehaviour {
                     }
                 }
 
+                //ビルが目の前に存在しつつＸボタンが押されていたら
+                if(collisionBill.CheckCollisionBill() == true &&
+                    XboxController.GetButtonHoldX(PLAYER_NO) == true)
+                {
+                    nextState = PlayerStatus.EStateTransition.GROWING_BILL;
+                }
+
                 break;
             case PlayerStatus.EStateTransitionMode.ACTION:
                 //スプレーあたり判定のサイズを変化
@@ -286,6 +314,28 @@ public class PlayerUnit : MonoBehaviour {
                         nextState = PlayerStatus.EStateTransition.STAND;
                 }
 
+                //ビルが目の前に存在しつつＸボタンが押されていたら
+                if (collisionBill.CheckCollisionBill() == true &&
+                    XboxController.GetButtonHoldX(PLAYER_NO) == true)
+                {
+                    nextState = PlayerStatus.EStateTransition.GROWING_BILL;
+                }
+
+                break;
+
+            case PlayerStatus.EStateTransitionMode.BILL_ACTION:
+                //ビルスプレー入力が無くなった
+                if (XboxController.GetButtonHoldX(PLAYER_NO) == false)
+                {
+                    //移動入力があれば歩き状態へ切り替え
+                    if (inputVec.magnitude > INPUT_MOVE_JUDGE_LENGTH)
+                        nextState = PlayerStatus.EStateTransition.WALK;
+                    else
+                        nextState = PlayerStatus.EStateTransition.STAND;
+                }
+                break;
+
+            case PlayerStatus.EStateTransitionMode.DAMAGE:
                 break;
 
             default:

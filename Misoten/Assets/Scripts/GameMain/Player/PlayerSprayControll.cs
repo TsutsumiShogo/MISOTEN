@@ -88,7 +88,6 @@ public class PlayerSprayControll : MonoBehaviour {
     //あたり判定
     void OnTriggerStay(Collider col)
     {
-        //Debug.Log("OnTrigger");
         //起動状態をチェック
         if (sprayActiveTime < 0.00f)
         {
@@ -102,7 +101,13 @@ public class PlayerSprayControll : MonoBehaviour {
         if (_flowerParam == null)
         {
             //マスと当たってなかった
-            //Debug.LogWarning("PlayerSprayCon : OnTriggerStay : flowerParam == null");
+            return;
+        }
+
+        //当たったマスがビルなら何もしない
+        if (_flowerParam.flowerType == GM_MathFlowerParam.EFlowerType.Bill ||
+            _flowerParam.flowerType == GM_MathFlowerParam.EFlowerType.BigBill)
+        {
             return;
         }
 
@@ -134,7 +139,7 @@ public class PlayerSprayControll : MonoBehaviour {
     private void GrowPlant(GM_MathFlowerParam _flowerParam)
     {
         //花に経験値を加算(植物成長)
-        _flowerParam.AddExp(playerUnit.PLAYER_NO, 3);    //引数：毎フレーム経験値加算量
+        _flowerParam.AddExp(playerUnit.PLAYER_NO, 180.0f * Time.deltaTime);    //引数：加算経験値量
     }
 
     //色を付ける
@@ -144,6 +149,6 @@ public class PlayerSprayControll : MonoBehaviour {
 
         playerColor = playerUnit.PLAYER_COLOR;
         //花に色を付ける
-        //_flowerParam.AddColor();
+        _flowerParam.AddColor(playerUnit.PLAYER_NO, playerColor);
     }
 }

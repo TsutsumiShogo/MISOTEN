@@ -15,6 +15,7 @@ public class PlayerStatus : MonoBehaviour {
         SYSTEM_MODE,
         NORMAL,
         ACTION,
+        BILL_ACTION,
         DAMAGE,
         STATE_TRANSITION_MODE_NUM
     };
@@ -30,9 +31,12 @@ public class PlayerStatus : MonoBehaviour {
         RUN,            //移動状態
 
         //action
-        SOWING_SEEDS,   //種まき          //移動速い。連打で種まき可
+        SOWING_SEEDS,   //種まき          //移動速い。長押しで種まき可
         GROWING,        //成長            //移動遅い(目安6割)
         SPRAY,          //スプレー        //立ち止まってスプレー１秒くらい
+
+        //billAction
+        GROWING_BILL,   //ビル専用成長    //立ち止まって成長
 
         //damage
         KNOCKBACK,      //ノックバック
@@ -57,6 +61,10 @@ public class PlayerStatus : MonoBehaviour {
     //========================実行関数============================
 	// Use this for initialization
 	void Awake () {
+        Init();
+	}
+    public void Init()
+    {
         //初期の状態設定
         playerSprayMode = PlayerSprayControll.EPlayerSprayMode.SEED;
         sStateTransition.stateMode = EStateTransitionMode.SYSTEM_MODE;
@@ -64,8 +72,8 @@ public class PlayerStatus : MonoBehaviour {
 
         //パラメーター設定
         moveSpeedParam = DEFAULT_MOVE_SPEED;
-        
-	}
+    }
+    
 	
 	// Update is called once per frame
 	void Update () {
@@ -131,9 +139,13 @@ public class PlayerStatus : MonoBehaviour {
         {
             return EStateTransitionMode.NORMAL;
         }
-        if (state < EStateTransition.KNOCKBACK)
+        if (state < EStateTransition.GROWING_BILL)
         {
             return EStateTransitionMode.ACTION;
+        }
+        if (state < EStateTransition.KNOCKBACK)
+        {
+            return EStateTransitionMode.BILL_ACTION;
         }
         if (state < EStateTransition.STATE_TRANSITION_NUM)
         {
