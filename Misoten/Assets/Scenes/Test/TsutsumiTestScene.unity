@@ -1233,10 +1233,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mMaterialsRed:
-  - {fileID: 2100000, guid: 65f5c80c4bd97bd48b426d9ca2c1bd0c, type: 2}
-  - {fileID: 2100000, guid: 3bac8b7a2d0cd654589f40340ccbf131, type: 2}
-  mMaterialsBlue: []
-  mMaterialsGreen: []
+  - {fileID: 2100000, guid: 19a592155ffb59c42a6aad1c07da9f1d, type: 2}
+  - {fileID: 2100000, guid: b85a0f03f1384314b986af0f840a61f9, type: 2}
+  mMaterialsBlue:
+  - {fileID: 2100000, guid: a7bcd342ae8d2b34d9aa6df90f6b3c60, type: 2}
+  - {fileID: 2100000, guid: ec82b2384f5fc5f4baa9de1f044827f6, type: 2}
+  mMaterialsGreen:
+  - {fileID: 2100000, guid: 93253e78bf3167b4e86f63d8014d5146, type: 2}
+  - {fileID: 2100000, guid: 4918d68f950fdc34e9c980cfecc606bc, type: 2}
 --- !u!4 &1896307706
 Transform:
   m_ObjectHideFlags: 0

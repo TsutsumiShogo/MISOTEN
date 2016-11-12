@@ -75,9 +75,11 @@ public class ObjectManager : MonoBehaviour {
                             break;
                             // 青
                         case GM_MathFlowerParam.EFlowerColor.BLUE:
+                            rendererList[no].material = gMaterialsBlue[level - 2];
                             break;
                             // 緑
                         case GM_MathFlowerParam.EFlowerColor.GREEN:
+                            rendererList[no].material = gMaterialsGreen[level - 2];
                             break;
                     }
                     //objectList[no].GetComponent<Renderer>().material = gMaterials[ (int)colorList[Id], level-1];
