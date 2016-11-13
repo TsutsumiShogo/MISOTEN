@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 426228}
   - 33: {fileID: 3323468}
   - 23: {fileID: 2311626}
+  - 114: {fileID: 11474212}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -62,6 +63,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 162040}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11474212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ce71c83c64fc94e940c151d0a1ab20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

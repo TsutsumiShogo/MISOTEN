@@ -48,6 +48,7 @@ public class ObjectManager : MonoBehaviour {
                 objectList[Id] = Instantiate(prefab, pos, Quaternion.Euler(60, 180, 0)) as GameObject;
                 rendererList[Id] = objectList[Id].GetComponent<Renderer>();
                 colorList[Id] = _color;
+                objectList[Id].GetComponent<flower>().scallOn();
                 break;
         }
 
@@ -86,5 +87,6 @@ public class ObjectManager : MonoBehaviour {
                     break;
             }
         }
+        objectList[no].GetComponent<flower>().scallOn();
     }
 }

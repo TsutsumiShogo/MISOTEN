@@ -48,10 +48,13 @@
      <Compile Include="Assets\Effekseer\Plugins\Effekseer.cs" />
      <Compile Include="Assets\Effekseer\Plugins\EffekseerEmitter.cs" />
      <Compile Include="Assets\Effekseer\Plugins\EffekseerSystem.cs" />
+     <Compile Include="Assets\Scenes\Test\Script\Balloon.cs" />
      <Compile Include="Assets\Scenes\Test\Script\ObjectManager.cs" />
      <Compile Include="Assets\Scenes\Test\Script\SceneInput.cs" />
      <Compile Include="Assets\Scenes\Test\Script\XboxController.cs" />
      <Compile Include="Assets\Scenes\Test\Script\flower.cs" />
+     <Compile Include="Assets\Scenes\Test\Script\growBill.cs" />
+     <Compile Include="Assets\Scenes\Test\Script\middleBill.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_LightMove.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_MathManager\GM_MathCell.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_MathManager\GM_MathCellColorControll.cs" />
