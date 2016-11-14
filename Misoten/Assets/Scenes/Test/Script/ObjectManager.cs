@@ -11,9 +11,17 @@ public class ObjectManager : MonoBehaviour {
     public Material[] mMaterialsRed;
     public Material[] mMaterialsBlue;
     public Material[] mMaterialsGreen;
+    public Material mMaterialsYellow;
+    public Material mMaterialsCyan;
+    public Material mMaterialsMagenta;
+    public Material mMaterialsWhite;
     public static Material[] gMaterialsRed;
     public static Material[] gMaterialsBlue;
     public static Material[] gMaterialsGreen;
+    public static Material gMaterialsYellow;
+    public static Material gMaterialsCyan;
+    public static Material gMaterialsMagenta;
+    public static Material gMaterialsWhite;
     
 	// Use this for initialization
 	void Start () {
@@ -21,6 +29,10 @@ public class ObjectManager : MonoBehaviour {
         gMaterialsRed = mMaterialsRed;
         gMaterialsBlue = mMaterialsBlue;
         gMaterialsGreen = mMaterialsGreen;
+        gMaterialsYellow = mMaterialsYellow;
+        gMaterialsCyan = mMaterialsCyan;
+        gMaterialsMagenta = mMaterialsMagenta;
+        gMaterialsWhite = mMaterialsWhite;
         //gMaterials = mMaterials;
         Id = 0;
 	}
@@ -89,5 +101,38 @@ public class ObjectManager : MonoBehaviour {
             }
         }
         objectList[no].GetComponent<flower>().scallOn();
+    }
+
+    //---------------------------------------------------------------
+    // 色変更処理
+    //--------------------------------------------------------------
+    public static void ChengeColor(int no, GM_MathFlowerParam.EFlowerColor _color){
+        if (objectList[no] != null){
+            switch (_color)
+            {
+                case GM_MathFlowerParam.EFlowerColor.RED:
+                    rendererList[no].material = gMaterialsRed[1];
+                    break;
+                case GM_MathFlowerParam.EFlowerColor.BLUE:
+                    rendererList[no].material = gMaterialsBlue[1];
+                    break;
+                case GM_MathFlowerParam.EFlowerColor.GREEN:
+                    rendererList[no].material = gMaterialsGreen[1];
+                    break;
+                case GM_MathFlowerParam.EFlowerColor.YELLOW:
+                    rendererList[no].material = gMaterialsYellow;
+                    break;
+                case GM_MathFlowerParam.EFlowerColor.CYAN:
+                    rendererList[no].material = gMaterialsCyan;
+                    break;
+                case GM_MathFlowerParam.EFlowerColor.MAGENTA:
+                    rendererList[no].material = gMaterialsMagenta;
+                    break;
+                case GM_MathFlowerParam.EFlowerColor.WHITE:
+                    rendererList[no].material = gMaterialsWhite;
+                    break;
+            }
+
+        }
     }
 }

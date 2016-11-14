@@ -227,10 +227,9 @@ public class GM_MathFlowerParam : MonoBehaviour {
     private void MixColor(EFlowerColor _addColor)
     {
         //色を混ぜることができる時間では無かったら上書き
-        if (colorMixableTimeCount < 0.0f)
+        if (colorMixableTimeCount <= 0.0f)
         {
             flowerColor = _addColor;
-            return;
         }
         //混ぜることが出来る時間なら色計算
         else
@@ -333,6 +332,6 @@ public class GM_MathFlowerParam : MonoBehaviour {
         colorMixableTimeCount = 1.0f;
 
         //マテリアル変更処理など
-
+        ObjectManager.ChengeColor(objId, flowerColor);      // 色変更処理
     }
 }

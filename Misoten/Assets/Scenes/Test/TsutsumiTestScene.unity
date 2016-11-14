@@ -972,7 +972,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 877106009}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: .5
   m_Height: 2
   m_Direction: 1
@@ -1717,6 +1717,10 @@ MonoBehaviour:
   mMaterialsGreen:
   - {fileID: 2100000, guid: 93253e78bf3167b4e86f63d8014d5146, type: 2}
   - {fileID: 2100000, guid: 4918d68f950fdc34e9c980cfecc606bc, type: 2}
+  mMaterialsYellow: {fileID: 2100000, guid: 5231d430ad0529d4ca074a66c9c2963a, type: 2}
+  mMaterialsCyan: {fileID: 2100000, guid: 0e9434b0802e27d4b999c054779d76e3, type: 2}
+  mMaterialsMagenta: {fileID: 2100000, guid: 057205d63808b364cba984fca488a35c, type: 2}
+  mMaterialsWhite: {fileID: 2100000, guid: b02ec5291b87a5747b92447d001713da, type: 2}
 --- !u!4 &1896307706
 Transform:
   m_ObjectHideFlags: 0
