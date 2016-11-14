@@ -83,7 +83,7 @@ public class GM_SceneManager : MonoBehaviour {
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
 
             //ステージ外周オブジェクトを消す
-            stageOutColObj[0].SetActive(false);
+            stageOutColObj[1].SetActive(false);
         }
         
         //ゲーム終了の時間になったらタイムアップ演出をする
