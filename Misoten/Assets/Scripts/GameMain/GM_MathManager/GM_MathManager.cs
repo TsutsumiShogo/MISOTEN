@@ -47,14 +47,7 @@ public class GM_MathManager : MonoBehaviour {
         
 
         //STAGE1のセルを利用開始状態へ
-        for (int i = 0; i < cells.Count; ++i)
-        {
-            if (cells[i].stageNo == EMathStageNo.STAGE1)
-            {
-                //利用開始
-                cells[i].CellStart();
-            }
-        }
+        StartStage(EMathStageNo.STAGE1);
     }
 	
 	// Update is called once per frame
@@ -91,14 +84,13 @@ public class GM_MathManager : MonoBehaviour {
 	}
 
     //=============================公開関数=====================================
+    //指定のステージ番号のセルを有効化
     public void StartStage(EMathStageNo stageNo)
     {
-        //STAGE2または3のセルを有効化する
         for (int i = 0; i < cells.Count; ++i)
         {
             if (cells[i].stageNo == stageNo)
             {
-                cells[i].gameObject.SetActive(true);
                 cells[i].CellStart();
             }
         }

@@ -23,6 +23,10 @@ public class GM_SceneManager : MonoBehaviour {
     //タイムアップ演出オブジェクト
     [SerializeField]
     private Text timeUpObj;    //Unity上でセット
+
+    //ステージ外周あたり判定オブジェクト
+    [SerializeField]
+    private GameObject[] stageOutColObj = new GameObject[2];    //Unity上でセット
     
     //Init関数をシーンチェンジマネージャに呼ばせるようになったらAwakeへ変更すること。
     void Awake()
@@ -53,6 +57,10 @@ public class GM_SceneManager : MonoBehaviour {
 
         //タイムアップ演出をオフに
         timeUpObj.gameObject.SetActive(false);
+
+        //ステージ外周オブジェクトを有効化
+        stageOutColObj[0].SetActive(true);
+        stageOutColObj[1].SetActive(true);
 	}
 	
 	// Update is called once per frame
@@ -65,11 +73,17 @@ public class GM_SceneManager : MonoBehaviour {
         {
             stageFlg[0] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
+
+            //ステージ外周オブジェクトを消す
+            stageOutColObj[0].SetActive(false);
         }
         if (stageFlg[1] == false && mathManager.totalFlowerLevel > 1500)
         {
             stageFlg[1] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
+
+            //ステージ外周オブジェクトを消す
+            stageOutColObj[0].SetActive(false);
         }
         
         //ゲーム終了の時間になったらタイムアップ演出をする
