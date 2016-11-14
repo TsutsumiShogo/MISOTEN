@@ -11,7 +11,7 @@ public class PlayerAnimCon : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         playerUnit = transform.GetComponent<PlayerUnit>();
-        //animator = transform.Find("Model").GetComponent<Animator>();
+        animator = transform.Find("Model").GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -27,4 +27,27 @@ public class PlayerAnimCon : MonoBehaviour {
 
         }
 	}
+
+    //Animatorにアニメーション切り替えを伝える。
+    public void ChangeAnimation(PlayerStatus.EStateTransition state, bool _moveFlg)
+    {
+        if (state != PlayerStatus.EStateTransition.END)
+        {
+            animator.SetBool("MoveFlg", _moveFlg);
+            animator.SetInteger("AnimNo", (int)state);
+            animator.SetTrigger("AnimTrig");
+        }
+        else
+        {
+            animator.SetBool("MoveFlg", _moveFlg);
+            animator.SetInteger("AnimNo", (int)PlayerStatus.EStateTransition.STAND);
+            animator.SetTrigger("AnimTrig");
+        }
+    }
+
+    //アニメーションの速さを変更する。
+    public void ChangeAnimationSpeed(float speedPercent)
+    {
+        animator.speed = speedPercent;
+    }
 }

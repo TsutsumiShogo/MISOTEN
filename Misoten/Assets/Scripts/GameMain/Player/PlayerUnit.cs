@@ -24,6 +24,7 @@ public class PlayerUnit : MonoBehaviour {
     //公開変数
     public int PLAYER_NO;
     public GM_MathFlowerParam.EFlowerColor PLAYER_COLOR;
+    public bool moveFlg;
 
 	// Use this for initialization
 	void Awake () {
@@ -36,10 +37,16 @@ public class PlayerUnit : MonoBehaviour {
         sprayCon = transform.GetComponentInChildren<PlayerSprayControll>();
         collisionBill = transform.GetComponentInChildren<PlayerCheckCollisionBill>();
 
+        //パラメータ初期化
+        Init();
+	}
+    public void Init()
+    {
         nextState = PlayerStatus.EStateTransition.START;
 
         motionTimeCount = 0.0f;
-	}
+        moveFlg = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -83,12 +90,6 @@ public class PlayerUnit : MonoBehaviour {
         //ステータスへ反映
         status.SetStateTransition(nextState);
 
-        //アニメーションを切り替える
-        //animCon.ChangeAnimation(status.GetStateTransition().status);
-
-        //モーション切り替えに伴って時間初期化
-        motionTimeCount = 0.0f;
-
         //状態切り替え時に何か特別な処理が必要であれば実行
         switch (nextState)
         {
@@ -100,10 +101,13 @@ public class PlayerUnit : MonoBehaviour {
 
             //normal
             case PlayerStatus.EStateTransition.STAND:
+                moveFlg = false;
                 break;
             case PlayerStatus.EStateTransition.WALK:
+                moveFlg = true;
                 break;
             case PlayerStatus.EStateTransition.RUN:
+                moveFlg = true;
                 break;
 
             //action
@@ -116,15 +120,23 @@ public class PlayerUnit : MonoBehaviour {
 
             //billAction
             case PlayerStatus.EStateTransition.GROWING_BILL:
+                moveFlg = false;
                 break;
 
             //damage
             case PlayerStatus.EStateTransition.KNOCKBACK:
+                moveFlg = false;
                 break;
 
             default:
                 break;
         }
+
+        //アニメーションを切り替える
+        animCon.ChangeAnimation(status.GetStateTransition(), moveFlg);
+
+        //モーション切り替えに伴って時間初期化
+        motionTimeCount = 0.0f;
     }
 
     //状態毎に処理を行う
@@ -164,15 +176,16 @@ public class PlayerUnit : MonoBehaviour {
                 controll.SetMoveVec(inputVec);
                 break;
             case PlayerStatus.EStateTransition.END:
-                inputVec = Vector2.zero;
-                controll.SetMoveVec(inputVec);
+                moveFlg = false;
                 break;
 
             //normal
             case PlayerStatus.EStateTransition.STAND:
                 //移動入力があれば歩き状態へ切り替え
                 if (inputVec.magnitude > INPUT_MOVE_JUDGE_LENGTH)
+                {
                     nextState = PlayerStatus.EStateTransition.WALK;
+                }
                 
                 
                 break;
@@ -183,7 +196,9 @@ public class PlayerUnit : MonoBehaviour {
 
                 //移動入力がなければ立ち状態へ
                 if (inputVec.magnitude <= INPUT_MOVE_JUDGE_LENGTH)
+                {
                     nextState = PlayerStatus.EStateTransition.STAND;
+                }
                 else
                 {
                     //移動入力があり、一定時間が立てばダッシュ状態へ
@@ -319,6 +334,29 @@ public class PlayerUnit : MonoBehaviour {
                     XboxController.GetButtonHoldX(PLAYER_NO) == true)
                 {
                     nextState = PlayerStatus.EStateTransition.GROWING_BILL;
+                }
+
+                //スプレーモード以外で移動開始や移動停止したらモーション切り替え
+                if (state != PlayerStatus.EStateTransition.SPRAY)
+                {
+                    //移動停止したかチェック
+                    if (moveFlg == true)
+                    {
+                        if (inputVec.magnitude < 0.1f)
+                        {
+                            moveFlg = false;
+                            animCon.ChangeAnimation(state, moveFlg);
+                        }
+                    }
+                    //移動開始したかチェック
+                    else
+                    {
+                        if (inputVec.magnitude >= 0.1f)
+                        {
+                            moveFlg = true;
+                            animCon.ChangeAnimation(state, moveFlg);
+                        }
+                    }
                 }
 
                 break;
