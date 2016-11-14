@@ -30,6 +30,7 @@ public class GM_MathFlowerParam : MonoBehaviour {
         CYAN,
         MAGENTA,
         YELLOW,
+        WHITE,
     };
 
     //セル
@@ -42,9 +43,10 @@ public class GM_MathFlowerParam : MonoBehaviour {
     public float nowEXP = 0;                                //現在の経験値
     public int[] MAX_EXP = new int[2];                      //最大経験値量(外部からセットされたらそれを優先する)
     int objId;
-   
-   
- 
+    
+    private float colorMixableTimeCount;   //色を混ぜることが出来る残り時間
+    
+    
     //初回のみ
     void Start()
     {
@@ -92,7 +94,17 @@ public class GM_MathFlowerParam : MonoBehaviour {
             MAX_EXP[0] = parentCell.manager.MATH_EXP_MAX_BIGBILL[0];    //level1→2に必要な経験値
             MAX_EXP[1] = parentCell.manager.MATH_EXP_MAX_BIGBILL[1];    //level2→3に必要な経験値
         }
+
+        colorMixableTimeCount = 0.0f;
 	}
+
+    void Update()
+    {
+        if (colorMixableTimeCount > 0.0f)
+        {
+            colorMixableTimeCount -= Time.deltaTime;
+        }
+    }
 
     //種まき完了後これを実行してほしい。自然成長などが解放される
     public void PrantStart(int playerNo, EFlowerColor _playerColor)
@@ -169,10 +181,7 @@ public class GM_MathFlowerParam : MonoBehaviour {
         if (flowerLevel == EFlowerLevel.Level3)
         {
             //色情報セット
-            flowerColor = _setFlowerColor;
-
-            //マテリアル変更処理
-            
+            MixColor(_setFlowerColor);
 
             return;
         }
@@ -212,5 +221,118 @@ public class GM_MathFlowerParam : MonoBehaviour {
             ObjectManager.LevelUp(objId, (int)flowerLevel, flowerType);
             Debug.Log("levelup");
         }
+    }
+
+    //色混ぜる処理
+    private void MixColor(EFlowerColor _addColor)
+    {
+        //色を混ぜることができる時間では無かったら上書き
+        if (colorMixableTimeCount < 0.0f)
+        {
+            flowerColor = _addColor;
+            return;
+        }
+        //混ぜることが出来る時間なら色計算
+        else
+        {
+            bool _redFlg = false;
+            bool _greenFlg = false;
+            bool _blueFlg = false;
+
+            //今の色を取得
+            switch (flowerColor)
+            {
+                case EFlowerColor.NONE:
+                    break;
+                case EFlowerColor.RED:
+                    _redFlg = true;
+                    break;
+                case EFlowerColor.GREEN:
+                    _greenFlg = true;
+                    break;
+                case EFlowerColor.BLUE:
+                    _blueFlg = true;
+                    break;
+                case EFlowerColor.CYAN:
+                    _greenFlg = true;
+                    _blueFlg = true;
+                    break;
+                case EFlowerColor.MAGENTA:
+                    _redFlg = true;
+                    _blueFlg = true;
+                    break;
+                case EFlowerColor.YELLOW:
+                    _redFlg = true;
+                    _greenFlg = true;
+                    break;
+                case EFlowerColor.WHITE:
+                    _redFlg = _greenFlg = _blueFlg = true;
+                    break;
+            }
+
+            //加算する色を計算
+            switch (_addColor)
+            {
+                case EFlowerColor.RED:
+                    _redFlg = true;
+                    break;
+                case EFlowerColor.GREEN:
+                    _greenFlg = true;
+                    break;
+                case EFlowerColor.BLUE:
+                    _blueFlg = true;
+                    break;
+                default:
+                    break;
+            }
+
+            //混ざった色を計算
+            EFlowerColor _flowerColor = EFlowerColor.NONE;
+            if (_redFlg == true)
+            {
+                _flowerColor = EFlowerColor.RED;
+                if (_greenFlg == true)
+                {
+                    _flowerColor = EFlowerColor.YELLOW;
+                    if (_blueFlg == true)
+                    {
+                        _flowerColor = EFlowerColor.WHITE;
+                    }
+
+                }
+                else
+                {
+                    if (_blueFlg == true)
+                    {
+                        _flowerColor = EFlowerColor.MAGENTA;
+                    }
+                }
+            }
+            else
+            {
+                if (_greenFlg == true)
+                {
+                    _flowerColor = EFlowerColor.GREEN;
+                    if (_blueFlg == true)
+                    {
+                        _flowerColor = EFlowerColor.CYAN;
+                    }
+                }
+                else 
+                {
+                    if (_blueFlg == true)
+                    {
+                        _flowerColor = EFlowerColor.BLUE;
+                    }
+                }
+            }
+            //色を保存
+            flowerColor = _flowerColor;
+        }//endif 色混ぜ計算終了
+
+        colorMixableTimeCount = 1.0f;
+
+        //マテリアル変更処理など
+
     }
 }
