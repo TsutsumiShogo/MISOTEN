@@ -20,6 +20,8 @@ public class GM_MathManager : MonoBehaviour {
 
     public int ADD_GROUWTH_POINT = 2;
 
+    public int totalFlowerLevel;
+
     //セルオブジェクト達
     public List<GM_MathCell> cells;
 
@@ -40,6 +42,7 @@ public class GM_MathManager : MonoBehaviour {
         //内部変数初期化
         lastUpdateCellNo = 0;
         timeCount = 0.0f;
+        totalFlowerLevel = 0;
 
         //STAGE2,3のセルを無効化し、STAGE1のセルを利用開始状態へ
         for (int i = 0; i < cells.Count; ++i)
@@ -67,6 +70,13 @@ public class GM_MathManager : MonoBehaviour {
         {
             timeCount -= 1.0f;
             timeCountResetFlg = true;
+
+            //レベルの総数を取得する
+            totalFlowerLevel = 0;
+            for (int i = 0; i < cells.Count; ++i)
+            {
+                totalFlowerLevel += cells[i].GetTotalFlowerLevel();
+            }
         }
 
         //植物の自然成長処理

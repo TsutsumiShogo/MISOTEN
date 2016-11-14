@@ -52,4 +52,17 @@ public class GM_MathCell : MonoBehaviour {
             flowerParams[i].PrantGrowth(addExp);
         }
     }
+
+    //このセルの中の花のレベルの総数を計算
+    public int GetTotalFlowerLevel()
+    {
+        int levelCount = 0;
+
+        for (int i = 0; i < flowerParams.Count; ++i)
+        {
+            levelCount += (int)flowerParams[i].flowerLevel;
+        }
+
+        return levelCount;
+    }
 }

@@ -43,6 +43,18 @@ public class GM_SceneManager : MonoBehaviour {
 	void Update () {
         gameTime += Time.deltaTime;
 
+        //ステージ解放処理
+        if (stageFlg[0] == false && mathManager.totalFlowerLevel > 500)
+        {
+            stageFlg[0] = true;
+            mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
+        }
+        if (stageFlg[1] == false && mathManager.totalFlowerLevel > 1500)
+        {
+            stageFlg[1] = true;
+            mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
+        }
+        /*
         //ステージフラグが立ってないのに時間が過ぎていたら
         if (stageFlg[0] == false && gameTime > 5.0f)
         {
@@ -54,5 +66,6 @@ public class GM_SceneManager : MonoBehaviour {
             stageFlg[1] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
         }
+        */
 	}
 }
