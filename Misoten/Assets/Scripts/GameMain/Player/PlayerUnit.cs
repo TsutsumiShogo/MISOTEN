@@ -244,6 +244,8 @@ public class PlayerUnit : MonoBehaviour {
             case PlayerStatus.EStateTransition.GROWING_BILL:
                 //ビルを成長させる
                 collisionBill.GrowthBill();
+                //向きを固定する
+                transform.rotation = collisionBill.GetBillRot();
                 break;
 
             //damage
