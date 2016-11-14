@@ -33,6 +33,7 @@ public class PlayerControll : MonoBehaviour {
 
         //移動処理
         rigid.velocity = yVector + xzVector * 0.85f + (moveVec * playerStatus.DEFAULT_MOVE_SPEED) * 0.15f;
+        //rigid.MovePosition( transform.position + (xzVector * 0.85f + (moveVec * playerStatus.DEFAULT_MOVE_SPEED * Time.deltaTime) * 0.15f));
         moveVec = moveVec * 0.95f;
     }
 

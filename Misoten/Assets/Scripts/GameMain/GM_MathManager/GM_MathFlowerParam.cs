@@ -36,6 +36,9 @@ public class GM_MathFlowerParam : MonoBehaviour {
     //セル
     private GM_MathCell parentCell;
 
+    //自身のコリジョン
+    private SphereCollider thisCollider;
+
     //パラメータ類
     public EFlowerType flowerType = EFlowerType.Flower1;
     public EFlowerLevel flowerLevel = EFlowerLevel.Level0;  //フラワーレベル
@@ -50,6 +53,9 @@ public class GM_MathFlowerParam : MonoBehaviour {
     //初回のみ
     void Start()
     {
+        //自身のコライダーを取得
+        thisCollider = transform.GetComponent<SphereCollider>();
+
         //親の親オブジェクトにCellスクリプトがあるので保存
         parentCell = transform.parent.parent.GetComponent<GM_MathCell>();
 
@@ -64,6 +70,9 @@ public class GM_MathFlowerParam : MonoBehaviour {
 
 	// 初期化関数
 	public void Init () {
+        //あたり判定オフ
+        thisCollider.enabled = false;
+
         //パラメーター初期化
         if (flowerType == EFlowerType.Bill || flowerType == EFlowerType.BigBill)
         {
@@ -97,6 +106,11 @@ public class GM_MathFlowerParam : MonoBehaviour {
 
         colorMixableTimeCount = 0.0f;
 	}
+    //これでオンにしないとあたり判定無効
+    public void ColliderSwitch(bool _flg)
+    {
+        thisCollider.enabled = _flg;
+    }
 
     void Update()
     {
