@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scenes\Test\Script\flower.cs" />
      <Compile Include="Assets\Scenes\Test\Script\growBill.cs" />
      <Compile Include="Assets\Scenes\Test\Script\middleBill.cs" />
+     <Compile Include="Assets\Scripts\CharaSelect\ArrowMove.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_LightMove.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_MathManager\GM_MathCell.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_MathManager\GM_MathCellColorControll.cs" />
@@ -70,10 +71,12 @@
      <Compile Include="Assets\Scripts\GameMain\Player\PlayerSprayControll.cs" />
      <Compile Include="Assets\Scripts\GameMain\Player\PlayerStatus.cs" />
      <Compile Include="Assets\Scripts\GameMain\Player\PlayerUnit.cs" />
+     <Compile Include="Assets\Scripts\Menu\ButterflyMove.cs" />
      <Compile Include="Assets\Scripts\System\SceneChangeManager.cs" />
      <Compile Include="Assets\Scripts\Title\CameraMove.cs" />
      <Compile Include="Assets\Scripts\Title\CloudScroll.cs" />
      <Compile Include="Assets\Scripts\Title\PushAEffect.cs" />
+     <Compile Include="Assets\Scripts\Title\TitleSceneManager.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />

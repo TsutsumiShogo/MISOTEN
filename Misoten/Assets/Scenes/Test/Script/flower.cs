@@ -11,6 +11,14 @@ public class flower : MonoBehaviour {
     private float m_speedUp = 0.05f;
     private bool m_upDown = false;  // ture で大きく、false で小さく
 
+    public AudioClip m_audio;
+    private AudioSource m_audioSource;
+
+    public void Init(){
+        m_audioSource = GameObject.Find("ObjectManager").GetComponent<AudioSource>();
+        m_audioSource.clip = m_audio;
+    }
+
     void Update(){
         if (m_scallFlg){
             Vector3 scall = transform.localScale;
@@ -42,6 +50,7 @@ public class flower : MonoBehaviour {
     public void scallOn(){
         m_scallFlg = true;
         m_upDown = true;
+        m_audioSource.Play();
     }
    
 }
