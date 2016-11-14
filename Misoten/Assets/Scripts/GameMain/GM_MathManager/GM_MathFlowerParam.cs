@@ -159,6 +159,12 @@ public class GM_MathFlowerParam : MonoBehaviour {
     //レベル3の時のみ実行可能
     public void AddColor(int playerNo, EFlowerColor _setFlowerColor)
     {
+        //ビルは色スプレーできない
+        if (flowerType == EFlowerType.Bill || flowerType == EFlowerType.BigBill)
+        {
+            return;
+        }
+
         //成長終了済みでないと通さない
         if (flowerLevel == EFlowerLevel.Level3)
         {
