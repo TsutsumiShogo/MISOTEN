@@ -109,6 +109,11 @@ public class GM_MathFlowerParam : MonoBehaviour {
     //種まき完了後これを実行してほしい。自然成長などが解放される
     public void PrantStart(int playerNo, EFlowerColor _playerColor)
     {
+        //このセルの行動が許可されていなければ何もしない
+        if(parentCell.startFlg == false){
+            return;
+        }
+
         if (flowerLevel == EFlowerLevel.Level0)
         {
             //レベルアップ
@@ -128,6 +133,12 @@ public class GM_MathFlowerParam : MonoBehaviour {
     //自然成長用の処理
     public void PrantGrowth(int _addExp)
     {
+        //このセルの行動が許可されていなければ何もしない
+        if (parentCell.startFlg == false)
+        {
+            return;
+        }
+
         //自然成長の対象でないレベルなら除外
         if (flowerLevel == EFlowerLevel.Level0 || flowerLevel == EFlowerLevel.Level3)
         {
@@ -152,6 +163,12 @@ public class GM_MathFlowerParam : MonoBehaviour {
     //経験値加算汎用処理
     public void AddExp(int playerNo, float _addExp)
     {
+        //このセルの行動が許可されていなければ何もしない
+        if (parentCell.startFlg == false)
+        {
+            return;
+        }
+
         //成長の対象でないレベルなら除外
         if (flowerLevel == EFlowerLevel.Level0 || flowerLevel == EFlowerLevel.Level3)
         {
@@ -171,6 +188,12 @@ public class GM_MathFlowerParam : MonoBehaviour {
     //レベル3の時のみ実行可能
     public void AddColor(int playerNo, EFlowerColor _setFlowerColor)
     {
+        //このセルの行動が許可されていなければ何もしない
+        if (parentCell.startFlg == false)
+        {
+            return;
+        }
+
         //ビルは色スプレーできない
         if (flowerType == EFlowerType.Bill || flowerType == EFlowerType.BigBill)
         {
@@ -219,7 +242,6 @@ public class GM_MathFlowerParam : MonoBehaviour {
 
             //レベルアップ毎に必要な処理があればここに記述
             ObjectManager.LevelUp(objId, (int)flowerLevel, flowerType);
-            Debug.Log("levelup");
         }
     }
 

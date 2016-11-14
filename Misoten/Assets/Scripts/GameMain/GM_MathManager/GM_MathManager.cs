@@ -20,6 +20,7 @@ public class GM_MathManager : MonoBehaviour {
 
     public int ADD_GROUWTH_POINT = 2;
 
+    public int MAX_TOTAL_FLOWER_LEVEL;
     public int totalFlowerLevel;
 
     //セルオブジェクト達
@@ -43,15 +44,12 @@ public class GM_MathManager : MonoBehaviour {
         lastUpdateCellNo = 0;
         timeCount = 0.0f;
         totalFlowerLevel = 0;
+        
 
-        //STAGE2,3のセルを無効化し、STAGE1のセルを利用開始状態へ
+        //STAGE1のセルを利用開始状態へ
         for (int i = 0; i < cells.Count; ++i)
         {
-            if (cells[i].stageNo == EMathStageNo.STAGE2 || cells[i].stageNo == EMathStageNo.STAGE3)
-            {
-                cells[i].gameObject.SetActive(false);
-            }
-            else
+            if (cells[i].stageNo == EMathStageNo.STAGE1)
             {
                 //利用開始
                 cells[i].CellStart();
@@ -81,6 +79,14 @@ public class GM_MathManager : MonoBehaviour {
 
         //植物の自然成長処理
         PrantGrowthProcess(timeCountResetFlg);
+
+
+        //植物の最大レベル計算
+        MAX_TOTAL_FLOWER_LEVEL = 0;
+        for (int i = 0; i < cells.Count; ++i)
+        {
+            MAX_TOTAL_FLOWER_LEVEL += cells[i].GetMaxTotalFlowerLevel();
+        }
 
 	}
 

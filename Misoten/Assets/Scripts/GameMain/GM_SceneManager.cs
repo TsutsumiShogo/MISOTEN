@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GM_SceneManager : MonoBehaviour {
 
@@ -9,20 +10,32 @@ public class GM_SceneManager : MonoBehaviour {
     //==========変数定義==========
     public float gameTime;     //今のゲームの残り時間
 
+    //シーンチェンジマネージャー
+    private SceneChangeManager sceneChangeManager;
+
     //マス管理マネージャー
-    private GM_MathManager mathManager;     //Unity上でセットする
+    private GM_MathManager mathManager;
     private bool[] stageFlg = new bool[2];  //STAGE2,3のフラグ
 
     //プレイヤーマネージャー
-    private PlayerManager playerManager;    //Unity上でセットする
+    private PlayerManager playerManager;
 
+    //タイムアップ演出オブジェクト
+    [SerializeField]
+    private Text timeUpObj;    //Unity上でセット
+    
     //Init関数をシーンチェンジマネージャに呼ばせるようになったらAwakeへ変更すること。
     void Awake()
     {
+        //シーンチェンジマネージャーを取得
+        sceneChangeManager = transform.parent.GetComponent<SceneChangeManager>();
         //マスマネージャー保存
         mathManager = gameObject.GetComponentInChildren<GM_MathManager>();
         //プレイヤーマネージャー保存
         playerManager = gameObject.GetComponentInChildren<PlayerManager>();
+
+        //初期化
+        Init();
 
     }
 
@@ -37,10 +50,14 @@ public class GM_SceneManager : MonoBehaviour {
 
         //プレイヤーマネージャー初期化
         playerManager.Init();
+
+        //タイムアップ演出をオフに
+        timeUpObj.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        //ゲームタイムを進める
         gameTime += Time.deltaTime;
 
         //ステージ解放処理
@@ -54,18 +71,30 @@ public class GM_SceneManager : MonoBehaviour {
             stageFlg[1] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
         }
-        /*
-        //ステージフラグが立ってないのに時間が過ぎていたら
-        if (stageFlg[0] == false && gameTime > 5.0f)
+        
+        //ゲーム終了の時間になったらタイムアップ演出をする
+        if (gameTime > GAME_TIME)
         {
-            stageFlg[0] = true;
-            mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
+            timeUpObj.gameObject.SetActive(true);
+            float _percent = (gameTime - GAME_TIME) / 3.0f;
+            if (_percent > 1.0f)
+            {
+                _percent = 1.0f;
+            }
+
+            //α増加
+            Color color = timeUpObj.color;
+            color.a = 0.5f + _percent * 0.5f;
+
+            //タイムアップ演出終了
+            if (gameTime > GAME_TIME + 5.0f)
+            {
+                //リザルト画面へ
+                sceneChangeManager.SceneChange(SceneChangeManager.ESceneNo.SCENE_TITLE);
+            }
+
+
         }
-        if (stageFlg[1] == false && gameTime > 10.0f)
-        {
-            stageFlg[1] = true;
-            mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
-        }
-        */
+
 	}
 }

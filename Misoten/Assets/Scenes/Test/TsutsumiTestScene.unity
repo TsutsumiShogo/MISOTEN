@@ -309,6 +309,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 294206027}
   m_Mesh: {fileID: 4300000, guid: ebfeef71405e797488520bd111e841b1, type: 3}
+--- !u!114 &384874870 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11440382, guid: 72d92faa8949dd24a8037c7bd3bc6a0a,
+    type: 2}
+  m_PrefabInternal: {fileID: 563404269}
+  m_Script: {fileID: 11500000, guid: c1a75c30629d3b34495e752c45213610, type: 3}
 --- !u!1 &444939549
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +497,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72d92faa8949dd24a8037c7bd3bc6a0a, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &602273944 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11478900, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21,
+    type: 2}
+  m_PrefabInternal: {fileID: 1325207667}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &632543999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,6 +1379,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 11483624, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
+      propertyPath: mathManager
+      value: 
+      objectReference: {fileID: 384874870}
     - target: {fileID: 11477962, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
       propertyPath: sceneManager
       value: 
@@ -1863,6 +1879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GAME_TIME: 180
   gameTime: 0
+  timeUpObj: {fileID: 602273944}
 --- !u!1 &1995313881
 GameObject:
   m_ObjectHideFlags: 0
