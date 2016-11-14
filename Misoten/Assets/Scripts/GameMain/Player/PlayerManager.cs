@@ -51,6 +51,10 @@ public class PlayerManager : MonoBehaviour {
         Initpos.z += -2;
         playerUnits[2].transform.position = Initpos;
 
+        //プレイヤーの色を指定する
+        playerUnits[0].PLAYER_COLOR = GM_MathFlowerParam.EFlowerColor.RED;
+        playerUnits[1].PLAYER_COLOR = GM_MathFlowerParam.EFlowerColor.GREEN;
+        playerUnits[2].PLAYER_COLOR = GM_MathFlowerParam.EFlowerColor.BLUE;
 
         //プレイヤー行動開始
         StartPlayers();

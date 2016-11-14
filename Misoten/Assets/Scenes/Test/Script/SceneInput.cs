@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SceneInput : MonoBehaviour {
 
+   
 	// Use this for initialization
 	void Start () {
 	
@@ -10,16 +11,24 @@ public class SceneInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (XboxController.GetButtonA(0))
+        if (XboxController.GetButtonA(0)){
             Debug.Log("PushA");
-        if (XboxController.GetButtonB(0))
+            //ObjManager.CreateFlower(new Vector3(Random.Range(-50.0f, 50.0f), 0.0f, Random.Range(-50.0f, 50.0f)), GM_MathFlowerParam.EFlowerColor.NONE);
+        }
+
+        if (XboxController.GetButtonB(0)){
             Debug.Log("PushB");
-        if (XboxController.GetButtonX(0))
+        }
+
+        if (XboxController.GetButtonX(0)){
             Debug.Log("PushX");
-        if (XboxController.GetButtonY(0))
+        }
+        if (XboxController.GetButtonY(0)){
             Debug.Log("PushY");
+        }
         if (XboxController.GetButtonL(0))
             Debug.Log("PushL");
+
         if (XboxController.GetButtonR(0))
             Debug.Log("PushR");
 
@@ -31,6 +40,8 @@ public class SceneInput : MonoBehaviour {
             Debug.Log("Left");
         if (XboxController.GetLeftTriggerRight(0))
             Debug.Log("Right");
+
+
 	}
 
 }

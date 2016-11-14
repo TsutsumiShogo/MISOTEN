@@ -167,6 +167,30 @@ public class XboxController : MonoBehaviour
     //---------------------------------------------------------------
     // GetButtonA 
     //---------------------------------------------------------------
+    public static bool GetButtonHoldA(int playerNo)
+    {
+        switch (playerNo)
+        {
+            case 0:
+                if (Input.GetKey(KeyCode.Joystick1Button0))
+                    return true;
+                break;
+            case 1:
+                if (Input.GetKey(KeyCode.Joystick2Button0))
+                    return true;
+                break;
+            case 2:
+                if (Input.GetKey(KeyCode.Joystick3Button0))
+                    return true;
+                break;
+        }
+        return false;
+    }
+
+
+    //---------------------------------------------------------------
+    // GetButtonA 
+    //---------------------------------------------------------------
     public static bool GetButtonB(int playerNo)
     {
         switch (playerNo)
@@ -181,6 +205,28 @@ public class XboxController : MonoBehaviour
                 break;
             case 2:
                 if (Input.GetKeyDown(KeyCode.Joystick3Button1))
+                    return true;
+                break;
+        }
+        return false;
+    }
+    //---------------------------------------------------------------
+    // GetButtonA 
+    //---------------------------------------------------------------
+    public static bool GetButtonHoldB(int playerNo)
+    {
+        switch (playerNo)
+        {
+            case 0:
+                if (Input.GetKey(KeyCode.Joystick1Button1))
+                    return true;
+                break;
+            case 1:
+                if (Input.GetKey(KeyCode.Joystick2Button1))
+                    return true;
+                break;
+            case 2:
+                if (Input.GetKey(KeyCode.Joystick3Button1))
                     return true;
                 break;
         }
@@ -209,6 +255,28 @@ public class XboxController : MonoBehaviour
         }
         return false;
     }
+    //---------------------------------------------------------------
+    // GetButtonX
+    //---------------------------------------------------------------
+    public static bool GetButtonHoldX(int playerNo)
+    {
+        switch (playerNo)
+        {
+            case 0:
+                if (Input.GetKey(KeyCode.Joystick1Button2))
+                    return true;
+                break;
+            case 1:
+                if (Input.GetKey(KeyCode.Joystick2Button2))
+                    return true;
+                break;
+            case 2:
+                if (Input.GetKey(KeyCode.Joystick3Button2))
+                    return true;
+                break;
+        }
+        return false;
+    }
 
     //---------------------------------------------------------------
     // GetButtonY 
@@ -227,6 +295,28 @@ public class XboxController : MonoBehaviour
                 break;
             case 2:
                 if (Input.GetKeyDown(KeyCode.Joystick3Button3))
+                    return true;
+                break;
+        }
+        return false;
+    }
+    //---------------------------------------------------------------
+    // GetButtonY 
+    //---------------------------------------------------------------
+    public static bool GetButtonHoldY(int playerNo)
+    {
+        switch (playerNo)
+        {
+            case 0:
+                if (Input.GetKey(KeyCode.Joystick1Button3))
+                    return true;
+                break;
+            case 1:
+                if (Input.GetKey(KeyCode.Joystick2Button3))
+                    return true;
+                break;
+            case 2:
+                if (Input.GetKey(KeyCode.Joystick3Button3))
                     return true;
                 break;
         }
@@ -255,6 +345,28 @@ public class XboxController : MonoBehaviour
         }
         return false;
     }
+    //---------------------------------------------------------------
+    // GetButtonL
+    //---------------------------------------------------------------
+    public static bool GetButtonHoldL(int playerNo)
+    {
+        switch (playerNo)
+        {
+            case 0:
+                if (Input.GetKey(KeyCode.Joystick1Button4))
+                    return true;
+                break;
+            case 1:
+                if (Input.GetKey(KeyCode.Joystick2Button4))
+                    return true;
+                break;
+            case 2:
+                if (Input.GetKey(KeyCode.Joystick3Button4))
+                    return true;
+                break;
+        }
+        return false;
+    }
 
     //---------------------------------------------------------------
     // GetButtonR
@@ -273,6 +385,29 @@ public class XboxController : MonoBehaviour
                 break;
             case 2:
                 if (Input.GetKeyDown(KeyCode.Joystick3Button5))
+                    return true;
+                break;
+        }
+        return false;
+    }
+
+    //---------------------------------------------------------------
+    // GetButtonR
+    //---------------------------------------------------------------
+    public static bool GetButtonHoldR(int playerNo)
+    {
+        switch (playerNo)
+        {
+            case 0:
+                if (Input.GetKey(KeyCode.Joystick1Button5))
+                    return true;
+                break;
+            case 1:
+                if (Input.GetKey(KeyCode.Joystick2Button5))
+                    return true;
+                break;
+            case 2:
+                if (Input.GetKey(KeyCode.Joystick3Button5))
                     return true;
                 break;
         }

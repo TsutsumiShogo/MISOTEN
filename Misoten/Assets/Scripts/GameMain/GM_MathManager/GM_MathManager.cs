@@ -13,7 +13,11 @@ public class GM_MathManager : MonoBehaviour {
     };
 
     //公開変数
-    public int[] MATH_EXP_MAX = new int[2];
+    public int[] MATH_EXP_MAX_FLOWER = new int[2];  //花の最大経験値量
+    public int[] MATH_EXP_MAX_HOUSE = new int[2];   //家の最大経験値量
+    public int[] MATH_EXP_MAX_BILL = new int[2];    //中ビルの最大経験値量
+    public int[] MATH_EXP_MAX_BIGBILL = new int[2]; //大ビルの最大経験値量
+
     public int ADD_GROUWTH_POINT = 2;
 
     //セルオブジェクト達
