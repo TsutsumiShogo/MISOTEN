@@ -53,7 +53,7 @@ public class ObjectManager : MonoBehaviour {
        
         switch (_type)
         {
-            // 花
+            // 花生成
             case GM_MathFlowerParam.EFlowerType.Flower1:
                 // プレハブインスタンス
                 Vector3 pos = new Vector3(_position.x, _position.y + 0.5f, _position.z);
@@ -62,6 +62,11 @@ public class ObjectManager : MonoBehaviour {
                 colorList[Id] = _color;
                 objectList[Id].GetComponent<flower>().Init();
                 objectList[Id].GetComponent<flower>().scallOn();
+                break;
+
+            // ビル生成
+            case GM_MathFlowerParam.EFlowerType.Bill:
+                Debug.Log("make a bill");
                 break;
         }
 
@@ -97,6 +102,11 @@ public class ObjectManager : MonoBehaviour {
                             break;
                     }
                     //objectList[no].GetComponent<Renderer>().material = gMaterials[ (int)colorList[Id], level-1];
+                    break;
+
+                    // ビル
+                case GM_MathFlowerParam.EFlowerType.Bill:
+                    
                     break;
             }
         }
