@@ -9,6 +9,8 @@ public class CameraMove : MonoBehaviour
     public GameObject CharacterSelect;      // キャラクターセレクトのオブジェクト
     public GameObject PushA;                // ゲームスタートのテキスト
     public GameObject[] Ranking = new GameObject[4];    // ランキングのオブジェクト
+    public GameObject Logo;
+    public GameObject selectMode;
 
     public float CameraMove_UpDown = 4.0f;
     public float CameraMove_RankingUpDown = 5.0f;
@@ -24,8 +26,8 @@ public class CameraMove : MonoBehaviour
 
     private bool GameStartFlg;              // ゲーム開始フラグ
     private bool StateChangeFlg;            // 遷移キャンセルフラグ
-    private bool CharaSelectFlg;            // キャラクター画面遷移フラグ
-    private bool RankingFlg;                // ランキング画面遷移フラグ
+    public bool CharaSelectFlg;            // キャラクター画面遷移フラグ
+    public bool RankingFlg;                // ランキング画面遷移フラグ
     private bool OnRankingFlg;              // ランキング画面操作フラグ
     private bool RankingUpDownFlg;          // ランキング画面での上下操作判別フラグ
 
@@ -75,6 +77,8 @@ public class CameraMove : MonoBehaviour
         // タイトルからメインメニューへ遷移
         if (Input.GetKeyDown(KeyCode.A) && !GameStartFlg && !StateChangeFlg)
         {
+            GetComponent<AudioSource>().Play();
+            Logo.SetActive(false);
             StateChangeFlg = true;      // 画面遷移させる
             PushA.SetActive(false);     // 「Push A」の非表示
             StartCoroutine(StateChange(gameObject.transform.position, menuPos)); // メインメニュー画面の位置にカメラを移動
@@ -83,7 +87,7 @@ public class CameraMove : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.A) && GameStartFlg && CharaSelectFlg && !RankingFlg && !StateChangeFlg)
         {
             ButterflyMoveFlg = false;
-
+            selectMode.GetComponent<SelectMode>().DesideAction();
             StateChangeFlg = true;      // 画面遷移させる
             StartCoroutine(StateChange(gameObject.transform.position, charaselePos));   // キャラクターセレクト画面の位置にカメラを移動
         }

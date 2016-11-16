@@ -73,11 +73,15 @@
      <Compile Include="Assets\Scripts\GameMain\Player\PlayerUnit.cs" />
      <Compile Include="Assets\Scripts\GameMain\UI\GM_UIGameTime.cs" />
      <Compile Include="Assets\Scripts\Menu\ButterflyMove.cs" />
+     <Compile Include="Assets\Scripts\Menu\SelectMode.cs" />
      <Compile Include="Assets\Scripts\System\SceneChangeManager.cs" />
      <Compile Include="Assets\Scripts\Title\CameraMove.cs" />
      <Compile Include="Assets\Scripts\Title\CloudScroll.cs" />
+     <Compile Include="Assets\Scripts\Title\PushA.cs" />
      <Compile Include="Assets\Scripts\Title\PushAEffect.cs" />
      <Compile Include="Assets\Scripts\Title\TitleSceneManager.cs" />
+     <Compile Include="Assets\Scripts\Title\charSelect.cs" />
+     <Compile Include="Assets\Scripts\Title\cloud.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
