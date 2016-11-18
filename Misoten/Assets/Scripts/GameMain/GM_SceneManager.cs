@@ -27,6 +27,11 @@ public class GM_SceneManager : MonoBehaviour {
     //ステージ外周あたり判定オブジェクト
     [SerializeField]
     private GameObject[] stageOutColObj = new GameObject[2];    //Unity上でセット
+
+    //フェードユニット(リザルトへの切り替え部分)
+    [SerializeField]
+    private GM_UIFadeUnit fadeUnit; //Unity上でセット
+
     
     //Init関数をシーンチェンジマネージャに呼ばせるようになったらAwakeへ変更すること。
     void Awake()
@@ -103,9 +108,10 @@ public class GM_SceneManager : MonoBehaviour {
             //タイムアップ演出終了
             if (gameTime > GAME_TIME + 5.0f)
             {
-                //リザルト画面へ
-                sceneChangeManager.SceneChange(SceneChangeManager.ESceneNo.SCENE_TITLE);
+                //リザルト画面へフェードインフェードアウト(自身で制御すること)
+                fadeUnit.SceneChangeResult();
             }
+
 
 
         }

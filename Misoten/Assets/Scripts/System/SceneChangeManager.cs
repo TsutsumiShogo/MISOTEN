@@ -10,12 +10,8 @@ public class SceneChangeManager : MonoBehaviour {
     public enum ESceneNo
     {
         SCENE_TITLE,
-        SCENE_MENU,
-        SCENE_CHARASELECT,
-        SCENE_RANKING,
         SCENE_STORY,
         SCENE_GAME,
-        SCENE_RESULT,
         SCENE_NUM_MAX,
     };
 
@@ -96,12 +92,6 @@ public class SceneChangeManager : MonoBehaviour {
         {
             case ESceneNo.SCENE_TITLE:
                 break;
-            case ESceneNo.SCENE_MENU:
-                break;
-            case ESceneNo.SCENE_CHARASELECT:
-                break;
-            case ESceneNo.SCENE_RANKING:
-                break;
             case ESceneNo.SCENE_STORY:
                 break;
             case ESceneNo.SCENE_GAME:
@@ -110,8 +100,6 @@ public class SceneChangeManager : MonoBehaviour {
                 gameManager = SceneTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GM_SceneManager>();
                 gameManager.Init();
 
-                break;
-            case ESceneNo.SCENE_RESULT:
                 break;
         }//EndSwitch
 
