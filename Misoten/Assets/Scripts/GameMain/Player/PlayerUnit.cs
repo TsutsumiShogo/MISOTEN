@@ -236,8 +236,12 @@ public class PlayerUnit : MonoBehaviour {
                 break;
             case PlayerStatus.EStateTransition.SPRAY:
                 //移動処理
-                controll.SetMoveVec(inputVec * 0.75f);
+                controll.SetMoveVec(inputVec * 0.0f);
                 sprayCon.Spray(PlayerSprayControll.EPlayerSprayMode.COLOR, 0.1f);
+                if (motionTimeCount > 1.0f)
+                {
+                    nextState = PlayerStatus.EStateTransition.STAND;
+                }
                 break;
 
             //billAction
@@ -303,11 +307,23 @@ public class PlayerUnit : MonoBehaviour {
 
                 break;
             case PlayerStatus.EStateTransitionMode.ACTION:
-                //スプレーあたり判定のサイズを変化
                 Vector3 pos = transform.position;
                 Vector3 scale = Vector3.one;
                 float sprayScalePercent = 0.0f;
 
+                //色スプレーだけ特別処理で抜ける
+                if (state == PlayerStatus.EStateTransition.SPRAY)
+                {
+                    //スプレーのあたり判定サイズは最初から最大
+                    scale.x = scale.z = 1.0f;
+                    pos = transform.position + (transform.forward * 2.25f);
+                    sprayCon.transform.position = pos;
+                    sprayCon.transform.localScale = scale;
+
+                    break;
+                }
+
+                //スプレーあたり判定のサイズを変化
                 if (motionTimeCount < status.SPRAY_MAX_SCALE_NEED_TIME)
                 {
                     sprayScalePercent = motionTimeCount / status.SPRAY_MAX_SCALE_NEED_TIME;
