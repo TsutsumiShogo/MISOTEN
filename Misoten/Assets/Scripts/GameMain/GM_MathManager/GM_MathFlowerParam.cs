@@ -46,7 +46,8 @@ public class GM_MathFlowerParam : MonoBehaviour {
     public float nowEXP = 0;                                //現在の経験値
     public int[] MAX_EXP = new int[2];                      //最大経験値量(外部からセットされたらそれを優先する)
     int objId;
-    
+
+    private float[] addExpByPlayersTime = new float[3];     //誰から経験値をもらったか一定時間情報を保持する(正の値で有効)
     private float colorMixableTimeCount;   //色を混ぜることが出来る残り時間
     
     
@@ -103,7 +104,10 @@ public class GM_MathFlowerParam : MonoBehaviour {
             MAX_EXP[0] = parentCell.manager.MATH_EXP_MAX_BIGBILL[0];    //level1→2に必要な経験値
             MAX_EXP[1] = parentCell.manager.MATH_EXP_MAX_BIGBILL[1];    //level2→3に必要な経験値
         }
-
+        for (int i = 0; i < 3; i++)
+        {
+            addExpByPlayersTime[i] = 0.0f;
+        }
         colorMixableTimeCount = 0.0f;
 	}
     //これでオンにしないとあたり判定無効
@@ -114,9 +118,19 @@ public class GM_MathFlowerParam : MonoBehaviour {
 
     void Update()
     {
+        //色混ぜ可能時間減少
         if (colorMixableTimeCount > 0.0f)
         {
             colorMixableTimeCount -= Time.deltaTime;
+        }
+
+        //誰から成長受けたか情報保持時間減少
+        for (int i = 0; i < 3; ++i)
+        {
+            if (addExpByPlayersTime[i] > 0.0f)
+            {
+                addExpByPlayersTime[i] -= Time.deltaTime;
+            }
         }
     }
 
@@ -195,8 +209,37 @@ public class GM_MathFlowerParam : MonoBehaviour {
         //スコア加算
         GM_ScoreCtrl.AddPlayerScore(_addExp, playerNo);
 
+        //ビル専用で成長させてる人数でボーナス
+        if (flowerType >= EFlowerType.Bill) {
+            int _growthNum = GetGrowthNowPlayerNum();
+            
+            //人数が２人なら
+            if (_growthNum == 2)
+            {
+                //経験値加算
+                nowEXP += _addExp * 0.2f;
+                //スコア加算
+                GM_ScoreCtrl.AddPlayerScore(_addExp * 0.2f, playerNo);
+            }
+
+            //人数が３人なら
+            if (_growthNum == 3)
+            {
+                //経験値加算
+                nowEXP += _addExp * 0.5f;
+                //スコア加算
+                GM_ScoreCtrl.AddPlayerScore(_addExp * 0.5f, playerNo);
+            }
+        }
+
         //レベル計算
         CalcLevel(playerNo);
+
+        //誰から成長を受けたか情報を保存
+        if (playerNo >= 0 && playerNo <= 2)
+        {
+            addExpByPlayersTime[playerNo] = 1.0f;   //値の秒数保持する。
+        }
     }
 
     //レベル3の時のみ実行可能
@@ -222,6 +265,21 @@ public class GM_MathFlowerParam : MonoBehaviour {
 
             return;
         }
+    }
+
+    //何人から成長を受けている最中か取得
+    public int GetGrowthNowPlayerNum()
+    {
+        int _grouthNum = 0;
+
+        for (int i = 0; i < 3; ++i)
+        {
+            if (addExpByPlayersTime[i] > 0.0f)
+            {
+                _grouthNum++;
+            }
+        }
+        return _grouthNum;
     }
 
     //======================非公開関数=========================

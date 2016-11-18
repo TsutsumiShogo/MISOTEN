@@ -92,7 +92,6 @@ public class PlayerCheckCollisionBill : MonoBehaviour {
         {
             return;
         }
-
         //ビルとして検知する
         billParam = _billParam;
     }
