@@ -270,10 +270,12 @@ public class PlayerUnit : MonoBehaviour {
                 if (XboxController.GetButtonL(PLAYER_NO) == true)
                 {
                     status.ChangeSprayMode(false);
+                    GameObject.Find("1P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
                 }
                 if (XboxController.GetButtonR(PLAYER_NO) == true)
                 {
                     status.ChangeSprayMode(true);
+                    GameObject.Find("1P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
                 }
 
                 //スプレー入力

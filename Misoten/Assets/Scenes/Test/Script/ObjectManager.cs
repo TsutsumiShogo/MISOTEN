@@ -7,7 +7,8 @@ public class ObjectManager : MonoBehaviour {
     public static Renderer[] rendererList= new Renderer[2000];
     public static GM_MathFlowerParam.EFlowerColor[] colorList = new GM_MathFlowerParam.EFlowerColor[2000];
     private static int Id = 0;
-    private static GameObject prefab;
+    private static GameObject prefabFlower;     // 花のプレハブ
+    private static GameObject prefabMiddleBil;  // 中ビルのプレハブ
     public Material[] mMaterialsRed;
     public Material[] mMaterialsBlue;
     public Material[] mMaterialsGreen;
@@ -15,6 +16,7 @@ public class ObjectManager : MonoBehaviour {
     public Material mMaterialsCyan;
     public Material mMaterialsMagenta;
     public Material mMaterialsWhite;
+    public Material[] mMaterialsMiddleBill;
     public static Material[] gMaterialsRed;
     public static Material[] gMaterialsBlue;
     public static Material[] gMaterialsGreen;
@@ -22,10 +24,12 @@ public class ObjectManager : MonoBehaviour {
     public static Material gMaterialsCyan;
     public static Material gMaterialsMagenta;
     public static Material gMaterialsWhite;
+    public static Material[] gMaterialsMiddleBill;
     
 	// Use this for initialization
-	void Start () {
-        prefab = (GameObject)Resources.Load("Prefabs/Flower");
+	void Awake () {
+        prefabFlower = (GameObject)Resources.Load("Prefabs/Flower");
+        prefabMiddleBil = (GameObject)Resources.Load("Prefabs/MiddleBill");
         gMaterialsRed = mMaterialsRed;
         gMaterialsBlue = mMaterialsBlue;
         gMaterialsGreen = mMaterialsGreen;
@@ -33,6 +37,7 @@ public class ObjectManager : MonoBehaviour {
         gMaterialsCyan = mMaterialsCyan;
         gMaterialsMagenta = mMaterialsMagenta;
         gMaterialsWhite = mMaterialsWhite;
+        gMaterialsMiddleBill = mMaterialsMiddleBill;
         //gMaterials = mMaterials;
         Id = 0;
 	}
@@ -57,7 +62,7 @@ public class ObjectManager : MonoBehaviour {
             case GM_MathFlowerParam.EFlowerType.Flower1:
                 // プレハブインスタンス
                 Vector3 pos = new Vector3(_position.x, _position.y + 0.5f, _position.z);
-                objectList[Id] = Instantiate(prefab, pos, Quaternion.Euler(60, 180, 0)) as GameObject;
+                objectList[Id] = Instantiate(prefabFlower, pos, Quaternion.Euler(60, 180, 0)) as GameObject;
                 rendererList[Id] = objectList[Id].GetComponent<Renderer>();
                 colorList[Id] = _color;
                 objectList[Id].GetComponent<flower>().Init();
@@ -66,6 +71,10 @@ public class ObjectManager : MonoBehaviour {
 
             // ビル生成
             case GM_MathFlowerParam.EFlowerType.Bill:
+                // プレハブインスタンス
+                Vector3 pos_ = new Vector3(_position.x+6.44f, _position.y, _position.z);
+                objectList[Id] = Instantiate(prefabMiddleBil, pos_, Quaternion.Euler(0, 0, 0)) as GameObject;
+                rendererList[Id] = objectList[Id].transform.FindChild("pCube20").GetComponent<Renderer>();
                 Debug.Log("make a bill");
                 break;
         }
@@ -101,16 +110,17 @@ public class ObjectManager : MonoBehaviour {
                             rendererList[no].material = gMaterialsGreen[level - 2];
                             break;
                     }
+                    objectList[no].GetComponent<flower>().scallOn();
                     //objectList[no].GetComponent<Renderer>().material = gMaterials[ (int)colorList[Id], level-1];
                     break;
 
                     // ビル
                 case GM_MathFlowerParam.EFlowerType.Bill:
-                    
+                    rendererList[no].material = gMaterialsMiddleBill[level - 2];
                     break;
             }
         }
-        objectList[no].GetComponent<flower>().scallOn();
+       
     }
 
     //---------------------------------------------------------------

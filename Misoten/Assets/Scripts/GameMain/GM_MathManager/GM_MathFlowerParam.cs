@@ -64,6 +64,14 @@ public class GM_MathFlowerParam : MonoBehaviour {
 
         //パラメーター初期化
         Init();
+
+        // ゲーム開始時にオブジェクト生成
+        if (flowerType == EFlowerType.Bill){
+            //レベルアップ
+            flowerLevel = EFlowerLevel.Level1;
+            //オブジェクト生成
+            objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor);
+        }
     }
 
     //======================公開関数=========================

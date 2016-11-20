@@ -22,4 +22,7 @@ public class GM_UIGreenPercent : MonoBehaviour {
         int _percentInt = (int)(_percent * 100.0f);
         thisText.text = "緑化率:" + _percentInt.ToString() + "％";
 	}
+
+    
+
 }
