@@ -117,8 +117,6 @@ public class GM_MathFlowerParam : MonoBehaviour {
         }
         colorMixableTimeCount = 0.0f;
 
-        growingFlg = false;
-        growingTime = 0.0f;
 	}
     //これでオンにしないとあたり判定無効
     public void ColliderSwitch(bool _flg)
