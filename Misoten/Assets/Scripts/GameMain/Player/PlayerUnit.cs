@@ -274,12 +274,36 @@ public class PlayerUnit : MonoBehaviour {
                 if (XboxController.GetButtonL(PLAYER_NO) == true)
                 {
                     status.ChangeSprayMode(false);
-                    GameObject.Find("1P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
+
+                    switch (PLAYER_NO)
+                    {
+                        case  0:
+                            GameObject.Find("1P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
+                            break;
+                        case 1:
+                            GameObject.Find("2P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
+                            break;
+                        case 2:
+                            GameObject.Find("3P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
+                            break;
+                    }
+                   
                 }
                 if (XboxController.GetButtonR(PLAYER_NO) == true)
                 {
                     status.ChangeSprayMode(true);
-                    GameObject.Find("1P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
+                    switch (PLAYER_NO)
+                    {
+                        case 0:
+                            GameObject.Find("1P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
+                            break;
+                        case 1:
+                            GameObject.Find("2P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
+                            break;
+                        case 2:
+                            GameObject.Find("3P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
+                            break;
+                    }
                 }
 
                 //スプレー入力
