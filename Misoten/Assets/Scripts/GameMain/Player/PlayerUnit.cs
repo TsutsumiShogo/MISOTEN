@@ -310,17 +310,15 @@ public class PlayerUnit : MonoBehaviour {
                 break;
             case PlayerStatus.EStateTransitionMode.ACTION:
                 Vector3 pos = transform.position;
-                Vector3 scale = Vector3.one;
                 float sprayScalePercent = 0.0f;
 
                 //色スプレーだけ特別処理で抜ける
                 if (state == PlayerStatus.EStateTransition.SPRAY)
                 {
                     //スプレーのあたり判定サイズは最初から最大
-                    scale.x = scale.z = 1.0f;
                     pos = transform.position + (transform.forward * 2.25f);
                     sprayCon.transform.position = pos;
-                    sprayCon.transform.localScale = scale;
+                    sprayCon.ChangeScale(2.25f);
 
                     break;
                 }
@@ -334,10 +332,10 @@ public class PlayerUnit : MonoBehaviour {
                 {
                     sprayScalePercent = 1.0f;
                 }
-                scale.x = scale.z = sprayScalePercent;
+                Debug.Log("SprayScaleParcent:"+sprayScalePercent.ToString());
                 pos = transform.position + (transform.forward * sprayScalePercent * 2.25f);
                 sprayCon.transform.position = pos;
-                sprayCon.transform.localScale = scale;
+                sprayCon.ChangeScale(sprayScalePercent * 2.25f);
 
                 //スプレー入力が無くなった
                 if (XboxController.GetButtonHoldA(PLAYER_NO) == false)

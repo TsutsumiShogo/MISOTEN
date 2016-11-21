@@ -21,11 +21,14 @@ public class PlayerSprayControll : MonoBehaviour {
 
     [SerializeField]
     private MeshRenderer sprayMeshRender;       //Unity上でセット
+    [SerializeField]
+    private SphereCollider thisCollider;
 
     void Awake()
     {
         playerUnit = transform.parent.GetComponent<PlayerUnit>();
         playerStatus = transform.parent.GetComponent<PlayerStatus>();
+        thisCollider = transform.GetComponent<SphereCollider>();
     }
 
     //初期化
@@ -83,6 +86,16 @@ public class PlayerSprayControll : MonoBehaviour {
     {
         sprayMode = _mode;
         sprayActiveTime = _activeTime;
+    }
+    //スプレーの大きさ変更
+    public void ChangeScale(float _scale)
+    {
+        Vector3 scale = Vector3.one;
+        scale.x = scale.z = _scale * 2.0f;
+
+        sprayMeshRender.transform.localScale = scale;
+        thisCollider.radius = _scale;
+
     }
 
     //あたり判定
