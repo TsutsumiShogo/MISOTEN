@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 500948197
+    locked: 0
+  - name: Math
+    uniqueID: 3770769173
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

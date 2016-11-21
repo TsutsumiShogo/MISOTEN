@@ -91,6 +91,7 @@ public class PlayerSprayControll : MonoBehaviour {
     public void ChangeScale(float _scale)
     {
         Vector3 scale = Vector3.one;
+        scale.y = 0.01f;
         scale.x = scale.z = _scale * 2.0f;
 
         sprayMeshRender.transform.localScale = scale;

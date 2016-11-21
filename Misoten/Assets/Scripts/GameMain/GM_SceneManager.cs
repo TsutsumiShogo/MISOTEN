@@ -42,10 +42,6 @@ public class GM_SceneManager : MonoBehaviour {
         mathManager = gameObject.GetComponentInChildren<GM_MathManager>();
         //プレイヤーマネージャー保存
         playerManager = gameObject.GetComponentInChildren<PlayerManager>();
-
-        //初期化
-        Init();
-
     }
 
     //ゲーム開始時にこの初期化関数が呼ばれる。
