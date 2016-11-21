@@ -8,6 +8,7 @@ public class ObjectManager : MonoBehaviour {
     public static GM_MathFlowerParam.EFlowerColor[] colorList = new GM_MathFlowerParam.EFlowerColor[2000];
     private static int Id = 0;
     private static GameObject prefabFlower;     // 花のプレハブ
+    private static GameObject prefabHouse;      // 家のプレハブ
     private static GameObject prefabMiddleBil;  // 中ビルのプレハブ
     public Material[] mMaterialsRed;
     public Material[] mMaterialsBlue;
@@ -68,6 +69,14 @@ public class ObjectManager : MonoBehaviour {
                 objectList[Id].GetComponent<flower>().Init();
                 objectList[Id].GetComponent<flower>().scallOn();
                 break;
+                
+                // 家
+            case GM_MathFlowerParam.EFlowerType.House:
+                // プレハブインスタンス
+                Vector3 pos_h = new Vector3(_position.x + 6.44f, _position.y, _position.z);
+                objectList[Id] = Instantiate(prefabHouse, pos_h, Quaternion.Euler(0, 0, 0)) as GameObject;
+                rendererList[Id] = objectList[Id].transform.FindChild("pCube26").GetComponent<Renderer>();
+                break;
 
             // ビル生成
             case GM_MathFlowerParam.EFlowerType.Bill:
@@ -75,7 +84,6 @@ public class ObjectManager : MonoBehaviour {
                 Vector3 pos_ = new Vector3(_position.x+6.44f, _position.y, _position.z);
                 objectList[Id] = Instantiate(prefabMiddleBil, pos_, Quaternion.Euler(0, 0, 0)) as GameObject;
                 rendererList[Id] = objectList[Id].transform.FindChild("pCube20").GetComponent<Renderer>();
-                Debug.Log("make a bill");
                 break;
         }
 
@@ -114,9 +122,20 @@ public class ObjectManager : MonoBehaviour {
                     //objectList[no].GetComponent<Renderer>().material = gMaterials[ (int)colorList[Id], level-1];
                     break;
 
-                    // ビル
+                    // 家
+                case GM_MathFlowerParam.EFlowerType.House:
+                    rendererList[no].material = gMaterialsMiddleBill[level - 2];
+                    break;
+
+                    // 中ビル
                 case GM_MathFlowerParam.EFlowerType.Bill:
                     rendererList[no].material = gMaterialsMiddleBill[level - 2];
+                    if (level == 3){
+                        rendererList[no].materials = new Material[2]{
+                            rendererList[no].materials[0],
+                            gMaterialsMiddleBill[level - 1]
+                        };
+                    }
                     break;
             }
         }
