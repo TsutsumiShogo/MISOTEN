@@ -23,14 +23,15 @@ public class GM_MathCellColorControll : MonoBehaviour {
         col.r = col.g = col.b = 1.0f;
         col.a = 0.0f;
         mathSprite.color = col;
-        nextColor = col;
         oldColor = col;
-        nowTime = endTime = 2.0f;
-        nowTime += 0.1f;
+        nextColor = col;
+        endTime = 2.0f;
+        nowTime = 2.1f;
     }
 
     void Update()
     {
+
         //経過完了済みなら何もしない
         if (nowTime >= endTime)
         {
@@ -62,7 +63,7 @@ public class GM_MathCellColorControll : MonoBehaviour {
     //色変更はこれで行う
     public void ChangeMathColor(Color changeColor)
     {
-        oldColor = nextColor;
+        oldColor = mathSprite.color;
         nextColor = changeColor;
         nowTime = 0.0f;
     }

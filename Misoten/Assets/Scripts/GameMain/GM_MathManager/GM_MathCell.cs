@@ -44,7 +44,7 @@ public class GM_MathCell : MonoBehaviour {
     //セル利用開始時に呼ばれる
     public void CellStart()
     {
-        //mathCellColorCon.ChangeMathColor(Color.white);
+        mathCellColorCon.ChangeMathColor(Color.white);
         //各あたり判定を有効にする
         for (int i = 0; i < flowerParams.Count; ++i)
         {
