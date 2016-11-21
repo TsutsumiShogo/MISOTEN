@@ -100,6 +100,11 @@ public class SceneChangeManager : MonoBehaviour {
                 gameManager = SceneTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GM_SceneManager>();
                 gameManager.Init();
 
+                //ゲームメインUIマネージャーで初期化を伝達
+                GM_UIManager gameUiManager;
+                gameUiManager = SceneCanvasTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GM_UIManager>();
+                gameUiManager.Init();
+
                 break;
         }//EndSwitch
 

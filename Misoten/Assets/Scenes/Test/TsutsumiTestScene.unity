@@ -392,6 +392,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 176a59758b133cc489dd9a9afd4e5521, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &395605862 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 118890, guid: 176a59758b133cc489dd9a9afd4e5521, type: 2}
+  m_PrefabInternal: {fileID: 395605861}
 --- !u!1 &444939549
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,14 +573,46 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
-    - target: {fileID: 11483624, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
+    - target: {fileID: 11456166, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
       propertyPath: mathManager
       value: 
-      objectReference: {fileID: 384874870}
+      objectReference: {fileID: 1689326869}
+    - target: {fileID: 11456166, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1475185295}
+    - target: {fileID: 11434696, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
+      propertyPath: mathManager
+      value: 
+      objectReference: {fileID: 1689326869}
+    - target: {fileID: 11434696, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1671262174}
+    - target: {fileID: 11427204, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
+      propertyPath: mathManager
+      value: 
+      objectReference: {fileID: 1689326869}
+    - target: {fileID: 11427204, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 477372739}
     - target: {fileID: 11477962, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
       propertyPath: sceneManager
       value: 
       objectReference: {fileID: 1988753938}
+    - target: {fileID: 11483624, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
+      propertyPath: mathManager
+      value: 
+      objectReference: {fileID: 384874870}
+    - target: {fileID: 11489294, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
+      propertyPath: gameCameras
+      value: 
+      objectReference: {fileID: 2075609727}
+    - target: {fileID: 11489294, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
+      propertyPath: resultObjects
+      value: 
+      objectReference: {fileID: 395605862}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
   m_IsPrefabParent: 0
@@ -1636,10 +1672,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11406976, guid: 72d92faa8949dd24a8037c7bd3bc6a0a, type: 2}
+    - target: {fileID: 11422772, guid: 72d92faa8949dd24a8037c7bd3bc6a0a, type: 2}
+      propertyPath: stageNo
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 72d92faa8949dd24a8037c7bd3bc6a0a, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1689326869 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11451276, guid: 72d92faa8949dd24a8037c7bd3bc6a0a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1689326868}
+  m_Script: {fileID: 11500000, guid: d65667957cac7de4f985ab7eac8da3c1, type: 3}
 --- !u!1001 &1731721237
 Prefab:
   m_ObjectHideFlags: 0
@@ -2021,9 +2066,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 158266, guid: c61e9eeb75daeb949a5555aaaa0c9a74, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c61e9eeb75daeb949a5555aaaa0c9a74, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2075609727 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 159386, guid: c61e9eeb75daeb949a5555aaaa0c9a74, type: 2}
+  m_PrefabInternal: {fileID: 2075609726}
 --- !u!1001 &2094321903
 Prefab:
   m_ObjectHideFlags: 0

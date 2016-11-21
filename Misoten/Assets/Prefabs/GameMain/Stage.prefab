@@ -127,6 +127,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 401580}
   - 114: {fileID: 11440382}
+  - 114: {fileID: 11451276}
   m_Layer: 9
   m_Name: MathManager
   m_TagString: Untagged
@@ -18302,7 +18303,6 @@ GameObject:
   - 33: {fileID: 3333970}
   - 64: {fileID: 6421566}
   - 23: {fileID: 2380060}
-  - 114: {fileID: 11406976}
   m_Layer: 8
   m_Name: CollisionGround
   m_TagString: Untagged
@@ -92903,20 +92903,6 @@ MonoBehaviour:
   flowerColor: 0
   nowEXP: 0
   MAX_EXP: 0000000000000000
---- !u!114 &11406976
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55788e45ea6dbfe4b9985893ee8e5a5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerName: 47726f756e64
-  orderInLayer: 0
-  _renderer: {fileID: 0}
 --- !u!114 &11406984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104774,6 +104760,19 @@ MonoBehaviour:
   flowerColor: 0
   nowEXP: 0
   MAX_EXP: 0000000000000000
+--- !u!114 &11451276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65667957cac7de4f985ab7eac8da3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  billList: []
+  growingBillList: []
 --- !u!114 &11451308
 MonoBehaviour:
   m_ObjectHideFlags: 1
