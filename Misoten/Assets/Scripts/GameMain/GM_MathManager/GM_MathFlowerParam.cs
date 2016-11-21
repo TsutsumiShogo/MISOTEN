@@ -50,7 +50,6 @@ public class GM_MathFlowerParam : MonoBehaviour {
     private float[] addExpByPlayersTime = new float[3];     //誰から経験値をもらったか一定時間情報を保持する(正の値で有効)
     private float colorMixableTimeCount;   //色を混ぜることが出来る残り時間
     
-    
     //初回のみ
     void Start()
     {
@@ -117,6 +116,9 @@ public class GM_MathFlowerParam : MonoBehaviour {
             addExpByPlayersTime[i] = 0.0f;
         }
         colorMixableTimeCount = 0.0f;
+
+        growingFlg = false;
+        growingTime = 0.0f;
 	}
     //これでオンにしないとあたり判定無効
     public void ColliderSwitch(bool _flg)
@@ -211,6 +213,12 @@ public class GM_MathFlowerParam : MonoBehaviour {
             return;
         }
 
+        //誰から成長を受けたか情報を保存
+        if (playerNo >= 0 && playerNo <= 2)
+        {
+            addExpByPlayersTime[playerNo] = 1.0f;   //値の秒数保持する。
+        }
+
         //経験値加算
         nowEXP += _addExp;
 
@@ -243,11 +251,6 @@ public class GM_MathFlowerParam : MonoBehaviour {
         //レベル計算
         CalcLevel(playerNo);
 
-        //誰から成長を受けたか情報を保存
-        if (playerNo >= 0 && playerNo <= 2)
-        {
-            addExpByPlayersTime[playerNo] = 1.0f;   //値の秒数保持する。
-        }
     }
 
     //レベル3の時のみ実行可能
