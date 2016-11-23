@@ -71,7 +71,7 @@ public class GM_MathFlowerParam : MonoBehaviour {
             //レベルアップ
             flowerLevel = EFlowerLevel.Level1;
             //オブジェクト生成
-            objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor);
+            objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor,this);
         }
     }
 
@@ -159,7 +159,7 @@ public class GM_MathFlowerParam : MonoBehaviour {
             flowerColor = _playerColor;
 
             //オブジェクト生成
-            objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor);
+            objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor,this);
 
             //スコア加算
             GM_ScoreCtrl.AddPlayerScore(100, playerNo);

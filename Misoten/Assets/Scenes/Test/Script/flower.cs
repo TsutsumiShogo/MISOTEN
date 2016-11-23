@@ -4,13 +4,15 @@ using System.Collections;
 public class flower : MonoBehaviour {
 
     private bool m_scallFlg = false;
+    private bool m_growFlg = false;
     private float m_maxUp = 1.5f;
-    private float m_maxScall =  0.3f;
+    private float m_maxScall =  0.2f;
     private float m_defaultScall = 0.1f;
     private float m_speed = 0.01f;
     private float m_speedUp = 0.05f;
     private bool m_upDown = false;  // ture で大きく、false で小さく
-
+    private GM_MathFlowerParam m_param;
+    public GameObject m_particle;
     public AudioClip m_audio;
     private AudioSource m_audioSource;
 
@@ -45,6 +47,18 @@ public class flower : MonoBehaviour {
             transform.localScale = scall;
             transform.position = pos;
         }
+
+        if (m_param != null)
+        {
+            if (m_param.GetGrowthNowPlayerNum() > 0)
+            {
+                m_particle.GetComponent<ParticleSystem>().Play();
+            }
+            else
+            {
+                m_particle.GetComponent<ParticleSystem>().Stop();
+            }
+        }
     }
 
     public void scallOn(){
@@ -52,5 +66,16 @@ public class flower : MonoBehaviour {
         m_upDown = true;
         m_audioSource.Play();
     }
-   
+
+    //-------------------------------
+    // パラメータオブジェクト取得
+    //-------------------------------
+    public void SetParam(GM_MathFlowerParam _param){
+        m_param = _param;
+    }
+
+    void GrowUp()
+    {
+        print("成長中");
+    }
 }

@@ -54,7 +54,8 @@ public class ObjectManager : MonoBehaviour {
     public static int CreateObj( 
         Vector3 _position,                          // 座標
         GM_MathFlowerParam.EFlowerType _type,       // オブジェクトタイプ
-        GM_MathFlowerParam.EFlowerColor _color)     // 花の色(花以外はNONE)
+        GM_MathFlowerParam.EFlowerColor _color,
+        GM_MathFlowerParam _param)     // 花の色(花以外はNONE)
     {
        
         switch (_type)
@@ -68,6 +69,7 @@ public class ObjectManager : MonoBehaviour {
                 colorList[Id] = _color;
                 objectList[Id].GetComponent<flower>().Init();
                 objectList[Id].GetComponent<flower>().scallOn();
+                objectList[Id].GetComponent<flower>().SetParam(_param);
                 break;
                 
                 // 家
@@ -119,7 +121,6 @@ public class ObjectManager : MonoBehaviour {
                             break;
                     }
                     objectList[no].GetComponent<flower>().scallOn();
-                    //objectList[no].GetComponent<Renderer>().material = gMaterials[ (int)colorList[Id], level-1];
                     break;
 
                     // 家
@@ -144,7 +145,7 @@ public class ObjectManager : MonoBehaviour {
 
     //---------------------------------------------------------------
     // 色変更処理
-    //--------------------------------------------------------------
+    //---------------------------------------------------------------
     public static void ChengeColor(int no, GM_MathFlowerParam.EFlowerColor _color){
         if (objectList[no] != null){
             switch (_color)
@@ -173,5 +174,14 @@ public class ObjectManager : MonoBehaviour {
             }
 
         }
+    }
+
+
+    //---------------------------------------------------------------
+    // 成長中
+    //--------------------------------------------------------------- 
+    public static void Growing( GM_MathFlowerParam _param){
+           
+        
     }
 }
