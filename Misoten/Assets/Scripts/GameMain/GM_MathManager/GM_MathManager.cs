@@ -27,10 +27,14 @@ public class GM_MathManager : MonoBehaviour {
     public List<GM_MathCell> cells;
 
     //内部変数
+    private GM_MathBillList billList;
     int lastUpdateCellNo = 0;
     float timeCount = 0.0f;
 
-
+    void Awake()
+    {
+        billList = transform.GetComponent<GM_MathBillList>();
+    }
     //初期化
     public void Init()
     {
@@ -44,7 +48,9 @@ public class GM_MathManager : MonoBehaviour {
         lastUpdateCellNo = 0;
         timeCount = 0.0f;
         totalFlowerLevel = 0;
-        
+
+        //ビルリストを作成
+        billList.MakeBillList();
 
         //STAGE1のセルを利用開始状態へ
         StartStage(EMathStageNo.STAGE1);

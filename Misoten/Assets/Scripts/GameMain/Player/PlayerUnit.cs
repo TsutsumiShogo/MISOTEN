@@ -356,7 +356,7 @@ public class PlayerUnit : MonoBehaviour {
                 {
                     sprayScalePercent = 1.0f;
                 }
-                Debug.Log("SprayScaleParcent:"+sprayScalePercent.ToString());
+                
                 pos = transform.position + (transform.forward * sprayScalePercent * 2.25f);
                 sprayCon.transform.position = pos;
                 sprayCon.ChangeScale(sprayScalePercent * 2.25f);
