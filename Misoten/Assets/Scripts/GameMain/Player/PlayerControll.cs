@@ -6,17 +6,24 @@ public class PlayerControll : MonoBehaviour {
     private PlayerStatus playerStatus;
     private Rigidbody rigid;
     private Vector3 moveVec;    //移動入力
+    private float notMoveTime;  //移動入力を受け付けない時間
 
 	// Use this for initialization
 	void Awake () {
         playerStatus = transform.GetComponent<PlayerStatus>();
         rigid = transform.GetComponent<Rigidbody>();
-
+        notMoveTime = 0;
 	}
-	
+    public void Init()
+    {
+        notMoveTime = 0;
+    }
 	// Update is called once per frame
 	void Update () {
-	
+        if (notMoveTime > 0.0f)
+        {
+            notMoveTime -= Time.deltaTime;
+        }
 	}
 
     //移動処理
@@ -38,8 +45,14 @@ public class PlayerControll : MonoBehaviour {
     }
 
     //移動情報をセットする
-    public void SetMoveVec(Vector2 stick)
+    public bool SetMoveVec(Vector2 stick)
     {
+        //移動入力を許可しない時間がセットされていた
+        if (notMoveTime > 0.0f)
+        {
+            return false;
+        }
+
         //移動ベクトルを保存
         moveVec.x = stick.x;
         moveVec.z = stick.y;
@@ -64,5 +77,17 @@ public class PlayerControll : MonoBehaviour {
             //回転情報を代入
             transform.rotation = rot;
         }
+
+        return true;
+    }
+
+    public void SetVector(Vector3 _vec)
+    {
+        rigid.velocity = _vec;
+    }
+    public void SetNotMoveTime(float _time)
+    {
+        notMoveTime = _time;
+        moveVec = Vector3.zero;
     }
 }

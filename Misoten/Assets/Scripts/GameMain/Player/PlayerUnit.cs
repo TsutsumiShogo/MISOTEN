@@ -82,6 +82,15 @@ public class PlayerUnit : MonoBehaviour {
         nextState = PlayerStatus.EStateTransition.END;
         ChangeStateTransitionProcess();
     }
+    public void KnockBack(Vector3 _knockBackVec)
+    {
+        //吹き飛びベクトルセット
+        controll.SetVector(_knockBackVec);
+
+        //状態を変更
+        nextState = PlayerStatus.EStateTransition.KNOCKBACK;
+        ChangeStateTransitionProcess();
+    }
 
     //============================非公開関数=================================
     //状態を切り替える前の共通処理
@@ -254,7 +263,7 @@ public class PlayerUnit : MonoBehaviour {
 
             //damage
             case PlayerStatus.EStateTransition.KNOCKBACK:
-                if (motionTimeCount > 0.6f)
+                if (motionTimeCount > 2.0f)
                 {
                     nextState = PlayerStatus.EStateTransition.STAND;
                 }

@@ -13,6 +13,12 @@ public class GM_MathManager : MonoBehaviour {
     };
 
     //公開変数
+    public GameObject hexagonPrefab_Flower;
+    public GameObject hexagonPrefab_House;
+    public GameObject hexagonPrefab_Bill;
+    public GameObject hexagonPrefab_BigBill;
+    public Vector3[] mathPos = new Vector3[7];
+
     public int[] MATH_EXP_MAX_FLOWER = new int[2];  //花の最大経験値量
     public int[] MATH_EXP_MAX_HOUSE = new int[2];   //家の最大経験値量
     public int[] MATH_EXP_MAX_BILL = new int[2];    //中ビルの最大経験値量

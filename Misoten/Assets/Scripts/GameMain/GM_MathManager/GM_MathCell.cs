@@ -4,6 +4,16 @@ using System.Collections.Generic;
 
 public class GM_MathCell : MonoBehaviour {
 
+    //定数定義
+    public enum ECellType
+    {
+        CELL_FLOWER,
+        CELL_HOUSE,
+        CELL_BILL,
+        CELL_BIGBILL,
+    };
+
+    //変数定義
     //孫オブジェクトから自らセットしに来る
     public List<GM_MathFlowerParam> flowerParams;
     //マネージャオブジェクト
@@ -14,6 +24,8 @@ public class GM_MathCell : MonoBehaviour {
 
     //このセルのステージ番号
     public GM_MathManager.EMathStageNo stageNo;     //Unity上でセット
+    //このセルのタイプ
+    public ECellType cellType;                      //Unity上でセット
 
     public bool startFlg;   //このセルの行動を開始して良いか
 
@@ -25,6 +37,45 @@ public class GM_MathCell : MonoBehaviour {
         manager.cells.Add(this);
         //マス目描画スクリプトを保存
         mathCellColorCon = GetComponentInChildren<GM_MathCellColorControll>();
+
+        //セルのタイプで生成するマスを変える
+        GameObject temp;
+        switch (cellType)
+        {
+            case ECellType.CELL_FLOWER:
+                //花マスの生成
+                for (int i = 0; i < 7; ++i)
+                {
+                    temp = Instantiate(manager.hexagonPrefab_Flower);
+                    temp.transform.parent = transform;
+                    temp.transform.position = transform.position + manager.mathPos[i] * manager.transform.localScale.x;
+                }
+                break;
+            case ECellType.CELL_HOUSE:
+                //ビルの生成
+                temp = Instantiate(manager.hexagonPrefab_House);
+                temp.transform.parent = transform;
+                temp.transform.position = transform.position;
+                for (int i = 1; i < 7; ++i)
+                {
+                    temp = Instantiate(manager.hexagonPrefab_Flower);
+                    temp.transform.parent = transform;
+                    temp.transform.position = transform.position + manager.mathPos[i] * manager.transform.localScale.x;
+                }
+                break;
+            case ECellType.CELL_BILL:
+                //ビルの生成
+                temp = Instantiate(manager.hexagonPrefab_Bill);
+                temp.transform.parent = transform;
+                temp.transform.position = transform.position;
+                break;
+            case ECellType.CELL_BIGBILL:
+                //大ビルの生成
+                temp = Instantiate(manager.hexagonPrefab_Bill);
+                temp.transform.parent = transform;
+                temp.transform.position = transform.position;
+                break;
+        }
 	}
 	
     //ゲーム開始時に初期化
