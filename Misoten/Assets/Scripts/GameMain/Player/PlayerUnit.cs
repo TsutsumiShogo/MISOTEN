@@ -46,6 +46,11 @@ public class PlayerUnit : MonoBehaviour {
 
         motionTimeCount = 0.0f;
         moveFlg = false;
+
+        animCon.Init();
+        status.Init();
+        controll.Init();
+        collisionBill.Init();
     }
 	
 	// Update is called once per frame
