@@ -14,6 +14,8 @@ public class GM_MathCell : MonoBehaviour {
     };
 
     //変数定義
+    //子オブジェクトから自らセットしに来る。
+    public List<GM_MathMath> math;
     //孫オブジェクトから自らセットしに来る
     public List<GM_MathFlowerParam> flowerParams;
     //マネージャオブジェクト

@@ -62,6 +62,9 @@ public class GM_MathFlowerParam : MonoBehaviour {
         //親のセルに自らを保存させる。
         parentCell.flowerParams.Add(this);
 
+        //親のマスに自らを保存させる
+        transform.parent.GetComponent<GM_MathMath>().AddFlowerParam(this);
+
         //パラメーター初期化
         Init();
 

@@ -13,9 +13,14 @@ public class GM_Mission : MonoBehaviour {
         BIGBILL_GROWTH_MISSION, //大ビル成長ミッション
     }
 
+    //オブジェクト
+    [SerializeField]
+    private GameObject MISSION_EFFECT_PREFAB;   //Unity上でセット
+
     //変数宣言
     private GM_MissionManager manager;
-    private List<GM_MathFlowerParam> mathColList = new List<GM_MathFlowerParam>();   //ミッションエリアにいる全てのマス
+    private List<GM_MathCell> cellColList = new List<GM_MathCell>();                //ミッションエリアにいる全てのセル
+    private List<GM_MathFlowerParam> mathColList = new List<GM_MathFlowerParam>();  //ミッションエリアにいる全てのマス
 
     //公開変数
     public EMissionType missionType;    //ミッションの種類
@@ -158,13 +163,51 @@ public class GM_Mission : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        GM_MathFlowerParam tempParam;
-
-        //花パラメータオブジェクトだったらリストに追加
-        tempParam = col.gameObject.GetComponent<GM_MathFlowerParam>();
-        if (tempParam)
+        GM_MathCell tempCell;
+        GameObject tempObj;
+        //セルオブジェクトだったらリストに追加
+        tempCell = col.gameObject.GetComponent<GM_MathCell>();
+        if (tempCell)
         {
-            mathColList.Add(tempParam);
+            cellColList.Add(tempCell);
+            
+            //セルオブジェクト内にあるマスリストをコピー
+            for (int i = 0; i < tempCell.flowerParams.Count; ++i)
+            {
+                mathColList.Add(tempCell.flowerParams[i]);
+            }
+
+            //エフェクトオブジェクト追加
+            switch (missionType) 
+            {
+                case EMissionType.FLOWER_GROWTH_MISSION:
+                    if (tempCell.cellType != GM_MathCell.ECellType.CELL_FLOWER && tempCell.cellType != GM_MathCell.ECellType.CELL_HOUSE)
+                    {
+                        return;
+                    }
+                    break;
+                case EMissionType.FLOWER_COLOR_MISSTION:
+                    if (tempCell.cellType != GM_MathCell.ECellType.CELL_FLOWER && tempCell.cellType != GM_MathCell.ECellType.CELL_HOUSE)
+                    {
+                        return;
+                    }
+                    break;
+                case EMissionType.BILL_GROWTH_MISSION:
+                    if (tempCell.cellType != GM_MathCell.ECellType.CELL_BILL)
+                    {
+                        return;
+                    }
+                    break;
+                case EMissionType.BIGBILL_GROWTH_MISSION:
+                    if (tempCell.cellType != GM_MathCell.ECellType.CELL_BIGBILL)
+                    {
+                        return;
+                    }
+                    break;
+            }
+            tempObj = Instantiate(MISSION_EFFECT_PREFAB);
+            tempObj.transform.position = tempCell.transform.position;
+            tempObj.transform.parent = transform;
         }
     }
 

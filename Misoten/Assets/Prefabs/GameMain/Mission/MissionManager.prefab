@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 449230}
   - 114: {fileID: 11451244}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: MissionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a10adc8b4dad1044b4ea6114e2e2770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CLEAR_SCORE_POINT: 50000
   MISSION_PREFAB: {fileID: 113752, guid: 905516813ee590648b31544e82b4e7d2, type: 2}
   nowMission: {fileID: 0}
 --- !u!1001 &100100000
