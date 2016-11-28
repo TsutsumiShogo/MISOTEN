@@ -15,7 +15,7 @@ public class GM_Mission : MonoBehaviour {
 
     //変数宣言
     private GM_MissionManager manager;
-    private List<GM_MathFlowerParam> mathColList;   //ミッションエリアにいる全てのマス
+    private List<GM_MathFlowerParam> mathColList = new List<GM_MathFlowerParam>();   //ミッションエリアにいる全てのマス
 
     //公開変数
     public EMissionType missionType;    //ミッションの種類
@@ -71,43 +71,87 @@ public class GM_Mission : MonoBehaviour {
 
     private bool CheckClearMission(EMissionType _type)
     {
-        //ミッションの達成状況をチェック
-        int mathCount = 0;
-        int clearCount = 0;
-        switch (missionType)
+        //各ミッションの達成状況をチェック
+        switch (_type)
         {
             case EMissionType.FLOWER_GROWTH_MISSION:
-                //レベル最大の花をカウント
+                //全検索
                 for (int i = 0; i < mathColList.Count; ++i)
                 {
+                    //ビルを除く
                     if (mathColList[i].flowerType == GM_MathFlowerParam.EFlowerType.Flower1 ||
                         mathColList[i].flowerType == GM_MathFlowerParam.EFlowerType.Flower2 ||
                         mathColList[i].flowerType == GM_MathFlowerParam.EFlowerType.Flower3)
                     {
-                        mathCount++;
+                        //レベル最大じゃなければ失敗
                         if (mathColList[i].flowerLevel != GM_MathFlowerParam.EFlowerLevel.Level3)
                         {
-                            break;
+                            return false;
                         }
-                        clearCount++;
                     }
                 }
-                //クリア条件の確認
-                if (clearCount >= mathCount)
+                //ここまで来たらミッションクリア
+                return true;
+            case EMissionType.FLOWER_COLOR_MISSTION:
+                //まず全ての花が最大レベルかチェック
+                if (CheckClearMission(EMissionType.FLOWER_GROWTH_MISSION) == false)
                 {
-                    return true;
+                    //全ての花が最大レベルで無かったら失敗確定
+                    return false;
                 }
 
-                break;
-            case EMissionType.FLOWER_COLOR_MISSTION:
-                break;
+                //全検索
+                for (int i = 0; i < mathColList.Count; ++i)
+                {
+                    //ビルを除く
+                    if (mathColList[i].flowerType == GM_MathFlowerParam.EFlowerType.Flower1 ||
+                        mathColList[i].flowerType == GM_MathFlowerParam.EFlowerType.Flower2 ||
+                        mathColList[i].flowerType == GM_MathFlowerParam.EFlowerType.Flower3)
+                    {
+                        //色が指定の色じゃなければ失敗
+                        if (mathColList[i].flowerColor != clearColor)
+                        {
+                            return false;
+                        }
+                    }
+                }
+                //ここまで来たらミッションクリア
+                return true;
             case EMissionType.BILL_GROWTH_MISSION:
-
-                break;
+                //全検索
+                for (int i = 0; i < mathColList.Count; ++i)
+                {
+                    //中ビルのみをチェック
+                    if (mathColList[i].flowerType == GM_MathFlowerParam.EFlowerType.Bill)
+                    {
+                        //レベル最大じゃなければ失敗
+                        if (mathColList[i].flowerLevel != GM_MathFlowerParam.EFlowerLevel.Level3)
+                        {
+                            return false;
+                        }
+                    }
+                }
+                //ここまで来たらミッションクリア
+                return true;
             case EMissionType.BIGBILL_GROWTH_MISSION:
-                break;
+                //全検索
+                for (int i = 0; i < mathColList.Count; ++i)
+                {
+                    //大ビルのみをチェック
+                    if (mathColList[i].flowerType == GM_MathFlowerParam.EFlowerType.BigBill)
+                    {
+                        //レベル最大じゃなければ失敗
+                        if (mathColList[i].flowerLevel != GM_MathFlowerParam.EFlowerLevel.Level3)
+                        {
+                            return false;
+                        }
+                    }
+                }
+                //ここまで来たらミッションクリア
+                return true;
         }
 
+        //指定外のミッション番号が来たので強制的に失敗判定
         return false;
     }
 

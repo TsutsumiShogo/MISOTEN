@@ -7,12 +7,12 @@ public class GM_UIGreenPercent : MonoBehaviour {
     //自身のテキスト
     private Text thisText;
 
-    //マスマネージャ
-    [SerializeField]
-    private GM_MathManager mathManager;     //Unity上でセット
+    //マスマネージャー
+    private GM_MathManager mathManager;
 
 	// Use this for initialization
 	void Awake () {
+        mathManager = GameObject.Find("MathManager").GetComponent<GM_MathManager>();
         thisText = GetComponent<Text>();
 	}
 	

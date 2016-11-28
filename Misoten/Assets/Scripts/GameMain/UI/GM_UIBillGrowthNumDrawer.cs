@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class GM_UIBillGrowthNumDrawer : MonoBehaviour {
 
     //ビルリスト
-    [SerializeField]
-    private GM_MathBillList mathManager;           //Unity上でセット
+    private GM_MathBillList mathManager;
 
     //ビル成長中を表示するUI
     [SerializeField]
@@ -26,8 +25,8 @@ public class GM_UIBillGrowthNumDrawer : MonoBehaviour {
     
 
 	// Use this for initialization
-	void Start () {
-	
+	void Awake () {
+        mathManager = GameObject.Find("MathManager").GetComponent<GM_MathBillList>();
 	}
 	
 	// Update is called once per frame
