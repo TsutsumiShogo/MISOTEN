@@ -1745,7 +1745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CHANGE_TIME: 1
   gameCanvas: {fileID: 105730}
-  gameCameras: {fileID: 0}
+  gameObjects: {fileID: 0}
   resultCanvas: {fileID: 157482}
   resultObjects: {fileID: 0}
 --- !u!114 &11497614

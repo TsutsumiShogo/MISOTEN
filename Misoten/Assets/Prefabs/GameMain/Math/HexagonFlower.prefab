@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 493808}
   - 33: {fileID: 3371796}
   - 23: {fileID: 2388196}
+  - 114: {fileID: 11405860}
   m_Layer: 9
   m_Name: HexagonFlower
   m_TagString: Untagged
@@ -152,6 +153,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 133360}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &11405860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c4ee5b921d2b446a75e68fd0a5cee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11444800
 MonoBehaviour:
   m_ObjectHideFlags: 1

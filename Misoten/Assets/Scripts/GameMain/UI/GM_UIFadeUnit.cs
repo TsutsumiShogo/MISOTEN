@@ -14,7 +14,7 @@ public class GM_UIFadeUnit : MonoBehaviour {
     [SerializeField]
     private GameObject gameCanvas;
     [SerializeField]
-    private GameObject gameCameras;
+    private GameObject gameObjects;
     [SerializeField]
     private GameObject resultCanvas;
     [SerializeField]
@@ -31,7 +31,7 @@ public class GM_UIFadeUnit : MonoBehaviour {
     public void Init()
     {
         gameCanvas.SetActive(true);
-        gameCameras.SetActive(true);
+        gameObjects.SetActive(true);
         resultCanvas.SetActive(false);
         resultObjects.SetActive(false);
         thisImage.color = new Color(0, 0, 0, 0.0f);
@@ -61,7 +61,7 @@ public class GM_UIFadeUnit : MonoBehaviour {
         {
             //オブジェクト切り替え
             gameCanvas.SetActive(false);
-            gameCameras.SetActive(false);
+            gameObjects.SetActive(false);
             resultCanvas.SetActive(true);
             resultObjects.SetActive(true);
         }

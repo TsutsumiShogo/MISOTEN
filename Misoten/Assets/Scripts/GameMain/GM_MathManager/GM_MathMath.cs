@@ -13,12 +13,15 @@ public class GM_MathMath : MonoBehaviour {
     private List<GM_MathFlowerParam> flowerParams = new List<GM_MathFlowerParam>();
 
 
-    void Awake()
+    void Start()
     {
         //親のセルに自らをセット
         GM_MathCell cell;
         cell = transform.parent.GetComponent<GM_MathCell>();
-        cell.math.Add(this);
+        if (cell)
+        {
+            cell.math.Add(this);
+        }
     }
 
     //花リストに追加
