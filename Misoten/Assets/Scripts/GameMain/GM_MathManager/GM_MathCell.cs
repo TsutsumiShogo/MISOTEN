@@ -29,7 +29,7 @@ public class GM_MathCell : MonoBehaviour {
     //このセルのタイプ
     public ECellType cellType;                      //Unity上でセット
 
-    public bool startFlg;   //このセルの行動を開始して良いか
+    public bool startFlg;   //このセルが行動を開始しているかどうか
 
 	//初回のみ
 	void Awake () {

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerAnimCon : MonoBehaviour {
 
-    private PlayerUnit playerUnit;      //プレイヤーUnit
+    //private PlayerUnit playerUnit;      //プレイヤーUnit
     private PlayerStatus playerStatus;  //プレイヤーステータス
     private PlayerCheckCollisionBill checkCollisionBill;    //ビル専用スプレー対象ビル
     private Animator animator;      //プレイヤーのAnimator本体
@@ -15,7 +15,7 @@ public class PlayerAnimCon : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-        playerUnit = transform.GetComponent<PlayerUnit>();
+        //playerUnit = transform.GetComponent<PlayerUnit>();
         playerStatus = transform.GetComponent<PlayerStatus>();
         checkCollisionBill = transform.GetComponentInChildren<PlayerCheckCollisionBill>();
         animator = transform.Find("Model").GetComponent<Animator>();

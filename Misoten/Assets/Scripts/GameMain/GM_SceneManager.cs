@@ -20,6 +20,10 @@ public class GM_SceneManager : MonoBehaviour {
     //プレイヤーマネージャー
     private PlayerManager playerManager;
 
+    //ミニマップマネージャ
+    private GM_MiniMapManager minimapManager;
+
+
     //タイムアップ演出オブジェクト
     [SerializeField]
     private Text timeUpObj;    //Unity上でセット
@@ -42,6 +46,8 @@ public class GM_SceneManager : MonoBehaviour {
         mathManager = gameObject.GetComponentInChildren<GM_MathManager>();
         //プレイヤーマネージャー保存
         playerManager = gameObject.GetComponentInChildren<PlayerManager>();
+        //ミニマップマネージャ保存
+        minimapManager = gameObject.GetComponentInChildren<GM_MiniMapManager>();
     }
 
     //ゲーム開始時にこの初期化関数が呼ばれる。
@@ -55,6 +61,9 @@ public class GM_SceneManager : MonoBehaviour {
 
         //プレイヤーマネージャー初期化
         playerManager.Init();
+
+        //ミニマップマネージャ初期化
+        minimapManager.Init();
 
         //タイムアップ演出をオフに
         timeUpObj.gameObject.SetActive(false);
@@ -74,6 +83,7 @@ public class GM_SceneManager : MonoBehaviour {
         {
             stageFlg[0] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
+            minimapManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
 
             //ステージ外周オブジェクトを消す
             stageOutColObj[0].SetActive(false);
@@ -82,6 +92,7 @@ public class GM_SceneManager : MonoBehaviour {
         {
             stageFlg[1] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
+            minimapManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
 
             //ステージ外周オブジェクトを消す
             stageOutColObj[1].SetActive(false);

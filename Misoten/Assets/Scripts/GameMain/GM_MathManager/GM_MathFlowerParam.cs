@@ -161,11 +161,12 @@ public class GM_MathFlowerParam : MonoBehaviour {
             //色設定
             flowerColor = _playerColor;
 
+            //スコア加算
+            GM_ScoreCtrl.AddPlayerScore(100, playerNo);
+
             //オブジェクト生成
             objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor,this);
 
-            //スコア加算
-            GM_ScoreCtrl.AddPlayerScore(100, playerNo);
         }
     }
 

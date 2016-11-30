@@ -33,11 +33,11 @@ public class GM_MathMath : MonoBehaviour {
     //マス内の最小レベルを計算して返す
     public GM_MathFlowerParam.EFlowerLevel GetMinMathLevel()
     {
-        GM_MathFlowerParam.EFlowerLevel mathLevel = GM_MathFlowerParam.EFlowerLevel.Level0;   //自身の子の花(ビル)の最低レベルをセットする
+        GM_MathFlowerParam.EFlowerLevel mathLevel = GM_MathFlowerParam.EFlowerLevel.Level3;   //自身の子の花(ビル)の最低レベルをセットする
 
         for (int i = 0; i < flowerParams.Count; ++i)
         {
-            if (mathLevel > flowerParams[i].flowerLevel)
+            if ((int)mathLevel > (int)flowerParams[i].flowerLevel)
             {
                 mathLevel = flowerParams[i].flowerLevel;
             }

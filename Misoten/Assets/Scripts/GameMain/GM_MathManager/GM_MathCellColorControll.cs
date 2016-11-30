@@ -32,9 +32,10 @@ public class GM_MathCellColorControll : MonoBehaviour {
     void Update()
     {
 
-        //経過完了済みなら何もしない
+        //経過完了済みなら目標の色で固定
         if (nowTime >= endTime)
         {
+            mathSprite.color = nextColor;
             return;
         }
 
@@ -66,5 +67,11 @@ public class GM_MathCellColorControll : MonoBehaviour {
         oldColor = mathSprite.color;
         nextColor = changeColor;
         nowTime = 0.0f;
+    }
+    //表示完了までにかかる時間を変更できるように引数追加。
+    public void ChangeMathColor(Color changeColor, float changeEndTime)
+    {
+        endTime = changeEndTime;
+        ChangeMathColor(changeColor);
     }
 }
