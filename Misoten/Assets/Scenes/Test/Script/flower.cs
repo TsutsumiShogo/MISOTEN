@@ -21,8 +21,15 @@ public class flower : MonoBehaviour {
         m_audioSource.clip = m_audio;
     }
 
+    // ----------------------------------------------------
+    //  更新処理
+    // レベルアップ時にスケール演出
+    // ----------------------------------------------------
     void Update(){
-        if (m_scallFlg){
+        if (m_scallFlg){    
+            //--------------------------------------
+            // スケール拡縮処理
+            //--------------------------------------
             Vector3 scall = transform.localScale;
             Vector3 pos = transform.position;
             if (m_upDown){
@@ -50,6 +57,8 @@ public class flower : MonoBehaviour {
 
         if (m_param != null)
         {
+            //----------------------------------------
+            // 成長中のみ、パーティクルエフェクト生成
             if (m_param.GetGrowthNowPlayerNum() > 0)
             {
                 m_particle.GetComponent<ParticleSystem>().Play();
@@ -61,6 +70,9 @@ public class flower : MonoBehaviour {
         }
     }
 
+    // -------------------------------
+    //  スケール拡縮開始命令
+    // -------------------------------
     public void scallOn(){
         m_scallFlg = true;
         m_upDown = true;
@@ -74,8 +86,5 @@ public class flower : MonoBehaviour {
         m_param = _param;
     }
 
-    void GrowUp()
-    {
-        print("成長中");
-    }
+    
 }
