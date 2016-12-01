@@ -36,6 +36,7 @@ public class GM_MathManager : MonoBehaviour {
     private GM_MathBillList billList;
     int lastUpdateCellNo = 0;
     float timeCount = 0.0f;
+    float levelGetTimeCount = 0.0f;
 
     void Awake()
     {
@@ -53,6 +54,7 @@ public class GM_MathManager : MonoBehaviour {
         //内部変数初期化
         lastUpdateCellNo = 0;
         timeCount = 0.0f;
+        levelGetTimeCount = 0.0f;
         totalFlowerLevel = 0;
 
         //ビルリストを作成
@@ -67,12 +69,11 @@ public class GM_MathManager : MonoBehaviour {
 	    //ローカル変数定義
         bool timeCountResetFlg = false;
 
-        //内部時間を経過させる
-        timeCount += Time.deltaTime;
-        if (timeCount > 1.0f)
+        //レベルを取得する時間を経過させる
+        levelGetTimeCount += Time.deltaTime;
+        if (levelGetTimeCount > 0.2f)
         {
-            timeCount -= 1.0f;
-            timeCountResetFlg = true;
+            levelGetTimeCount -= 0.2f;
 
             //レベルの総数を取得する
             totalFlowerLevel = 0;
@@ -80,6 +81,14 @@ public class GM_MathManager : MonoBehaviour {
             {
                 totalFlowerLevel += cells[i].GetTotalFlowerLevel();
             }
+        }
+
+        //内部時間を経過させる
+        timeCount += Time.deltaTime;
+        if (timeCount > 1.0f)
+        {
+            timeCount -= 1.0f;
+            timeCountResetFlg = true;
         }
 
         //植物の自然成長処理

@@ -20,7 +20,8 @@ public class GM_UIGreenPercent : MonoBehaviour {
 	void Update () {
         float _percent = mathManager.totalFlowerLevel / (float)mathManager.MAX_TOTAL_FLOWER_LEVEL;
         int _percentInt = (int)(_percent * 100.0f);
-        thisText.text = "緑化率:" + _percentInt.ToString() + "％";
+        int _percentDecimal1 = (int)((_percent * 100.0f - (float)_percentInt) * 10.0f);
+        thisText.text = "緑化率:" + _percentInt.ToString() + "." +_percentDecimal1.ToString() + "％";
 	}
 
     

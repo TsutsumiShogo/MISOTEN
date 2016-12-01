@@ -633,22 +633,22 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
-    - target: {fileID: 11477962, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
-      propertyPath: sceneManager
-      value: 
-      objectReference: {fileID: 1988753938}
-    - target: {fileID: 11434696, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 1671262174}
-    - target: {fileID: 11427204, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 477372739}
     - target: {fileID: 11456166, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 1475185295}
+    - target: {fileID: 11434696, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1671262174}
+    - target: {fileID: 11477962, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
+      propertyPath: sceneManager
+      value: 
+      objectReference: {fileID: 1988753938}
+    - target: {fileID: 11427204, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 477372739}
     - target: {fileID: 11489294, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
       propertyPath: gameObjects
       value: 

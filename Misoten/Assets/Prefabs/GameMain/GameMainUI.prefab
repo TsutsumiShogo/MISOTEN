@@ -980,7 +980,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u7DD1\u5316\u7387:100%"
+  m_Text: "\u7DD1\u5316\u7387:100.0%"
 --- !u!114 &11427204
 MonoBehaviour:
   m_ObjectHideFlags: 1
