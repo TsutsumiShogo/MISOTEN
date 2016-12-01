@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class GM_MiniMapManager : MonoBehaviour {
 
     //定数定義
+    public int[] cameraPoint = new int[3];
 
     //オブジェクト
     [SerializeField]
@@ -13,13 +14,13 @@ public class GM_MiniMapManager : MonoBehaviour {
     private GameObject cameraObject;            //ズームアウト処理を掛けたい。
 
     //外部公開変数
-    public int[] cameraPoint = new int[3];
-    private int nowCameraPointNo;
     public GM_MathManager mathManager;              //マスマネージャ
     public List<GM_MiniMapCell> minimapCellList;    //ミニマップのセルのリスト
     
     //内部変数
+    private int nowCameraPointNo;
     private int updateCellNo;       //更新対象セル番号
+
 
 	// Use this for initialization
 	void Awake () {

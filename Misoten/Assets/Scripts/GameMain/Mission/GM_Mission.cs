@@ -19,14 +19,15 @@ public class GM_Mission : MonoBehaviour {
 
     //変数宣言
     private GM_MissionManager manager;
-    private List<GM_MathCell> cellColList = new List<GM_MathCell>();                //ミッションエリアにいる全てのセル
-    private List<GM_MathFlowerParam> mathColList = new List<GM_MathFlowerParam>();  //ミッションエリアにいる全てのマス
+    private List<GM_MathFlowerParam> mathColList = new List<GM_MathFlowerParam>();  //ミッション対象セルの全てのマス
 
     //公開変数
     public EMissionType missionType;    //ミッションの種類
     public float startTime;             //ミッション開始までの時間
     public float timeCountDown;         //ミッションの残り時間
     public GM_MathFlowerParam.EFlowerColor clearColor;  //色ミッションのみ有効：クリアの色
+
+    public List<GM_MathCell> missionCellList = new List<GM_MathCell>();             //ミッションエリアにいる全てのミッション対象セル
 
 	//ミッションの初期化
     public void Init(float _timeLimit, EMissionType _type)
@@ -165,50 +166,96 @@ public class GM_Mission : MonoBehaviour {
     {
         GM_MathCell tempCell;
         GameObject tempObj;
-        //セルオブジェクトだったらリストに追加
-        tempCell = col.gameObject.GetComponent<GM_MathCell>();
-        if (tempCell)
-        {
-            cellColList.Add(tempCell);
-            
-            //セルオブジェクト内にあるマスリストをコピー
-            for (int i = 0; i < tempCell.flowerParams.Count; ++i)
-            {
-                mathColList.Add(tempCell.flowerParams[i]);
-            }
 
-            //エフェクトオブジェクト追加
-            switch (missionType) 
+        //セルオブジェクトかどうかチェック
+        tempCell = col.gameObject.GetComponent<GM_MathCell>();
+
+        //セルオブジェクトじゃなければ何もしない。
+        if (tempCell == null)
+        {
+            return;
+        }
+
+        //ミッション対象セルじゃなかったら何もせずreturn
+        switch (missionType)
+        {
+            case EMissionType.FLOWER_GROWTH_MISSION:
+                if (tempCell.cellType != GM_MathCell.ECellType.CELL_FLOWER && tempCell.cellType != GM_MathCell.ECellType.CELL_HOUSE)
+                {
+                    return;
+                }
+                break;
+            case EMissionType.FLOWER_COLOR_MISSTION:
+                if (tempCell.cellType != GM_MathCell.ECellType.CELL_FLOWER && tempCell.cellType != GM_MathCell.ECellType.CELL_HOUSE)
+                {
+                    return;
+                }
+                break;
+            case EMissionType.BILL_GROWTH_MISSION:
+                if (tempCell.cellType != GM_MathCell.ECellType.CELL_BILL)
+                {
+                    return;
+                }
+                break;
+            case EMissionType.BIGBILL_GROWTH_MISSION:
+                if (tempCell.cellType != GM_MathCell.ECellType.CELL_BIGBILL)
+                {
+                    return;
+                }
+                break;
+        }
+        //ミッション対象セルだったのでリストに追加
+        missionCellList.Add(tempCell);
+            
+        //ミッション対象セルオブジェクト内にあり、ミッション対象となるマスだけを取得する。
+        for (int i = 0; i < tempCell.flowerParams.Count; ++i)
+        {
+            //ミッション対象じゃなければcontinue
+            switch (missionType)
             {
                 case EMissionType.FLOWER_GROWTH_MISSION:
-                    if (tempCell.cellType != GM_MathCell.ECellType.CELL_FLOWER && tempCell.cellType != GM_MathCell.ECellType.CELL_HOUSE)
+                    //花のみを取得
+                    if (tempCell.flowerParams[i].flowerType != GM_MathFlowerParam.EFlowerType.Flower1 &&
+                        tempCell.flowerParams[i].flowerType != GM_MathFlowerParam.EFlowerType.Flower2 &&
+                        tempCell.flowerParams[i].flowerType != GM_MathFlowerParam.EFlowerType.Flower3)
                     {
-                        return;
+                        continue;
                     }
                     break;
                 case EMissionType.FLOWER_COLOR_MISSTION:
-                    if (tempCell.cellType != GM_MathCell.ECellType.CELL_FLOWER && tempCell.cellType != GM_MathCell.ECellType.CELL_HOUSE)
+                    //花のみを取得
+                    if (tempCell.flowerParams[i].flowerType != GM_MathFlowerParam.EFlowerType.Flower1 &&
+                        tempCell.flowerParams[i].flowerType != GM_MathFlowerParam.EFlowerType.Flower2 &&
+                        tempCell.flowerParams[i].flowerType != GM_MathFlowerParam.EFlowerType.Flower3)
                     {
-                        return;
+                        continue;
                     }
                     break;
                 case EMissionType.BILL_GROWTH_MISSION:
-                    if (tempCell.cellType != GM_MathCell.ECellType.CELL_BILL)
+                    //中ビルのみを取得
+                    if (tempCell.flowerParams[i].flowerType != GM_MathFlowerParam.EFlowerType.Bill)
                     {
-                        return;
+                        continue;
                     }
                     break;
                 case EMissionType.BIGBILL_GROWTH_MISSION:
-                    if (tempCell.cellType != GM_MathCell.ECellType.CELL_BIGBILL)
+                    //大ビルのみを取得
+                    if (tempCell.flowerParams[i].flowerType != GM_MathFlowerParam.EFlowerType.Bill)
                     {
-                        return;
+                        continue;
                     }
                     break;
             }
-            tempObj = Instantiate(MISSION_EFFECT_PREFAB);
-            tempObj.transform.position = tempCell.transform.position;
-            tempObj.transform.parent = transform;
-        }
+
+            //ミッション対象だったのでリストへ追加する。
+            mathColList.Add(tempCell.flowerParams[i]);
+
+        }//ミッション対象マス取得終了
+
+        //ミッションセルエリアエフェクトオブジェクト追加
+        tempObj = Instantiate(MISSION_EFFECT_PREFAB);
+        tempObj.transform.position = tempCell.transform.position;
+        tempObj.transform.parent = transform;
     }
 
 }
