@@ -52,7 +52,6 @@ public class ChengeSplay : MonoBehaviour {
 
     // スプレー切り替え演出 プレイヤー操作から呼び出される
     public void SplayChenge( bool _dir){
-        Debug.Log("cccc");
         m_moveFlg = true;
         m_moveDir = _dir;
         m_selectOld = m_selectNo;

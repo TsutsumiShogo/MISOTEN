@@ -29,8 +29,8 @@ public class ObjectManager : MonoBehaviour {
     
 	// Use this for initialization
 	void Awake () {
-        prefabFlower = (GameObject)Resources.Load("Prefabs/Flower");
-        prefabMiddleBil = (GameObject)Resources.Load("Prefabs/MiddleBill");
+        prefabFlower = (GameObject)Resources.Load("Prefabs/GameMain/Flower");
+        prefabMiddleBil = (GameObject)Resources.Load("Prefabs/GameMain/MiddleBill");
         gMaterialsRed = mMaterialsRed;
         gMaterialsBlue = mMaterialsBlue;
         gMaterialsGreen = mMaterialsGreen;
@@ -86,6 +86,8 @@ public class ObjectManager : MonoBehaviour {
                 Vector3 pos_ = new Vector3(_position.x+6.44f, _position.y, _position.z);
                 objectList[Id] = Instantiate(prefabMiddleBil, pos_, Quaternion.Euler(0, 0, 0)) as GameObject;
                 rendererList[Id] = objectList[Id].transform.FindChild("pCube20").GetComponent<Renderer>();
+                objectList[Id].GetComponent<middleBill>().Init();
+                objectList[Id].GetComponent<middleBill>().SetParam(_param);
                 break;
         }
 
@@ -130,6 +132,7 @@ public class ObjectManager : MonoBehaviour {
 
                     // 中ビル
                 case GM_MathFlowerParam.EFlowerType.Bill:
+                    objectList[no].GetComponent<middleBill>().LevelUpEff();     // レベルアップ時エフェクト
                     rendererList[no].material = gMaterialsMiddleBill[level - 2];
                     if (level == 3){
                         rendererList[no].materials = new Material[2]{

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class middleBill : MonoBehaviour {
+public class BigBill : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -12,9 +12,4 @@ public class middleBill : MonoBehaviour {
 	void Update () {
 	
 	}
-
-    void levelUp()
-    {
-
-    }
 }
