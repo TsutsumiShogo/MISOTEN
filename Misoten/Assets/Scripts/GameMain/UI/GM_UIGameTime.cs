@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class GM_UIGameTime : MonoBehaviour {
 
     [SerializeField]
-    private GM_SceneManager sceneManager;       //Unity上でセット
-
-    [SerializeField]
     private GameObject[] sunPoints = new GameObject[3];  //Unity上でセット
+
+    //ゲームのシーンマネージャ
+    private GM_SceneManager sceneManager;
 
     //時間表示テキスト
     private Text timeCount;
@@ -18,6 +18,7 @@ public class GM_UIGameTime : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+        sceneManager = GameObject.Find("GameMainObjects").GetComponent<GM_SceneManager>();
         timeCount = transform.Find("TimeCount").GetComponent<Text>();
         sun = transform.Find("Sun").gameObject;
 	}
