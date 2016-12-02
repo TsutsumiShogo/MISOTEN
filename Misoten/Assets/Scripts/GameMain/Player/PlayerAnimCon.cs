@@ -35,6 +35,7 @@ public class PlayerAnimCon : MonoBehaviour {
             Vector3 camPosVec;
             camPosVec = Vector3.back * 4.0f;
             camPosVec += Vector3.up * 5.2f;
+            //camPosVec += Vector3.right * 1.5f;
 
             //カメラの距離を計算
             if (playerStatus.GetStateTransition() == PlayerStatus.EStateTransition.GROWING_BILL)

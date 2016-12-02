@@ -54,6 +54,7 @@ public class PlayerControll : MonoBehaviour {
         }
 
         //移動ベクトルを保存
+        //stick = Quaternion.AngleAxis(20.0f, Vector3.forward) * stick; //角度補正
         moveVec.x = stick.x;
         moveVec.z = stick.y;
         moveVec.y = 0.0f;
