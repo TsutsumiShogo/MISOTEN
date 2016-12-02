@@ -17,7 +17,7 @@ public class GM_MathManager : MonoBehaviour {
     public GameObject hexagonPrefab_House;
     public GameObject hexagonPrefab_Bill;
     public GameObject hexagonPrefab_BigBill;
-    public Vector3[] mathPos = new Vector3[7];
+    public Vector3[] mathPos = new Vector3[9];
 
     public int[] MATH_EXP_MAX_FLOWER = new int[2];  //花の最大経験値量
     public int[] MATH_EXP_MAX_HOUSE = new int[2];   //家の最大経験値量
@@ -60,6 +60,13 @@ public class GM_MathManager : MonoBehaviour {
         //ビルリストを作成
         billList.MakeBillList();
 
+        //植物の最大レベル計算
+        MAX_TOTAL_FLOWER_LEVEL = 0;
+        for (int i = 0; i < cells.Count; ++i)
+        {
+            MAX_TOTAL_FLOWER_LEVEL += cells[i].GetMaxTotalFlowerLevel();
+        }
+
         //STAGE1のセルを利用開始状態へ
         StartStage(EMathStageNo.STAGE1);
     }
@@ -93,14 +100,6 @@ public class GM_MathManager : MonoBehaviour {
 
         //植物の自然成長処理
         PrantGrowthProcess(timeCountResetFlg);
-
-
-        //植物の最大レベル計算
-        MAX_TOTAL_FLOWER_LEVEL = 0;
-        for (int i = 0; i < cells.Count; ++i)
-        {
-            MAX_TOTAL_FLOWER_LEVEL += cells[i].GetMaxTotalFlowerLevel();
-        }
 
 	}
 

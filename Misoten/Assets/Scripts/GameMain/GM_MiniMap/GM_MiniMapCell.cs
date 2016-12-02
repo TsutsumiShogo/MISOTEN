@@ -36,7 +36,7 @@ public class GM_MiniMapCell : MonoBehaviour {
 	    //マスを作成する
         if (stageCellObj.cellType == GM_MathCell.ECellType.CELL_FLOWER || stageCellObj.cellType == GM_MathCell.ECellType.CELL_HOUSE)
         {
-            for (int i = 0; i < 7; ++i)
+            for (int i = 0; i < 9; ++i)
             {
                 temp = Instantiate(MINIMAP_MATH_FLOWER_PREFAB);
                 temp.transform.parent = transform;

@@ -46,7 +46,7 @@ public class GM_MathCell : MonoBehaviour {
         {
             case ECellType.CELL_FLOWER:
                 //花マスの生成
-                for (int i = 0; i < 7; ++i)
+                for (int i = 0; i < 9; ++i)
                 {
                     temp = Instantiate(manager.hexagonPrefab_Flower);
                     temp.transform.parent = transform;
@@ -58,7 +58,7 @@ public class GM_MathCell : MonoBehaviour {
                 temp = Instantiate(manager.hexagonPrefab_House);
                 temp.transform.parent = transform;
                 temp.transform.position = transform.position;
-                for (int i = 1; i < 7; ++i)
+                for (int i = 1; i < 9; ++i)
                 {
                     temp = Instantiate(manager.hexagonPrefab_Flower);
                     temp.transform.parent = transform;

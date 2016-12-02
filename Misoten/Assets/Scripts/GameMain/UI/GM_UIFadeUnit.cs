@@ -60,8 +60,10 @@ public class GM_UIFadeUnit : MonoBehaviour {
         if (changeTime >= halfTime)
         {
             //ミニマップで削除処理を走らせる
-            GameObject.Find("MiniMapManager").GetComponent<GM_MiniMapManager>().Delete();
-
+            GameObject minimapManager = GameObject.Find("MiniMapManager");
+            if(minimapManager){
+                minimapManager.GetComponent<GM_MiniMapManager>().Delete();
+            }
             //オブジェクト切り替え
             gameCanvas.SetActive(false);
             gameObjects.SetActive(false);
