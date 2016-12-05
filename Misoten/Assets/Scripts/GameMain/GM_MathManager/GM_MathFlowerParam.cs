@@ -51,29 +51,23 @@ public class GM_MathFlowerParam : MonoBehaviour {
     private float colorMixableTimeCount;   //色を混ぜることが出来る残り時間
     
     //初回のみ
-    void Start()
+    void Awake()
     {
         //自身のコライダーを取得
         thisCollider = transform.GetComponent<SphereCollider>();
 
-        //親の親オブジェクトにCellスクリプトがあるので保存
-        parentCell = transform.parent.parent.GetComponent<GM_MathCell>();
-
-        //親のセルに自らを保存させる。
-        parentCell.flowerParams.Add(this);
-
         //親のマスに自らを保存させる
         transform.parent.GetComponent<GM_MathMath>().AddFlowerParam(this);
-
-        //パラメーター初期化
-        Init();
-
+    }
+    void Start()
+    {
         // ゲーム開始時にオブジェクト生成
-        if (flowerType == EFlowerType.Bill){
+        if (flowerType == EFlowerType.Bill)
+        {
             //レベルアップ
             flowerLevel = EFlowerLevel.Level1;
             //オブジェクト生成
-            objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor,this);
+            objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor, this);
         }
     }
 
@@ -81,6 +75,9 @@ public class GM_MathFlowerParam : MonoBehaviour {
 
 	// 初期化関数
 	public void Init () {
+        //親オブジェクトにCellスクリプトがあるので保存
+        parentCell = transform.parent.GetComponent<GM_MathMath>().parentCell;
+
         //あたり判定オフ
         thisCollider.enabled = false;
 

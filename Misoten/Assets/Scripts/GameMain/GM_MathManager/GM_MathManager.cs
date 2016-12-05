@@ -38,6 +38,10 @@ public class GM_MathManager : MonoBehaviour {
     float timeCount = 0.0f;
     float levelGetTimeCount = 0.0f;
 
+    //debug用
+    [SerializeField]
+    private int debug_StageTypeNo;
+
     void Awake()
     {
         billList = transform.GetComponent<GM_MathBillList>();
@@ -45,10 +49,16 @@ public class GM_MathManager : MonoBehaviour {
     //初期化
     public void Init()
     {
+        //生成するステージパターン番号を決定
+        int _randamStageTypeNo;
+        _randamStageTypeNo = Random.Range(0, 3);    //min <= range < max
+
+        debug_StageTypeNo = _randamStageTypeNo;
+        
         //各セルを初期化
         for (int i = 0; i < cells.Count; ++i)
         {
-            cells[i].Init();
+            cells[i].Init(_randamStageTypeNo);
         }
 
         //内部変数初期化
