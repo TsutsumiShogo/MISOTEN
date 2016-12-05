@@ -8,11 +8,13 @@ public class GM_UIGreenPercent : MonoBehaviour {
     private Text thisText;
 
     //マスマネージャー
+    [SerializeField]
+    private string mathManagerObjName;
     private GM_MathManager mathManager;
 
 	// Use this for initialization
 	void Awake () {
-        mathManager = GameObject.Find("MathManager").GetComponent<GM_MathManager>();
+        mathManager = GameObject.Find(mathManagerObjName).GetComponent<GM_MathManager>();
         thisText = GetComponent<Text>();
 	}
 	

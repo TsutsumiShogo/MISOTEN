@@ -55,9 +55,6 @@ public class PlayerManager : MonoBehaviour {
         playerUnits[0].PLAYER_COLOR = GM_MathFlowerParam.EFlowerColor.RED;
         playerUnits[1].PLAYER_COLOR = GM_MathFlowerParam.EFlowerColor.GREEN;
         playerUnits[2].PLAYER_COLOR = GM_MathFlowerParam.EFlowerColor.BLUE;
-
-        //プレイヤー行動開始
-        StartPlayers();
     }
 
 
