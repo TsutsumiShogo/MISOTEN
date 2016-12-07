@@ -10,6 +10,7 @@ public class ObjectManager : MonoBehaviour {
     private static GameObject prefabFlower;     // 花のプレハブ
     private static GameObject prefabHouse;      // 家のプレハブ
     private static GameObject prefabMiddleBil;  // 中ビルのプレハブ
+    private int m_actionId = 0;                 // アクション数
     public Material[] mMaterialsRed;
     public Material[] mMaterialsBlue;
     public Material[] mMaterialsGreen;
@@ -26,10 +27,14 @@ public class ObjectManager : MonoBehaviour {
     public static Material gMaterialsMagenta;
     public static Material gMaterialsWhite;
     public static Material[] gMaterialsMiddleBill;
-    
+    private int m_pointNum = 0;
+    private int[] m_processingPoint = new int[3];
+    private float m_oldtime = 0;
 	// Use this for initialization
 	void Awake () {
+        
         prefabFlower = (GameObject)Resources.Load("Prefabs/GameMain/Flower");
+        prefabHouse = (GameObject)Resources.Load("Prefabs/GameMain/House");
         prefabMiddleBil = (GameObject)Resources.Load("Prefabs/GameMain/MiddleBill");
         gMaterialsRed = mMaterialsRed;
         gMaterialsBlue = mMaterialsBlue;
@@ -41,11 +46,50 @@ public class ObjectManager : MonoBehaviour {
         gMaterialsMiddleBill = mMaterialsMiddleBill;
         //gMaterials = mMaterials;
         Id = 0;
+        m_pointNum = 0;
+        m_actionId = 0;
+        // 処理を三回に分けて行う
+        m_processingPoint[0] = 600;
+        m_processingPoint[1] = 1300;
+        m_processingPoint[2] = 2000;
 	}
-	
+
+    void start()
+    {
+        
+    }
+
+    // object一括更新処理
 	// Update is called once per frame
 	void Update () {
-	    
+        if (true)
+        {
+            m_oldtime = Time.deltaTime;
+            for (; m_actionId < m_processingPoint[m_pointNum]; m_actionId++)
+            {
+                if (objectList[m_actionId] != null)
+                {
+                    ObjectParam _obj = objectList[m_actionId].GetComponent<ObjectParam>();
+                    switch (_obj.m_type)
+                    {
+                        // 花の更新処理
+                        case GM_MathFlowerParam.EFlowerType.Flower1:
+                            _obj.flowerUpdate();
+                            break;
+                        // 中ビルの更新処理
+                        case GM_MathFlowerParam.EFlowerType.Bill:
+                            _obj.mibbleBillUpdate();
+                            break;
+                    }
+                }
+            }
+            m_pointNum++;
+            if (m_pointNum > 2)
+            {
+                m_pointNum = 0;
+                m_actionId = 0;
+            }
+        }
 	}
 
     //---------------------------------------------------------------
@@ -64,12 +108,13 @@ public class ObjectManager : MonoBehaviour {
             case GM_MathFlowerParam.EFlowerType.Flower1:
                 // プレハブインスタンス
                 Vector3 pos = new Vector3(_position.x, _position.y + 0.5f, _position.z);
-                objectList[Id] = Instantiate(prefabFlower, pos, Quaternion.Euler(60, 180, 0)) as GameObject;
+                objectList[Id] = Instantiate(prefabFlower, pos, Quaternion.Euler(0, 0, 0)) as GameObject;
                 rendererList[Id] = objectList[Id].GetComponent<Renderer>();
                 colorList[Id] = _color;
-                objectList[Id].GetComponent<flower>().Init();
-                objectList[Id].GetComponent<flower>().scallOn();
-                objectList[Id].GetComponent<flower>().SetParam(_param);
+                objectList[Id].GetComponent<ObjectParam>().FlowerInit();
+                objectList[Id].GetComponent<ObjectParam>().scallOn();
+                objectList[Id].GetComponent<ObjectParam>().SetParam(_param);
+                SoundManager.PlaySe("flower_spone",1);        // 花SE
                 break;
                 
                 // 家
@@ -78,6 +123,7 @@ public class ObjectManager : MonoBehaviour {
                 Vector3 pos_h = new Vector3(_position.x + 6.44f, _position.y, _position.z);
                 objectList[Id] = Instantiate(prefabHouse, pos_h, Quaternion.Euler(0, 0, 0)) as GameObject;
                 rendererList[Id] = objectList[Id].transform.FindChild("pCube26").GetComponent<Renderer>();
+                objectList[Id].GetComponent<ObjectParam>().HouseInit();
                 break;
 
             // ビル生成
@@ -86,8 +132,8 @@ public class ObjectManager : MonoBehaviour {
                 Vector3 pos_ = new Vector3(_position.x+6.44f, _position.y, _position.z);
                 objectList[Id] = Instantiate(prefabMiddleBil, pos_, Quaternion.Euler(0, 0, 0)) as GameObject;
                 rendererList[Id] = objectList[Id].transform.FindChild("pCube20").GetComponent<Renderer>();
-                objectList[Id].GetComponent<middleBill>().Init();
-                objectList[Id].GetComponent<middleBill>().SetParam(_param);
+                objectList[Id].GetComponent<ObjectParam>().MiddleBillInit();
+                objectList[Id].GetComponent<ObjectParam>().SetParam(_param);
                 break;
         }
 
@@ -122,7 +168,7 @@ public class ObjectManager : MonoBehaviour {
                             rendererList[no].material = gMaterialsGreen[level - 2];
                             break;
                     }
-                    objectList[no].GetComponent<flower>().scallOn();
+                    objectList[no].GetComponent<ObjectParam>().scallOn();
                     break;
 
                     // 家
@@ -132,7 +178,8 @@ public class ObjectManager : MonoBehaviour {
 
                     // 中ビル
                 case GM_MathFlowerParam.EFlowerType.Bill:
-                    objectList[no].GetComponent<middleBill>().LevelUpEff();     // レベルアップ時エフェクト
+                    SoundManager.PlaySe("cheer",3);       // 歓声
+                    objectList[no].GetComponent<ObjectParam>().LevelUpEff();     // レベルアップ時エフェクト
                     rendererList[no].material = gMaterialsMiddleBill[level - 2];
                     if (level == 3){
                         rendererList[no].materials = new Material[2]{
