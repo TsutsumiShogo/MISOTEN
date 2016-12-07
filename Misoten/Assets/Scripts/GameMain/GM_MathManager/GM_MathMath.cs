@@ -3,26 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 /**************************************************************
  * GM_MathMath.cs
- *   GM_MathManager系には必要とされない。
  *   ミニマップでマス単位で管理する必要が出てきたので作成。
  *   情報読み取り専用
 **************************************************************/
 public class GM_MathMath : MonoBehaviour {
-
+    //親のセル
+    public GM_MathCell parentCell;   //親がセットしに来る
     //子の花リスト
-    private List<GM_MathFlowerParam> flowerParams = new List<GM_MathFlowerParam>();
+    public List<GM_MathFlowerParam> flowerParams = new List<GM_MathFlowerParam>();
 
-
-    void Start()
-    {
-        //親のセルに自らをセット
-        GM_MathCell cell;
-        cell = transform.parent.GetComponent<GM_MathCell>();
-        if (cell)
-        {
-            cell.math.Add(this);
-        }
-    }
 
     //花リストに追加
     public void AddFlowerParam(GM_MathFlowerParam _obj)

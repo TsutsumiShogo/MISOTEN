@@ -14,9 +14,9 @@ public class GM_MathCell : MonoBehaviour {
     };
 
     //変数定義
-    //子オブジェクトから自らセットしに来る。
+    //Init()でセット
     public List<GM_MathMath> math;
-    //孫オブジェクトから自らセットしに来る
+    //Init()でセット
     public List<GM_MathFlowerParam> flowerParams;
     //マネージャオブジェクト
     public GM_MathManager manager;
@@ -26,8 +26,11 @@ public class GM_MathCell : MonoBehaviour {
 
     //このセルのステージ番号
     public GM_MathManager.EMathStageNo stageNo;     //Unity上でセット
+    //生成マスのパターン
+    [SerializeField]
+    private ECellType[] createCellType = new ECellType[3];   //Unity上でセット
     //このセルのタイプ
-    public ECellType cellType;                      //Unity上でセット
+    public ECellType cellType;                      //Init()関数で決定
 
     public bool startFlg;   //このセルが行動を開始しているかどうか
 
@@ -40,49 +43,47 @@ public class GM_MathCell : MonoBehaviour {
         //マス目描画スクリプトを保存
         mathCellColorCon = GetComponentInChildren<GM_MathCellColorControll>();
 
+	}
+	
+    //ゲーム開始時に初期化
+    public void Init(int stagePatternNo)
+    {
+        //ステージパターン番号でよろしくない値が来たら修正する
+        if (stagePatternNo < 0 || stagePatternNo > 2)
+        {
+            stagePatternNo = 0;
+        }
+        cellType = createCellType[stagePatternNo];
+
         //セルのタイプで生成するマスを変える
-        GameObject temp;
         switch (cellType)
         {
             case ECellType.CELL_FLOWER:
                 //花マスの生成
                 for (int i = 0; i < 9; ++i)
                 {
-                    temp = Instantiate(manager.hexagonPrefab_Flower);
-                    temp.transform.parent = transform;
-                    temp.transform.position = transform.position + manager.mathPos[i] * manager.transform.localScale.x;
+                    CreateMath(manager.hexagonPrefab_Flower, manager.mathPos[i]);
                 }
                 break;
             case ECellType.CELL_HOUSE:
-                //ビルの生成
-                temp = Instantiate(manager.hexagonPrefab_House);
-                temp.transform.parent = transform;
-                temp.transform.position = transform.position;
+                //家の生成
+                CreateMath(manager.hexagonPrefab_House, Vector3.zero);
+                //花の生成
                 for (int i = 1; i < 9; ++i)
                 {
-                    temp = Instantiate(manager.hexagonPrefab_Flower);
-                    temp.transform.parent = transform;
-                    temp.transform.position = transform.position + manager.mathPos[i] * manager.transform.localScale.x;
+                    CreateMath(manager.hexagonPrefab_Flower, manager.mathPos[i]);
                 }
                 break;
             case ECellType.CELL_BILL:
                 //ビルの生成
-                temp = Instantiate(manager.hexagonPrefab_Bill);
-                temp.transform.parent = transform;
-                temp.transform.position = transform.position;
+                CreateMath(manager.hexagonPrefab_Bill, Vector3.zero);
                 break;
             case ECellType.CELL_BIGBILL:
                 //大ビルの生成
-                temp = Instantiate(manager.hexagonPrefab_Bill);
-                temp.transform.parent = transform;
-                temp.transform.position = transform.position;
+                CreateMath(manager.hexagonPrefab_BigBill, Vector3.zero);
                 break;
         }
-	}
-	
-    //ゲーム開始時に初期化
-    public void Init()
-    {
+
         //各パラメーターを初期化
         for (int i = 0; i < flowerParams.Count; ++i)
         {
@@ -139,5 +140,30 @@ public class GM_MathCell : MonoBehaviour {
         }
 
         return levelCount;
+    }
+
+
+    //マスの生成関数
+    private void CreateMath(GameObject _instantiateObject, Vector3 _posCorrection)
+    {
+        GameObject temp;
+        GM_MathMath tempMath;
+
+        //マスの生成
+        temp = Instantiate(_instantiateObject);
+        temp.transform.parent = transform;
+        temp.transform.position = transform.position + _posCorrection * manager.transform.localScale.x;
+        //マスのスクリプトを取得
+        tempMath = temp.GetComponent<GM_MathMath>();
+        math.Add(tempMath);
+
+        //マスに自らをセット
+        tempMath.parentCell = this;
+
+        //マスのスクリプトを通じて孫の花パラメータ取得
+        for (int i = 0; i < tempMath.flowerParams.Count; ++i)
+        {
+            flowerParams.Add(tempMath.flowerParams[i]);
+        }
     }
 }

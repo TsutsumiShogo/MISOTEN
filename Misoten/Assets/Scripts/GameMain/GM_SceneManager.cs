@@ -61,7 +61,7 @@ public class GM_SceneManager : MonoBehaviour {
 
         //プレイヤーマネージャー初期化
         playerManager.Init();
-
+        playerManager.StartPlayers();
         //ミニマップマネージャ初期化
         minimapManager.Init();
 

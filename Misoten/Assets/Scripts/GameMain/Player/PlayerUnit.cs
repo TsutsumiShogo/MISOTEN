@@ -158,25 +158,6 @@ public class PlayerUnit : MonoBehaviour {
     {
         //移動入力の方向を取得
         Vector2 inputVec = Vector2.zero;
-        
-        /*
-        if(Input.GetKey(KeyCode.RightArrow) == true)
-        {
-            inputVec.x += 10.0f;
-        }
-        if(Input.GetKey(KeyCode.LeftArrow) == true)
-        {
-            inputVec.x -= 10.0f;
-        }
-        if(Input.GetKey(KeyCode.UpArrow) == true)
-        {
-            inputVec.y += 10.0f;
-        }
-        if(Input.GetKey(KeyCode.DownArrow) == true)
-        {
-            inputVec.y -= 10.0f;
-        }
-        */
 
         inputVec.x = XboxController.GetLeftX(PLAYER_NO);
         inputVec.y = XboxController.GetLeftY(PLAYER_NO);
@@ -190,7 +171,8 @@ public class PlayerUnit : MonoBehaviour {
                 controll.SetMoveVec(inputVec);
                 break;
             case PlayerStatus.EStateTransition.END:
-                moveFlg = false;
+                inputVec = Vector2.zero;
+                controll.SetMoveVec(inputVec);
                 break;
 
             //normal
