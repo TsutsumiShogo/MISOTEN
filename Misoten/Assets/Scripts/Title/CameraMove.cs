@@ -75,7 +75,7 @@ public class CameraMove : MonoBehaviour
 
         #region 入力：Aキー
         // タイトルからメインメニューへ遷移
-        if (Input.GetKeyDown(KeyCode.A) && !GameStartFlg && !StateChangeFlg)
+        if ((Input.GetKeyDown(KeyCode.A)) && !GameStartFlg && !StateChangeFlg)
         {
             GetComponent<AudioSource>().Play();
             Logo.SetActive(false);
