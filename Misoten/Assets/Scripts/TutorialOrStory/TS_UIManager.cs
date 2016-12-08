@@ -17,7 +17,7 @@ public class TS_UIManager : MonoBehaviour {
     private GameObject tutorialObject;      //テキストなどの親オブジェクト
     private Image backGround;               //説明時の背景表示部分
 
-    private List<TS_CharaDrawData> charactorImages;    //キャラクター表示部分
+    private List<TS_CharaDrawData> charactorImages = new List<TS_CharaDrawData>();    //キャラクター表示部分
     private Text charaName;                 //キャラ名表示部分
     private Text tutorialText;              //説明テキスト表示部分
     
@@ -30,11 +30,11 @@ public class TS_UIManager : MonoBehaviour {
         tutorialObject = transform.FindChild("TS_Tutorial").gameObject;
         backGround = transform.FindChild("TS_BackGround").GetComponent<Image>();
 
-        charactorImages.Add(transform.FindChild("TS_Sango").GetComponent<TS_CharaDrawData>());
-        charactorImages.Add(transform.FindChild("TS_Hisui").GetComponent<TS_CharaDrawData>());
-        charactorImages.Add(transform.FindChild("TS_Aoi").GetComponent<TS_CharaDrawData>());
-        charaName = transform.FindChild("TS_CharaName").GetComponent<Text>();
-        tutorialText = transform.FindChild("TS_Text").GetComponent<Text>();
+        charactorImages.Add(transform.FindChild("TS_Tutorial/TS_Sango").GetComponent<TS_CharaDrawData>());
+        charactorImages.Add(transform.FindChild("TS_Tutorial/TS_Hisui").GetComponent<TS_CharaDrawData>());
+        charactorImages.Add(transform.FindChild("TS_Tutorial/TS_Aoi").GetComponent<TS_CharaDrawData>());
+        charaName = transform.FindChild("TS_Tutorial/CharaNameBack/TS_CharaName").GetComponent<Text>();
+        tutorialText = transform.FindChild("TS_Tutorial/TextBack/TS_Text").GetComponent<Text>();
         
 	}
     public void Init()
