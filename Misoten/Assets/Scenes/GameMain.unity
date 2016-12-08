@@ -441,7 +441,7 @@ MonoBehaviour:
   gameTime: 0
   timeUpObj: {fileID: 1179249209}
   stageOutColObj:
-  - {fileID: 1435446105}
+  - {fileID: 804927877}
   - {fileID: 2044274794}
   fadeUnit: {fileID: 489641131}
 --- !u!114 &30704652
@@ -8833,6 +8833,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 194774, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
   m_IsPrefabParent: 0
@@ -9955,6 +9959,10 @@ Transform:
   - {fileID: 881327985}
   m_Father: {fileID: 1458546016}
   m_RootOrder: 0
+--- !u!1 &804927877 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 164182, guid: 72d92faa8949dd24a8037c7bd3bc6a0a, type: 2}
+  m_PrefabInternal: {fileID: 1579885739}
 --- !u!1001 &807122647
 Prefab:
   m_ObjectHideFlags: 0
@@ -17610,10 +17618,6 @@ Transform:
   - {fileID: 1671265741}
   m_Father: {fileID: 949696082}
   m_RootOrder: 2
---- !u!1 &1435446105 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 183528, guid: 72d92faa8949dd24a8037c7bd3bc6a0a, type: 2}
-  m_PrefabInternal: {fileID: 1579885739}
 --- !u!1 &1444917348
 GameObject:
   m_ObjectHideFlags: 0
@@ -18740,13 +18744,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 104054, guid: 72d92faa8949dd24a8037c7bd3bc6a0a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198716, guid: 72d92faa8949dd24a8037c7bd3bc6a0a, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 177112, guid: 72d92faa8949dd24a8037c7bd3bc6a0a, type: 2}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
