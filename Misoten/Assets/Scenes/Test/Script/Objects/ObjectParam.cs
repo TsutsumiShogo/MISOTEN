@@ -20,6 +20,12 @@ public class ObjectParam : MonoBehaviour {
     public GameObject m_levelPartcleObj;            // レベルアップ時エフェクト
     public GameObject m_particleObj;                // パーティクルオブジェクト
 
+    //-----------------------------------------------------
+    // 花用辺巣
+    public GameObject     m_compParticleObj;        // 花パーティクルオブジェ
+    private ParticleSystem m_compParticle;           // 花パーティクル
+    public GameObject m_lastParticleObj;        // 花パーティクルオブジェ
+    private ParticleSystem m_lastParticle;           // 花パーティクル
     // ----------------------------------------------------
     // 中ビル用変数
     private ParticleSystem m_particle;              // パーティクルシステム
@@ -52,6 +58,8 @@ public class ObjectParam : MonoBehaviour {
     {
         m_type = GM_MathFlowerParam.EFlowerType.Flower1;
         m_particle = m_particleObj.GetComponent<ParticleSystem>();
+        m_compParticle = m_compParticleObj.GetComponent<ParticleSystem>();
+        m_lastParticle = m_lastParticleObj.GetComponent<ParticleSystem>();
     }
     // ----------------------------------------------------
     //  家初期化処理
@@ -162,6 +170,14 @@ public class ObjectParam : MonoBehaviour {
         m_scallFlg = true;
         m_upDown = true;
         //m_audioSource.Play();
+    }
+    // -------------------------------
+    // 花パーティクル開始命令
+    // -------------------------------
+    public void startFlowerParticle()
+    {
+        m_compParticle.Play();
+        m_lastParticle.Play();
     }
 
     // ----------------------------------------------------
