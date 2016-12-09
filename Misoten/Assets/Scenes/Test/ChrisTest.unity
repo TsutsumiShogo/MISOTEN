@@ -124,6 +124,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11443804, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
+      propertyPath: stageOutColObj.Array.data[0]
+      value: 
+      objectReference: {fileID: 1624519580}
+    - target: {fileID: 11443804, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
+      propertyPath: stageOutColObj.Array.data[1]
+      value: 
+      objectReference: {fileID: 2023335854}
+    - target: {fileID: 131878, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 181924, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1624519580 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 117616, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
+  m_PrefabInternal: {fileID: 384994779}
+--- !u!1 &2023335854 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 150058, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
+  m_PrefabInternal: {fileID: 384994779}
