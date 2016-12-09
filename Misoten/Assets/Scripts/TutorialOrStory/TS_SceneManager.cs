@@ -28,6 +28,8 @@ public class TS_SceneManager : MonoBehaviour {
     private PlayerManager playerManager;
     //UIマネージャー
     private TS_UIManager tutorialUiManager;
+    //シーンチェンジマネージャー
+    private SceneChangeManager sceneChangeManager;
 
     //公開変数
     public E_TSPhaseNo nowPhaseNo;  //今のフェーズ番号
@@ -45,7 +47,9 @@ public class TS_SceneManager : MonoBehaviour {
         //プレイヤーマネージャー保存
         playerManager = gameObject.GetComponentInChildren<PlayerManager>();
         //チュートリアルUIマネージャ保存
-        tutorialUiManager = GameObject.Find("TutorialUI").GetComponent<TS_UIManager>();
+        tutorialUiManager = GameObject.Find("Canvas").transform.Find("TutorialUI").GetComponent<TS_UIManager>();
+        //シーンチェンジマネージャー保存
+        sceneChangeManager = GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>();
 	}
     public void Init()
     {
@@ -63,6 +67,9 @@ public class TS_SceneManager : MonoBehaviour {
         nowTextNo = 0;
         nowActionTime = 0;
         NextPhaseProcess();
+
+        //テキスト初期化
+        tutorialUiManager.ChangeText(nowTextNo);
     }
 
 	// Update is called once per frame
@@ -79,6 +86,7 @@ public class TS_SceneManager : MonoBehaviour {
         if (nowPhaseNo == E_TSPhaseNo.TS_Play || nowPhaseNo == E_TSPhaseNo.TS_PlayBill)
         {
             NextPhaseProcess();
+            return;
         }
 
 
@@ -86,6 +94,14 @@ public class TS_SceneManager : MonoBehaviour {
         {
             //テキスト番号を進める
             NextText();
+        }
+        //チュートリアルスキップ確認
+        if (nowPhaseNo <= E_TSPhaseNo.TS_PlayBill)
+        {
+            if (XboxController.GetButtonHoldStart(0))
+            {
+                Skip();
+            }
         }
 	}
 
@@ -102,6 +118,8 @@ public class TS_SceneManager : MonoBehaviour {
         //待機時間設定
         nowActionTime = TEXT_START_WAIT_TIME_LIST[nowTextNo];
         
+        //UIのテキスト変更を通知
+        tutorialUiManager.ChangeText(nowTextNo);
 
         //フェーズ変更するべき値かチェック
         if (CheckNextPhaseNo(nowTextNo) == true)
@@ -156,8 +174,17 @@ public class TS_SceneManager : MonoBehaviour {
                 tutorialUiManager.ActiveSwtich(true);
                 break;
             case E_TSPhaseNo.TS_Exit:   //次のシーンへ移動
-
+                sceneChangeManager.SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);
                 break;
         }
+    }
+
+    void Skip()
+    {
+        nowTextNo = PHACE_NEXT_TEXT_NO[(int)E_TSPhaseNo.TS_PlayBill]-1;
+        nowPhaseNo = E_TSPhaseNo.TS_PlayBill;
+
+        NextText();
+        nowActionTime = 1.0f;
     }
 }

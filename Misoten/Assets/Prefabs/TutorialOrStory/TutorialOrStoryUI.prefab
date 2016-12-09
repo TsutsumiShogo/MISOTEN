@@ -352,6 +352,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &152910
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22490750}
+  - 222: {fileID: 22215954}
+  - 114: {fileID: 11468966}
+  - 114: {fileID: 11405666}
+  - 114: {fileID: 11432882}
+  m_Layer: 5
+  m_Name: Abutton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &156248
 GameObject:
   m_ObjectHideFlags: 1
@@ -739,6 +758,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: L
+--- !u!114 &11405666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: .5}
+  m_EffectDistance: {x: 3, y: -3}
+  m_UseGraphicAlpha: 1
 --- !u!114 &11406002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -969,7 +1002,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 595765afb907ad945b14865ffae6ae0f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1077,6 +1110,20 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: .541000009}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &11432882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: .246999994}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &11433414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1088,12 +1135,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da301ed618ec63744b145bd29af50813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charaSpriteDataList: []
-  charaDrawSpriteNoList: 
-  charaFrontFlgList: 
-  FRONT_COLOR: {r: 0, g: 0, b: 0, a: 0}
-  FRONT_NOT_COLOR: {r: 0, g: 0, b: 0, a: 0}
-  CHANGE_NEED_TIME: .5
+  charaSpriteDataList:
+  - {fileID: 21300000, guid: 836ff52bdb3597946b7a4dd85d62d457, type: 3}
+  charaDrawSpriteNoList: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  charaFrontFlgList: 0001000001000000010000000001010001010000000001010000000101
+  FRONT_COLOR: {r: 1, g: 1, b: 1, a: 1}
+  FRONT_NOT_COLOR: {r: .602941155, g: .602941155, b: .602941155, a: 1}
+  CHANGE_NEED_TIME: .200000003
   thisImage: {fileID: 0}
 --- !u!114 &11434304
 MonoBehaviour:
@@ -1222,7 +1270,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 0f7d584f4c78e8044a30e928f196c975, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1253,12 +1301,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da301ed618ec63744b145bd29af50813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charaSpriteDataList: []
-  charaDrawSpriteNoList: 
-  charaFrontFlgList: 
-  FRONT_COLOR: {r: 0, g: 0, b: 0, a: 0}
-  FRONT_NOT_COLOR: {r: 0, g: 0, b: 0, a: 0}
-  CHANGE_NEED_TIME: .5
+  charaSpriteDataList:
+  - {fileID: 21300000, guid: 9884d1165e5d27849a247fb8c6cab8c6, type: 3}
+  charaDrawSpriteNoList: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  charaFrontFlgList: 0100000001010001000001010100000000000100010100000001010101
+  FRONT_COLOR: {r: 1, g: 1, b: 1, a: 1}
+  FRONT_NOT_COLOR: {r: .602941155, g: .602941155, b: .602941155, a: 1}
+  CHANGE_NEED_TIME: .200000003
   thisImage: {fileID: 0}
 --- !u!114 &11458744
 MonoBehaviour:
@@ -1402,6 +1451,33 @@ MonoBehaviour:
   m_Text: 'R
 
 '
+--- !u!114 &11468966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 8c919b80d2a2bfa4eac237216313d6bc, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &11470030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1455,7 +1531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1558,7 +1634,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 9884d1165e5d27849a247fb8c6cab8c6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1577,9 +1653,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ffc4ba7dfd348499df8c9061581385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CHARA_NAME_LIST: []
-  TEXT_LIST: []
-  BACK_GROUND_COLOR: {r: 0, g: 0, b: 0, a: 0}
+  CHARA_NAME_LIST:
+  - "\u30A2\u30AA\u30A4"
+  - "\u30D2\u30B9\u30A4"
+  - "\u30B5\u30F3\u30B4"
+  - "\u30B5\u30F3\u30B4"
+  - "\u30A2\u30AA\u30A4\u30FB\u30D2\u30B9\u30A4"
+  - "\u30A2\u30AA\u30A4"
+  - "\u30B5\u30F3\u30B4"
+  - "\u30A2\u30AA\u30A4"
+  - "\u30D2\u30B9\u30A4"
+  - "\u30B5\u30F3\u30B4"
+  - "\u30A2\u30AA\u30A4"
+  - "\u30A2\u30AA\u30A4"
+  - "\u30A2\u30AA\u30A4"
+  - "\u30D2\u30B9\u30A4"
+  - "\u30D2\u30B9\u30A4"
+  - "\u30B5\u30F3\u30B4"
+  - "\u30D2\u30B9\u30A4"
+  - "\u30D2\u30B9\u30A4"
+  - "\u30A2\u30AA\u30A4"
+  - "\u30B5\u30F3\u30B4"
+  - "\u30A2\u30AA\u30A4"
+  - "\u30A2\u30AA\u30A4"
+  - "\u30D2\u30B9\u30A4"
+  - "\u30D2\u30B9\u30A4"
+  - "\u30B5\u30F3\u30B4"
+  - "\u30A2\u30AA\u30A4"
+  - "\u30A2\u30AA\u30A4"
+  - 
+  - 
+  TEXT_LIST:
+  - "\u3000\u3055\u3041\u3066\u4ECA\u65E5\u304C\u79C1\u305F\u3061\u306E\u521D\u4ED5\u4E8B\u306E\u65E5\u3088\uFF01\u3000"
+  - "\u3000\u3000\u9811\u5F35\u308D\u3046\u306D\u3002\u30B5\u30F3\u30B4\u3061\u3083\u3093\uFF01\u3000\u3000"
+  - "\u3000\u3000\u3000\u3000\u2026\u2026\u3000\u3000\u3000\u3000"
+  - "\u3053\u308C\u306E\u64CD\u4F5C\u306E\u4ED5\u65B9\u5FD8\u308C\u3061\u3083\u3063\u305F\u3088\u3002\u3048\u3078\u3078\u3078\u2026\u3054\u3081\u3093\u306D\u3002"
+  - "\u3048\uFF5E\uFF5E\uFF5E\uFF5E\uFF5E\uFF5E\uFF5E\uFF5E\uFF5E\uFF5E\uFF5E\uFF5E\uFF5E\uFF5E\uFF5E\u3063\uFF01\uFF01\uFF1F"
+  - "\u3042\u306A\u305F\u3042\u308C\u307B\u3069\u64CD\u4F5C\u65B9\u6CD5\u4E88\u7FD2\u3057\u3068\u304D\u306A\u3055\u3044\u3063\u3066\u8A00\u3063\u3066\u3042\u3063\u305F\u3067\u3057\u3087"
+  - "\u6628\u65E5\u306E\u591C\u3084\u308D\u3046\u3068\u601D\u3063\u305F\u3093\u3060\u3051\u3069\u2026\u3064\u3044\u5BDD\u3061\u3083\u3063\u3066"
+  - "\u4ED5\u65B9\u306A\u3044\u308F\u306D\u3002\u307E\u3060\u4ED5\u4E8B\u307E\u3067\u5C11\u3057\u6642\u9593\u304C\u3042\u308B\u3057\u3001\u79C1\u305F\u3061\u304C\u6559\u3048\u3066\u3042\u3052\u308B\u308F\u3002"
+  - "\u30B5\u30F3\u30B4\u3061\u3083\u3093\u3002\u79C1\u305F\u3061\u306E\u3059\u308B\u4ED5\u4E8B\u306F\u899A\u3048\u3066\u308B\uFF1F"
+  - "\u79C1\u305F\u3061\u306E\u4ED5\u4E8B\u306F\u3001\u8857\u306B\u5F69\u308A\u3092\u4E0E\u3048\u308B\u3093\u3060\u3088\u306D\u3002"
+  - "\u305D\u3046\u3088\u3002\u79C1\u305F\u3061\u306F\u3001\u7A2E\u307E\u304D\u30FB\u6210\u9577\u30FB\u8272\u306E\u8981\u7D20\u3092\u3046\u307E\u304F\u4F7F\u3044\u3001\u3053\u306E\u8857\u3092\u5F69\u308A\u826F\u304F\u3057\u3066\u3044\u304F\u306E\u3088\u3002"
+  - "\u305D\u308C\u3058\u3083\u3001\u4ED5\u4E8B\u306E\u64CD\u4F5C\u306E\u65B9\u6CD5\u3092\u6559\u3048\u308B\u308F\u3002"
+  - "\uFF21\u30DC\u30BF\u30F3\u3067\u9078\u629E\u3055\u308C\u3066\u3044\u308B\u30A2\u30A4\u30B3\u30F3\u306E\u64CD\u4F5C\u304C\u51FA\u6765\u308B\u308F\u3088\u3002"
+  - "\u3053\u306E\u7A2E\u306E\u30DE\u30FC\u30AF\u3067\u7A2E\u307E\u304D\u304C\u51FA\u6765\u3001\u6728\u306E\u30DE\u30FC\u30AF\u3067\u82B1\u306A\u3069\u3092\u6210\u9577\u3055\u305B\u3001"
+  - "\u82B1\u306E\u30DE\u30FC\u30AF\u3067\u8272\u3092\u5909\u3048\u308B\u4E8B\u304C\u3067\u304D\u308B\u3088\u3002"
+  - "\u79C1\u305F\u3061\u306F\u3001\u5354\u529B\u3057\u3066\u307E\u305A\u7A2E\u3092\u690D\u3048\u3066\u3001\u305D\u308C\u304B\u3089\u690D\u3048\u305F\u7A2E\u3092\u6210\u9577\u3055\u305B\u3066\u3044\u3051\u3070\u3044\u3044\u3093\u3060\u306D\u3002"
+  - "\u8272\u306F\u5439\u304D\u304B\u3051\u308B\u3068\u79C1\u305F\u3061\u306E\u8272\u306B\u306A\u308B\u3051\u3069\u3001"
+  - "\u4E8C\u4EBA\u4EE5\u4E0A\u3067\u540C\u6642\u306B\u5439\u304D\u304B\u3051\u308B\u3053\u3068\u3067\u3001\u9055\u3063\u305F\u8272\u306B\u306A\u308B\u3053\u3068\u3082\u899A\u3048\u3066\u304A\u3044\u3066\u306D\u3002"
+  - "\u305D\u308C\u3058\u3083\u3001\u4E00\u5EA6\u5B9F\u8DF5\u3057\u3066\u307F\u307E\u3057\u3087\u3046\u304B\u3002"
+  - "\u3000\u306F\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\u30FC\u3044\uFF01\u3000"
+  - "\u6B21\u306F\u7279\u6B8A\u30A2\u30AF\u30B7\u30E7\u30F3\u306E\u64CD\u4F5C\u3092\u8AAC\u660E\u3059\u308B\u308F"
+  - "\u30D3\u30EB\u306A\u3069\u306E\u5927\u304D\u306A\u5EFA\u7269\u306F\uFF38\u30DC\u30BF\u30F3\u3092\u62BC\u3059\u3053\u3068\u3067\u7DD1\u5316\u3067\u304D\u308B\u308F"
+  - "\u4E00\u4EBA\u3067\u306F\u51C4\u3044\u6642\u9593\u304C\u304B\u304B\u308B\u3051\u3069\u3001\u307F\u3093\u306A\u3067\u5354\u529B\u3059\u308B\u3053\u3068\u3067\u3001"
+  - "\u5C11\u3057\u306E\u6642\u9593\u3067\u7DD1\u5316\u3067\u304D\u308B\u304B\u3089\u3001\u30B5\u30F3\u30B4\u3061\u3083\u3093\u5354\u529B\u3057\u3066\u3084\u308D\u3046\u306D\u3002"
+  - "\u3000\u3000\u3000\u3000\u3046\u3093\uFF01\u3000\u3000\u3000\u3000"
+  - "\u3042\u305D\u3053\u306B\u3061\u3087\u3046\u3069\u826F\u3044\u30D3\u30EB\u304C\u3042\u308B\u304B\u3089\u3001\u3042\u308C\u3067\u8A66\u3057\u3066\u307F\u307E\u3057\u3087\u3046\u304B\u3002"
+  - "\u305D\u308D\u305D\u308D\u6642\u9593\u3060\u308F\u3002"
+  - 
+  - 
+  BACK_GROUND_COLOR: {r: 0, g: 0, b: 0, a: .686274529}
+  CHANGE_TIME: 2
 --- !u!114 &11489520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1618,12 +1753,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da301ed618ec63744b145bd29af50813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charaSpriteDataList: []
-  charaDrawSpriteNoList: 
-  charaFrontFlgList: 
-  FRONT_COLOR: {r: 0, g: 0, b: 0, a: 0}
-  FRONT_NOT_COLOR: {r: 0, g: 0, b: 0, a: 0}
-  CHANGE_NEED_TIME: .5
+  charaSpriteDataList:
+  - {fileID: 21300000, guid: 0f7d584f4c78e8044a30e928f196c975, type: 3}
+  charaDrawSpriteNoList: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  charaFrontFlgList: 0000010100000100000100000000000100000001000000000100000101
+  FRONT_COLOR: {r: 1, g: 1, b: 1, a: 1}
+  FRONT_NOT_COLOR: {r: .602941155, g: .602941155, b: .602941155, a: 1}
+  CHANGE_NEED_TIME: .200000003
   thisImage: {fileID: 0}
 --- !u!114 &11492318
 MonoBehaviour:
@@ -1644,7 +1780,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 836ff52bdb3597946b7a4dd85d62d457, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1744,6 +1880,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132214}
+--- !u!222 &22215954
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152910}
 --- !u!222 &22216442
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -2218,8 +2360,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22442770}
   m_RootOrder: 0
-  m_AnchorMin: {x: .100000001, y: .300000012}
-  m_AnchorMax: {x: .300000012, y: .800000012}
+  m_AnchorMin: {x: .300000012, y: .300000012}
+  m_AnchorMax: {x: .629999995, y: .800000012}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
@@ -2297,6 +2439,7 @@ RectTransform:
   - {fileID: 22480030}
   - {fileID: 22422018}
   - {fileID: 22440488}
+  - {fileID: 22490750}
   m_Father: {fileID: 22453928}
   m_RootOrder: 8
   m_AnchorMin: {x: 0, y: 0}
@@ -2376,8 +2519,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22442770}
   m_RootOrder: 1
-  m_AnchorMin: {x: .400000006, y: .300000012}
-  m_AnchorMax: {x: .600000024, y: .800000012}
+  m_AnchorMin: {x: .100000001, y: .300000012}
+  m_AnchorMax: {x: .300000012, y: .800000012}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
@@ -2573,6 +2716,23 @@ RectTransform:
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: -5.0000062}
   m_SizeDelta: {x: 85, y: 80}
+  m_Pivot: {x: .5, y: .5}
+--- !u!224 &22490750
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152910}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22442770}
+  m_RootOrder: 5
+  m_AnchorMin: {x: .833000004, y: .0599999987}
+  m_AnchorMax: {x: .899999976, y: .180000007}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22495108
 RectTransform:

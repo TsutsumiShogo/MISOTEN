@@ -32,7 +32,6 @@ public class TS_CharaDrawData : MonoBehaviour {
 	}
     public void Init()
     {
-        nowTime = 0.0f;
         thisImage.sprite = charaSpriteDataList[charaDrawSpriteNoList[0]];
         if (charaFrontFlgList[0] == true)
         {
@@ -42,6 +41,9 @@ public class TS_CharaDrawData : MonoBehaviour {
         {
             thisImage.color = FRONT_NOT_COLOR;
         }
+        nowTime = 0.0f;
+        oldColor = thisImage.color;
+        nextColor = thisImage.color;
     }
 
     void Update()
@@ -51,6 +53,11 @@ public class TS_CharaDrawData : MonoBehaviour {
         {
             thisImage.color = nextColor;
             return;
+        }
+        nowTime -= Time.deltaTime;
+        if (nowTime < 0.0f)
+        {
+            nowTime = 0.0f;
         }
 
         //切り替え中
