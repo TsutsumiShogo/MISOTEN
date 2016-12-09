@@ -101,6 +101,9 @@
      <Compile Include="Assets\Scripts\Title\TitleSceneManager.cs" />
      <Compile Include="Assets\Scripts\Title\charSelect.cs" />
      <Compile Include="Assets\Scripts\Title\cloud.cs" />
+     <Compile Include="Assets\Scripts\TutorialOrStory\TS_CharaDrawData.cs" />
+     <Compile Include="Assets\Scripts\TutorialOrStory\TS_SceneManager.cs" />
+     <Compile Include="Assets\Scripts\TutorialOrStory\TS_UIManager.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />

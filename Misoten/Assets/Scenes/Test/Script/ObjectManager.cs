@@ -108,7 +108,7 @@ public class ObjectManager : MonoBehaviour {
             case GM_MathFlowerParam.EFlowerType.Flower1:
                 // プレハブインスタンス
                 Vector3 pos = new Vector3(_position.x, _position.y + 0.5f, _position.z);
-                objectList[Id] = Instantiate(prefabFlower, pos, Quaternion.Euler(0, 0, 0)) as GameObject;
+                objectList[Id] = Instantiate(prefabFlower, pos, Quaternion.Euler(15, 0, 0)) as GameObject;
                 rendererList[Id] = objectList[Id].GetComponent<Renderer>();
                 colorList[Id] = _color;
                 objectList[Id].GetComponent<ObjectParam>().FlowerInit();
@@ -168,6 +168,7 @@ public class ObjectManager : MonoBehaviour {
                             rendererList[no].material = gMaterialsGreen[level - 2];
                             break;
                     }
+                    if (level >= 3) objectList[no].GetComponent<ObjectParam>().startFlowerParticle();
                     objectList[no].GetComponent<ObjectParam>().scallOn();
                     break;
 
