@@ -1474,7 +1474,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3042\u306A\u305F\u3042\u308C\u307B\u3069\u64CD\u4F5C\u65B9\u6CD5\u4E88\u7FD2\u3057\u3068\u304D\u306A\u3055\u3044\u3063\u3066\n\u8A00\u3063\u3066\u3042\u3063\u305F\u3067\u3057\u3087\uFF01"
+  m_Text: "\u3042\u306A\u305F\u3042\u308C\u307B\u3069\u64CD\u4F5C\u65B9\u6CD5\u4E88\u7FD2\u3057\u3068\u304D\u306A\u3055\u3044\u3063\u3066\u8A00\u3063\u3066\u3042\u3063\u305F\u3067\u3057\u3087\uFF01"
 --- !u!114 &11476178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1579,6 +1579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CHARA_NAME_LIST: []
   TEXT_LIST: []
+  BACK_GROUND_COLOR: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &11489520
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -19,7 +19,7 @@ public class GM_MissionManager : MonoBehaviour {
 
     void Awake()
     {
-        announce = GameObject.Find("MissionAnnounce").GetComponent<GM_UIMissionAnnounce>();
+        announce = GameObject.Find("Canvas").transform.Find("GameMainUI/Game/MissionAnnounce").GetComponent<GM_UIMissionAnnounce>();
     }
 
 	public void Init () {

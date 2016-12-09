@@ -111,6 +111,8 @@ public class SceneChangeManager : MonoBehaviour {
                 gameUiManager.Init();
 
                 break;
+            default:
+                break;
         }//EndSwitch
 
     }//EndFunc
