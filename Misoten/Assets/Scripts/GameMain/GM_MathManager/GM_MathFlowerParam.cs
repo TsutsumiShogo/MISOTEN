@@ -124,7 +124,7 @@ public class GM_MathFlowerParam : MonoBehaviour {
         thisCollider.enabled = _flg;
     }
 
-    void Update()
+    public void UpdateFlower()
     {
         //色混ぜ可能時間減少
         if (colorMixableTimeCount > 0.0f)

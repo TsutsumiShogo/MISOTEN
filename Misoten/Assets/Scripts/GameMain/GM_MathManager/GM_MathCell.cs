@@ -106,6 +106,14 @@ public class GM_MathCell : MonoBehaviour {
         }
         startFlg = true;
     }
+    //末端スクリプトの更新
+    public void UpdateFlower()
+    {
+        for (int i = 0; i < flowerParams.Count; ++i)
+        {
+            flowerParams[i].UpdateFlower();
+        }
+    }
 
     //自然成長
     public void PrantGrowth(int addExp)

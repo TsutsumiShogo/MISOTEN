@@ -22,7 +22,7 @@ public class TS_UIManager : MonoBehaviour {
     private List<TS_CharaDrawData> charactorImages = new List<TS_CharaDrawData>();    //キャラクター表示部分
     private Text charaName;                 //キャラ名表示部分
     private Text tutorialText;              //説明テキスト表示部分
-    
+    private Text actionTimeText;            //行動可能時間表示部分
 
     //内部変数
     private bool activeFlg;
@@ -36,21 +36,27 @@ public class TS_UIManager : MonoBehaviour {
         charactorImages.Add(transform.FindChild("TS_Tutorial/TS_Sango").GetComponent<TS_CharaDrawData>());
         charactorImages.Add(transform.FindChild("TS_Tutorial/TS_Hisui").GetComponent<TS_CharaDrawData>());
         charactorImages.Add(transform.FindChild("TS_Tutorial/TS_Aoi").GetComponent<TS_CharaDrawData>());
+
+        charactorImages.Add(transform.FindChild("TS_Tutorial/TS_Tane").GetComponent<TS_CharaDrawData>());
+        charactorImages.Add(transform.FindChild("TS_Tutorial/TS_Seityou").GetComponent<TS_CharaDrawData>());
+        charactorImages.Add(transform.FindChild("TS_Tutorial/TS_Col").GetComponent<TS_CharaDrawData>());
+
         charaName = transform.FindChild("TS_Tutorial/CharaNameBack/TS_CharaName").GetComponent<Text>();
         tutorialText = transform.FindChild("TS_Tutorial/TextBack/TS_Text").GetComponent<Text>();
-        
+        actionTimeText = transform.FindChild("TS_ActionTime").GetComponent<Text>();
 	}
     public void Init()
     {
         backGround.color = BACK_GROUND_COLOR;
-        
-        charactorImages[0].Init();
-        charactorImages[1].Init();
-        charactorImages[2].Init();
+
+        for (int i = 0; i < charactorImages.Count; ++i)
+        {
+            charactorImages[i].Init();
+        }
 
         activeFlg = true;
         changeTime = CHANGE_TIME + 1.0f;
-
+        SetTimeText(0.0f);
         ActiveSwtich(activeFlg);
     }
 	
@@ -106,9 +112,16 @@ public class TS_UIManager : MonoBehaviour {
         }
 
         //キャラクター強調効果切り替え
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < charactorImages.Count; i++)
         {
             charactorImages[i].StartChangeImage(textNo);
         }
+    }
+
+    public void SetTimeText(float _drawTime)
+    {
+        int _intTime = (int)_drawTime;
+
+        actionTimeText.text = "残り" + _intTime.ToString() + "秒";
     }
 }

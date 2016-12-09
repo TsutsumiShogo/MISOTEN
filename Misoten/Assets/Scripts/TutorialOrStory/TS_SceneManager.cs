@@ -61,6 +61,7 @@ public class TS_SceneManager : MonoBehaviour {
 
         //チュートリアルUIマネージャー初期化
         tutorialUiManager.Init();
+        tutorialUiManager.SetTimeText(TEXT_START_WAIT_TIME_LIST[PHACE_NEXT_TEXT_NO[(int)E_TSPhaseNo.TS_Rule2]]);
 
         //パラメータ初期化
         nowPhaseNo = E_TSPhaseNo.TS_Entry;
@@ -79,6 +80,12 @@ public class TS_SceneManager : MonoBehaviour {
         if (nowActionTime > 0.0f)
         {
             nowActionTime -= Time.deltaTime;
+
+            //もしゲームプレイフェーズ中なら時間表示を更新する
+            if (nowPhaseNo == E_TSPhaseNo.TS_Play || nowPhaseNo == E_TSPhaseNo.TS_PlayBill)
+            {
+                tutorialUiManager.SetTimeText(nowActionTime);
+            }
             return;
         }
 

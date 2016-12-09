@@ -111,6 +111,12 @@ public class GM_MathManager : MonoBehaviour {
         //植物の自然成長処理
         PrantGrowthProcess(timeCountResetFlg);
 
+        //マスの末端オブジェクトの更新
+        for (int i = 0; i < cells.Count; ++i)
+        {
+            cells[i].UpdateFlower();
+        }
+
 	}
 
     //=============================公開関数=====================================

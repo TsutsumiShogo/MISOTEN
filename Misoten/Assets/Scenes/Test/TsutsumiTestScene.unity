@@ -1074,21 +1074,29 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
-    - target: {fileID: 11415540, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 1553459224}
-    - target: {fileID: 11476178, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 508386912}
     - target: {fileID: 11424656, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 2105144988}
+    - target: {fileID: 11476178, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 508386912}
+    - target: {fileID: 11415540, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 1553459224}
     - target: {fileID: 191190, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
       propertyPath: m_Name
       value: TutorialUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 158918, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 106300, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
