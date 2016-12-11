@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &279667728
 Transform:
   m_ObjectHideFlags: 0
@@ -495,7 +495,7 @@ Prefab:
       objectReference: {fileID: 395605862}
     - target: {fileID: 194774, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dfe6a2d34fbf53a41932a5d9e8c3ac21, type: 2}
@@ -1074,25 +1074,21 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
-    - target: {fileID: 11424656, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 2105144988}
-    - target: {fileID: 11476178, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 508386912}
     - target: {fileID: 11415540, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 1553459224}
+    - target: {fileID: 11476178, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 508386912}
+    - target: {fileID: 11424656, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 2105144988}
     - target: {fileID: 191190, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
       propertyPath: m_Name
       value: TutorialUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 191190, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9bf79171885db134c962d2a5e6ad39ef, type: 2}
@@ -1371,7 +1367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1988753936
 Transform:
   m_ObjectHideFlags: 0
@@ -1561,7 +1557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32d344c123a85c41b8e9b87cbac28ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  START_SCENE_NO: 2
+  START_SCENE_NO: 1
   SceneTopObjects:
   - {fileID: 1365344543}
   - {fileID: 279667727}

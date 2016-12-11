@@ -12,6 +12,8 @@ public class TS_UIManager : MonoBehaviour {
 
     [SerializeField]
     private Color BACK_GROUND_COLOR;
+    [SerializeField]
+    private float CHANGE_TIME = 2.0f;
 
     //オブジェクト
     private GameObject tutorialObject;      //テキストなどの親オブジェクト
@@ -23,7 +25,8 @@ public class TS_UIManager : MonoBehaviour {
     
 
     //内部変数
-    private Color nextBackGroundColor;
+    private bool activeFlg;
+    private float changeTime;
 
 	// Use this for initialization
 	void Awake () {
@@ -40,33 +43,72 @@ public class TS_UIManager : MonoBehaviour {
     public void Init()
     {
         backGround.color = BACK_GROUND_COLOR;
-        tutorialObject.SetActive(true);
+        
         charactorImages[0].Init();
         charactorImages[1].Init();
         charactorImages[2].Init();
+
+        activeFlg = true;
+        changeTime = CHANGE_TIME + 1.0f;
+
+        ActiveSwtich(activeFlg);
     }
 	
 	// Update is called once per frame
 	void Update () {
-	
+        //切り替え中かどうか
+        if (changeTime < CHANGE_TIME)
+        {
+            changeTime += Time.deltaTime;
+            if (changeTime > CHANGE_TIME)
+            {
+                changeTime = CHANGE_TIME;
+            }
+
+            Color _setColor = BACK_GROUND_COLOR;
+            float _percent;
+            _percent = changeTime / CHANGE_TIME;
+
+            //どっちに切り替え中なのか
+            if (activeFlg == true)
+            {
+                //有効な方向に切り替え中
+                _setColor.a = _percent * BACK_GROUND_COLOR.a;
+                backGround.color = _setColor;
+            }
+            else
+            {
+                //無効な方向に切り替え中
+                _setColor.a = BACK_GROUND_COLOR.a - BACK_GROUND_COLOR.a * _percent;
+                backGround.color = _setColor;
+            }
+        }
 	}
 
     public void ActiveSwtich(bool _activeFlg)
     {
+        changeTime = 0.0f;
+        activeFlg = _activeFlg;
         //テキスト表示部の有効切り替え
         tutorialObject.SetActive(_activeFlg);
-        if (_activeFlg == true)
-        {
-            nextBackGroundColor = BACK_GROUND_COLOR;
-        }
-        else
-        {
-            nextBackGroundColor.r = nextBackGroundColor.g = nextBackGroundColor.b = nextBackGroundColor.a = 0.0f;
-        }
     }
 
     public void ChangeText(int textNo)
     {
+        //文字切り替え
+        if (textNo >= 0 && textNo < CHARA_NAME_LIST.Count)
+        {
+            charaName.text = CHARA_NAME_LIST[textNo];
+        }
+        if (textNo >= 0 && textNo < TEXT_LIST.Count)
+        {
+            tutorialText.text = TEXT_LIST[textNo];
+        }
 
+        //キャラクター強調効果切り替え
+        for (int i = 0; i < 3; i++)
+        {
+            charactorImages[i].StartChangeImage(textNo);
+        }
     }
 }
