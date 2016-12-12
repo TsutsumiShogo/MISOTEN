@@ -1565,7 +1565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32d344c123a85c41b8e9b87cbac28ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  START_SCENE_NO: 1
+  START_SCENE_NO: 2
   SceneTopObjects:
   - {fileID: 1365344543}
   - {fileID: 279667727}
