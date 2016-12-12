@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d933b4a72ab395e448b812784040fd13
-timeCreated: 1480912395
+guid: a7b291a694040d048a834b927464890e
+timeCreated: 1481473584
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -44,117 +44,115 @@ ModelImporter:
     100072: L_HairTail
     100074: L_HairTailRoot
     100076: L_HairTailTip
-    100078: L_Hand_Gun
-    100080: L_Hat1
-    100082: L_Hat2
-    100084: L_HatEar
-    100086: L_HatEar 1
-    100088: L_HatTailRoot
-    100090: L_Hip
-    100092: L_knee
-    100094: L_pipe1
-    100096: L_pipe2
-    100098: L_pipe3
-    100100: L_pipe4
-    100102: L_pipe5
-    100104: L_pipeRoot
-    100106: L_shoulder
-    100108: L_thumbJointEnd
-    100110: L_thumbJointMiddle
-    100112: L_thumbRoot
-    100114: L_Wrist
-    100116: LowerBody
-    100118: lowerBody
-    100120: Main
-    100122: neck
-    100124: pasted__Hair_Bck2
-    100126: pasted__Hood1
-    100128: pasted__LowerBody
-    100130: pasted__pCube16
-    100132: pasted__pCube20
-    100134: pasted__pCube21
-    100136: pasted__pCube22
-    100138: pasted__pCube24
-    100140: pasted__pCube25
-    100142: pasted__pPlane15
-    100144: pasted__pPlane20
-    100146: pasted__pPlane21
-    100148: pasted__pPlane22
-    100150: pasted__pSphere1
-    100152: pasted__pSphere2
-    100154: pasted__pSphere3
-    100156: pasted__pSphere4
-    100158: pasted__TopBody
-    100160: pasted__TopBody6
-    100162: pasted__Visor
-    100164: pasted__WheelLeft1
-    100166: pasted__WheelLeft4
-    100168: pasted__WheelLeft5
-    100170: pasted__WheeRight1
-    100172: pasted__WheeRight4
-    100174: pasted__WheeRight5
-    100176: pCube11
-    100178: pCube14
-    100180: pCube2
-    100182: R_ankle
-    100184: R_Bang
-    100186: R_Elbow
-    100188: R_fingersJointEnd
-    100190: R_fingersJointMiddle
-    100192: R_fingersRoot
-    100194: R_foot
-    100196: R_Gun
-    100198: R_Gun 1
-    100200: R_HairTail
-    100202: R_HairTailRoot
-    100204: R_HairTailTip
-    100206: R_Hand_Gun
-    100208: R_Hat1
-    100210: R_Hat2
-    100212: R_HatEar
-    100214: R_HatEar 1
-    100216: R_HatTailRoot
-    100218: R_Hip
-    100220: R_knee
-    100222: R_pipe1
-    100224: R_pipe2
-    100226: R_pipe3
-    100228: R_pipe4
-    100230: R_pipe5
-    100232: R_pipeRoot
-    100234: R_shoulder
-    100236: R_thumbJointEnd
-    100238: R_thumbJointMiddle
-    100240: R_thumbRoot
-    100242: R_Wrist
-    100244: root
-    100246: SprayGun1
-    100248: sprayGun3
-    100250: sprayGun:group2
-    100252: sprayGun:pCube1
-    100254: sprayGun:pCube10
-    100256: sprayGun:pCube11
-    100258: sprayGun:pCube16
-    100260: sprayGun:pCube17
-    100262: sprayGun:pCube18
-    100264: sprayGun:pCube19
-    100266: sprayGun:pCube20
-    100268: sprayGun:pCube21
-    100270: sprayGun:pCube22
-    100272: sprayGun:pCube23
-    100274: sprayGun:pCube24
-    100276: sprayGun:pCube25
-    100278: sprayGun:pCube26
-    100280: sprayGun:pCube3
-    100282: sprayGun:pCube4
-    100284: sprayGun:pCube5
-    100286: sprayGun:pCube6
-    100288: sprayGun:pCube7
-    100290: sprayGun:pCube8
-    100292: sprayGun:sprayGun:Left_sprayGun:pCube14
-    100294: tank
-    100296: transform11
-    100298: UpperBody
+    100078: L_Hat1
+    100080: L_Hat2
+    100082: L_HatEar
+    100084: L_HatEar 1
+    100086: L_HatTailRoot
+    100088: L_Hip
+    100090: L_knee
+    100092: L_pipe1
+    100094: L_pipe2
+    100096: L_pipe3
+    100098: L_pipe4
+    100100: L_pipe5
+    100102: L_pipeRoot
+    100104: L_shoulder
+    100106: L_thumbJointEnd
+    100108: L_thumbJointMiddle
+    100110: L_thumbRoot
+    100112: L_Wrist
+    100114: LowerBody
+    100116: lowerBody
+    100118: Main
+    100120: neck
+    100122: pasted__Hair_Bck2
+    100124: pasted__Hood1
+    100126: pasted__LowerBody
+    100128: pasted__pCube16
+    100130: pasted__pCube20
+    100132: pasted__pCube21
+    100134: pasted__pCube22
+    100136: pasted__pCube24
+    100138: pasted__pCube25
+    100140: pasted__pPlane15
+    100142: pasted__pPlane20
+    100144: pasted__pPlane21
+    100146: pasted__pPlane22
+    100148: pasted__pSphere1
+    100150: pasted__pSphere2
+    100152: pasted__pSphere3
+    100154: pasted__pSphere4
+    100156: pasted__TopBody
+    100158: pasted__TopBody6
+    100160: pasted__Visor
+    100162: pasted__WheelLeft1
+    100164: pasted__WheelLeft4
+    100166: pasted__WheelLeft5
+    100168: pasted__WheeRight1
+    100170: pasted__WheeRight4
+    100172: pasted__WheeRight5
+    100174: pCube11
+    100176: pCube14
+    100178: pCube2
+    100180: R_ankle
+    100182: R_Bang
+    100184: R_Elbow
+    100186: R_fingersJointEnd
+    100188: R_fingersJointMiddle
+    100190: R_fingersRoot
+    100192: R_foot
+    100194: R_Gun
+    100196: R_Gun 1
+    100198: R_HairTail
+    100200: R_HairTailRoot
+    100202: R_HairTailTip
+    100204: R_Hat1
+    100206: R_Hat2
+    100208: R_HatEar
+    100210: R_HatEar 1
+    100212: R_HatTailRoot
+    100214: R_Hip
+    100216: R_knee
+    100218: R_pipe1
+    100220: R_pipe2
+    100222: R_pipe3
+    100224: R_pipe4
+    100226: R_pipe5
+    100228: R_pipeRoot
+    100230: R_shoulder
+    100232: R_thumbJointEnd
+    100234: R_thumbJointMiddle
+    100236: R_thumbRoot
+    100238: R_Wrist
+    100240: root
+    100242: SprayGun1
+    100244: sprayGun3
+    100246: sprayGun:group2
+    100248: sprayGun:pCube1
+    100250: sprayGun:pCube10
+    100252: sprayGun:pCube11
+    100254: sprayGun:pCube16
+    100256: sprayGun:pCube17
+    100258: sprayGun:pCube18
+    100260: sprayGun:pCube19
+    100262: sprayGun:pCube20
+    100264: sprayGun:pCube21
+    100266: sprayGun:pCube22
+    100268: sprayGun:pCube23
+    100270: sprayGun:pCube24
+    100272: sprayGun:pCube25
+    100274: sprayGun:pCube26
+    100276: sprayGun:pCube3
+    100278: sprayGun:pCube4
+    100280: sprayGun:pCube5
+    100282: sprayGun:pCube6
+    100284: sprayGun:pCube7
+    100286: sprayGun:pCube8
+    100288: sprayGun:sprayGun:Left_sprayGun:pCube14
+    100290: tank
+    100292: transform11
+    100294: UpperBody
     400000: Bag
     400002: Bangs
     400004: BangsMain
@@ -194,117 +192,115 @@ ModelImporter:
     400072: L_HairTail
     400074: L_HairTailRoot
     400076: L_HairTailTip
-    400078: L_Hand_Gun
-    400080: L_Hat1
-    400082: L_Hat2
-    400084: L_HatEar
-    400086: L_HatEar 1
-    400088: L_HatTailRoot
-    400090: L_Hip
-    400092: L_knee
-    400094: L_pipe1
-    400096: L_pipe2
-    400098: L_pipe3
-    400100: L_pipe4
-    400102: L_pipe5
-    400104: L_pipeRoot
-    400106: L_shoulder
-    400108: L_thumbJointEnd
-    400110: L_thumbJointMiddle
-    400112: L_thumbRoot
-    400114: L_Wrist
-    400116: LowerBody
-    400118: lowerBody
-    400120: Main
-    400122: neck
-    400124: pasted__Hair_Bck2
-    400126: pasted__Hood1
-    400128: pasted__LowerBody
-    400130: pasted__pCube16
-    400132: pasted__pCube20
-    400134: pasted__pCube21
-    400136: pasted__pCube22
-    400138: pasted__pCube24
-    400140: pasted__pCube25
-    400142: pasted__pPlane15
-    400144: pasted__pPlane20
-    400146: pasted__pPlane21
-    400148: pasted__pPlane22
-    400150: pasted__pSphere1
-    400152: pasted__pSphere2
-    400154: pasted__pSphere3
-    400156: pasted__pSphere4
-    400158: pasted__TopBody
-    400160: pasted__TopBody6
-    400162: pasted__Visor
-    400164: pasted__WheelLeft1
-    400166: pasted__WheelLeft4
-    400168: pasted__WheelLeft5
-    400170: pasted__WheeRight1
-    400172: pasted__WheeRight4
-    400174: pasted__WheeRight5
-    400176: pCube11
-    400178: pCube14
-    400180: pCube2
-    400182: R_ankle
-    400184: R_Bang
-    400186: R_Elbow
-    400188: R_fingersJointEnd
-    400190: R_fingersJointMiddle
-    400192: R_fingersRoot
-    400194: R_foot
-    400196: R_Gun
-    400198: R_Gun 1
-    400200: R_HairTail
-    400202: R_HairTailRoot
-    400204: R_HairTailTip
-    400206: R_Hand_Gun
-    400208: R_Hat1
-    400210: R_Hat2
-    400212: R_HatEar
-    400214: R_HatEar 1
-    400216: R_HatTailRoot
-    400218: R_Hip
-    400220: R_knee
-    400222: R_pipe1
-    400224: R_pipe2
-    400226: R_pipe3
-    400228: R_pipe4
-    400230: R_pipe5
-    400232: R_pipeRoot
-    400234: R_shoulder
-    400236: R_thumbJointEnd
-    400238: R_thumbJointMiddle
-    400240: R_thumbRoot
-    400242: R_Wrist
-    400244: root
-    400246: SprayGun1
-    400248: sprayGun3
-    400250: sprayGun:group2
-    400252: sprayGun:pCube1
-    400254: sprayGun:pCube10
-    400256: sprayGun:pCube11
-    400258: sprayGun:pCube16
-    400260: sprayGun:pCube17
-    400262: sprayGun:pCube18
-    400264: sprayGun:pCube19
-    400266: sprayGun:pCube20
-    400268: sprayGun:pCube21
-    400270: sprayGun:pCube22
-    400272: sprayGun:pCube23
-    400274: sprayGun:pCube24
-    400276: sprayGun:pCube25
-    400278: sprayGun:pCube26
-    400280: sprayGun:pCube3
-    400282: sprayGun:pCube4
-    400284: sprayGun:pCube5
-    400286: sprayGun:pCube6
-    400288: sprayGun:pCube7
-    400290: sprayGun:pCube8
-    400292: sprayGun:sprayGun:Left_sprayGun:pCube14
-    400294: tank
-    400296: transform11
-    400298: UpperBody
+    400078: L_Hat1
+    400080: L_Hat2
+    400082: L_HatEar
+    400084: L_HatEar 1
+    400086: L_HatTailRoot
+    400088: L_Hip
+    400090: L_knee
+    400092: L_pipe1
+    400094: L_pipe2
+    400096: L_pipe3
+    400098: L_pipe4
+    400100: L_pipe5
+    400102: L_pipeRoot
+    400104: L_shoulder
+    400106: L_thumbJointEnd
+    400108: L_thumbJointMiddle
+    400110: L_thumbRoot
+    400112: L_Wrist
+    400114: LowerBody
+    400116: lowerBody
+    400118: Main
+    400120: neck
+    400122: pasted__Hair_Bck2
+    400124: pasted__Hood1
+    400126: pasted__LowerBody
+    400128: pasted__pCube16
+    400130: pasted__pCube20
+    400132: pasted__pCube21
+    400134: pasted__pCube22
+    400136: pasted__pCube24
+    400138: pasted__pCube25
+    400140: pasted__pPlane15
+    400142: pasted__pPlane20
+    400144: pasted__pPlane21
+    400146: pasted__pPlane22
+    400148: pasted__pSphere1
+    400150: pasted__pSphere2
+    400152: pasted__pSphere3
+    400154: pasted__pSphere4
+    400156: pasted__TopBody
+    400158: pasted__TopBody6
+    400160: pasted__Visor
+    400162: pasted__WheelLeft1
+    400164: pasted__WheelLeft4
+    400166: pasted__WheelLeft5
+    400168: pasted__WheeRight1
+    400170: pasted__WheeRight4
+    400172: pasted__WheeRight5
+    400174: pCube11
+    400176: pCube14
+    400178: pCube2
+    400180: R_ankle
+    400182: R_Bang
+    400184: R_Elbow
+    400186: R_fingersJointEnd
+    400188: R_fingersJointMiddle
+    400190: R_fingersRoot
+    400192: R_foot
+    400194: R_Gun
+    400196: R_Gun 1
+    400198: R_HairTail
+    400200: R_HairTailRoot
+    400202: R_HairTailTip
+    400204: R_Hat1
+    400206: R_Hat2
+    400208: R_HatEar
+    400210: R_HatEar 1
+    400212: R_HatTailRoot
+    400214: R_Hip
+    400216: R_knee
+    400218: R_pipe1
+    400220: R_pipe2
+    400222: R_pipe3
+    400224: R_pipe4
+    400226: R_pipe5
+    400228: R_pipeRoot
+    400230: R_shoulder
+    400232: R_thumbJointEnd
+    400234: R_thumbJointMiddle
+    400236: R_thumbRoot
+    400238: R_Wrist
+    400240: root
+    400242: SprayGun1
+    400244: sprayGun3
+    400246: sprayGun:group2
+    400248: sprayGun:pCube1
+    400250: sprayGun:pCube10
+    400252: sprayGun:pCube11
+    400254: sprayGun:pCube16
+    400256: sprayGun:pCube17
+    400258: sprayGun:pCube18
+    400260: sprayGun:pCube19
+    400262: sprayGun:pCube20
+    400264: sprayGun:pCube21
+    400266: sprayGun:pCube22
+    400268: sprayGun:pCube23
+    400270: sprayGun:pCube24
+    400272: sprayGun:pCube25
+    400274: sprayGun:pCube26
+    400276: sprayGun:pCube3
+    400278: sprayGun:pCube4
+    400280: sprayGun:pCube5
+    400282: sprayGun:pCube6
+    400284: sprayGun:pCube7
+    400286: sprayGun:pCube8
+    400288: sprayGun:sprayGun:Left_sprayGun:pCube14
+    400290: tank
+    400292: transform11
+    400294: UpperBody
     4300000: R_Bang
     4300002: L_Bang
     4300004: Fringe
@@ -356,7 +352,7 @@ ModelImporter:
     4300096: sprayGun:pCube24
     4300098: sprayGun:pCube25
     4300100: sprayGun:pCube26
-    7400000: Take 001
+    7400000: Idol
     9500000: //RootNode
     13700000: Bag
     13700002: Fringe
@@ -428,7 +424,332 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idol
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/root
+        weight: 1
+      - path: group1/root/chest
+        weight: 1
+      - path: group1/root/chest/clavical
+        weight: 1
+      - path: group1/root/chest/clavical/L_shoulder
+        weight: 1
+      - path: group1/root/chest/clavical/L_shoulder/L_Elbow
+        weight: 1
+      - path: group1/root/chest/clavical/L_shoulder/L_Elbow/L_Wrist
+        weight: 1
+      - path: group1/root/chest/clavical/L_shoulder/L_Elbow/L_Wrist/L_fingersRoot
+        weight: 1
+      - path: group1/root/chest/clavical/L_shoulder/L_Elbow/L_Wrist/L_fingersRoot/L_fingersJointMiddle
+        weight: 1
+      - path: group1/root/chest/clavical/L_shoulder/L_Elbow/L_Wrist/L_fingersRoot/L_fingersJointMiddle/L_fingersJointEnd
+        weight: 1
+      - path: group1/root/chest/clavical/L_shoulder/L_Elbow/L_Wrist/L_thumbRoot
+        weight: 1
+      - path: group1/root/chest/clavical/L_shoulder/L_Elbow/L_Wrist/L_thumbRoot/L_thumbJointMiddle
+        weight: 1
+      - path: group1/root/chest/clavical/L_shoulder/L_Elbow/L_Wrist/L_thumbRoot/L_thumbJointMiddle/L_thumbJointEnd
+        weight: 1
+      - path: group1/root/chest/clavical/neck
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/fringe
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/fringe/fringeMid
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/fringe/fringeMid/fringeEnd
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/joint4
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/joint4/joint5
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/joint6
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/joint6/joint7
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/L_HatEar 1
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/L_HatEar 1/joint9
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/L_HatTailRoot
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/L_HatTailRoot/L_Hat1
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/L_HatTailRoot/L_Hat1/L_Hat2
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/R_HatEar 1
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/R_HatEar 1/joint9
+          1
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/R_HatTailRoot
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/R_HatTailRoot/R_Hat1
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/Bangs/R_HatTailRoot/R_Hat1/R_Hat2
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/L_HairTailRoot
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/L_HairTailRoot/L_HairTailTip
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/R_HairTailRoot
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/BangsMain/R_HairTailRoot/R_HairTailTip
+        weight: 1
+      - path: group1/root/chest/clavical/neck/head/headItems
+        weight: 1
+      - path: group1/root/chest/clavical/R_shoulder
+        weight: 1
+      - path: group1/root/chest/clavical/R_shoulder/R_Elbow
+        weight: 1
+      - path: group1/root/chest/clavical/R_shoulder/R_Elbow/R_Wrist
+        weight: 1
+      - path: group1/root/chest/clavical/R_shoulder/R_Elbow/R_Wrist/R_fingersRoot
+        weight: 1
+      - path: group1/root/chest/clavical/R_shoulder/R_Elbow/R_Wrist/R_fingersRoot/R_fingersJointMiddle
+        weight: 1
+      - path: group1/root/chest/clavical/R_shoulder/R_Elbow/R_Wrist/R_fingersRoot/R_fingersJointMiddle/R_fingersJointEnd
+        weight: 1
+      - path: group1/root/chest/clavical/R_shoulder/R_Elbow/R_Wrist/R_thumbRoot
+        weight: 1
+      - path: group1/root/chest/clavical/R_shoulder/R_Elbow/R_Wrist/R_thumbRoot/R_thumbJointMiddle
+        weight: 1
+      - path: group1/root/chest/clavical/R_shoulder/R_Elbow/R_Wrist/R_thumbRoot/R_thumbJointMiddle/R_thumbJointEnd
+        weight: 1
+      - path: group1/root/lowerBody
+        weight: 1
+      - path: group1/root/lowerBody/IK_L_Leg
+        weight: 1
+      - path: group1/root/lowerBody/IK_R_Leg
+        weight: 1
+      - path: group1/root/lowerBody/L_Hip
+        weight: 1
+      - path: group1/root/lowerBody/L_Hip/L_knee
+        weight: 1
+      - path: group1/root/lowerBody/L_Hip/L_knee/L_ankle
+        weight: 1
+      - path: group1/root/lowerBody/L_Hip/L_knee/L_ankle/L_foot
+        weight: 1
+      - path: group1/root/lowerBody/R_Hip
+        weight: 1
+      - path: group1/root/lowerBody/R_Hip/R_knee
+        weight: 1
+      - path: group1/root/lowerBody/R_Hip/R_knee/R_ankle
+        weight: 1
+      - path: group1/root/lowerBody/R_Hip/R_knee/R_ankle/R_foot
+        weight: 1
+      - path: group1/tank
+        weight: 1
+      - path: group1/tank/curve7
+        weight: 1
+      - path: group1/tank/curve8
+        weight: 1
+      - path: group1/tank/curve9
+        weight: 1
+      - path: group1/tank/L_pipeRoot
+        weight: 1
+      - path: group1/tank/L_pipeRoot/L_pipe1
+        weight: 1
+      - path: group1/tank/L_pipeRoot/L_pipe1/L_pipe2
+        weight: 1
+      - path: group1/tank/L_pipeRoot/L_pipe1/L_pipe2/L_pipe3
+        weight: 1
+      - path: group1/tank/L_pipeRoot/L_pipe1/L_pipe2/L_pipe3/L_pipe4
+        weight: 1
+      - path: group1/tank/L_pipeRoot/L_pipe1/L_pipe2/L_pipe3/L_pipe4/L_pipe5
+        weight: 1
+      - path: group1/tank/L_pipeRoot/L_pipe1/L_pipe2/L_pipe3/L_pipe4/L_pipe5/L_Gun
+          1
+        weight: 1
+      - path: group1/tank/R_pipeRoot
+        weight: 1
+      - path: group1/tank/R_pipeRoot/R_pipe1
+        weight: 1
+      - path: group1/tank/R_pipeRoot/R_pipe1/R_pipe2
+        weight: 1
+      - path: group1/tank/R_pipeRoot/R_pipe1/R_pipe2/R_pipe3
+        weight: 1
+      - path: group1/tank/R_pipeRoot/R_pipe1/R_pipe2/R_pipe3/R_pipe4
+        weight: 1
+      - path: group1/tank/R_pipeRoot/R_pipe1/R_pipe2/R_pipe3/R_pipe4/R_pipe5
+        weight: 1
+      - path: group1/tank/R_pipeRoot/R_pipe1/R_pipe2/R_pipe3/R_pipe4/R_pipe5/R_Gun
+          1
+        weight: 1
+      - path: Main
+        weight: 1
+      - path: Main/Hisui
+        weight: 1
+      - path: Main/Hisui/Fringe
+        weight: 1
+      - path: Main/Hisui/HeadDress
+        weight: 1
+      - path: Main/Hisui/HeadDress/L_HatEar
+        weight: 1
+      - path: Main/Hisui/HeadDress/L_HatEar/pasted__pSphere3
+        weight: 1
+      - path: Main/Hisui/HeadDress/L_HatEar/pasted__pSphere4
+        weight: 1
+      - path: Main/Hisui/HeadDress/pasted__pCube21
+        weight: 1
+      - path: Main/Hisui/HeadDress/pasted__pCube22
+        weight: 1
+      - path: Main/Hisui/HeadDress/R_HatEar
+        weight: 1
+      - path: Main/Hisui/HeadDress/R_HatEar/pasted__pSphere1
+        weight: 1
+      - path: Main/Hisui/HeadDress/R_HatEar/pasted__pSphere2
+        weight: 1
+      - path: Main/Hisui/HeadGp
+        weight: 1
+      - path: Main/Hisui/HeadGp/pasted__Hair_Bck2
+        weight: 1
+      - path: Main/Hisui/HeadGp/pasted__pCube16
+        weight: 1
+      - path: Main/Hisui/HeadGp/pasted__pCube20
+        weight: 1
+      - path: Main/Hisui/HeadGp/pasted__pCube25
+        weight: 1
+      - path: Main/Hisui/HeadGp/pasted__Visor
+        weight: 1
+      - path: Main/Hisui/L_Bang
+        weight: 1
+      - path: Main/Hisui/L_HairTail
+        weight: 1
+      - path: Main/Hisui/L_HairTail/pasted__pPlane21
+        weight: 1
+      - path: Main/Hisui/L_HairTail/pasted__pPlane22
+        weight: 1
+      - path: Main/Hisui/LowerBody
+        weight: 1
+      - path: Main/Hisui/LowerBody/pasted__LowerBody
+        weight: 1
+      - path: Main/Hisui/LowerBody/pasted__pCube24
+        weight: 1
+      - path: Main/Hisui/LowerBody/pasted__WheelLeft1
+        weight: 1
+      - path: Main/Hisui/LowerBody/pasted__WheelLeft4
+        weight: 1
+      - path: Main/Hisui/LowerBody/pasted__WheelLeft5
+        weight: 1
+      - path: Main/Hisui/LowerBody/pasted__WheeRight1
+        weight: 1
+      - path: Main/Hisui/LowerBody/pasted__WheeRight4
+        weight: 1
+      - path: Main/Hisui/LowerBody/pasted__WheeRight5
+        weight: 1
+      - path: Main/Hisui/R_Bang
+        weight: 1
+      - path: Main/Hisui/R_HairTail
+        weight: 1
+      - path: Main/Hisui/R_HairTail/pasted__pPlane15
+        weight: 1
+      - path: Main/Hisui/R_HairTail/pasted__pPlane20
+        weight: 1
+      - path: Main/Hisui/UpperBody
+        weight: 1
+      - path: Main/Hisui/UpperBody/pasted__Hood1
+        weight: 1
+      - path: Main/Hisui/UpperBody/pasted__TopBody
+        weight: 1
+      - path: Main/Hisui/UpperBody/pasted__TopBody6
+        weight: 1
+      - path: Main/sprayGun3
+        weight: 1
+      - path: Main/sprayGun3/Bag
+        weight: 1
+      - path: Main/sprayGun3/L_Gun
+        weight: 1
+      - path: Main/sprayGun3/L_Gun/sprayGun:pCube1
+        weight: 1
+      - path: Main/sprayGun3/L_Gun/sprayGun:pCube18
+        weight: 1
+      - path: Main/sprayGun3/L_Gun/sprayGun:pCube19
+        weight: 1
+      - path: Main/sprayGun3/L_Gun/sprayGun:pCube20
+        weight: 1
+      - path: Main/sprayGun3/L_Gun/sprayGun:pCube21
+        weight: 1
+      - path: Main/sprayGun3/L_Gun/sprayGun:pCube22
+        weight: 1
+      - path: Main/sprayGun3/L_Gun/sprayGun:pCube23
+        weight: 1
+      - path: Main/sprayGun3/L_Gun/sprayGun:pCube24
+        weight: 1
+      - path: Main/sprayGun3/L_Gun/sprayGun:pCube25
+        weight: 1
+      - path: Main/sprayGun3/L_Gun/sprayGun:pCube26
+        weight: 1
+      - path: Main/sprayGun3/R_Gun
+        weight: 1
+      - path: Main/sprayGun3/R_Gun/sprayGun:pCube3
+        weight: 1
+      - path: Main/sprayGun3/R_Gun/sprayGun:pCube4
+        weight: 1
+      - path: Main/sprayGun3/R_Gun/sprayGun:pCube5
+        weight: 1
+      - path: Main/sprayGun3/R_Gun/sprayGun:pCube6
+        weight: 1
+      - path: Main/sprayGun3/R_Gun/sprayGun:pCube7
+        weight: 1
+      - path: Main/sprayGun3/R_Gun/sprayGun:pCube8
+        weight: 1
+      - path: Main/sprayGun3/R_Gun/sprayGun:pCube10
+        weight: 1
+      - path: Main/sprayGun3/R_Gun/sprayGun:pCube11
+        weight: 1
+      - path: Main/sprayGun3/R_Gun/sprayGun:pCube16
+        weight: 1
+      - path: Main/sprayGun3/R_Gun/sprayGun:pCube17
+        weight: 1
+      - path: Main/sprayGun3/sprayGun:group2
+        weight: 1
+      - path: Main/sprayGun3/sprayGun:sprayGun:Left_sprayGun:pCube14
+        weight: 1
+      - path: pCube2
+        weight: 1
+      - path: pCube11
+        weight: 1
+      - path: pCube14
+        weight: 1
+      - path: pCube14/transform11
+        weight: 1
+      - path: SprayGun1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []

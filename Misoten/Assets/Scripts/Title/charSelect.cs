@@ -13,10 +13,10 @@ public class charSelect : MonoBehaviour {
     private bool moveRight;
     private float m_nowPos;
     public float m_speed;
-    private Vector3[] m_default = new Vector3[3];
+    public Vector3[] m_default = new Vector3[3];
     private Vector3 m_bigScall;        // 拡大サイズ
     private Vector3 m_defaultScall;    // 縮小サイズ
-    private bool m_decisionFlg;
+    public bool m_decisionFlg;
 
 
 	// Use this for initialization
@@ -25,9 +25,9 @@ public class charSelect : MonoBehaviour {
         moveRight = false;
 
         // デフォルト座標保持
-        m_default[0] = m_char[2].transform.position;
-        m_default[1] = m_char[0].transform.position;
-        m_default[2] = m_char[1].transform.position;
+        m_default[0] = m_char[2].transform.localPosition;
+        m_default[1] = m_char[0].transform.localPosition;
+        m_default[2] = m_char[1].transform.localPosition;
         m_defaultScall = m_cursor[0].transform.localScale;
         m_bigScall = new Vector3(30,38,1);
         m_decision.SetActive(false);
@@ -36,14 +36,14 @@ public class charSelect : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Selecting();
+        //Selecting();
         moveAction();
 	}
 
     //---------------------------------------------------------------
     // 選択処理
     //---------------------------------------------------------------
-    void Selecting()
+    public void Selecting()
     {
         // アクション中でなければ移動
         if (!moveLeft && !moveRight && !m_decisionFlg)
@@ -102,18 +102,18 @@ public class charSelect : MonoBehaviour {
         {
                 // プレイヤー1
             case 0:
-                m_char[2].transform.position = m_default[0];
-                m_char[1].transform.position = m_default[2];
+                m_char[2].transform.localPosition = m_default[0];
+                m_char[1].transform.localPosition = m_default[2];
                 break;
                 // プレイヤー2
             case 1:
-                m_char[0].transform.position = m_default[0];
-                m_char[2].transform.position = m_default[2];
+                m_char[0].transform.localPosition = m_default[0];
+                m_char[2].transform.localPosition = m_default[2];
                 break;
                 // プレイヤー3
             case 2:
-                m_char[1].transform.position = m_default[0];
-                m_char[0].transform.position = m_default[2];
+                m_char[1].transform.localPosition = m_default[0];
+                m_char[0].transform.localPosition = m_default[2];
                 break;
         }
     }
@@ -125,10 +125,11 @@ public class charSelect : MonoBehaviour {
         //   
         if (moveLeft){
             for(int i= 0; i<3;i++){
-                m_char[i].transform.position = new Vector3(m_char[i].transform.position.x - m_speed, m_char[i].transform.position.y, m_char[i].transform.position.z);
+                m_char[i].transform.localPosition = new Vector3(m_char[i].transform.localPosition.x - m_speed, m_char[i].transform.localPosition.y, m_char[i].transform.localPosition.z);
             }
-            if ( m_char[m_selectNo].transform.position.x <= m_default[1].x ){
-                m_char[m_selectNo].transform.position = m_default[1];
+            if (m_char[m_selectNo].transform.localPosition.x <= m_default[1].x)
+            {
+                m_char[m_selectNo].transform.localPosition = m_default[1];
                 m_cursor[0].transform.localScale = m_defaultScall;
                 moveLeft = false;
             }
@@ -137,10 +138,11 @@ public class charSelect : MonoBehaviour {
         // 
         if (moveRight){
             for (int i = 0; i < 3; i++){
-                m_char[i].transform.position = new Vector3(m_char[i].transform.position.x + m_speed, m_char[i].transform.position.y, m_char[i].transform.position.z);
+                m_char[i].transform.localPosition = new Vector3(m_char[i].transform.localPosition.x + m_speed, m_char[i].transform.localPosition.y, m_char[i].transform.localPosition.z);
             }
-            if (m_char[m_selectNo].transform.position.x >= m_default[1].x){
-                m_char[m_selectNo].transform.position = m_default[1];
+            if (m_char[m_selectNo].transform.localPosition.x >= m_default[1].x)
+            {
+                m_char[m_selectNo].transform.localPosition = m_default[1];
                 m_cursor[1].transform.localScale = m_defaultScall;
                 moveRight = false;
             }

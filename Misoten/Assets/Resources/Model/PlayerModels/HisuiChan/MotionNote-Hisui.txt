@@ -1,0 +1,9 @@
+Hisui1_Taiki_Col	: 	1-30 待機
+				91-135 カラースプレー
+Hisui2_Hashiru		:	31-90 通常走り
+Hisui3_MakiHashiru	:	31-90 走り撒き
+Hisui4_MakiTatsu	:	31-90 立ち撒き
+Hisui5_SeichouTatsu	:	31-90 立ち成長
+Hisui6_SeichouHashiru	:	31-90 走り成長
+Hisui7_Knockback	:	136-165ノックバック	
+
