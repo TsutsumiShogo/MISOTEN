@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class SceneChangeManager : MonoBehaviour {
 
@@ -21,8 +22,14 @@ public class SceneChangeManager : MonoBehaviour {
     [SerializeField]
     private ESceneNo START_SCENE_NO;            //Unity上でセットする
 
+    //次のシーン番号
+    private ESceneNo nextSceneNo;
+
     //現在のシーン番号
     private ESceneNo nowSceneNo;
+
+    //切り替え完了フラグ
+    private bool changeEndFlg;
 
     //各シーンオブジェクトの一番親のオブジェクト
     [SerializeField]
@@ -32,7 +39,13 @@ public class SceneChangeManager : MonoBehaviour {
     [SerializeField]
     private List<GameObject> SceneCanvasTopObjects;
 
-	// Use this for initialization
+    //フェードユニット
+    private SY_Fade sy_Fade;
+
+    void Awake()
+    {
+        sy_Fade = GameObject.Find("SY_Fade").GetComponent<SY_Fade>();
+    }
 	void Start () {
         int SCENE_NUM = (int)ESceneNo.SCENE_NUM_MAX;
 
@@ -44,30 +57,62 @@ public class SceneChangeManager : MonoBehaviour {
 
         //仮の値をセット
         nowSceneNo = ESceneNo.SCENE_TITLE;
+        nextSceneNo = nowSceneNo;
+        changeEndFlg = true;
 
         //START_SCENE_NOが指すシーンを有効化
         SceneChange(START_SCENE_NO);
 
 	}
+
+    void Update()
+    {
+        //切り替え完了済みなら何もしない
+        if (changeEndFlg == true)
+        {
+            return;
+        }
+
+        //フェードアウトの完了を待つ
+        if (sy_Fade.CheckEndFadeOut() == false)
+        {
+            return;
+        }
+
+        //オブジェクト切り替え
+        //オブジェクトを切り替える
+        SceneObjectSwitch(nowSceneNo, false);
+        SceneObjectSwitch(nextSceneNo, true);
+        //シーン番号切り替え
+        nowSceneNo = nextSceneNo;
+        //シーン開始処理
+        SceneStartProcess(nextSceneNo);
+
+        //フェードイン信号発信
+        sy_Fade.FadeInStart();
+
+        //切り替え完了
+        changeEndFlg = true;
+    }
+
 	
     //シーンの切り替え
-    public bool SceneChange(ESceneNo changeSceneNo)
+    public bool SceneChange(ESceneNo _changeSceneNo)
     {
         //範囲チェック
-        if (changeSceneNo < 0 || changeSceneNo >= ESceneNo.SCENE_NUM_MAX)
+        if (_changeSceneNo < 0 || _changeSceneNo >= ESceneNo.SCENE_NUM_MAX)
         {
             return false;
         }
 
-        //オブジェクトを切り替える
-        SceneObjectSwitch(nowSceneNo, false);
-        SceneObjectSwitch(changeSceneNo, true);
+        //次のシーン番号を保存
+        nextSceneNo = _changeSceneNo;
 
-        //シーン番号切り替え
-        nowSceneNo = changeSceneNo;
+        //フェードアウト信号発信
+        sy_Fade.FadeOutStart();
 
-        //シーン開始処理
-        SceneStartProcess(changeSceneNo);
+        //切り替え未完了
+        changeEndFlg = false;
 
         return true;
     }
@@ -81,7 +126,7 @@ public class SceneChangeManager : MonoBehaviour {
         SceneCanvasTopObjects[(int)sceneNo].SetActive(activeFlg);
     }
 
-    //必要ないかもしれんけど一応Start関数っぽいの用意。
+    //シーン開始時の初期化処理
     private void SceneStartProcess(ESceneNo startSceneNo)
     {
         //シーン切り替え時に何か共通でしたい処理があればここに関数を追加

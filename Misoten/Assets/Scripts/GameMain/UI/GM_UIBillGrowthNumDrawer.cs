@@ -13,6 +13,8 @@ public class GM_UIBillGrowthNumDrawer : MonoBehaviour {
     //ビル成長中を表示するUI
     [SerializeField]
     private List<Image> billGrowthImageList;    //Unity上でセット
+    [SerializeField]
+    private List<Image> billGrowthHukidasiList; //Unity上でセット
 
     //担当カメラ
     [SerializeField]
@@ -38,6 +40,10 @@ public class GM_UIBillGrowthNumDrawer : MonoBehaviour {
         {
             billGrowthImageList[i].gameObject.SetActive(false);
         }
+        for (int i = 0; i < billGrowthHukidasiList.Count; ++i)
+        {
+            billGrowthHukidasiList[i].gameObject.SetActive(false);
+        }
 
         //成長中のビルが存在するか確認
         int growthBillNum = mathManager.growingBillList.Count;
@@ -52,26 +58,59 @@ public class GM_UIBillGrowthNumDrawer : MonoBehaviour {
         {
             //ビルの位置取得
             Vector3 objectPos = mathManager.growingBillList[i].transform.position;
+            Vector3 tempPos = objectPos;
+
+            //吹き出しの下の部分
+            for (int j = 0; j < 2; ++j)
+            {
+                //計算領域初期化
+                tempPos = objectPos;
+
+                //画面内判定位置を修正
+                if (playerCamera.transform.position.x < objectPos.x)
+                {
+                    tempPos.x -= (-1.0f * (j + 1)) + 3.5f + (j * 0.1f) * (playerCamera.transform.position.y - 5.0f);
+                }
+                else
+                {
+                    tempPos.x += (-1.0f * (j + 1)) + 3.5f + (j * 0.1f) * (playerCamera.transform.position.y - 5.0f);
+                }
+                tempPos.y += 1 - j + 0.1f;
+
+                //画面外なら何もしない
+                if (IsOutScreen(tempPos) == true)
+                {
+                    continue;
+                }
+
+                //画面内なら有効にして位置変更
+                billGrowthHukidasiList[selectUiNo * 2 + j].gameObject.SetActive(true);
+                billGrowthHukidasiList[selectUiNo * 2 + j].rectTransform.position = TransScreenPosition(tempPos, PLAYER_NO);
+            }
+
+            //計算領域初期化
+            tempPos = objectPos;
+
             //画面内判定位置を修正
             if (playerCamera.transform.position.x < objectPos.x)
             {
-                objectPos.x -= 3.0f;
+                tempPos.x -= 4.0f + 0.1f * (playerCamera.transform.position.y - 5.0f);
             }
             else
             {
-                objectPos.x += 3.0f;
+                tempPos.x += 4.0f + 0.1f * (playerCamera.transform.position.y - 5.0f);
             }
-            objectPos.y += 2.5f;
+            tempPos.y += 2.5f;
             
             //画面外なら何もしない
-            if (IsOutScreen(objectPos) == true)
+            if (IsOutScreen(tempPos) == true)
             {
                 continue;
             }
 
             //画面内なら有効にして位置変更
             billGrowthImageList[selectUiNo].gameObject.SetActive(true);
-            billGrowthImageList[selectUiNo].rectTransform.position = TransScreenPosition(objectPos, PLAYER_NO);
+            billGrowthImageList[selectUiNo].rectTransform.position = TransScreenPosition(tempPos, PLAYER_NO);
 
             //成長させている人数に合わせてスプライト変更
             billGrowthImageList[selectUiNo].sprite = growthNumSprits[mathManager.growingBillList[i].GetGrowthNowPlayerNum()];

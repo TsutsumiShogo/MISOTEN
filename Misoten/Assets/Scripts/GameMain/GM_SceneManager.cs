@@ -9,6 +9,8 @@ public class GM_SceneManager : MonoBehaviour {
 
     //==========変数定義==========
     public float gameTime;     //今のゲームの残り時間
+    private float startTime;    //ゲーム開始演出の時間-2~1
+    private bool playerStartFlg;    //プレイヤー開始してるかどうか
 
     //シーンチェンジマネージャー
     private SceneChangeManager sceneChangeManager;
@@ -23,7 +25,9 @@ public class GM_SceneManager : MonoBehaviour {
     //ミニマップマネージャ
     private GM_MiniMapManager minimapManager;
 
-
+    //ゲーム開始演出オブジェクト
+    [SerializeField]
+    private Text startObj;      //Unity上でセット
     //タイムアップ演出オブジェクト
     [SerializeField]
     private Text timeUpObj;    //Unity上でセット
@@ -61,9 +65,17 @@ public class GM_SceneManager : MonoBehaviour {
 
         //プレイヤーマネージャー初期化
         playerManager.Init();
-        playerManager.StartPlayers();
+        playerStartFlg = false;
+        
         //ミニマップマネージャ初期化
         minimapManager.Init();
+
+        //ゲーム開始演出のテキスト初期化
+        Color _col = startObj.color;
+        startObj.text = "よ～い";
+        _col.a = 1.0f;
+        startObj.color = _col;
+        startTime = -2.0f;
 
         //タイムアップ演出をオフに
         timeUpObj.gameObject.SetActive(false);
@@ -75,6 +87,18 @@ public class GM_SceneManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //スタート演出中
+        if (UpdateStartObj() == false)
+        {
+            return;
+        }
+        //プレイヤースタートしてなければスタート処理
+        if (playerStartFlg == false)
+        {
+            playerManager.StartPlayers();
+            playerStartFlg = true;
+        }
+
         //ゲームタイムを進める
         gameTime += Time.deltaTime;
 
@@ -120,8 +144,42 @@ public class GM_SceneManager : MonoBehaviour {
             }
 
 
-
         }
 
 	}
+
+    //開始後はtrueを返す
+    private bool UpdateStartObj()
+    {
+        //演出終了
+        if (startTime >= 1.0f)
+        {
+            return true;
+        }
+
+        //時間を進める
+        startTime += Time.deltaTime;
+        if (startTime > 1.0f)
+        {
+            startTime = 1.0f;
+        }
+
+        //ゲーム開始までまだ時間がある
+        if (startTime < 0.0f)
+        {
+            return false;
+        }
+
+        //ゲーム開始
+        startObj.text = "スタート！";
+
+        //αを徐々に0へ
+        float _alpha = 1.0f - startTime;
+        Color _setColor = startObj.color;
+
+        _setColor.a = _alpha;
+        startObj.color = _setColor;
+
+        return true;
+    }
 }
