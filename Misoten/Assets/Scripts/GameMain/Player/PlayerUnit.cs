@@ -95,6 +95,7 @@ public class PlayerUnit : MonoBehaviour {
         //状態を変更
         nextState = PlayerStatus.EStateTransition.KNOCKBACK;
         ChangeStateTransitionProcess();
+        GameObject.Find("Bee").GetComponent<Bee>().HitBee();    // 蜂に接触を伝える
     }
 
     //============================非公開関数=================================

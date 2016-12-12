@@ -74,6 +74,7 @@
      <Compile Include="Assets\Scripts\GameMain\GM_ScoreCtrl.cs" />
      <Compile Include="Assets\Scripts\GameMain\Mission\GM_Mission.cs" />
      <Compile Include="Assets\Scripts\GameMain\Mission\GM_MissionManager.cs" />
+     <Compile Include="Assets\Scripts\GameMain\Mobs\MobsManager.cs" />
      <Compile Include="Assets\Scripts\GameMain\Player\PlayerAnimCon.cs" />
      <Compile Include="Assets\Scripts\GameMain\Player\PlayerCheckCollisionBill.cs" />
      <Compile Include="Assets\Scripts\GameMain\Player\PlayerCollisionActor.cs" />
@@ -127,6 +128,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\MinMaxReduction.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\SSAA.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\RadialBlur.shader" />
+     <None Include="Assets\NoiseDissolve\ObjectSpaceNoiseDissolve.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ContrastComposite.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader" />
@@ -135,6 +137,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
+     <None Include="Assets\NoiseDissolve\ScreenSpaceNoiseDissolve.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SSAOShader.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ConvertDepth.shader" />
