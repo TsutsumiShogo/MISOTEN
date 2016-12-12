@@ -1,0 +1,8 @@
+Aoi1_Taiki_Hashiru	: 	1-30 待機
+				31-90 通常走り
+Aoi2_MakiHashiru	:	31-90 走り撒き
+Aoi3_MakiTatsu		:	31-90 立ち撒き
+Aoi4_SeichouTatsu	:	31-90 立ち成長
+Aoi5_SeichouHashiru	:	31-90 走り成長
+Aoi6_Col		:	91-135 カラースプレー
+Aoi6_Knockback		:	136-165ノックバック	

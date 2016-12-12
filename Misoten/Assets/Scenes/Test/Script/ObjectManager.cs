@@ -3,8 +3,8 @@ using System.Collections;
 
 public class ObjectManager : MonoBehaviour {
 
-    public static GameObject[] objectList = new GameObject[2000];
-    public static Renderer[] rendererList= new Renderer[2000];
+    public static GameObject[] objectList = new GameObject[3000];
+    public static Renderer[] rendererList= new Renderer[3000];
     public static GM_MathFlowerParam.EFlowerColor[] colorList = new GM_MathFlowerParam.EFlowerColor[2000];
     private static int Id = 0;
     private static GameObject prefabFlower;     // 花のプレハブ
@@ -62,6 +62,7 @@ public class ObjectManager : MonoBehaviour {
     // object一括更新処理
 	// Update is called once per frame
 	void Update () {
+      
         if (true)
         {
             m_oldtime = Time.deltaTime;
@@ -227,12 +228,15 @@ public class ObjectManager : MonoBehaviour {
         }
     }
 
-
     //---------------------------------------------------------------
-    // 成長中
+    // オブジェクト消去
     //--------------------------------------------------------------- 
-    public static void Growing( GM_MathFlowerParam _param){
-           
-        
+    public static void Clean(){
+        for (int i = 0; i < 10; i++){
+            if (objectList[i] != null){
+                Destroy( objectList[i] );   // オブジェクト破棄
+            }
+        }
+        Id = 0;
     }
 }
