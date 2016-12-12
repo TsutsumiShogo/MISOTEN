@@ -3,6 +3,16 @@ using System.Collections;
 
 public class CameraMove : MonoBehaviour
 {
+    // ==========================================
+    //  列挙型定義
+    public enum SceneType
+    {
+        TITLE,              // タイトル
+        MENU,               // メニュー
+        CHARCTER_SELECT,    // キャラセレクト
+        RANKING,            // ランキング
+    };
+   
 
     public GameObject Camera;               // カメラのオブジェクト
     public GameObject MainMenu;             // メインメニューのオブジェクト
@@ -75,7 +85,7 @@ public class CameraMove : MonoBehaviour
 
         #region 入力：Aキー
         // タイトルからメインメニューへ遷移
-        if ((Input.GetKeyDown(KeyCode.A)) && !GameStartFlg && !StateChangeFlg)
+        if (( Input.GetKeyDown(KeyCode.A) || XboxController.GetButtonA_All()) && !GameStartFlg && !StateChangeFlg)
         {
             GetComponent<AudioSource>().Play();
             Logo.SetActive(false);
@@ -84,7 +94,7 @@ public class CameraMove : MonoBehaviour
             StartCoroutine(StateChange(gameObject.transform.position, menuPos)); // メインメニュー画面の位置にカメラを移動
         }
         // メインメニューからキャラクターセレクト画面へ遷移
-        else if (Input.GetKeyDown(KeyCode.A) && GameStartFlg && CharaSelectFlg && !RankingFlg && !StateChangeFlg)
+        else if ( (Input.GetKeyDown(KeyCode.A) || XboxController.GetButtonA_All()) && GameStartFlg && CharaSelectFlg && !RankingFlg && !StateChangeFlg)
         {
             ButterflyMoveFlg = false;
             selectMode.GetComponent<SelectMode>().DesideAction();
@@ -92,7 +102,7 @@ public class CameraMove : MonoBehaviour
             StartCoroutine(StateChange(gameObject.transform.position, charaselePos));   // キャラクターセレクト画面の位置にカメラを移動
         }
         // メインメニューからランキング画面へ遷移
-        else if (Input.GetKeyDown(KeyCode.A) && GameStartFlg && !CharaSelectFlg && RankingFlg && !StateChangeFlg)
+        else if ((Input.GetKeyDown(KeyCode.A)|| XboxController.GetButtonA_All()) && GameStartFlg && !CharaSelectFlg && RankingFlg && !StateChangeFlg)
         {
             ButterflyMoveFlg = false;
 
@@ -104,7 +114,7 @@ public class CameraMove : MonoBehaviour
 
         #region 入力：↑キー
         // ランキング画面での↑キー操作
-        if (Input.GetKeyDown(KeyCode.UpArrow) && GameStartFlg && !CharaSelectFlg && RankingFlg && !StateChangeFlg)
+        if ((Input.GetKeyDown(KeyCode.UpArrow)) && GameStartFlg && !CharaSelectFlg && RankingFlg && !StateChangeFlg)
         {
             RankingUpDownFlg = true;
             StateChangeFlg = true;      // 画面遷移させる
@@ -177,21 +187,21 @@ public class CameraMove : MonoBehaviour
 
         #region  入力：Bキー
         // メインメニューからタイトルへ遷移
-        if (Input.GetKeyDown(KeyCode.B) && GameStartFlg && CharaSelectFlg && !RankingFlg && !StateChangeFlg && gameObject.transform.position == menuPos)
+        if (Input.GetKeyDown(KeyCode.Backspace) && GameStartFlg && CharaSelectFlg && !RankingFlg && !StateChangeFlg && gameObject.transform.position == menuPos)
         {
             GameStartFlg = false;       // タイトルへ戻る
             StateChangeFlg = true;      // 画面遷移させる
             StartCoroutine(StateChange(gameObject.transform.position, defaultCameraPos));     // タイトル画面の位置にカメラを移動  
         }
         // キャラクターセレクト画面からメインメニューへ遷移
-        else if (Input.GetKeyDown(KeyCode.B) && GameStartFlg && CharaSelectFlg && !RankingFlg && !StateChangeFlg)
+        else if (Input.GetKeyDown(KeyCode.Backspace) && GameStartFlg && CharaSelectFlg && !RankingFlg && !StateChangeFlg)
         {
             StateChangeFlg = true;      // 画面遷移させる
             CharaSeleStartFlg = false;
             StartCoroutine(StateChange(gameObject.transform.position, menuPos));        // メインメニュー画面の位置にカメラを移動
         }
         // ランキング画面からメインメニューへ遷移
-        else if (Input.GetKeyDown(KeyCode.B) && GameStartFlg && !CharaSelectFlg && RankingFlg && !StateChangeFlg)
+        else if (Input.GetKeyDown(KeyCode.Backspace) && GameStartFlg && !CharaSelectFlg && RankingFlg && !StateChangeFlg)
         {
             RankingFlg = false;         // メインメニューへ戻る
             OnRankingFlg = false;       // ランキング画面の操作を切る
