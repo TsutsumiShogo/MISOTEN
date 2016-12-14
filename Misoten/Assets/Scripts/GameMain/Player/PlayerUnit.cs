@@ -243,10 +243,19 @@ public class PlayerUnit : MonoBehaviour {
 
             //billAction
             case PlayerStatus.EStateTransition.GROWING_BILL:
-                //ビルを成長させる
-                collisionBill.GrowthBill();
-                //向きを固定する
-                transform.rotation = collisionBill.GetBillRot();
+                //ビルが存在すれば動作
+                if (collisionBill.CheckCollisionBill() == true)
+                {
+                    //ビルを成長させる
+                    collisionBill.GrowthBill();
+                    //向きを固定する
+                    transform.rotation = collisionBill.GetBillRot();
+
+                    //最大まで成長していたらビル成長を止める
+                    if(collisionBill.billParam.flowerLevel == GM_MathFlowerParam.EFlowerLevel.Level3){
+                        nextState = PlayerStatus.EStateTransition.STAND;
+                    }
+                }
                 break;
 
             //damage
@@ -325,7 +334,11 @@ public class PlayerUnit : MonoBehaviour {
                 if(collisionBill.CheckCollisionBill() == true &&
                     XboxController.GetButtonHoldX(PLAYER_NO) == true)
                 {
-                    nextState = PlayerStatus.EStateTransition.GROWING_BILL;
+                    //成長しきってなければ成長モードに入るのを許可
+                    if (collisionBill.billParam.flowerLevel != GM_MathFlowerParam.EFlowerLevel.Level3)
+                    {
+                        nextState = PlayerStatus.EStateTransition.GROWING_BILL;
+                    }
                 }
 
                 break;
