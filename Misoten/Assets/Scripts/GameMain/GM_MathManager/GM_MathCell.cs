@@ -150,7 +150,107 @@ public class GM_MathCell : MonoBehaviour {
         return levelCount;
     }
 
+    //このセルの中の花のスコアの総数を計算
+    public int GetTotalFlowerScore()
+    {
+        int _scoreCount = 0;
 
+        for (int i = 0; i < flowerParams.Count; ++i)
+        {
+            _scoreCount += GetFlowerScore(flowerParams[i].flowerType, flowerParams[i].flowerLevel);
+        }
+
+        return _scoreCount;
+    }
+    //このセルの中の花のスコアの最大スコアを計算
+    public int GetMaxTotalFlowerScore()
+    {
+        int _scoreCount = 0;
+
+        for (int i = 0; i < flowerParams.Count; ++i)
+        {
+            _scoreCount += GetFlowerScore(flowerParams[i].flowerType, GM_MathFlowerParam.EFlowerLevel.Level3);
+        }
+
+        return _scoreCount;
+    }
+
+    //タイプとレベル別でスコアを定義
+    private int GetFlowerScore(GM_MathFlowerParam.EFlowerType _type, GM_MathFlowerParam.EFlowerLevel _level)
+    {
+        int _scorePoint = 0;
+
+        //レベル０なら関係なくスコア無し
+        if (_level == GM_MathFlowerParam.EFlowerLevel.Level0)
+        {
+            return 0;
+        }
+
+        switch (_type)
+        {
+            case GM_MathFlowerParam.EFlowerType.Flower1:
+            case GM_MathFlowerParam.EFlowerType.Flower2:
+            case GM_MathFlowerParam.EFlowerType.Flower3:
+                switch (_level)
+                {
+                    case GM_MathFlowerParam.EFlowerLevel.Level1:
+                        _scorePoint = 1;
+                        break;
+                    case GM_MathFlowerParam.EFlowerLevel.Level2:
+                        _scorePoint = 2;
+                        break;
+                    case GM_MathFlowerParam.EFlowerLevel.Level3:
+                        _scorePoint = 7;
+                        break;
+                }
+                break;
+            case GM_MathFlowerParam.EFlowerType.House:
+                switch (_level)
+                {
+                    case GM_MathFlowerParam.EFlowerLevel.Level1:
+                        _scorePoint = 5;
+                        break;
+                    case GM_MathFlowerParam.EFlowerLevel.Level2:
+                        _scorePoint = 10;
+                        break;
+                    case GM_MathFlowerParam.EFlowerLevel.Level3:
+                        _scorePoint = 20;
+                        break;
+                }
+                break;
+            case GM_MathFlowerParam.EFlowerType.Bill:
+                switch (_level)
+                {
+                    case GM_MathFlowerParam.EFlowerLevel.Level1:
+                        _scorePoint = 0;
+                        break;
+                    case GM_MathFlowerParam.EFlowerLevel.Level2:
+                        _scorePoint = 100;
+                        break;
+                    case GM_MathFlowerParam.EFlowerLevel.Level3:
+                        _scorePoint = 500;
+                        break;
+                }
+                break;
+            case GM_MathFlowerParam.EFlowerType.BigBill:
+                switch (_level)
+                {
+                    case GM_MathFlowerParam.EFlowerLevel.Level1:
+                        _scorePoint = 0;
+                        break;
+                    case GM_MathFlowerParam.EFlowerLevel.Level2:
+                        _scorePoint = 300;
+                        break;
+                    case GM_MathFlowerParam.EFlowerLevel.Level3:
+                        _scorePoint = 1500;
+                        break;
+                }
+                break;
+        }
+
+        //スコアを返す
+        return _scorePoint;
+    }
     //マスの生成関数
     private void CreateMath(GameObject _instantiateObject, Vector3 _posCorrection)
     {

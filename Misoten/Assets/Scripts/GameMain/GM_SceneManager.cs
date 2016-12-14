@@ -75,7 +75,8 @@ public class GM_SceneManager : MonoBehaviour {
         startObj.text = "よ～い";
         _col.a = 1.0f;
         startObj.color = _col;
-        startTime = -2.0f;
+        startTime = -5.0f;                     //プレイヤーが動き出すまでの時間(-2.0f以下でお願い)
+        startObj.gameObject.SetActive(false);
 
         //タイムアップ演出をオフに
         timeUpObj.gameObject.SetActive(false);
@@ -95,7 +96,11 @@ public class GM_SceneManager : MonoBehaviour {
         //プレイヤースタートしてなければスタート処理
         if (playerStartFlg == false)
         {
+            //プレイヤー行動開始
             playerManager.StartPlayers();
+            //ミッションの作成を許可
+
+
             playerStartFlg = true;
         }
 
@@ -162,6 +167,15 @@ public class GM_SceneManager : MonoBehaviour {
         if (startTime > 1.0f)
         {
             startTime = 1.0f;
+        }
+
+        //よーいの出現タイミングをはかる
+        if (startTime > -2.0f)
+        {
+            if (startObj.gameObject.active == false)
+            {
+                startObj.gameObject.SetActive(true);
+            }
         }
 
         //ゲーム開始までまだ時間がある

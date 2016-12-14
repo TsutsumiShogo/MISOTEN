@@ -26,8 +26,13 @@ public class GM_MathManager : MonoBehaviour {
 
     public int ADD_GROUWTH_POINT = 2;
 
+    //レベル系
     public int MAX_TOTAL_FLOWER_LEVEL;
     public int totalFlowerLevel;
+
+    //スコア系
+    public int MAX_TOTAL_FLOWER_SCORE;
+    public int totalFlowerScore;
 
     //セルオブジェクト達
     public List<GM_MathCell> cells;
@@ -66,15 +71,18 @@ public class GM_MathManager : MonoBehaviour {
         timeCount = 0.0f;
         levelGetTimeCount = 0.0f;
         totalFlowerLevel = 0;
+        totalFlowerScore = 0;
 
         //ビルリストを作成
         billList.MakeBillList();
 
-        //植物の最大レベル計算
+        //植物の最大レベルとスコアを計算
         MAX_TOTAL_FLOWER_LEVEL = 0;
+        MAX_TOTAL_FLOWER_SCORE = 0;
         for (int i = 0; i < cells.Count; ++i)
         {
             MAX_TOTAL_FLOWER_LEVEL += cells[i].GetMaxTotalFlowerLevel();
+            MAX_TOTAL_FLOWER_LEVEL += cells[i].GetMaxTotalFlowerScore();
         }
 
         //STAGE1のセルを利用開始状態へ
@@ -86,17 +94,19 @@ public class GM_MathManager : MonoBehaviour {
 	    //ローカル変数定義
         bool timeCountResetFlg = false;
 
-        //レベルを取得する時間を経過させる
+        //レベルとスコアを取得する時間を経過させる
         levelGetTimeCount += Time.deltaTime;
-        if (levelGetTimeCount > 0.2f)
+        if (levelGetTimeCount > 0.5f)
         {
-            levelGetTimeCount -= 0.2f;
+            levelGetTimeCount -= 0.5f;
 
-            //レベルの総数を取得する
+            //レベルとスコアの総数を取得する
             totalFlowerLevel = 0;
+            totalFlowerScore = 0;
             for (int i = 0; i < cells.Count; ++i)
             {
                 totalFlowerLevel += cells[i].GetTotalFlowerLevel();
+                totalFlowerScore += cells[i].GetTotalFlowerScore();
             }
         }
 
