@@ -25,6 +25,9 @@ public class GM_SceneManager : MonoBehaviour {
     //ミニマップマネージャ
     private GM_MiniMapManager minimapManager;
 
+    //ミッションマネージャー
+    private GM_MissionManager missionManager;
+
     //ゲーム開始演出オブジェクト
     [SerializeField]
     private Text startObj;      //Unity上でセット
@@ -52,6 +55,8 @@ public class GM_SceneManager : MonoBehaviour {
         playerManager = gameObject.GetComponentInChildren<PlayerManager>();
         //ミニマップマネージャ保存
         minimapManager = gameObject.GetComponentInChildren<GM_MiniMapManager>();
+        //ミッションマネージャ保存
+        missionManager = transform.Find("GameObjects/MissionManager").GetComponent<GM_MissionManager>();
     }
 
     //ゲーム開始時にこの初期化関数が呼ばれる。
@@ -69,6 +74,9 @@ public class GM_SceneManager : MonoBehaviour {
         
         //ミニマップマネージャ初期化
         minimapManager.Init();
+
+        //ミッションマネージャ初期化
+        missionManager.Init();
 
         //ゲーム開始演出のテキスト初期化
         Color _col = startObj.color;
@@ -99,7 +107,7 @@ public class GM_SceneManager : MonoBehaviour {
             //プレイヤー行動開始
             playerManager.StartPlayers();
             //ミッションの作成を許可
-
+            missionManager.MissionCreateFlgChange(true);
 
             playerStartFlg = true;
         }
@@ -130,6 +138,10 @@ public class GM_SceneManager : MonoBehaviour {
         //ゲーム終了の時間になったらタイムアップ演出をする
         if (gameTime > GAME_TIME)
         {
+            //ミッションの作成を停止
+            missionManager.MissionCreateFlgChange(false);
+
+            //タイムアップオブジェクト有効化
             timeUpObj.gameObject.SetActive(true);
             float _percent = (gameTime - GAME_TIME) / 3.0f;
             if (_percent > 1.0f)
@@ -148,10 +160,9 @@ public class GM_SceneManager : MonoBehaviour {
                 fadeUnit.SceneChangeResult();
             }
 
+        }//Endif ゲーム終了
 
-        }
-
-	}
+	}//EndFunc()
 
     //開始後はtrueを返す
     private bool UpdateStartObj()
@@ -195,5 +206,5 @@ public class GM_SceneManager : MonoBehaviour {
         startObj.color = _setColor;
 
         return true;
-    }
+    }//EndFunc()
 }

@@ -170,4 +170,15 @@ public class GM_UIMissionAnnounce : MonoBehaviour {
         //テキストメッセージをスタートポイントに移動させる
         missionMessageObj.transform.position = startPointObj.transform.position;
     }
+    //ミッション成功のアナウンスを流す
+    public void SuccessAnnounceMessage(int _score)
+    {
+        //カウントを戻す
+        nowTime = 0.0f;
+
+        missionMessageObj.text = "やったね！ミッション成功！ " + _score.ToString() + " ポイント入手！";
+
+        //テキストメッセージをスタートポイントに移動させる
+        missionMessageObj.transform.position = startPointObj.transform.position;
+    }
 }

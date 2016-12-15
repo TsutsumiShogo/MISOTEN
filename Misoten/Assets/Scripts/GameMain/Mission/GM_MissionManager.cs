@@ -13,8 +13,11 @@ public class GM_MissionManager : MonoBehaviour {
     public GM_Mission nowMission;       //生成したミッションオブジェクト
     private GM_UIMissionAnnounce announce;  //アナウンスオブジェクト
 
+    private GM_MathManager mathManager;     //マスマネージャ(セルの位置欲しい)
+    private GM_SceneManager sceneManager;   //シーンマネージャ(タイム欲しい)
 
     //変数宣言
+    private bool canMissionCreateFlg;         //ミッション作成許可
     private float nonMissionTime;       //ミッションが無い時間を計測
 
     void Awake()
@@ -28,19 +31,31 @@ public class GM_MissionManager : MonoBehaviour {
         {
             Destroy(nowMission);
         }
+        canMissionCreateFlg = false;    //ミッション作成不許可
         nowMission = null;
         nonMissionTime = 0.0f;
 	}
+    //ミッション作成許可フラグの操作
+    public void MissionCreateFlgChange(bool _flg)
+    {
+        canMissionCreateFlg = _flg;
+    }
 	
 	// Update is called once per frame
 	void Update () {
+        //ミッション作成の許可が無ければ何もしない
+        if (canMissionCreateFlg == false)
+        {
+            return;
+        }
+
         //ミッションが無ければ生成
         if (nowMission == null)
         {
             nonMissionTime += Time.deltaTime;
 
             //一定の秒数経過後に生成する
-            if (nonMissionTime > 10.0f)
+            if (nonMissionTime > 15.0f)
             {
                 //ミッションオブジェクトの生成
                 CreateMission(GM_Mission.EMissionType.FLOWER_COLOR_MISSTION, GM_MathFlowerParam.EFlowerColor.RED, 999.0f, transform.position);
@@ -56,6 +71,12 @@ public class GM_MissionManager : MonoBehaviour {
     //ミッションを作成する
     public void CreateMission(GM_Mission.EMissionType _type, GM_MathFlowerParam.EFlowerColor _clearColor, float _time, Vector3 _pos)
     {
+        //ミッション作成の許可が無ければ何もしない
+        if (canMissionCreateFlg == false)
+        {
+            return;
+        }
+
         //ミッションがすでにあれば何もしない
         if (nowMission)
         {
@@ -91,5 +112,8 @@ public class GM_MissionManager : MonoBehaviour {
         {
             GM_ScoreCtrl.AddPlayerScore(CLEAR_SCORE_POINT, i);
         }
+
+        //ミッション成功アナウンスを流す
+        announce.SuccessAnnounceMessage((int)CLEAR_SCORE_POINT);
     }
 }
