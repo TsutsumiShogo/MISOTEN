@@ -7,47 +7,49 @@ public class CharacterSelectManager : MonoBehaviour {
 
     //-----------------------
     // キャラクタ選択オブジェクト
-    private CameraMove m_main;
+    private bool m_allSelectedFlg = false;      // 全員選択完了
     public GameObject[] m_PlayerSelect;
-    private charSelect[] m_charSel = new charSelect[3];
-    public GameObject m_panel;
+    private charSelect[] m_charSelect = new charSelect[3];
+    
     private Image m_image;
     public bool m_AllSelected = false;     // 全員決定状態
     private float m_color = 0;
 
-	// Use this for initialization
-	void Start () {
-        m_main = GameObject.Find("Main Camera").GetComponent<CameraMove>();
-        for(int i=0;i<3;i++){
-            m_charSel[i] = m_PlayerSelect[i].GetComponent<charSelect>();
-        }
-        m_image = m_panel.GetComponent<Image>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if( !m_AllSelected ){
-            // キャラセレ
-            if (m_main.CharaSelectFlg)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    m_charSel[i].Selecting();
-                }
-            }
-            
-            if (m_charSel[0].m_decisionFlg && m_charSel[1].m_decisionFlg && m_charSel[2].m_decisionFlg){
-                // 全員決定状態か
-                m_AllSelected = true;
-            }
-        }
-        else
+    //===============================================================
+    // 公開関数　T_SceneManagerで呼び出す
+    
+    //---------------------------------
+    // Init 初期化処理
+    public void Init(){
+        for (int i = 0; i < 3; i++)
         {
-            WhiteOut();
+            m_charSelect[i] = m_PlayerSelect[i].GetComponent<charSelect>();
+            m_charSelect[i].Init();
         }
-        
+       
+    }
+	
+	
+    //---------------------------------
+    // Action 更新処理
+	public T_SceneManager.SceneType Action() {
+        if (!m_allSelectedFlg){
+            // キャラセレクト
+            for (int i = 0; i < 3; i++){
+                m_charSelect[i].Action();
+            }            
+            if (m_charSelect[0].m_decisionFlg && m_charSelect[1].m_decisionFlg && m_charSelect[2].m_decisionFlg){
+                // 全員決定状態か
+                m_allSelectedFlg = true;
+                // ゲームメインに遷移
+                GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);
+            }
+        }else{
+            
+        }
+        return T_SceneManager.SceneType.CHARCTER_SELECT;
 	}
-
+    // ホワイトアウト演出
     void WhiteOut()
     {
         if( m_color < 1  ){
@@ -56,7 +58,8 @@ public class CharacterSelectManager : MonoBehaviour {
         }
         else
         {
-            Application.LoadLevel("GameMain");
+            // ゲームメインに遷移
+            GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);
         }
 
     }

@@ -5,8 +5,10 @@ public class ObjectManager : MonoBehaviour {
 
     public static GameObject[] objectList = new GameObject[3000];
     public static Renderer[] rendererList= new Renderer[3000];
-    public static GM_MathFlowerParam.EFlowerColor[] colorList = new GM_MathFlowerParam.EFlowerColor[2000];
+    public static GM_MathFlowerParam.EFlowerColor[] colorList = new GM_MathFlowerParam.EFlowerColor[3000];
     private static int Id = 0;
+    
+    
     private static GameObject prefabFlower;     // 花のプレハブ
     private static GameObject prefabHouse;      // 家のプレハブ
     private static GameObject prefabMiddleBil;  // 中ビルのプレハブ
@@ -33,9 +35,9 @@ public class ObjectManager : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         
-        prefabFlower = (GameObject)Resources.Load("Prefabs/GameMain/Flower");
-        prefabHouse = (GameObject)Resources.Load("Prefabs/GameMain/House");
-        prefabMiddleBil = (GameObject)Resources.Load("Prefabs/GameMain/MiddleBill");
+        prefabFlower = (GameObject)Resources.Load("Prefabs/GameMain/Object/Flower");
+        prefabHouse = (GameObject)Resources.Load("Prefabs/GameMain/Object/House");
+        prefabMiddleBil = (GameObject)Resources.Load("Prefabs/GameMain/Object/MiddleBill");
         gMaterialsRed = mMaterialsRed;
         gMaterialsBlue = mMaterialsBlue;
         gMaterialsGreen = mMaterialsGreen;

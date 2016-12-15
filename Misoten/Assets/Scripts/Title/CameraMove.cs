@@ -12,7 +12,8 @@ public class CameraMove : MonoBehaviour
         CHARCTER_SELECT,    // キャラセレクト
         RANKING,            // ランキング
     };
-   
+
+    private SceneType m_nowSceneType;       // 現在のシーンを保持
 
     public GameObject Camera;               // カメラのオブジェクト
     public GameObject MainMenu;             // メインメニューのオブジェクト
@@ -50,7 +51,7 @@ public class CameraMove : MonoBehaviour
     }
     public void Init()
     {
-        distance = 466.0f;          // カメラ位置の調整
+        /*distance = 466.0f;          // カメラ位置の調整
 
         defaultCameraPos = Camera.transform.position;     // カメラの座標取得
         menuPos = MainMenu.transform.position;      // メインメニュー画面の座標取得
@@ -77,6 +78,7 @@ public class CameraMove : MonoBehaviour
         OnRankingFlg = false;       // ランキング画面の操作を切る
         RankingUpDownFlg = false;
         CharaSeleStartFlg = false;
+        */
     }
 
     // Update is called once per frame
@@ -88,9 +90,9 @@ public class CameraMove : MonoBehaviour
         if (( Input.GetKeyDown(KeyCode.A) || XboxController.GetButtonA_All()) && !GameStartFlg && !StateChangeFlg)
         {
             GetComponent<AudioSource>().Play();
-            Logo.SetActive(false);
-            StateChangeFlg = true;      // 画面遷移させる
-            PushA.SetActive(false);     // 「Push A」の非表示
+            //Logo.SetActive(false);
+            //StateChangeFlg = true;      // 画面遷移させる
+            //PushA.SetActive(false);     // 「Push A」の非表示
             StartCoroutine(StateChange(gameObject.transform.position, menuPos)); // メインメニュー画面の位置にカメラを移動
         }
         // メインメニューからキャラクターセレクト画面へ遷移

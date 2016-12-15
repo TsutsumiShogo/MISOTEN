@@ -18,9 +18,12 @@ public class charSelect : MonoBehaviour {
     private Vector3 m_defaultScall;    // 縮小サイズ
     public bool m_decisionFlg;
 
+    //===============================================================
+    // 公開関数　CharacterSelectManagerで呼び出す
 
-	// Use this for initialization
-	void Start () {
+    //---------------------------------
+    // Init 初期化処理
+	public void Init () {
         moveLeft = false;
         moveRight = false;
 
@@ -34,20 +37,22 @@ public class charSelect : MonoBehaviour {
         m_decisionFlg = false;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        //Selecting();
-        moveAction();
+    //---------------------------------
+    // Action 更新処理
+    public void Action() {
+        Selecting();
+        MoveAction();
 	}
 
-    //---------------------------------------------------------------
-    // 選択処理
-    //---------------------------------------------------------------
-    public void Selecting()
+    //---------------------------------
+    // Selecting 選択処理
+    private void Selecting()
     {
+        //------------------
         // アクション中でなければ移動
         if (!moveLeft && !moveRight && !m_decisionFlg)
         {
+            //------------------
             // 左押
             if (XboxController.GetLeftTriggerLeft(m_playerId))
             {
@@ -58,6 +63,7 @@ public class charSelect : MonoBehaviour {
                 m_cursor[0].transform.localScale = m_bigScall; 
                 moveLeft = true;
             }
+            //------------------
             // 右押
             if (XboxController.GetLeftTriggerRight(m_playerId))
             {
@@ -68,6 +74,7 @@ public class charSelect : MonoBehaviour {
                 m_cursor[1].transform.localScale = m_bigScall; 
                 moveRight = true;
             }
+            //------------------
             // 選択
             if (XboxController.GetButtonA(m_playerId))
             {
@@ -84,6 +91,8 @@ public class charSelect : MonoBehaviour {
                 m_decision.SetActive(true);
             }  
         }
+        //---------------------
+        // B押下で選択取り消し
         if (XboxController.GetButtonB(m_playerId))
         {
             m_decisionFlg = false;
@@ -117,12 +126,12 @@ public class charSelect : MonoBehaviour {
                 break;
         }
     }
-    //---------------------------------------------------------------
-    // 動く
-    //---------------------------------------------------------------
-    void moveAction(){
+
+    //---------------------------------
+    // MoveAction　キャラクタ移動＋カーソル演出
+    private void MoveAction(){
         
-        //   
+        // 
         if (moveLeft){
             for(int i= 0; i<3;i++){
                 m_char[i].transform.localPosition = new Vector3(m_char[i].transform.localPosition.x - m_speed, m_char[i].transform.localPosition.y, m_char[i].transform.localPosition.z);

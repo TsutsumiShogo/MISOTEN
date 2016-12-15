@@ -12,7 +12,7 @@ public class PushAEffect : MonoBehaviour
     
     //-----------------
     // 点滅用変数
-    private float m_scallmag = 10.0f;   // スケール変化速度倍率
+    private float m_scallmag = 20.0f;   // スケール変化速度倍率
     private int m_flashCnt = 0;         // 点滅回数カウンタ
     private const int FLASH_NUM = 10;   // 点滅回数
     public bool m_flashEnd = false;     // 点滅終了フラグ
