@@ -33,23 +33,15 @@ public class ObjectParam : MonoBehaviour {
     private bool m_special;                         // specialアクションFlag
     private bool m_particleOn = false;
     private int m_menberNum = 0;
-
-	// Use this for initialization
-	void Start () {
+    public int m_playerId;
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     //-------------------------------
     // パラメータオブジェクト取得
     //-------------------------------
     public void SetParam(GM_MathFlowerParam _param)
     {
         m_param = _param;
+        m_playerId = m_param.m_plantPlayerId;
     }
     // ----------------------------------------------------
     //  花初期化処理
@@ -176,6 +168,8 @@ public class ObjectParam : MonoBehaviour {
     // -------------------------------
     public void startFlowerParticle()
     {
+        m_compParticleObj.SetActive(true);
+        m_lastParticleObj.SetActive(true);
         m_compParticle.Play();
         m_lastParticle.Play();
     }

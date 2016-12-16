@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\GameMain\GM_MiniMap\GM_MiniMapPlayers.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_SceneManager.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_ScoreCtrl.cs" />
+     <Compile Include="Assets\Scripts\GameMain\GM_StaticParam.cs" />
      <Compile Include="Assets\Scripts\GameMain\Mission\GM_Mission.cs" />
      <Compile Include="Assets\Scripts\GameMain\Mission\GM_MissionManager.cs" />
      <Compile Include="Assets\Scripts\GameMain\Mobs\MobsManager.cs" />

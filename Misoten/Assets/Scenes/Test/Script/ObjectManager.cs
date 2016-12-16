@@ -13,38 +13,47 @@ public class ObjectManager : MonoBehaviour {
     private static GameObject prefabHouse;      // 家のプレハブ
     private static GameObject prefabMiddleBil;  // 中ビルのプレハブ
     private int m_actionId = 0;                 // アクション数
-    public Material[] mMaterialsRed;
-    public Material[] mMaterialsBlue;
-    public Material[] mMaterialsGreen;
-    public Material mMaterialsYellow;
-    public Material mMaterialsCyan;
-    public Material mMaterialsMagenta;
-    public Material mMaterialsWhite;
+
+    //---------------------------------
+    // オブジェクトマテリアル 変数
+
+    //------------------
+    // つぼみマテリアル
+    public Material[] m_budMaterials = new Material[3];           
+    public static Material[] g_budMaterials = new Material[3]; 
+    
+    //------------------
+    // 花マテリアル
+    public Material[] m_sangoFlowerMaterials = new Material[7];
+    public static Material[] g_sangoFlowerMaterials = new Material[7];
+    public Material[] m_hisuiFlowerMaterials = new Material[7];
+    public static Material[] g_hisuiFlowerMaterials = new Material[7];
+    public Material[] m_aoiFlowerMaterials = new Material[7];
+    public static Material[] g_aoiFlowerMaterials = new Material[7];
+   
     public Material[] mMaterialsMiddleBill;
-    public static Material[] gMaterialsRed;
-    public static Material[] gMaterialsBlue;
-    public static Material[] gMaterialsGreen;
-    public static Material gMaterialsYellow;
-    public static Material gMaterialsCyan;
-    public static Material gMaterialsMagenta;
-    public static Material gMaterialsWhite;
     public static Material[] gMaterialsMiddleBill;
+
     private int m_pointNum = 0;
     private int[] m_processingPoint = new int[3];
     private float m_oldtime = 0;
+    private const float m_updateTime = 0.01f;    // オブジェクト更新間隔
 	// Use this for initialization
+
 	void Awake () {
         
         prefabFlower = (GameObject)Resources.Load("Prefabs/GameMain/Object/Flower");
         prefabHouse = (GameObject)Resources.Load("Prefabs/GameMain/Object/House");
         prefabMiddleBil = (GameObject)Resources.Load("Prefabs/GameMain/Object/MiddleBill");
-        gMaterialsRed = mMaterialsRed;
-        gMaterialsBlue = mMaterialsBlue;
-        gMaterialsGreen = mMaterialsGreen;
-        gMaterialsYellow = mMaterialsYellow;
-        gMaterialsCyan = mMaterialsCyan;
-        gMaterialsMagenta = mMaterialsMagenta;
-        gMaterialsWhite = mMaterialsWhite;
+        
+        // つぼみマテリアル
+        g_budMaterials = m_budMaterials;
+        // 花マテリアル
+        g_sangoFlowerMaterials = m_sangoFlowerMaterials;
+        g_aoiFlowerMaterials = m_aoiFlowerMaterials;
+        g_hisuiFlowerMaterials = m_hisuiFlowerMaterials;
+
+        // ビルマテリアルをセット
         gMaterialsMiddleBill = mMaterialsMiddleBill;
         //gMaterials = mMaterials;
         Id = 0;
@@ -54,6 +63,7 @@ public class ObjectManager : MonoBehaviour {
         m_processingPoint[0] = 600;
         m_processingPoint[1] = 1300;
         m_processingPoint[2] = 2000;
+        m_oldtime = 0;
 	}
 
     void start()
@@ -64,10 +74,11 @@ public class ObjectManager : MonoBehaviour {
     // object一括更新処理
 	// Update is called once per frame
 	void Update () {
-      
-        if (true)
+
+        m_oldtime += Time.deltaTime;
+        if ( m_oldtime >= m_updateTime)
         {
-            m_oldtime = Time.deltaTime;
+            m_oldtime = 0;
             for (; m_actionId < m_processingPoint[m_pointNum]; m_actionId++)
             {
                 if (objectList[m_actionId] != null)
@@ -114,9 +125,9 @@ public class ObjectManager : MonoBehaviour {
                 objectList[Id] = Instantiate(prefabFlower, pos, Quaternion.Euler(15, 0, 0)) as GameObject;
                 rendererList[Id] = objectList[Id].GetComponent<Renderer>();
                 colorList[Id] = _color;
+                objectList[Id].GetComponent<ObjectParam>().SetParam(_param);
                 objectList[Id].GetComponent<ObjectParam>().FlowerInit();
                 objectList[Id].GetComponent<ObjectParam>().scallOn();
-                objectList[Id].GetComponent<ObjectParam>().SetParam(_param);
                 SoundManager.PlaySe("flower_spone",1);        // 花SE
                 break;
                 
@@ -150,28 +161,48 @@ public class ObjectManager : MonoBehaviour {
     public static void LevelUp( int no, int level, GM_MathFlowerParam.EFlowerType _type )
     {
         if (objectList[no] != null){
+            ObjectParam _param = objectList[no].GetComponent<ObjectParam>();
             // オブジェクトタイプを判定
             switch (_type)
             {
-                // 花
+                //-----------------
+                // 花マテリアル設定
                 case GM_MathFlowerParam.EFlowerType.Flower1:
-                    //　色分け
-                    switch (colorList[no])
-                    {
+                    //---------------
+                    // つぼみマテリアル
+                   
+                    switch (colorList[no]){
                             // 赤
                         case GM_MathFlowerParam.EFlowerColor.RED:
-                            rendererList[no].material = gMaterialsRed[level-2];
-                            break;
-                            // 青
-                        case GM_MathFlowerParam.EFlowerColor.BLUE:
-                            rendererList[no].material = gMaterialsBlue[level - 2];
+                            if (level < 3){
+                                rendererList[no].sharedMaterial = g_budMaterials[0];
+                            }else{
+                                rendererList[no].sharedMaterial = g_sangoFlowerMaterials[0];
+                            }
                             break;
                             // 緑
                         case GM_MathFlowerParam.EFlowerColor.GREEN:
-                            rendererList[no].material = gMaterialsGreen[level - 2];
+                            if (level < 3){
+                                rendererList[no].sharedMaterial = g_budMaterials[1];
+                            }else{
+                                rendererList[no].sharedMaterial = g_hisuiFlowerMaterials[1];
+                            }
+                            break;
+                            // 緑
+                        case GM_MathFlowerParam.EFlowerColor.BLUE:
+                            if (level < 3){
+                                rendererList[no].sharedMaterial = g_budMaterials[2];
+                            }else{
+                                rendererList[no].sharedMaterial = g_aoiFlowerMaterials[2];
+                            }
                             break;
                     }
-                    if (level >= 3) objectList[no].GetComponent<ObjectParam>().startFlowerParticle();
+                    
+                    //-------------------
+                    // 花は植えたプレイヤーによって設定
+                    if (level >= 3){
+                        _param.startFlowerParticle();
+                    }
                     objectList[no].GetComponent<ObjectParam>().scallOn();
                     break;
 
@@ -202,31 +233,24 @@ public class ObjectManager : MonoBehaviour {
     //---------------------------------------------------------------
     public static void ChengeColor(int no, GM_MathFlowerParam.EFlowerColor _color){
         if (objectList[no] != null){
-            switch (_color)
+            switch (colorList[no])
             {
+                    //------------------
+                    // サンゴが植えた花
                 case GM_MathFlowerParam.EFlowerColor.RED:
-                    rendererList[no].material = gMaterialsRed[1];
+                    rendererList[no].material = g_sangoFlowerMaterials[((int)_color) - 1];
                     break;
+                    //------------------
+                    // アオイが植えた花
                 case GM_MathFlowerParam.EFlowerColor.BLUE:
-                    rendererList[no].material = gMaterialsBlue[1];
+                    rendererList[no].material = g_aoiFlowerMaterials[((int)_color) - 1];
                     break;
+                    //------------------
+                    // ヒスイが植えた花
                 case GM_MathFlowerParam.EFlowerColor.GREEN:
-                    rendererList[no].material = gMaterialsGreen[1];
-                    break;
-                case GM_MathFlowerParam.EFlowerColor.YELLOW:
-                    rendererList[no].material = gMaterialsYellow;
-                    break;
-                case GM_MathFlowerParam.EFlowerColor.CYAN:
-                    rendererList[no].material = gMaterialsCyan;
-                    break;
-                case GM_MathFlowerParam.EFlowerColor.MAGENTA:
-                    rendererList[no].material = gMaterialsMagenta;
-                    break;
-                case GM_MathFlowerParam.EFlowerColor.WHITE:
-                    rendererList[no].material = gMaterialsWhite;
+                    rendererList[no].material = g_hisuiFlowerMaterials[((int)_color) - 1];
                     break;
             }
-
         }
     }
 

@@ -49,7 +49,10 @@ public class GM_MathFlowerParam : MonoBehaviour {
 
     private float[] addExpByPlayersTime = new float[3];     //誰から経験値をもらったか一定時間情報を保持する(正の値で有効)
     private float colorMixableTimeCount;   //色を混ぜることが出来る残り時間
-    
+
+    // 誰に植えられたかを保持
+    public int m_plantPlayerId;
+
     //初回のみ
     void Awake()
     {
@@ -164,6 +167,8 @@ public class GM_MathFlowerParam : MonoBehaviour {
             //オブジェクト生成
             objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor,this);
 
+            // 誰に植えられたか保持
+            m_plantPlayerId = playerNo;
         }
     }
 

@@ -5,6 +5,7 @@ public class TextureAnimation : MonoBehaviour {
 
     public Sprite[] m_sprites;          // スプライト
     public float m_intervalSecond;      // 間隔
+    public bool m_loop = false;
     private float m_dTime;  // デルタタイム計測
     private int m_frameNum; // Frame番号
 
@@ -16,7 +17,7 @@ public class TextureAnimation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+      
         m_dTime += Time.deltaTime;
         if (m_intervalSecond < m_dTime){
             m_dTime = 0.0f;
