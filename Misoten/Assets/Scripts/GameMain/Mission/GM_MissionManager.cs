@@ -5,7 +5,7 @@ public class GM_MissionManager : MonoBehaviour {
 
     //定数定義
     [SerializeField]
-    private float CLEAR_SCORE_POINT = 50000;
+    private float CLEAR_SCORE_POINT = 300;
 
     //オブジェクト
     [SerializeField]
@@ -114,6 +114,6 @@ public class GM_MissionManager : MonoBehaviour {
         }
 
         //ミッション成功アナウンスを流す
-        announce.SuccessAnnounceMessage((int)CLEAR_SCORE_POINT);
+        announce.SuccessAnnounceMessage((int)CLEAR_SCORE_POINT*3);
     }
 }

@@ -18,6 +18,7 @@ public class GM_UIGreenPercent : MonoBehaviour {
     private GM_UIGreenPercentEffect pointEffectObj = new GM_UIGreenPercentEffect();
 
     //内部変数
+    private float scoreCheckIntervalTime;   //スコアチェックのインターバル時間
     private int oldScorePoint;      //前のフレームの正しいスコアポイント
     private float drawScorePoint;     //描画するスコア(不正確)
     private float strongEffectDelayTime;    //強調効果ディレイタイム
@@ -34,13 +35,26 @@ public class GM_UIGreenPercent : MonoBehaviour {
     public void Init()
     {
         pointEffectObj.Init();
+        scoreCheckIntervalTime = 0.0f;
+        oldScorePoint = 0;
+        drawScorePoint = 0;
+        strongEffectDelayTime = 0.0f;
+        colorStrongTime = 0.0f;
     }
 	
 	// Update is called once per frame
 	void Update () {
         int _strongLevel = 0;
-        int _scorePoint = mathManager.totalFlowerScore;
+        int _scorePoint = oldScorePoint;
         float _addScorePoint;
+
+        //スコアの確認時間になったら取得
+        scoreCheckIntervalTime -= Time.deltaTime;
+        if (scoreCheckIntervalTime < 0.0f)
+        {
+            _scorePoint = (int)GM_ScoreCtrl.GetPlayersScore();
+            scoreCheckIntervalTime = 0.5f;
+        }
 
         //強調効果レベルを取得
         _strongLevel = GetStrongLevel();
@@ -76,7 +90,7 @@ public class GM_UIGreenPercent : MonoBehaviour {
     //強調効果をするかしないか決める。
     private int GetStrongLevel()
     {
-        int _nowScorePoint = mathManager.totalFlowerScore;
+        int _nowScorePoint = (int)GM_ScoreCtrl.GetPlayersScore();
         int _scoreDistance = 0;
         int _strongLevel = 0;
 
@@ -84,11 +98,11 @@ public class GM_UIGreenPercent : MonoBehaviour {
         _scoreDistance = _nowScorePoint - oldScorePoint;
 
         //増えた量に応じてレベル算出
-        if (_scoreDistance > 20.0f)
+        if (_scoreDistance > 30.0f)
         {
             _strongLevel = 1;
         }
-        if (_scoreDistance > 70.0f)
+        if (_scoreDistance > 80.0f)
         {
             _strongLevel = 2;
         }
