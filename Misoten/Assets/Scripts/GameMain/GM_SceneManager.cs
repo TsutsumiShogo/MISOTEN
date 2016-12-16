@@ -123,7 +123,7 @@ public class GM_SceneManager : MonoBehaviour {
             stageFlg[0] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
             minimapManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
-            GameObject.Find("MobsManager").GetComponent<MobsManager>().move();
+            GameObject.Find("MobsManager").GetComponent<MobsManager>().move();      // モブ更新処理
             //ステージ外周オブジェクトを消す
             stageOutColObj[0].SetActive(false);
         }
@@ -132,7 +132,7 @@ public class GM_SceneManager : MonoBehaviour {
             stageFlg[1] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
             minimapManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
-
+            GameObject.Find("MobsManager").GetComponent<MobsManager>().move();      // モブ更新処理
             //ステージ外周オブジェクトを消す
             stageOutColObj[1].SetActive(false);
         }

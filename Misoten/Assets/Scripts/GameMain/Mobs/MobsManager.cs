@@ -103,6 +103,7 @@ public class MobsManager : MonoBehaviour {
             float angle = (90 - angleDiff * m_objId) * Mathf.Deg2Rad;
             if (m_objList[m_objId] != null)
             {
+                m_objList[m_objId].transform.position = new Vector3(0, 0, 0);
                 Vector3 _position;
                 _position.x = m_objList[m_objId].transform.position.x + m_radius[m_stageNo] * Mathf.Cos(angle);
                 _position.y = 1.0f;
@@ -133,7 +134,7 @@ public class MobsManager : MonoBehaviour {
     {
         for (m_objId = m_childNum[m_stageNo - 1]; m_objId < m_childNum[m_stageNo]; m_objId++)
         {
-            switch (m_objId % 3)
+            switch (m_objId % 5)
             {
                 case (int)MobType.Boy:
                     m_objList[m_objId] = Instantiate(m_prefabBoy[0], transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
@@ -143,6 +144,12 @@ public class MobsManager : MonoBehaviour {
                     break;
                 case (int)MobType.Ryman:
                     m_objList[m_objId] = Instantiate(m_prefabRyman[0], transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                case (int)MobType.OldMan:
+                    m_objList[m_objId] = Instantiate(m_prefabOldMan[0], transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                case (int)MobType.HouseWife:
+                    m_objList[m_objId] = Instantiate(m_prefabHouseWife[0], transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
                     break;
             }
             //m_objList[m_objId] = Instantiate(prefab, transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
