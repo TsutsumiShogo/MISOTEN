@@ -123,9 +123,10 @@ public class GM_SceneManager : MonoBehaviour {
             stageFlg[0] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
             minimapManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
-            GameObject.Find("MobsManager").GetComponent<MobsManager>().move();
+            
             //ステージ外周オブジェクトを消す
             stageOutColObj[0].SetActive(false);
+            GameObject.Find("MobsManager").GetComponent<MobsManager>().move();
         }
         if (stageFlg[1] == false && mathManager.totalFlowerLevel > 1500)
         {
