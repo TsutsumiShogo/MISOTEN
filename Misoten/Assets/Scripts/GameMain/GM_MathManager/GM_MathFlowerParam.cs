@@ -159,7 +159,7 @@ public class GM_MathFlowerParam : MonoBehaviour {
             flowerColor = _playerColor;
 
             //スコア加算
-            GM_ScoreCtrl.AddPlayerScore(100, playerNo);
+            GM_ScoreCtrl.AddPlayerScore((float)parentCell.GetFlowerScore(flowerType, flowerLevel), playerNo);
 
             //オブジェクト生成
             objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor,this);
@@ -187,9 +187,6 @@ public class GM_MathFlowerParam : MonoBehaviour {
         {
             //経験値加算
             nowEXP += _addExp;
-
-            //スコア加算(システム側スコア)
-            GM_ScoreCtrl.AddPlayerScore(_addExp, 3);
 
             //レベル計算
             CalcLevel(3);
@@ -222,7 +219,7 @@ public class GM_MathFlowerParam : MonoBehaviour {
         nowEXP += _addExp;
 
         //スコア加算
-        GM_ScoreCtrl.AddPlayerScore(_addExp, playerNo);
+        GM_ScoreCtrl.AddPlayerScore(Time.deltaTime * 0.5f, playerNo);
 
         //ビル専用で成長させてる人数でボーナス
         if (flowerType >= EFlowerType.Bill) {
@@ -233,8 +230,6 @@ public class GM_MathFlowerParam : MonoBehaviour {
             {
                 //経験値加算
                 nowEXP += _addExp * 0.2f;
-                //スコア加算
-                GM_ScoreCtrl.AddPlayerScore(_addExp * 0.2f, playerNo);
             }
 
             //人数が３人なら
@@ -242,8 +237,6 @@ public class GM_MathFlowerParam : MonoBehaviour {
             {
                 //経験値加算
                 nowEXP += _addExp * 0.5f;
-                //スコア加算
-                GM_ScoreCtrl.AddPlayerScore(_addExp * 0.5f, playerNo);
             }
         }
 
@@ -314,7 +307,7 @@ public class GM_MathFlowerParam : MonoBehaviour {
             flowerLevel++;
 
             //スコア加算
-            GM_ScoreCtrl.AddPlayerScore(200 * (int)flowerLevel, playerNo);
+            GM_ScoreCtrl.AddPlayerScore((float)parentCell.GetFlowerScore(flowerType, flowerLevel), playerNo);
 
             //レベル3へ上がったら経験値を0へ戻す
             if (flowerLevel == EFlowerLevel.Level3)

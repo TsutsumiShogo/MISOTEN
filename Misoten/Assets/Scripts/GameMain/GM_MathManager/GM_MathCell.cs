@@ -12,7 +12,9 @@ public class GM_MathCell : MonoBehaviour {
         CELL_BILL,
         CELL_BIGBILL,
     };
-
+    public bool[] houseSettiFlg = new bool[9];
+    public bool[] houseSettiFlg2 = new bool[9];
+    public bool[] houseSettiFlg3 = new bool[9];
     //変数定義
     //Init()でセット
     public List<GM_MathMath> math;
@@ -48,6 +50,7 @@ public class GM_MathCell : MonoBehaviour {
     //ゲーム開始時に初期化
     public void Init(int stagePatternNo)
     {
+        bool _houseFlg = false;
         //ステージパターン番号でよろしくない値が来たら修正する
         if (stagePatternNo < 0 || stagePatternNo > 2)
         {
@@ -66,12 +69,30 @@ public class GM_MathCell : MonoBehaviour {
                 }
                 break;
             case ECellType.CELL_HOUSE:
-                //家の生成
-                CreateMath(manager.hexagonPrefab_House, Vector3.zero);
-                //花の生成
-                for (int i = 1; i < 9; ++i)
+                //家か花の生成
+                for (int i = 0; i < 9; ++i)
                 {
-                    CreateMath(manager.hexagonPrefab_Flower, manager.mathPos[i]);
+                    switch(stagePatternNo)
+                    {
+                        case 0:
+                            _houseFlg = houseSettiFlg[i];
+                            break;
+                        case 1:
+                            _houseFlg = houseSettiFlg2[i];
+                            break;
+                        case 2:
+                            _houseFlg = houseSettiFlg3[i];
+                            break;
+                    }
+
+                    if (_houseFlg == true)
+                    {
+                        CreateMath(manager.hexagonPrefab_House, manager.mathPos[i]);
+                    }
+                    else
+                    {
+                        CreateMath(manager.hexagonPrefab_Flower, manager.mathPos[i]);
+                    }
                 }
                 break;
             case ECellType.CELL_BILL:
@@ -176,7 +197,7 @@ public class GM_MathCell : MonoBehaviour {
     }
 
     //タイプとレベル別でスコアを定義
-    private int GetFlowerScore(GM_MathFlowerParam.EFlowerType _type, GM_MathFlowerParam.EFlowerLevel _level)
+    public int GetFlowerScore(GM_MathFlowerParam.EFlowerType _type, GM_MathFlowerParam.EFlowerLevel _level)
     {
         int _scorePoint = 0;
 

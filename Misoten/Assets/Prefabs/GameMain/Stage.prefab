@@ -5888,6 +5888,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -5920,6 +5923,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -5965,6 +5971,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -5997,6 +6006,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6029,6 +6041,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6048,6 +6063,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6080,6 +6098,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6138,6 +6159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6170,6 +6194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6202,6 +6229,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6221,6 +6251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6240,6 +6273,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6285,6 +6321,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6330,6 +6369,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6401,6 +6443,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6420,6 +6465,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6465,6 +6513,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6484,6 +6535,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6516,6 +6570,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6535,6 +6592,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6560,14 +6620,14 @@ MonoBehaviour:
   hexagonPrefab_BigBill: {fileID: 177944, guid: 637ca03859edcd247a8ad8949d9fe720,
     type: 2}
   mathPos:
-  - {x: 0, y: 0, z: 0}
-  - {x: -.819999993, y: 0, z: 0}
-  - {x: .819999993, y: 0, z: 0}
-  - {x: 0, y: 0, z: .819999993}
   - {x: -.819999993, y: 0, z: .819999993}
+  - {x: 0, y: 0, z: .819999993}
   - {x: .819999993, y: 0, z: .819999993}
-  - {x: 0, y: 0, z: -.819999993}
+  - {x: -.819999993, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: .819999993, y: 0, z: 0}
   - {x: -.819999993, y: 0, z: -.819999993}
+  - {x: 0, y: 0, z: -.819999993}
   - {x: .819999993, y: 0, z: -.819999993}
   MATH_EXP_MAX_FLOWER: 64000000e8030000
   MATH_EXP_MAX_HOUSE: c8000000d0070000
@@ -6576,6 +6636,8 @@ MonoBehaviour:
   ADD_GROUWTH_POINT: 2
   MAX_TOTAL_FLOWER_LEVEL: 0
   totalFlowerLevel: 0
+  MAX_TOTAL_FLOWER_SCORE: 0
+  totalFlowerScore: 0
   cells: []
   debug_StageTypeNo: 0
 --- !u!114 &11443120
@@ -6628,6 +6690,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6647,6 +6712,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6679,6 +6747,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6698,6 +6769,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6756,6 +6830,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6775,6 +6852,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6794,6 +6874,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6852,6 +6935,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6871,6 +6957,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6890,6 +6979,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6909,6 +7001,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6928,6 +7023,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6960,6 +7058,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -6992,6 +7093,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -7076,6 +7180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -7095,6 +7202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -7114,6 +7224,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -7133,6 +7246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -7191,6 +7307,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -7210,6 +7329,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -7229,6 +7351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -7261,6 +7386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -7306,6 +7434,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -7351,6 +7482,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -7370,12 +7504,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 010101010101010101
+  houseSettiFlg2: 000101010101010101
+  houseSettiFlg3: 010101010101010100
   math: []
   flowerParams: []
   manager: {fileID: 0}
   mathCellColorCon: {fileID: 0}
   stageNo: 0
-  createCellType: 000000000000000000000000
+  createCellType: 010000000100000001000000
   cellType: 0
   startFlg: 0
 --- !u!114 &11490370
@@ -7389,6 +7526,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -7434,6 +7574,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -7453,6 +7596,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
@@ -7485,6 +7631,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseSettiFlg: 000000000000000000
+  houseSettiFlg2: 000000000000000000
+  houseSettiFlg3: 000000000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
