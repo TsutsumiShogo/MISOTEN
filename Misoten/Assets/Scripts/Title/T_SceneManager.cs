@@ -52,6 +52,7 @@ public class T_SceneManager : MonoBehaviour {
     void Start()
     {
         Init();
+        SaveContainer.CheckRanking();
     }
 
     //-----------------------------------------------------
