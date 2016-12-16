@@ -1064,6 +1064,10 @@ Prefab:
     m_TransformParent: {fileID: 1510137840}
     m_Modifications:
     - target: {fileID: 11421264, guid: 6284b3a88316c974b835777c57875629, type: 2}
+      propertyPath: mMaterialsHouse.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421264, guid: 6284b3a88316c974b835777c57875629, type: 2}
       propertyPath: m_aoiFlowerMaterials.Array.size
       value: 7
       objectReference: {fileID: 0}

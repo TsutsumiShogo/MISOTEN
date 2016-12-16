@@ -31,8 +31,15 @@ public class ObjectManager : MonoBehaviour {
     public Material[] m_aoiFlowerMaterials = new Material[7];
     public static Material[] g_aoiFlowerMaterials = new Material[7];
    
+    //------------------
+    // 家マテリアル
     public Material[] mMaterialsMiddleBill;
     public static Material[] gMaterialsMiddleBill;
+
+    //------------------
+    // 中ビルマテリアル
+    public Material[] mMaterialsHouse;
+    public static Material[] gMaterialsHouse;
 
     private int m_pointNum = 0;
     private int[] m_processingPoint = new int[3];
@@ -90,6 +97,10 @@ public class ObjectManager : MonoBehaviour {
                         case GM_MathFlowerParam.EFlowerType.Flower1:
                             _obj.flowerUpdate();
                             break;
+                        // 家の更新処理
+                        case GM_MathFlowerParam.EFlowerType.House:
+                            _obj.houseUpdate();
+                            break;
                         // 中ビルの更新処理
                         case GM_MathFlowerParam.EFlowerType.Bill:
                             _obj.mibbleBillUpdate();
@@ -134,10 +145,11 @@ public class ObjectManager : MonoBehaviour {
                 // 家
             case GM_MathFlowerParam.EFlowerType.House:
                 // プレハブインスタンス
-                Vector3 pos_h = new Vector3(_position.x + 6.44f, _position.y, _position.z);
+                Vector3 pos_h = new Vector3(_position.x - 3.8f, _position.y, _position.z);
                 objectList[Id] = Instantiate(prefabHouse, pos_h, Quaternion.Euler(0, 0, 0)) as GameObject;
                 rendererList[Id] = objectList[Id].transform.FindChild("pCube26").GetComponent<Renderer>();
                 objectList[Id].GetComponent<ObjectParam>().HouseInit();
+                objectList[Id].GetComponent<ObjectParam>().SetParam(_param);
                 break;
 
             // ビル生成
@@ -206,11 +218,20 @@ public class ObjectManager : MonoBehaviour {
                     objectList[no].GetComponent<ObjectParam>().scallOn();
                     break;
 
+                    //-----------------------
                     // 家
                 case GM_MathFlowerParam.EFlowerType.House:
-                    rendererList[no].material = gMaterialsMiddleBill[level - 2];
+                    rendererList[no].material = gMaterialsMiddleBill[level - 1];
+                     objectList[no].GetComponent<ObjectParam>().LevelUpEff();     // レベルアップ時エフェクト
+                    if (level == 2){
+                        rendererList[no].materials = new Material[2]{
+                            rendererList[no].materials[0],
+                            gMaterialsMiddleBill[level - 1]
+                        };
+                    }
                     break;
 
+                    //-----------------------
                     // 中ビル
                 case GM_MathFlowerParam.EFlowerType.Bill:
                     SoundManager.PlaySe("cheer",3);       // 歓声

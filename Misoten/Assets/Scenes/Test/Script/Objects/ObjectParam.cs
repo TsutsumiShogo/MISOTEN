@@ -59,7 +59,8 @@ public class ObjectParam : MonoBehaviour {
     public void HouseInit()
     {
         m_type = GM_MathFlowerParam.EFlowerType.House;
-        //m_particle = m_particleObj.GetComponent<ParticleSystem>();
+        m_particle = m_particleObj.GetComponent<ParticleSystem>();
+        m_levelParticle = m_levelPartcleObj.GetComponent<ParticleSystem>();
     }
     // ----------------------------------------------------
     //  中ビル初期化処理
@@ -136,6 +137,17 @@ public class ObjectParam : MonoBehaviour {
                 }
             }
         }
+    }
+    //-------------------------------
+    // 家更新処理
+    //-------------------------------
+    public void houseUpdate()
+    {
+        if (m_param != null)
+        {
+            m_menberNum = m_param.GetGrowthNowPlayerNum();
+        }
+        Growing();
     }
     //-------------------------------
     // 中ビル更新処理
