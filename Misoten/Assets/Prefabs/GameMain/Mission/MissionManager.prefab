@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a10adc8b4dad1044b4ea6114e2e2770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CLEAR_SCORE_POINT: 50000
+  CLEAR_SCORE_POINT: 300
   MISSION_PREFAB: {fileID: 113752, guid: 905516813ee590648b31544e82b4e7d2, type: 2}
   nowMission: {fileID: 0}
 --- !u!1001 &100100000
@@ -53,6 +53,10 @@ Prefab:
       propertyPath: MISSION_PREFAB
       value: 
       objectReference: {fileID: 113752, guid: 905516813ee590648b31544e82b4e7d2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: CLEAR_SCORE_POINT
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 137980}
