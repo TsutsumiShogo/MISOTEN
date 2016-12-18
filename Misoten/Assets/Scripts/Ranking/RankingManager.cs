@@ -3,7 +3,36 @@ using System.Collections;
 
 public class RankingManager : MonoBehaviour {
 
-   
+
+    [SerializeField]    // Unity上でセット
+    private GameObject m_rankingList;       // ランキングリスト
+
+    //===============================================================
+    // 公開関数 - T_SceneManegerで呼び出す
+
+    // Init - 初期化処理
+    //---------------------------------
+    //
+    public void Init(){
+        m_rankingList.GetComponent<RankList>().Init();
+    }
+
+    // Action - 更新処理
+    //---------------------------------
+    //
+    public void Action()
+    {
+
+    }
+
+    //===============================================================
+    // 未公開関数
+
+  
+
+
+    //===============================================================
+    // Static公開関数　
 
     // CheckRankIn - ランクインをチェック
     //---------------------------------

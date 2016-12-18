@@ -41,6 +41,7 @@ public class T_SceneManager : MonoBehaviour {
 
     private Vector3 m_MenuPos;              // メニューポジション
     private Vector3 m_CharaSelePos;         // キャラセレクトポジション
+    private Vector3 m_RankingPos;           // ランキングポジション
 
     private bool m_cameraMoveFlg = false;   // カメラ移動フラグ
     private float m_timer = 0;
@@ -60,10 +61,15 @@ public class T_SceneManager : MonoBehaviour {
     private void Init()
     {
         m_sceneManagers[(int)SceneType.TITLE].GetComponent<TitleManager>().Init(); // タイトル初期化処理
+        // メニュー
         m_MenuPos = m_sceneManagers[(int)SceneType.MENU].transform.position;
         m_MenuPos.z = 0;
+        // キャラセレ
         m_CharaSelePos = m_sceneManagers[(int)SceneType.CHARCTER_SELECT].transform.position;
         m_CharaSelePos.z = 0;
+        // ランキング
+        m_RankingPos = m_sceneManagers[(int)SceneType.RANKING].transform.position;
+        m_RankingPos.z = 0;
     }
 
     // Update is called once per frame
@@ -72,11 +78,13 @@ public class T_SceneManager : MonoBehaviour {
         m_timer += Time.deltaTime;
         if (m_timer >= TIME)
         {
+            
             m_timer = 0;
             if (!m_cameraMoveFlg)
             {
                 //-------------------------
                 // 各シーン更新処理を行う
+
                 Action();
             }
             else
@@ -123,6 +131,14 @@ public class T_SceneManager : MonoBehaviour {
             // キャラクターセレクト
             case SceneType.CHARCTER_SELECT:
                 m_nextSceneType = m_sceneManagers[(int)SceneType.CHARCTER_SELECT].GetComponent<CharacterSelectManager>().Action();
+                if (m_nextSceneType != m_nowSceneType)
+                {
+                    m_nowSceneType = m_nextSceneType;
+                    m_cameraMoveFlg = true;
+                    if (m_nextSceneType == SceneType.MENU){
+                        m_cameraMoveType = CameraMoveType.FROM_CHARASELECT_TO_MENU;
+                    }
+                }
                 break;
             //--------------------------
             // ランキング
@@ -156,10 +172,20 @@ public class T_SceneManager : MonoBehaviour {
                 //--------------------
                 // メニューからランキングへ
             case CameraMoveType.FROM_MENU_TO_RANKING:
+                m_mainCamera.transform.position = m_RankingPos;
+                m_cameraMoveFlg = false;
+                m_sceneCanvas[(int)SceneType.MENU].SetActive(false);
+                m_sceneCanvas[(int)m_nowSceneType].SetActive(true);
+                m_sceneManagers[(int)m_nowSceneType].GetComponent<RankingManager>().Init();
                 break;
                 //--------------------
                 // キャラセレからメニューへ
             case CameraMoveType.FROM_CHARASELECT_TO_MENU:
+                 m_mainCamera.transform.position = m_MenuPos;
+                m_cameraMoveFlg = false;
+                m_sceneCanvas[(int)m_nowSceneType].SetActive(true);
+                m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].SetActive(false);
+                m_sceneManagers[(int)m_nowSceneType].GetComponent<MenuManager>().Init();
                 break;
                 //--------------------
                 // ランキングからメニューへ
