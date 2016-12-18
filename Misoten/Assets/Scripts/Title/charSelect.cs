@@ -87,6 +87,7 @@ public class charSelect : MonoBehaviour {
                     if (m_otherChar[1].GetComponent<charSelect>().m_selectNo == this.m_selectNo)
                         return;
                 }
+                GM_StaticParam.g_selectCharacter[m_playerId] = m_selectNo;
                 m_decisionFlg = true;
                 m_decision.SetActive(true);
             }  

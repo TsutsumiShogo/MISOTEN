@@ -176,6 +176,12 @@ public class GM_Mission : MonoBehaviour {
             return;
         }
 
+        //セルオブジェクトが稼働状態でなければ何もしない。
+        if (tempCell.startFlg == false)
+        {
+            return;
+        }
+
         //ミッション対象セルじゃなかったら何もせずreturn
         switch (missionType)
         {

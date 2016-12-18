@@ -129,7 +129,7 @@ public class GM_UIMissionAnnounce : MonoBehaviour {
         switch (_missionType)
         {
             case GM_Mission.EMissionType.FLOWER_GROWTH_MISSION:
-                missionMessageObj.text = "指定のエリアの花を最後まで成長させよう！";
+                missionMessageObj.text = "指定のエリアで花を咲かせてみよう！";
                 break;
             case GM_Mission.EMissionType.FLOWER_COLOR_MISSTION:
                 missionMessageObj.text = "指定のエリアを";
@@ -160,10 +160,10 @@ public class GM_UIMissionAnnounce : MonoBehaviour {
                 missionMessageObj.text = missionMessageObj.text + "の花で埋め尽くそう！";
                 break;
             case GM_Mission.EMissionType.BILL_GROWTH_MISSION:
-                missionMessageObj.text = "指定のエリアの花を最後まで成長させよう！";
+                missionMessageObj.text = "指定のエリアのビルを最後まで成長させよう！";
                 break;
             case GM_Mission.EMissionType.BIGBILL_GROWTH_MISSION:
-                missionMessageObj.text = "指定のエリアの花を最後まで成長させよう！";
+                missionMessageObj.text = "指定のエリアの大きなビルを最後まで成長させよう！";
                 break;
         }
 

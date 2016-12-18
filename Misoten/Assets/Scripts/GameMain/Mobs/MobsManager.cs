@@ -8,14 +8,16 @@ public class MobsManager : MonoBehaviour {
     {
         Boy = 0,        // 男の子
         Ryman,          // サラリーマン
-        Girl            // 女の子
+        Girl,            // 女の子
+        OldMan,         // じじい
+        HouseWife,      // 主婦
     };
 
     // 半径
     [SerializeField]
     private float[] m_radius = new float[3];        // Unityから設定
     [SerializeField]
-    private float[] m_childNum = new float[3];      // Mob追加
+    private int[] m_childNum = new int[3];      // Mob追加
 
     // Boyプレハブ
     [SerializeField]
@@ -26,6 +28,12 @@ public class MobsManager : MonoBehaviour {
     // Girl
     [SerializeField]
     private GameObject[] m_prefabGirl = new GameObject[3];
+    // OldMan
+    [SerializeField]
+    private GameObject[] m_prefabOldMan = new GameObject[3];
+    // HouseWife
+    [SerializeField]
+    private GameObject[] m_prefabHouseWife = new GameObject[3];
 
     private GameObject[] m_objList = new GameObject[500];
     private int m_objId = 0;
@@ -40,6 +48,14 @@ public class MobsManager : MonoBehaviour {
         CreateMobs();
         SetMob();
     }
+
+    void Update()
+    {
+        if (m_moveFlg)
+        {
+            move();
+        }
+    }
     
     //Inspectorの内容(半径)が変更された時に実行
     private void OnValidate (){
@@ -51,7 +67,7 @@ public class MobsManager : MonoBehaviour {
     private void CreateMobs()
     {
         for (m_objId = 0; m_objId < m_childNum[0]; m_objId++){
-            switch (m_objId % 3)
+            switch (m_objId % 5)
             {
                 case (int)MobType.Boy:
                     m_objList[m_objId] = Instantiate(m_prefabBoy[0], transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
@@ -61,6 +77,12 @@ public class MobsManager : MonoBehaviour {
                     break;
                 case (int)MobType.Ryman:
                     m_objList[m_objId] = Instantiate(m_prefabRyman[0], transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                case (int)MobType.OldMan:
+                    m_objList[m_objId] = Instantiate(m_prefabOldMan[0], transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                case (int)MobType.HouseWife:
+                    m_objList[m_objId] = Instantiate(m_prefabHouseWife[0], transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
                     break;
             }
             //m_objList[m_objId] = Instantiate(prefab, transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
@@ -81,6 +103,7 @@ public class MobsManager : MonoBehaviour {
             float angle = (90 - angleDiff * m_objId) * Mathf.Deg2Rad;
             if (m_objList[m_objId] != null)
             {
+                m_objList[m_objId].transform.position = new Vector3(0, 0, 0);
                 Vector3 _position;
                 _position.x = m_objList[m_objId].transform.position.x + m_radius[m_stageNo] * Mathf.Cos(angle);
                 _position.y = 1.0f;
@@ -98,27 +121,39 @@ public class MobsManager : MonoBehaviour {
     {
         m_stageNo++;
         m_moveFlg = true;
-        m_cnt = 50;
+        m_cnt = 0;
     }
 
     public void move(){
+        m_stageNo++;
+        AddMob();
+        SetMob();
+    }
 
-        if (m_cnt < 50)
+    private void AddMob()
+    {
+        for (m_objId = m_childNum[m_stageNo - 1]; m_objId < m_childNum[m_stageNo]; m_objId++)
         {
-            //オブジェクト間の角度差
-            float angleDiff = 360f / (float)m_childNum[m_stageNo];
-            for (int i = 0; i < m_childNum[m_stageNo]; i++)
+            switch (m_objId % 5)
             {
-                float angle = (90 - angleDiff * m_objId) * Mathf.Deg2Rad;
-                if (m_objList[m_objId] != null)
-                {
-                    m_objList[m_objId].transform.position = new Vector3(
-                        m_objList[m_objId].transform.position.x + (m_radius[m_stageNo]+ (m_cnt*0.1f)) * Mathf.Cos(angle),
-                        1,
-                        m_objList[m_objId].transform.position.z + (m_radius[m_stageNo] + (m_cnt * 0.1f)) * Mathf.Sin(angle)
-                        );
-                }
+                case (int)MobType.Boy:
+                    m_objList[m_objId] = Instantiate(m_prefabBoy[0], transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                case (int)MobType.Girl:
+                    m_objList[m_objId] = Instantiate(m_prefabGirl[0], transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                case (int)MobType.Ryman:
+                    m_objList[m_objId] = Instantiate(m_prefabRyman[0], transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                case (int)MobType.OldMan:
+                    m_objList[m_objId] = Instantiate(m_prefabOldMan[0], transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
+                case (int)MobType.HouseWife:
+                    m_objList[m_objId] = Instantiate(m_prefabHouseWife[0], transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+                    break;
             }
+            //m_objList[m_objId] = Instantiate(prefab, transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
+            m_objList[m_objId].transform.SetParent(this.transform);
         }
     }
 

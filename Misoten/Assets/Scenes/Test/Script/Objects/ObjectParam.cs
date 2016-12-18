@@ -33,23 +33,15 @@ public class ObjectParam : MonoBehaviour {
     private bool m_special;                         // specialアクションFlag
     private bool m_particleOn = false;
     private int m_menberNum = 0;
-
-	// Use this for initialization
-	void Start () {
+    public int m_playerId;
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     //-------------------------------
     // パラメータオブジェクト取得
     //-------------------------------
     public void SetParam(GM_MathFlowerParam _param)
     {
         m_param = _param;
+        m_playerId = m_param.m_plantPlayerId;
     }
     // ----------------------------------------------------
     //  花初期化処理
@@ -67,7 +59,8 @@ public class ObjectParam : MonoBehaviour {
     public void HouseInit()
     {
         m_type = GM_MathFlowerParam.EFlowerType.House;
-        //m_particle = m_particleObj.GetComponent<ParticleSystem>();
+        m_particle = m_particleObj.GetComponent<ParticleSystem>();
+        m_levelParticle = m_levelPartcleObj.GetComponent<ParticleSystem>();
     }
     // ----------------------------------------------------
     //  中ビル初期化処理
@@ -146,6 +139,17 @@ public class ObjectParam : MonoBehaviour {
         }
     }
     //-------------------------------
+    // 家更新処理
+    //-------------------------------
+    public void houseUpdate()
+    {
+        if (m_param != null)
+        {
+            m_menberNum = m_param.GetGrowthNowPlayerNum();
+        }
+        Growing();
+    }
+    //-------------------------------
     // 中ビル更新処理
     //-------------------------------
     public void mibbleBillUpdate(){
@@ -176,6 +180,8 @@ public class ObjectParam : MonoBehaviour {
     // -------------------------------
     public void startFlowerParticle()
     {
+        m_compParticleObj.SetActive(true);
+        m_lastParticleObj.SetActive(true);
         m_compParticle.Play();
         m_lastParticle.Play();
     }

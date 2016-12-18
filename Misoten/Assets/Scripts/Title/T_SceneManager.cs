@@ -43,7 +43,8 @@ public class T_SceneManager : MonoBehaviour {
     private Vector3 m_CharaSelePos;         // キャラセレクトポジション
 
     private bool m_cameraMoveFlg = false;   // カメラ移動フラグ
-
+    private float m_timer = 0;
+    private const float TIME = 0.0f;
     //===============================================================
     // 未公開関数
 
@@ -51,6 +52,7 @@ public class T_SceneManager : MonoBehaviour {
     void Start()
     {
         Init();
+        SaveContainer.CheckRanking();
     }
 
     //-----------------------------------------------------
@@ -67,14 +69,22 @@ public class T_SceneManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (!m_cameraMoveFlg){
-            //-------------------------
-            // 各シーン更新処理を行う
-            Action();
-        }else{  
-            //-------------------------
-            // カメラ移動処理を行う
-            MoveCamera();
+        m_timer += Time.deltaTime;
+        if (m_timer >= TIME)
+        {
+            m_timer = 0;
+            if (!m_cameraMoveFlg)
+            {
+                //-------------------------
+                // 各シーン更新処理を行う
+                Action();
+            }
+            else
+            {
+                //-------------------------
+                // カメラ移動処理を行う
+                MoveCamera();
+            }
         }
     }
 

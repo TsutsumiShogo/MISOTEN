@@ -29,11 +29,9 @@ public class GM_SceneManager : MonoBehaviour {
     private GM_MissionManager missionManager;
 
     //ゲーム開始演出オブジェクト
-    [SerializeField]
-    private Text startObj;      //Unity上でセット
+    private Text startObj;
     //タイムアップ演出オブジェクト
-    [SerializeField]
-    private Text timeUpObj;    //Unity上でセット
+    private Text timeUpObj;
 
     //ステージ外周あたり判定オブジェクト
     [SerializeField]
@@ -57,6 +55,10 @@ public class GM_SceneManager : MonoBehaviour {
         minimapManager = gameObject.GetComponentInChildren<GM_MiniMapManager>();
         //ミッションマネージャ保存
         missionManager = transform.Find("GameObjects/MissionManager").GetComponent<GM_MissionManager>();
+        //ゲーム開始演出テキスト保存
+        startObj = GameObject.Find("Canvas").transform.Find("GameMainUI/Game/Start").GetComponent<Text>();
+        //タイムアップ演出テキスト保存
+        timeUpObj = GameObject.Find("Canvas").transform.Find("GameMainUI/Game/TimeUp").GetComponent<Text>();
     }
 
     //ゲーム開始時にこの初期化関数が呼ばれる。
@@ -121,7 +123,7 @@ public class GM_SceneManager : MonoBehaviour {
             stageFlg[0] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
             minimapManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
-
+            GameObject.Find("MobsManager").GetComponent<MobsManager>().move();      // モブ更新処理
             //ステージ外周オブジェクトを消す
             stageOutColObj[0].SetActive(false);
         }
@@ -130,7 +132,7 @@ public class GM_SceneManager : MonoBehaviour {
             stageFlg[1] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
             minimapManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
-
+            GameObject.Find("MobsManager").GetComponent<MobsManager>().move();      // モブ更新処理
             //ステージ外周オブジェクトを消す
             stageOutColObj[1].SetActive(false);
         }

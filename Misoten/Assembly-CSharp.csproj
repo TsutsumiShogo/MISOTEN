@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\GameMain\GM_MiniMap\GM_MiniMapPlayers.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_SceneManager.cs" />
      <Compile Include="Assets\Scripts\GameMain\GM_ScoreCtrl.cs" />
+     <Compile Include="Assets\Scripts\GameMain\GM_StaticParam.cs" />
      <Compile Include="Assets\Scripts\GameMain\Mission\GM_Mission.cs" />
      <Compile Include="Assets\Scripts\GameMain\Mission\GM_MissionManager.cs" />
      <Compile Include="Assets\Scripts\GameMain\Mobs\MobsManager.cs" />
@@ -96,6 +97,7 @@
      <Compile Include="Assets\Scripts\Menu\SelectMode.cs" />
      <Compile Include="Assets\Scripts\Ranking\RankingManager.cs" />
      <Compile Include="Assets\Scripts\Result\TotalScore.cs" />
+     <Compile Include="Assets\Scripts\Save\SaveContainer.cs" />
      <Compile Include="Assets\Scripts\Sound\SoundLoader\SoundLoader.cs" />
      <Compile Include="Assets\Scripts\Sound\SoundManager\SoundManager.cs" />
      <Compile Include="Assets\Scripts\System\SY_Fade.cs" />
