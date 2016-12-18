@@ -44,6 +44,7 @@ public class CharacterSelectManager : MonoBehaviour {
                 // 各プレイヤー選択キャラクターをセット
                 for (int i = 0; i < 3; i++){
                     GM_StaticParam.g_selectCharacter[i] = m_charSelect[i].m_selectNo;
+                    Debug.Log(GM_StaticParam.g_selectCharacter[i].ToString());
                 }
                 // ゲームメインに遷移
                 GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);

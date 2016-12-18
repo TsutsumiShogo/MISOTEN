@@ -19,6 +19,8 @@ public class ObjectParam : MonoBehaviour {
 
     public GameObject m_levelPartcleObj;            // レベルアップ時エフェクト
     public GameObject m_particleObj;                // パーティクルオブジェクト
+    private float m_seTime = 0.5f;
+    private float m_seTimer = 0.0f;
 
     //-----------------------------------------------------
     // 花用辺巣
@@ -193,6 +195,11 @@ public class ObjectParam : MonoBehaviour {
     {
         if (m_menberNum > 0)
         {
+            m_seTimer += Time.deltaTime;
+            if (m_seTimer >= m_seTime){
+                m_seTimer = 0;
+                SoundManager.PlaySe("grow_se", 2);
+            }
             // -------------------------------------
             // 成長中であればパーティクルを飛ばす
             if (m_menberNum >= 2)

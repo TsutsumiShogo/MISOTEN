@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour {
         playerObjects = new GameObject[3];
         for (int i = 0; i < 3; ++i)
         {
-            playerObjects[i] = Instantiate(SET_PLAYER_UNIT_PREFABS[GM_StaticParam.g_selectCharacter[i]]);
+            playerObjects[i] = Instantiate(SET_PLAYER_UNIT_PREFABS[i]);
             playerUnits[i] = playerObjects[i].GetComponent<PlayerUnit>();
             playerUnits[i].PLAYER_NO = i;
 
@@ -43,7 +43,7 @@ public class PlayerManager : MonoBehaviour {
         //とりあえずバラバラの位置へ
         Initpos.x += 1;
         Initpos.z += 1;
-        playerUnits[0].transform.position = Initpos;
+        playerUnits[0].transform.position = Initpos;        
 
         Initpos.x += -2;
         playerUnits[1].transform.position = Initpos;
@@ -67,7 +67,7 @@ public class PlayerManager : MonoBehaviour {
         }
         else
         {
-            return playerUnits[playerNo].gameObject;
+            return playerUnits[GM_StaticParam.g_selectCharacter[playerNo]].gameObject;
         }
     }
 

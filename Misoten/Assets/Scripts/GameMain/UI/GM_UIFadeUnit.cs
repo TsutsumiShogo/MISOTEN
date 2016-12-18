@@ -30,6 +30,7 @@ public class GM_UIFadeUnit : MonoBehaviour {
 	}
     public void Init()
     {
+        Debug.Log("dfsd");
         gameCanvas.SetActive(true);
         gameObjects.SetActive(true);
         resultCanvas.SetActive(false);
