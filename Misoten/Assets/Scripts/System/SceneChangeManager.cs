@@ -136,6 +136,7 @@ public class SceneChangeManager : MonoBehaviour {
         switch (startSceneNo)
         {
             case ESceneNo.SCENE_TITLE:
+                GameObject.Find("T_SceneManager").GetComponent<T_SceneManager>().Init();
                 break;
             case ESceneNo.SCENE_STORY:
                 //チュートリアルシーンマネージャーで初期化を伝達

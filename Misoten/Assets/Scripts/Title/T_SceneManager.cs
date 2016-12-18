@@ -49,16 +49,10 @@ public class T_SceneManager : MonoBehaviour {
     //===============================================================
     // 未公開関数
 
-    // Use this for initialization
-    void Start()
-    {
-        Init();
-        SaveContainer.CheckRanking();
-    }
-
+   
     //-----------------------------------------------------
     // Init ここで一括して初期化を行う
-    private void Init()
+    public void Init()
     {
         m_sceneManagers[(int)SceneType.TITLE].GetComponent<TitleManager>().Init(); // タイトル初期化処理
         // メニュー

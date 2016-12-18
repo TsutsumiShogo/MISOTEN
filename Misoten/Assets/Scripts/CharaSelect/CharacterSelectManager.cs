@@ -41,15 +41,16 @@ public class CharacterSelectManager : MonoBehaviour {
             if (m_charSelect[0].m_decisionFlg && m_charSelect[1].m_decisionFlg && m_charSelect[2].m_decisionFlg){
                 // 全員決定状態か
                 m_allSelectedFlg = true;
-                
+                // 各プレイヤー選択キャラクターをセット
+                for (int i = 0; i < 3; i++){
+                    GM_StaticParam.g_selectCharacter[i] = m_charSelect[i].m_selectNo;
+                }
+                // ゲームメインに遷移
+                GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);
+                Debug.Log("aaa");
             }
         }else{
-            // 各プレイヤー選択キャラクターをセット
-            for( int i=0;i<3;i++ ){
-                GM_StaticParam.g_selectCharacter[i] = m_charSelect[i].m_selectNo;
-            }
-            // ゲームメインに遷移
-            GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);
+            
         }
 
         if (Input.GetKeyDown(KeyCode.Backspace)){

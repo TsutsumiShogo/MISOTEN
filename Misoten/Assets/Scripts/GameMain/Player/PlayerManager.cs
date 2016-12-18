@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour {
         playerObjects = new GameObject[3];
         for (int i = 0; i < 3; ++i)
         {
-            playerObjects[i] = Instantiate(SET_PLAYER_UNIT_PREFABS[i]);
+            playerObjects[i] = Instantiate(SET_PLAYER_UNIT_PREFABS[GM_StaticParam.g_selectCharacter[i]]);
             playerUnits[i] = playerObjects[i].GetComponent<PlayerUnit>();
             playerUnits[i].PLAYER_NO = i;
 
