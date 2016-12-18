@@ -461,6 +461,38 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11484748, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
+      propertyPath: cellType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482606, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
+      propertyPath: houseSettiFlg.Array.data[6]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482606, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
+      propertyPath: houseSettiFlg.Array.data[7]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482606, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
+      propertyPath: houseSettiFlg.Array.data[8]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11408694, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
+      propertyPath: cellType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11413636, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
+      propertyPath: cellType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11470292, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
+      propertyPath: cellType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482606, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
+      propertyPath: houseSettiFlg2.Array.data[7]
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d176caa02eef6544bae4a2bba2323a92, type: 2}
   m_IsPrefabParent: 0
