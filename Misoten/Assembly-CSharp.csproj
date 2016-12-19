@@ -95,8 +95,11 @@
      <Compile Include="Assets\Scripts\Menu\MenuManager.cs" />
      <Compile Include="Assets\Scripts\Menu\ModeEffect.cs" />
      <Compile Include="Assets\Scripts\Menu\SelectMode.cs" />
+     <Compile Include="Assets\Scripts\Ranking\RankList.cs" />
      <Compile Include="Assets\Scripts\Ranking\RankingManager.cs" />
+     <Compile Include="Assets\Scripts\Result\Re_Menu\RE_Menu.cs" />
      <Compile Include="Assets\Scripts\Result\TotalScore.cs" />
+     <Compile Include="Assets\Scripts\Save\SaveContainer.cs" />
      <Compile Include="Assets\Scripts\Sound\SoundLoader\SoundLoader.cs" />
      <Compile Include="Assets\Scripts\Sound\SoundManager\SoundManager.cs" />
      <Compile Include="Assets\Scripts\System\SY_Fade.cs" />

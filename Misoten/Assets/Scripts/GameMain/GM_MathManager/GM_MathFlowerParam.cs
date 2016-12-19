@@ -64,14 +64,22 @@ public class GM_MathFlowerParam : MonoBehaviour {
     }
     void Start()
     {
-        // ゲーム開始時にオブジェクト生成
-        if (flowerType == EFlowerType.Bill)
+        //-----------------------------------------
+        // 建物オブジェクトはゲーム開始時にオブジェクト生成
+        if ((flowerType == EFlowerType.Bill))
         {
             //レベルアップ
             flowerLevel = EFlowerLevel.Level1;
             //オブジェクト生成
             objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor, this);
         }
+        if (flowerType == EFlowerType.House)
+        {
+            //オブジェクト生成
+            objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor, this);
+        }
+
+
     }
 
     //======================公開関数=========================
@@ -164,9 +172,14 @@ public class GM_MathFlowerParam : MonoBehaviour {
             //スコア加算
             GM_ScoreCtrl.AddPlayerScore((float)parentCell.GetFlowerScore(flowerType, flowerLevel), playerNo);
 
-            //オブジェクト生成
-            objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor,this);
-
+            //オブジェクト生成 花のみ
+            if (flowerType == EFlowerType.Flower1){
+                objId = ObjectManager.CreateObj(transform.position, flowerType, flowerColor, this);
+            }
+            else if(flowerType == EFlowerType.House) {
+                //レベルアップ毎に必要な処理があればここに記述
+                ObjectManager.LevelUp(objId, (int)flowerLevel, flowerType);
+            }
             // 誰に植えられたか保持
             m_plantPlayerId = playerNo;
         }

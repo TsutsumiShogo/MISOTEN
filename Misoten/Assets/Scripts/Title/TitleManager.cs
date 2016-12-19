@@ -3,6 +3,7 @@ using System.Collections;
 
 public class TitleManager : MonoBehaviour {
 
+    private int ga = 120;
 
     public GameObject m_Logo;       // タイトルロゴ
     public GameObject m_UI;         // ボタンUI
@@ -50,6 +51,15 @@ public class TitleManager : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.A) || XboxController.GetButtonA_All()){
                 m_pushAFlg = true;
                 m_UI.GetComponent<PushAEffect>().m_buttonFlg = true;
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                ga++;
+                if (RankingManager.CheckRankIn(ga)){
+                    RankingManager.UpdateRanking(ga, "HAL");
+                    SaveContainer.Save();
+                    SaveContainer.CheckRanking();
+                }
             }
         }
     }

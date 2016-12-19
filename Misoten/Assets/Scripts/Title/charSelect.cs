@@ -12,7 +12,7 @@ public class charSelect : MonoBehaviour {
     private bool moveLeft;
     private bool moveRight;
     private float m_nowPos;
-    public float m_speed;
+    public float m_moveTime = 0.5f; // 移動にかかる時間
     public Vector3[] m_default = new Vector3[3];
     private Vector3 m_bigScall;        // 拡大サイズ
     private Vector3 m_defaultScall;    // 縮小サイズ
@@ -135,7 +135,7 @@ public class charSelect : MonoBehaviour {
         // 
         if (moveLeft){
             for(int i= 0; i<3;i++){
-                m_char[i].transform.localPosition = new Vector3(m_char[i].transform.localPosition.x - m_speed, m_char[i].transform.localPosition.y, m_char[i].transform.localPosition.z);
+                m_char[i].transform.localPosition = new Vector3(m_char[i].transform.localPosition.x - ((m_default[2].x - m_default[1].x)*Time.deltaTime/m_moveTime), m_char[i].transform.localPosition.y, m_char[i].transform.localPosition.z);
             }
             if (m_char[m_selectNo].transform.localPosition.x <= m_default[1].x)
             {
@@ -148,7 +148,7 @@ public class charSelect : MonoBehaviour {
         // 
         if (moveRight){
             for (int i = 0; i < 3; i++){
-                m_char[i].transform.localPosition = new Vector3(m_char[i].transform.localPosition.x + m_speed, m_char[i].transform.localPosition.y, m_char[i].transform.localPosition.z);
+                m_char[i].transform.localPosition = new Vector3(m_char[i].transform.localPosition.x + ((m_default[2].x - m_default[1].x) * Time.deltaTime / m_moveTime), m_char[i].transform.localPosition.y, m_char[i].transform.localPosition.z);
             }
             if (m_char[m_selectNo].transform.localPosition.x >= m_default[1].x)
             {
