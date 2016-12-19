@@ -155,11 +155,17 @@ public class GM_SceneManager : MonoBehaviour {
             Color color = timeUpObj.color;
             color.a = 0.5f + _percent * 0.5f;
 
+            //プレイヤー停止信号を送信
+            playerManager.StopPlayers();
+
             //タイムアップ演出終了
             if (gameTime > GAME_TIME + 5.0f)
             {
                 //リザルト画面へフェードインフェードアウト(自身で制御すること)
                 fadeUnit.SceneChangeResult();
+
+                //プレイヤーオブジェクトの削除
+                playerManager.Delete();
             }
 
         }//Endif ゲーム終了

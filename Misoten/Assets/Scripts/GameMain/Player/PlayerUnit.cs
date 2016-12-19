@@ -84,8 +84,11 @@ public class PlayerUnit : MonoBehaviour {
     }
     public void StopPlayer()
     {
-        nextState = PlayerStatus.EStateTransition.END;
-        ChangeStateTransitionProcess();
+        if (status.GetStateTransition() != PlayerStatus.EStateTransition.END)
+        {
+            nextState = PlayerStatus.EStateTransition.END;
+            ChangeStateTransitionProcess();
+        }
     }
     public void KnockBack(Vector3 _knockBackVec)
     {
