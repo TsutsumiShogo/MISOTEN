@@ -22,10 +22,14 @@ public class PlayerCheckCollisionBill : MonoBehaviour {
         {
             return false;
         }
-        else
+
+        //z比較してプレイヤーが手前側ならビル存在とみなす
+        if (billParam.transform.position.z < playerUnit.transform.position.z)
         {
-            return true;
+            return false;
         }
+
+        return true;
     }
 
     //ビルの方向へ向く回転情報
