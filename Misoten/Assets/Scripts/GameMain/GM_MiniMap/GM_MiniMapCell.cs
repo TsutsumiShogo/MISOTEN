@@ -26,7 +26,7 @@ public class GM_MiniMapCell : MonoBehaviour {
     void Awake()
     {
         //ミニマップマネージャを保存
-        minimapManager = GameObject.Find("MiniMapManager").GetComponent<GM_MiniMapManager>();
+        minimapManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects/GameObjects/MiniMapManager").GetComponent<GM_MiniMapManager>();
         //セル枠描画スクリプトを保存
         mathCellColorCon = gameObject.GetComponentInChildren<GM_MathCellColorControll>();
     }
