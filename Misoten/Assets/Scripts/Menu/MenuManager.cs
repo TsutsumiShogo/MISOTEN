@@ -34,6 +34,9 @@ public class MenuManager : MonoBehaviour {
     // Action メニュー更新処理
     public T_SceneManager.SceneType Action(){
 
+        m_modObj[CHARACTOR_SELECT].GetComponent<ModeEffect>().Action();
+        m_modObj[RANKING].GetComponent<ModeEffect>().Action();
+
         if (!m_pushFlg){
             // モード選択処理
             if (m_selectId == CHARACTOR_SELECT){

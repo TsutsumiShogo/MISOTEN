@@ -13,7 +13,7 @@ public class GM_MissionManager : MonoBehaviour {
     public GM_Mission nowMission;       //生成したミッションオブジェクト
     private GM_UIMissionAnnounce announce;  //アナウンスオブジェクト
 
-    private GM_SceneManager sceneManager;
+    private GM_SceneManager sceneManager;   //シーンマネージャー(試合の経過時間が欲しい)
     private GM_MathManager mathManager;     //マスマネージャ(セルの位置欲しい)
 
     //変数宣言
@@ -22,6 +22,7 @@ public class GM_MissionManager : MonoBehaviour {
 
     void Awake()
     {
+        sceneManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects").GetComponent<GM_SceneManager>();
         mathManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects/Stage/MathManager").GetComponent<GM_MathManager>();
         announce = GameObject.Find("Canvas").transform.Find("GameMainUI/Game/MissionAnnounce").GetComponent<GM_UIMissionAnnounce>();
     }
@@ -71,7 +72,16 @@ public class GM_MissionManager : MonoBehaviour {
                 }
 
                 //ミッションオブジェクトの生成
-                CreateMission(GM_Mission.EMissionType.FLOWER_COLOR_MISSTION, GM_MathFlowerParam.EFlowerColor.RED, 999.0f, _createPos);
+                GM_MathFlowerParam.EFlowerColor _missionClearColor;
+                _missionClearColor = (GM_MathFlowerParam.EFlowerColor)Random.Range(0, (int)(GM_MathFlowerParam.EFlowerColor.WHITE) + 1);
+                if (sceneManager.gameTime < 60)
+                {
+                    CreateMission(GM_Mission.EMissionType.FLOWER_GROWTH_MISSION, _missionClearColor, 999.0f, _createPos);
+                }
+                else
+                {
+                    CreateMission(GM_Mission.EMissionType.FLOWER_COLOR_MISSTION, _missionClearColor, 999.0f, _createPos);
+                }
                 nonMissionTime = 0.0f;
             }
         }

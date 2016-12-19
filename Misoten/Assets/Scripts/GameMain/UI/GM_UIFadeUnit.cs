@@ -30,12 +30,14 @@ public class GM_UIFadeUnit : MonoBehaviour {
 	}
     public void Init()
     {
+        Debug.Log("dfsd");
         gameCanvas.SetActive(true);
         gameObjects.SetActive(true);
         resultCanvas.SetActive(false);
         resultObjects.SetActive(false);
         thisImage.color = new Color(0, 0, 0, 0.0f);
         changeTime = 0.0f;
+        updateFlg = false;
     }
 
 	// Update is called once per frame

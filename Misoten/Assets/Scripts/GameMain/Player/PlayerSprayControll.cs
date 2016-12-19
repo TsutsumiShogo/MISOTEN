@@ -17,10 +17,12 @@ public class PlayerSprayControll : MonoBehaviour {
 
     private EPlayerSprayMode sprayMode;         //スプレーがどういう行動を起こす予定か
     private float sprayActiveTime = -0.001f;    //正でスプレーが何か行動を起こしている
-    private float activeTime = 0.0f;            //スプレーが行動を開始してからの経過時間
 
     [SerializeField]
-    private MeshRenderer sprayMeshRender;       //Unity上でセット
+    private GameObject[] sprayEffect = new GameObject[3];//Unity上でセット
+    [SerializeField]
+    private ParticleSystem areaEffect;//Unity上でセット
+
     [SerializeField]
     private SphereCollider thisCollider;
 
@@ -34,7 +36,13 @@ public class PlayerSprayControll : MonoBehaviour {
     //初期化
 	void Init () {
         sprayActiveTime = -0.001f;
-        activeTime = 0.0f;
+
+        //エフェクトオブジェクトを全て無効にする
+        for (int i = 0; i < 3; ++i)
+        {
+            sprayEffect[i].SetActive(false);
+        }
+        areaEffect.Stop(true);
 	}
 	
 	// Update is called once per frame
@@ -42,43 +50,16 @@ public class PlayerSprayControll : MonoBehaviour {
         if (sprayActiveTime >= 0.00f)
         {
             sprayActiveTime -= Time.deltaTime;
-            activeTime += Time.deltaTime;
         }
         else
         {
-            activeTime = 0.0f;
+            //エフェクトオブジェクトを全て無効にする
+            for (int i = 0; i < 3; ++i)
+            {
+                sprayEffect[i].SetActive(false);
+            }
+            areaEffect.Stop(true);
         }
-
-        //スプレー描画
-        float _percent;
-        _percent = activeTime / playerStatus.SPRAY_MAX_SCALE_NEED_TIME;
-
-        if (_percent < 0.0f)
-        {
-            _percent = 0.0f;
-        }
-        if (_percent > 1.0f)
-        {
-            _percent = 1.0f;
-        }
-        Color matColor = sprayMeshRender.material.color;
-        switch (sprayMode)
-        {
-            case EPlayerSprayMode.SEED:
-                matColor.g = 1.0f;
-                matColor.r = matColor.b = matColor.a = 0.0f;
-                break;
-            case EPlayerSprayMode.GRAW:
-                matColor.b = 1.0f;
-                matColor.r = matColor.g = matColor.a = 0.0f;
-                break;
-            case EPlayerSprayMode.COLOR:
-                matColor.r = 1.0f;
-                matColor.g = matColor.b = matColor.a = 0.0f;
-                break;
-        }
-        matColor.a = _percent;
-        sprayMeshRender.material.color = matColor;
 	}
 
     //スプレーを起動させる
@@ -86,15 +67,25 @@ public class PlayerSprayControll : MonoBehaviour {
     {
         sprayMode = _mode;
         sprayActiveTime = _activeTime;
+        sprayEffect[(int)_mode].SetActive(true);
+        if (areaEffect.isPlaying == false)
+        {
+            areaEffect.Play(true);
+        }
     }
     //スプレーの大きさ変更
     public void ChangeScale(float _scale)
     {
         Vector3 scale = Vector3.one;
+        Vector3 areaEffectScale = Vector3.one;  //エリアエフェクトはRotationかかってて分けないと使えない…
         scale.y = 0.01f;
         scale.x = scale.z = _scale * 2.0f;
+        areaEffectScale.z = 1.0f;
+        areaEffectScale.x = areaEffectScale.y = _scale * 2.0f;
 
-        sprayMeshRender.transform.localScale = scale;
+        //エリアエフェクト用
+        areaEffect.transform.localScale = areaEffectScale;
+
         thisCollider.radius = _scale;
 
     }

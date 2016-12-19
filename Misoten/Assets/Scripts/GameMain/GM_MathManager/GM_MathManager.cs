@@ -142,6 +142,26 @@ public class GM_MathManager : MonoBehaviour {
         }
     }
 
+    //ミニマップ上で白以上になっている割合
+    public float GetGreenPercent()
+    {
+        int _greenMaxNum = 0;
+        int _greenNum = 0;
+        float _greenPercent = 0.0f;
+
+        for (int i = 0; i < cells.Count; ++i)
+        {
+            _greenMaxNum += cells[i].GetFlowerNum();
+        }
+        for (int i = 0; i < cells.Count; ++i)
+        {
+            _greenNum += cells[i].GetGreenFlowerNum();
+        }
+        _greenPercent = (float)_greenNum / (float)_greenMaxNum;
+
+        return _greenPercent;
+    }
+
 
     //===========================非公開関数=====================================
     //植物の自然成長処理

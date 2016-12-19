@@ -279,9 +279,10 @@ public class ObjectManager : MonoBehaviour {
     // オブジェクト消去
     //--------------------------------------------------------------- 
     public static void Clean(){
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < 3000; i++){
             if (objectList[i] != null){
                 Destroy( objectList[i] );   // オブジェクト破棄
+                objectList[i] = null;
             }
         }
         Id = 0;

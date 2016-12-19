@@ -48,6 +48,12 @@ public class GM_MiniMapPlayers : MonoBehaviour {
             //プレイヤーオブジェクト取得
             playerObject = playerManager.GetPlayerUnit(i);
 
+            //nullチェック
+            if (playerObject == null)
+            {
+                return;
+            }
+
             //アイコン位置計算
             iconPos = playerObject.transform.position;
             iconPos += transform.position;

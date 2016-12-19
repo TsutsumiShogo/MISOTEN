@@ -67,6 +67,12 @@ public class GM_SceneManager : MonoBehaviour {
         gameTime = 0;
         stageFlg[0] = stageFlg[1] = false;
 
+        //スコア初期化
+        for (int i = 0; i < 4; ++i)
+        {
+            GM_ScoreCtrl.SetPlayerScore(0.0f, i);
+        }
+
         //マスマネージャ初期化
         mathManager.Init();
 
@@ -123,9 +129,9 @@ public class GM_SceneManager : MonoBehaviour {
             stageFlg[0] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
             minimapManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
-            GameObject.Find("MobsManager").GetComponent<MobsManager>().move();      // モブ更新処理
-            //ステージ外周オブジェクトを消す
+            GameObject.Find("MobsManager").GetComponent<MobsManager>().move();            //ステージ外周オブジェクトを消す
             stageOutColObj[0].SetActive(false);
+            GameObject.Find("MobsManager").GetComponent<MobsManager>().move();
         }
         if (stageFlg[1] == false && mathManager.totalFlowerLevel > 1500)
         {
@@ -155,11 +161,17 @@ public class GM_SceneManager : MonoBehaviour {
             Color color = timeUpObj.color;
             color.a = 0.5f + _percent * 0.5f;
 
+            //プレイヤー停止信号を送信
+            playerManager.StopPlayers();
+
             //タイムアップ演出終了
             if (gameTime > GAME_TIME + 5.0f)
             {
                 //リザルト画面へフェードインフェードアウト(自身で制御すること)
                 fadeUnit.SceneChangeResult();
+
+                //プレイヤーオブジェクトの削除
+                playerManager.Delete();
             }
 
         }//Endif ゲーム終了

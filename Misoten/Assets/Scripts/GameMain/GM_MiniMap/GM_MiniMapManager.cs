@@ -24,7 +24,7 @@ public class GM_MiniMapManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-        mathManager = GameObject.Find("MathManager").GetComponent<GM_MathManager>();
+        mathManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects/Stage/MathManager").GetComponent<GM_MathManager>();
 	}
     //マスマネージャーのInitが呼ばれた後に呼んで下さい。
     public void Init()
