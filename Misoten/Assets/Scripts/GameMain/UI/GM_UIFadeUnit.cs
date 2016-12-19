@@ -37,6 +37,7 @@ public class GM_UIFadeUnit : MonoBehaviour {
         resultObjects.SetActive(false);
         thisImage.color = new Color(0, 0, 0, 0.0f);
         changeTime = 0.0f;
+        updateFlg = false;
     }
 
 	// Update is called once per frame
