@@ -171,6 +171,42 @@ public class GM_MathCell : MonoBehaviour {
         return levelCount;
     }
 
+    public int GetFlowerNum()
+    {
+        int _flowerNum = flowerParams.Count;
+
+        return _flowerNum;
+    }
+    public int GetGreenFlowerNum()
+    {
+        int _greenFlowerNum = 0;
+
+        for (int i = 0; i < flowerParams.Count; ++i)
+        {
+            switch (flowerParams[i].flowerType)
+            {
+                case GM_MathFlowerParam.EFlowerType.Flower1:
+                case GM_MathFlowerParam.EFlowerType.Flower2:
+                case GM_MathFlowerParam.EFlowerType.Flower3:
+                case GM_MathFlowerParam.EFlowerType.House:
+                    if (flowerParams[i].flowerLevel == GM_MathFlowerParam.EFlowerLevel.Level1)
+                    {
+                        _greenFlowerNum++;
+                    }
+                    break;
+                case GM_MathFlowerParam.EFlowerType.Bill:
+                case GM_MathFlowerParam.EFlowerType.BigBill:
+                    if (flowerParams[i].flowerLevel == GM_MathFlowerParam.EFlowerLevel.Level2)
+                    {
+                        _greenFlowerNum++;
+                    }
+                    break;
+            }
+        }
+
+        return _greenFlowerNum;
+    }
+
     //このセルの中の花のスコアの総数を計算
     public int GetTotalFlowerScore()
     {

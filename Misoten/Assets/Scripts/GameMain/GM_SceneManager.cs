@@ -67,6 +67,12 @@ public class GM_SceneManager : MonoBehaviour {
         gameTime = 0;
         stageFlg[0] = stageFlg[1] = false;
 
+        //スコア初期化
+        for (int i = 0; i < 4; ++i)
+        {
+            GM_ScoreCtrl.SetPlayerScore(0.0f, i);
+        }
+
         //マスマネージャ初期化
         mathManager.Init();
 
