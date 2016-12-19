@@ -43,6 +43,9 @@ public class RE_Menu : MonoBehaviour {
         {
             m_mode[i].GetComponent<ModeEffect>().Init();
         }
+        m_selectNo = 0;         // 選択初期化
+        m_startFlg = false;     // 開始フラグ初期化
+        m_desided = false;      // 決定フラグ初期化
         m_mode[m_selectNo].GetComponent<ModeEffect>().OnScalling(true);
     }
 

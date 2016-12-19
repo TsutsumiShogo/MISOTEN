@@ -186,6 +186,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11452944, guid: adb274e2126c94d4c93943fbe3287d64, type: 2}
+      propertyPath: START_SCENE_NO
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 180918, guid: adb274e2126c94d4c93943fbe3287d64, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: adb274e2126c94d4c93943fbe3287d64, type: 2}
   m_IsPrefabParent: 0

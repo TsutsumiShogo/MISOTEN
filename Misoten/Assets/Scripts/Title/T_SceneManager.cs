@@ -54,6 +54,8 @@ public class T_SceneManager : MonoBehaviour {
     // Init ここで一括して初期化を行う
     public void Init()
     {
+        m_nextSceneType = SceneType.TITLE;
+        m_nowSceneType = SceneType.TITLE;
         m_sceneManagers[(int)SceneType.TITLE].GetComponent<TitleManager>().Init(); // タイトル初期化処理
         // メニュー
         m_MenuPos = m_sceneManagers[(int)SceneType.MENU].transform.position;
