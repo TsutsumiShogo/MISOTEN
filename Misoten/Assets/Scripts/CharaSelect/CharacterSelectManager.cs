@@ -26,7 +26,8 @@ public class CharacterSelectManager : MonoBehaviour {
             m_charSelect[i] = m_PlayerSelect[i].GetComponent<charSelect>();
             m_charSelect[i].Init();
         }
-       
+
+        m_allSelectedFlg = false;
     }
 	
 	
