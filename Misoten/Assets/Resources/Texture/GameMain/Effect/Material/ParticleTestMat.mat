@@ -129,10 +129,6 @@ Material:
         second: 0
       data:
         first:
-          name: _InvFade
-        second: .889999986
-      data:
-        first:
           name: _Stencil
         second: 0
       data:
@@ -155,6 +151,10 @@ Material:
         first:
           name: _ColorMask
         second: 15
+      data:
+        first:
+          name: _InvFade
+        second: .889999986
     m_Colors:
       data:
         first:
