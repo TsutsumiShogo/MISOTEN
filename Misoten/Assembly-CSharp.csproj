@@ -97,6 +97,7 @@
      <Compile Include="Assets\Scripts\Menu\SelectMode.cs" />
      <Compile Include="Assets\Scripts\Ranking\RankList.cs" />
      <Compile Include="Assets\Scripts\Ranking\RankingManager.cs" />
+     <Compile Include="Assets\Scripts\Result\RE_TotalScore\RE_TotalScore.cs" />
      <Compile Include="Assets\Scripts\Result\Re_Menu\RE_Menu.cs" />
      <Compile Include="Assets\Scripts\Result\TotalScore.cs" />
      <Compile Include="Assets\Scripts\Save\SaveContainer.cs" />
