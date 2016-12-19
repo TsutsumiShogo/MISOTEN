@@ -57,6 +57,9 @@ public class T_SceneManager : MonoBehaviour {
         m_nextSceneType = SceneType.TITLE;
         m_nowSceneType = SceneType.TITLE;
         m_sceneManagers[(int)SceneType.TITLE].GetComponent<TitleManager>().Init(); // タイトル初期化処理
+        m_sceneCanvas[(int)SceneType.MENU].SetActive(false);
+        m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].SetActive(false);
+        m_sceneCanvas[(int)SceneType.RANKING].SetActive(false);
         // メニュー
         m_MenuPos = m_sceneManagers[(int)SceneType.MENU].transform.position;
         m_MenuPos.z = 0;

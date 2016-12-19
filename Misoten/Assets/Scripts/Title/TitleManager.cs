@@ -18,7 +18,8 @@ public class TitleManager : MonoBehaviour {
     // Init 初期化処理
     public void Init()
     {
-       
+        m_pushAFlg = false;
+        m_flashUIFlg = false;
     }
 
     //---------------------------------
