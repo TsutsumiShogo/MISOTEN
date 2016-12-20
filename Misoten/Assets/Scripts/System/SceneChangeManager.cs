@@ -55,6 +55,8 @@ public class SceneChangeManager : MonoBehaviour {
             SceneObjectSwitch((ESceneNo)i, false);
         }
 
+      
+
         //仮の値をセット
         nowSceneNo = ESceneNo.SCENE_TITLE;
         nextSceneNo = nowSceneNo;

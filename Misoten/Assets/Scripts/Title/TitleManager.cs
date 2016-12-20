@@ -29,10 +29,6 @@ public class TitleManager : MonoBehaviour {
         if (m_pushAFlg){
             // ボタンを押した後
             if (m_UI.GetComponent<PushAEffect>().m_flashEnd){
-                // メニューへ遷移処理
-                m_UI.SetActive(false);
-                m_Logo.SetActive(false);
-                
                 return T_SceneManager.SceneType.MENU;
             }
         }else{

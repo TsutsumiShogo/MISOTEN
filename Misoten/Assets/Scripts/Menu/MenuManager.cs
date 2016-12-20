@@ -11,13 +11,14 @@ public class MenuManager : MonoBehaviour {
     [SerializeField]
     private GameObject[] m_modObj = new GameObject[2];
 
-    private int m_selectId = 0;     // モードID
+    
     private bool m_pushFlg = false;  // 決定ボタンを押したか
 
     // モード定数
     private const int CHARACTOR_SELECT = 0;     // キャラクタセレクト
     private const int RANKING = 1;              // ランキング
 
+    private int m_selectId = CHARACTOR_SELECT;     // モードID
 	//===============================================================
     // 公開関数　T_SceneManagerで呼び出す
     
@@ -42,7 +43,7 @@ public class MenuManager : MonoBehaviour {
             if (m_selectId == CHARACTOR_SELECT){
                 //-------------------------
                 // 右入力処理
-                if (XboxController.GetLeftTriggerRight(0) || Input.GetKeyDown(KeyCode.RightArrow)){
+                if (XboxController.GetLeftTriggerLeft(0) || Input.GetKeyDown(KeyCode.RightArrow)){
                     m_selectId = RANKING;
                     m_modObj[CHARACTOR_SELECT].GetComponent<ModeEffect>().OffScalling();
                     m_modObj[RANKING].GetComponent<ModeEffect>().OnScalling();
@@ -50,7 +51,7 @@ public class MenuManager : MonoBehaviour {
             }else if( m_selectId == RANKING ){
                 //-------------------------
                 // 左入力処理
-                if (XboxController.GetLeftTriggerLeft(0) || Input.GetKeyDown(KeyCode.LeftArrow)){
+                if (XboxController.GetLeftTriggerRight(0) || Input.GetKeyDown(KeyCode.LeftArrow)){
                     m_selectId = CHARACTOR_SELECT;
                     m_modObj[CHARACTOR_SELECT].GetComponent<ModeEffect>().OnScalling();
                     m_modObj[RANKING].GetComponent<ModeEffect>().OffScalling();

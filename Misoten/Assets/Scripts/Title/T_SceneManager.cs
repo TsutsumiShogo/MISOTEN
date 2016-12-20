@@ -49,6 +49,9 @@ public class T_SceneManager : MonoBehaviour {
     //===============================================================
     // 未公開関数
 
+    void start(){
+        Init();
+    }
    
     //-----------------------------------------------------
     // Init ここで一括して初期化を行う
@@ -57,7 +60,9 @@ public class T_SceneManager : MonoBehaviour {
         m_nextSceneType = SceneType.TITLE;
         m_nowSceneType = SceneType.TITLE;
         m_sceneManagers[(int)SceneType.TITLE].GetComponent<TitleManager>().Init(); // タイトル初期化処理
-        m_sceneCanvas[(int)SceneType.MENU].SetActive(true);
+
+        Debug.Log("lo");
+        m_sceneCanvas[(int)SceneType.TITLE].SetActive(true);
         m_sceneCanvas[(int)SceneType.MENU].SetActive(false);
         m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].SetActive(false);
         m_sceneCanvas[(int)SceneType.RANKING].SetActive(false);
@@ -159,6 +164,7 @@ public class T_SceneManager : MonoBehaviour {
                 m_mainCamera.transform.position = m_MenuPos;
                 m_cameraMoveFlg = false;
                 m_sceneManagers[(int)m_nowSceneType].GetComponent<MenuManager>().Init();
+                m_sceneCanvas[(int)SceneType.TITLE].SetActive(false);
                 m_sceneCanvas[(int)m_nowSceneType].SetActive(true);
                 break;
                 //--------------------
