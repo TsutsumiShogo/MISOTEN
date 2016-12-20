@@ -4,6 +4,7 @@ using System.Collections;
 public class charSelect : MonoBehaviour {
 
     public int m_selectNo = 0;
+    public int m_defaultNo = 0;
     public int m_playerId;
     public GameObject[] m_char;
     public GameObject[] m_cursor;
@@ -17,6 +18,7 @@ public class charSelect : MonoBehaviour {
     private Vector3 m_bigScall;        // 拡大サイズ
     private Vector3 m_defaultScall;    // 縮小サイズ
     public bool m_decisionFlg;
+    
 
     //===============================================================
     // 公開関数　CharacterSelectManagerで呼び出す
@@ -24,13 +26,35 @@ public class charSelect : MonoBehaviour {
     //---------------------------------
     // Init 初期化処理
 	public void Init () {
+        
         moveLeft = false;
         moveRight = false;
 
         // デフォルト座標保持
-        m_default[0] = m_char[2].transform.localPosition;
-        m_default[1] = m_char[0].transform.localPosition;
-        m_default[2] = m_char[1].transform.localPosition;
+        //m_default[0] = m_char[2].transform.localPosition;
+        //m_default[1] = m_char[0].transform.localPosition;
+        //m_default[2] = m_char[1].transform.localPosition;
+
+        m_selectNo = m_defaultNo;
+
+        switch (m_selectNo){
+            case 0:
+                m_char[0].transform.localPosition = m_default[1];
+                m_char[1].transform.localPosition = m_default[2];
+                m_char[2].transform.localPosition = m_default[0];
+                break;
+            case 1:
+                m_char[0].transform.localPosition = m_default[0];
+                m_char[1].transform.localPosition = m_default[1];
+                m_char[2].transform.localPosition = m_default[2];
+                break;
+            case 2:
+                m_char[0].transform.localPosition = m_default[2];
+                m_char[1].transform.localPosition = m_default[0];
+                m_char[2].transform.localPosition = m_default[1];
+                break;
+        }   
+
         m_defaultScall = m_cursor[0].transform.localScale;
         m_bigScall = new Vector3(30,38,1);
         m_decision.SetActive(false);
