@@ -286,5 +286,7 @@ public class ObjectManager : MonoBehaviour {
             }
         }
         Id = 0;
+       
+
     }
 }

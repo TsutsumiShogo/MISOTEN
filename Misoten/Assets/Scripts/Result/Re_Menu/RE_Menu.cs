@@ -116,9 +116,12 @@ public class RE_Menu : MonoBehaviour {
             }
         }
 
+        //-------------------
+        // 遷移先決定
         if (XboxController.GetButtonA_All())
         {
             m_desided = true;
+            GameObject.Find("MobsManager").GetComponent<MobsManager>().Clean();
             GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_TITLE);
         }
 

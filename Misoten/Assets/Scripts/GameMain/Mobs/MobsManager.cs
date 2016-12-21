@@ -43,10 +43,24 @@ public class MobsManager : MonoBehaviour {
     //-----------------------------------------------------
     // 初期化
     //-----------------------------------------------------
-    private void Awake(){
+    public void Init(){
         //prefab = (GameObject)Resources.Load("Prefabs/GameMain/Boy_Ouen");
         CreateMobs();
         SetMob();
+    }
+
+    //---------------------------------
+    // モブ削除
+    public void Clean()
+    {
+        for(int i= 0; i < 500; i++)
+        {
+            if(m_objList[i] != null){
+                Destroy(m_objList[i]);
+                m_objList[i] = null;
+            }
+        }
+        m_objId = 0;
     }
 
     void Update()
@@ -57,10 +71,6 @@ public class MobsManager : MonoBehaviour {
         }
     }
     
-    //Inspectorの内容(半径)が変更された時に実行
-    private void OnValidate (){
-        SetMob();
-    }
 
     //-------------------------------------------
     //  モブ生成
