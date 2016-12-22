@@ -31,7 +31,8 @@ public class GM_MissionManager : MonoBehaviour {
         //ミッションがあれば削除
         if (nowMission)
         {
-            Destroy(nowMission);
+            Destroy(nowMission.gameObject);
+            nowMission = null;
         }
         canMissionCreateFlg = false;    //ミッション作成不許可
         nowMission = null;
