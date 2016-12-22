@@ -4,9 +4,8 @@ using System.Collections;
 //ゲームメインでのライトの管理を行う
 public class GM_LightMove : MonoBehaviour {
 
-    //Unity上でセット
-    [SerializeField]
     private GM_SceneManager gmManager;
+
     public Color morningColor;  //朝の色
     public Color dayColor;      //昼の色
     public Color eveningColor;  //夕方の色
@@ -17,6 +16,7 @@ public class GM_LightMove : MonoBehaviour {
 
 	// Use this for initialization1
 	void Awake () {
+        gmManager = transform.parent.GetComponent<GM_SceneManager>();
         thisLight = gameObject.GetComponent<Light>();
 	}
 	

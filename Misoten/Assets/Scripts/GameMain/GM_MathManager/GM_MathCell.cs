@@ -51,6 +51,18 @@ public class GM_MathCell : MonoBehaviour {
     public void Init(int stagePatternNo)
     {
         bool _houseFlg = false;
+
+        //もしマスが既にあれば削除
+        if (math.Count > 0)
+        {
+            for (int i = 0; i < math.Count; ++i)
+            {
+                Destroy(math[i].gameObject);
+            }
+            math.Clear();
+            flowerParams.Clear();
+        }
+
         //ステージパターン番号でよろしくない値が来たら修正する
         if (stagePatternNo < 0 || stagePatternNo > 2)
         {

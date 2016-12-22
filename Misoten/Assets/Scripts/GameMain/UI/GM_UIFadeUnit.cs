@@ -71,7 +71,7 @@ public class GM_UIFadeUnit : MonoBehaviour {
             gameObjects.SetActive(false);
             resultCanvas.SetActive(true);
             resultObjects.SetActive(true);
-            GameObject.Find("ResultObjects").GetComponent<ResultManager>().Init();
+            resultObjects.GetComponent<ResultManager>().Init();
         }
 
         //フェードモード切替

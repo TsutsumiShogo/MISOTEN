@@ -296,7 +296,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1286675966020754}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -831,7 +831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55749ebeaecd4cb47b44bbb9cf0bbbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPoint: 190000002300000034000000
+  cameraPoint: 190000002100000021000000
   MINIMAP_CELL_PREFAB: {fileID: 114006, guid: f5cd5283d77398942ae0414631ffa2a6, type: 2}
   cameraObject: {fileID: 1106074499277356}
   mathManager: {fileID: 0}
