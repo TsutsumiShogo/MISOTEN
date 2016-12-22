@@ -156,6 +156,7 @@ public class SceneChangeManager : MonoBehaviour {
                 gameManager = SceneTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GM_SceneManager>();
                 gameManager.Init();
                 GameObject.Find("MobsManager").GetComponent<MobsManager>().Init();  // モブ初期化
+                Debug.Log("初期化処理");
 
                 //ゲームメインUIマネージャーで初期化を伝達
                 GM_UIManager gameUiManager;

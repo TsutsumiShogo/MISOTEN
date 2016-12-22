@@ -61,6 +61,9 @@ public class MobsManager : MonoBehaviour {
             }
         }
         m_objId = 0;
+        m_stageNo = 0;
+        m_cnt = 0;
+        m_moveFlg = false;
     }
 
     void Update()
@@ -103,7 +106,6 @@ public class MobsManager : MonoBehaviour {
     //-------------------------------------------
     // モブを配置
     private void SetMob(){
-
         //オブジェクト間の角度差
         float angleDiff = 360f / (float)m_childNum[m_stageNo];
 
@@ -129,12 +131,14 @@ public class MobsManager : MonoBehaviour {
 
     public void stageUpOn()
     {
+       
         m_stageNo++;
         m_moveFlg = true;
         m_cnt = 0;
     }
 
     public void move(){
+        Debug.Log("ステージUP" + m_stageNo.ToString());
         m_stageNo++;
         AddMob();
         SetMob();
