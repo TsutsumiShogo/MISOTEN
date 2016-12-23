@@ -152,6 +152,7 @@ public class SceneChangeManager : MonoBehaviour {
             case ESceneNo.SCENE_GAME:
                 //ゲームメインシーンマネージャーで初期化を伝達
                 GM_SceneManager gameManager;
+                SoundManager.PlayBgm("bgm");
                 ObjectManager.Clean();      // オブジェクト初期化
                 gameManager = SceneTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GM_SceneManager>();
                 gameManager.Init();

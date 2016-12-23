@@ -20,9 +20,12 @@ public class RankingManager : MonoBehaviour {
     // Action - 更新処理
     //---------------------------------
     //
-    public void Action()
+    public T_SceneManager.SceneType Action()
     {
-
+        if( XboxController.GetButtonBack_All()){
+            return T_SceneManager.SceneType.MENU;
+        }
+        return T_SceneManager.SceneType.RANKING;
     }
 
     //===============================================================

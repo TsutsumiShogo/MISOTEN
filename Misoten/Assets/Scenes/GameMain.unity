@@ -822,6 +822,10 @@ Prefab:
       propertyPath: seData.Array.data[2].clip
       value: 
       objectReference: {fileID: 8300000, guid: 49be370f236a25b44a28e14bfec0a0e2, type: 3}
+    - target: {fileID: 11495930, guid: 9092d45069f54ff4aaef53c6a5e307b8, type: 2}
+      propertyPath: g_StartPlay
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9092d45069f54ff4aaef53c6a5e307b8, type: 2}
   m_IsPrefabParent: 0

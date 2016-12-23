@@ -179,6 +179,16 @@ public class T_SceneManager : MonoBehaviour {
             //--------------------------
             // ランキング
             case SceneType.RANKING:
+                m_nextSceneType = m_sceneManagers[(int)SceneType.RANKING].GetComponent<RankingManager>().Action();
+                if (m_nextSceneType != m_nowSceneType)
+                {
+                    m_nowSceneType = m_nextSceneType;
+                    m_cameraMoveFlg = true;
+                    if (m_nextSceneType == SceneType.MENU)
+                    {
+                        m_cameraMoveType = CameraMoveType.FROM_RANKING_TO_MENU;
+                    }
+                }
                 break;
         }
     }
@@ -218,7 +228,7 @@ public class T_SceneManager : MonoBehaviour {
                 //--------------------
                 // キャラセレからメニューへ
             case CameraMoveType.FROM_CHARASELECT_TO_MENU:
-                 m_mainCamera.transform.position = m_MenuPos;
+                m_mainCamera.transform.position = m_MenuPos;
                 m_cameraMoveFlg = false;
                 m_sceneCanvas[(int)m_nowSceneType].SetActive(true);
                 m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].SetActive(false);
@@ -227,6 +237,11 @@ public class T_SceneManager : MonoBehaviour {
                 //--------------------
                 // ランキングからメニューへ
             case CameraMoveType.FROM_RANKING_TO_MENU:
+                m_mainCamera.transform.position = m_MenuPos;
+                m_cameraMoveFlg = false;
+                m_sceneCanvas[(int)m_nowSceneType].SetActive(true);
+                m_sceneCanvas[(int)SceneType.RANKING].SetActive(false);
+                m_sceneManagers[(int)m_nowSceneType].GetComponent<MenuManager>().Init();
                 break;
                 //--------------------
                 // メニューからタイトルへ

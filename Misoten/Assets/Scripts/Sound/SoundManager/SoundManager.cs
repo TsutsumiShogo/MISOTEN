@@ -331,6 +331,35 @@ public class SoundManager
         }
     }
 
+    // SEをループ再生
+    void _PlaySeLoop(string _key, int _channel = -1)
+    {
+        if (!mPoolSe.ContainsKey(_key))
+        {
+
+            return;
+        }
+
+        var data = mPoolSe[_key];
+
+        if (0 <= _channel && _channel < SE_CHANEL)
+        {
+            var source = GetAudioSource(SoundType.SE, _channel);
+            source.clip = data.clip;
+            source.volume = FIRST_VOLUME;
+            if (!source.isPlaying){
+                source.Play();
+            }
+            return;
+        }
+        else
+        {
+            var source = GetAudioSource(SoundType.SE);
+            source.volume = FIRST_VOLUME;
+            source.PlayOneShot(data.clip);
+        }
+    }
+
     //
     // 音の大きさを変更
     //
