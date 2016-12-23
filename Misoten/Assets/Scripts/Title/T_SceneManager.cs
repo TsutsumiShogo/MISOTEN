@@ -57,16 +57,6 @@ public class T_SceneManager : MonoBehaviour {
     // Init ここで一括して初期化を行う
     public void Init()
     {
-        m_nextSceneType = SceneType.TITLE;
-        m_nowSceneType = SceneType.TITLE;
-        m_sceneManagers[(int)SceneType.TITLE].GetComponent<TitleManager>().Init(); // タイトル初期化処理
-
-        Debug.Log("lo");
-        m_sceneCanvas[(int)SceneType.TITLE].SetActive(true);
-        m_sceneCanvas[(int)SceneType.MENU].SetActive(false);
-        m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].SetActive(false);
-        m_sceneCanvas[(int)SceneType.RANKING].SetActive(false);
-        m_mainCamera.transform.position = new Vector3(3000.0f, 7.65f, 0);
         // メニュー
         m_MenuPos = m_sceneManagers[(int)SceneType.MENU].transform.position;
         m_MenuPos.z = 0;
@@ -76,6 +66,46 @@ public class T_SceneManager : MonoBehaviour {
         // ランキング
         m_RankingPos = m_sceneManagers[(int)SceneType.RANKING].transform.position;
         m_RankingPos.z = 0;
+
+        // タイトルシーン開始位置を決定 2周目にここで
+        switch (GM_StaticParam.g_titleStartStep){
+            case 0:
+                m_nextSceneType = SceneType.TITLE;
+                m_nowSceneType = SceneType.TITLE;
+                m_sceneManagers[(int)SceneType.TITLE].GetComponent<TitleManager>().Init(); // タイトル初期化処理
+                m_sceneCanvas[(int)SceneType.TITLE].SetActive(true);
+                m_sceneCanvas[(int)SceneType.MENU].SetActive(false);
+                m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].SetActive(false);
+                m_sceneCanvas[(int)SceneType.RANKING].SetActive(false);
+                m_mainCamera.transform.position = new Vector3(3000.0f, 7.65f, 0);
+                break;
+            case 1:
+                m_nextSceneType = SceneType.MENU;
+                m_nowSceneType = SceneType.MENU;
+                m_sceneManagers[(int)SceneType.MENU].GetComponent<MenuManager>().Init(); // タイトル初期化処理
+                m_sceneCanvas[(int)SceneType.TITLE].SetActive(false);
+                m_sceneCanvas[(int)SceneType.MENU].SetActive(true);
+                m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].SetActive(false);
+                m_sceneCanvas[(int)SceneType.RANKING].SetActive(false);
+                m_mainCamera.transform.position = m_MenuPos;
+                break;
+            case 2:
+                m_nextSceneType = SceneType.CHARCTER_SELECT;
+                m_nowSceneType = SceneType.CHARCTER_SELECT;
+                m_sceneManagers[(int)SceneType.CHARCTER_SELECT].GetComponent<CharacterSelectManager>().Init(); // タイトル初期化処理
+                m_sceneCanvas[(int)SceneType.TITLE].SetActive(false);
+                m_sceneCanvas[(int)SceneType.MENU].SetActive(false);
+                m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].SetActive(true);
+                m_sceneCanvas[(int)SceneType.RANKING].SetActive(false);
+                m_mainCamera.transform.position = m_CharaSelePos;
+                break;
+        }
+       
+
+      
+       
+        
+       
     }
 
     // Update is called once per frame

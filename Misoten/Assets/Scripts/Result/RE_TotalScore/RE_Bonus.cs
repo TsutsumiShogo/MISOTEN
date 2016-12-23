@@ -16,6 +16,7 @@ public class RE_Bonus : MonoBehaviour {
     public void Init(){
         m_openWindow = false;
         transform.localScale = new Vector3(0,1,1);
+        GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore = GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_score;
     }
 
     // Action - 更新処理

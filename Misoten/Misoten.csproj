@@ -133,10 +133,14 @@
     <Compile Include="Assets\Scripts\Menu\SelectMode.cs" />
     <Compile Include="Assets\Scripts\Ranking\RankList.cs" />
     <Compile Include="Assets\Scripts\Ranking\RankingManager.cs" />
+    <Compile Include="Assets\Scripts\Result\RE_PersonalScore\RE_PersonalScore.cs" />
+    <Compile Include="Assets\Scripts\Result\RE_PersonalScore\RE_PlantEffect.cs" />
+    <Compile Include="Assets\Scripts\Result\RE_PersonalScore\RE_PlayerRank.cs" />
     <Compile Include="Assets\Scripts\Result\RE_TotalScore\RE_BaseAction.cs" />
     <Compile Include="Assets\Scripts\Result\RE_TotalScore\RE_Bonus.cs" />
     <Compile Include="Assets\Scripts\Result\RE_TotalScore\RE_Header.cs" />
     <Compile Include="Assets\Scripts\Result\RE_TotalScore\RE_LastScore.cs" />
+    <Compile Include="Assets\Scripts\Result\RE_TotalScore\RE_NextButton.cs" />
     <Compile Include="Assets\Scripts\Result\RE_TotalScore\RE_TotalScore.cs" />
     <Compile Include="Assets\Scripts\Result\RE_TotalScore\TextInEffect.cs" />
     <Compile Include="Assets\Scripts\Result\Re_Menu\RE_Menu.cs" />

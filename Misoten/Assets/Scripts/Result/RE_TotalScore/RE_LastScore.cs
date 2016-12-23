@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class RE_LastScore : MonoBehaviour {
 
+    private float m_score;
+    private float m_afterScore;
     //===============================================================
     // 公開関数
 
@@ -12,9 +14,10 @@ public class RE_LastScore : MonoBehaviour {
     //---------------------------------
     //
     public void Init(){
-        float _score = GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_score; // スコア
+        m_score = GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_score; // スコア
+        m_afterScore = GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore; // スコア
         // スコアセット
-        transform.FindChild("score").GetComponent<Text>().text = string.Format("{0:#,##0}", _score);
+        transform.FindChild("score").GetComponent<Text>().text = string.Format("{0:#,##0}", m_score);
         transform.GetComponent<TextInEffect>().Init();
     }
 
@@ -25,9 +28,19 @@ public class RE_LastScore : MonoBehaviour {
     {
         if( !transform.GetComponent<TextInEffect>().m_goalFlg){
             transform.GetComponent<TextInEffect>().Action();
-            return TotalScore.RE_TOTAL_STEP.LASTSCORE_IN;
         }
-        return TotalScore.RE_TOTAL_STEP.NEXT_BUTTON;
+        else
+        {
+            if( m_score < m_afterScore){
+                m_score++;
+            }
+            else
+            {
+                return TotalScore.RE_TOTAL_STEP.NEXT_BUTTON;
+            }
+        }
+
+        return TotalScore.RE_TOTAL_STEP.LASTSCORE_IN;
         
     }
      

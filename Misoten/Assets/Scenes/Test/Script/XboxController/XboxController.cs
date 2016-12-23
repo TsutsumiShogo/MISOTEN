@@ -34,6 +34,30 @@ public class XboxController : MonoBehaviour
         }
         return false;
     }
+    //---------------------------------------------------------------
+    // Get LeftStick Trigger Up
+    //---------------------------------------------------------------
+    public static bool GetLeftTriggerUp_All()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (!stickUp[i])
+            {
+                // スティック倒し
+                if (GetLeftY(i) >= 1.0f)
+                {
+                    stickUp[i] = true;
+                    stickDown[i] = false;
+                    return true;
+                }
+            }
+            else {
+                if (GetLeftY(i) < 1.0f)
+                    stickUp[i] = false;
+            }
+        }
+        return false;
+    }
 
     //---------------------------------------------------------------
     // Get LeftStick Trigger Down
@@ -512,6 +536,19 @@ public class XboxController : MonoBehaviour
                     return true;
                 break;
         }
+        return false;
+    }
+    //---------------------------------------------------------------
+    // GetButtonBack
+    //---------------------------------------------------------------
+    public static bool GetButtonBack_All()
+    {
+        if (Input.GetKeyDown(KeyCode.Joystick1Button6))
+            return true;
+        if (Input.GetKeyDown(KeyCode.Joystick2Button6))
+            return true;
+        if (Input.GetKeyDown(KeyCode.Joystick3Button6))
+            return true;
         return false;
     }
     //---------------------------------------------------------------

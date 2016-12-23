@@ -66,7 +66,7 @@ public class GM_MathFlowerParam : MonoBehaviour {
     {
         //-----------------------------------------
         // 建物オブジェクトはゲーム開始時にオブジェクト生成
-        if ((flowerType == EFlowerType.Bill))
+        if ((flowerType == EFlowerType.Bill)　|| (flowerType == EFlowerType.BigBill))
         {
             //レベルアップ
             flowerLevel = EFlowerLevel.Level1;

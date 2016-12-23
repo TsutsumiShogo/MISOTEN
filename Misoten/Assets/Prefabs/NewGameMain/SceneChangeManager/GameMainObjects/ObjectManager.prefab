@@ -300,6 +300,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  mMaterialsBig:
+  - {fileID: 2100000, guid: 68f5be3fc45dd56488ee26ec8a3df525, type: 2}
+  - {fileID: 2100000, guid: e8b702f6261215c418fd4bff218f9a94, type: 2}
+  - {fileID: 2100000, guid: 2b669aff201beb048af9faf70b7182b1, type: 2}
 --- !u!135 &135030852161236382
 SphereCollider:
   m_ObjectHideFlags: 1

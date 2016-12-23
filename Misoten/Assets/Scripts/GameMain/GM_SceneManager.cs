@@ -130,14 +130,14 @@ public class GM_SceneManager : MonoBehaviour {
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
             minimapManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
             stageOutColObj[0].SetActive(false);
-            GameObject.Find("MobsManager").GetComponent<MobsManager>().move();
+            GameObject.Find("MobsManager").GetComponent<MobsManager>().move();      // モブ追加
         }
         if (stageFlg[1] == false && mathManager.totalFlowerLevel > 1500)
         {
             stageFlg[1] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
             minimapManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
-            GameObject.Find("MobsManager").GetComponent<MobsManager>().move();      // モブ更新処理
+            GameObject.Find("MobsManager").GetComponent<MobsManager>().move();      // モブ追加
             //ステージ外周オブジェクトを消す
             stageOutColObj[1].SetActive(false);
         }

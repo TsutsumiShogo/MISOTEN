@@ -47,6 +47,8 @@ public class RE_Menu : MonoBehaviour {
         m_startFlg = false;     // 開始フラグ初期化
         m_desided = false;      // 決定フラグ初期化
         m_mode[m_selectNo].GetComponent<ModeEffect>().OnScalling(true);
+        m_mode[m_selectNo+1].GetComponent<ModeEffect>().OffScalling(true);
+        m_mode[m_selectNo + 2].GetComponent<ModeEffect>().OffScalling(true);
     }
 
     // Action - 更新処理
@@ -103,7 +105,7 @@ public class RE_Menu : MonoBehaviour {
                 m_mode[m_selectNo].GetComponent<ModeEffect>().OnScalling(true);
             }
         }
-        if (XboxController.GetLeftTriggerUp(0))
+        if (XboxController.GetLeftTriggerUp_All())
         {
             m_selectNo++;
             if (m_selectNo > 2){
@@ -122,7 +124,23 @@ public class RE_Menu : MonoBehaviour {
         {
             m_desided = true;
             GameObject.Find("MobsManager").GetComponent<MobsManager>().Clean();
-            GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_TITLE);
+            
+            switch( m_selectNo)
+            {
+                case 0:
+                    GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);
+                    break;
+                case 1:
+                    GM_StaticParam.g_titleStartStep = 2;
+                    GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_TITLE);
+                    break;
+                case 2:
+                    GM_StaticParam.g_titleStartStep = 1;
+                    GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_TITLE);
+                    break;
+                   
+            }
+            
         }
 
     }

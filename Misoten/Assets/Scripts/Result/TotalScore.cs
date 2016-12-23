@@ -37,6 +37,7 @@ public class TotalScore : MonoBehaviour {
     private bool m_waitFlg = false;         // 待ちフラグ
 
     public float m_score = 0.0f;            // スコア
+    public float m_afterScore = 0.0f;
 
     // MathManager
     [SerializeField]
@@ -54,10 +55,12 @@ public class TotalScore : MonoBehaviour {
         m_waitFlg = false;
         m_waitTimer = 0.0f;
         m_nowStep = m_nextStep = RE_TOTAL_STEP.HEADER_IN;
+        transform.localPosition = new Vector3(0, 0, 0);        // 初期座標
         m_stepObj[(int)RE_TOTAL_STEP.HEADER_IN].GetComponent<RE_Header>().Init();
         m_stepObj[(int)RE_TOTAL_STEP.SCORE_IN].GetComponent<TextInEffect>().Init();
         m_stepObj[(int)RE_TOTAL_STEP.BONUS_IN].GetComponent<RE_Bonus>().Init();
         m_stepObj[(int)RE_TOTAL_STEP.LASTSCORE_IN].GetComponent<RE_LastScore>().Init();
+        m_stepObj[(int)RE_TOTAL_STEP.NEXT_BUTTON].GetComponent<RE_NextButton>().Init();
         for ( int i =0;i<(int)RE_TOTAL_STEP.RE_TOTAL_STEP_MAX;i++){
 
         }
@@ -114,9 +117,10 @@ public class TotalScore : MonoBehaviour {
                 //-----------------
                 // 最終スコア
                 case RE_TOTAL_STEP.NEXT_BUTTON:
-                    if (XboxController.GetButtonA_All() || Input.GetKeyDown(KeyCode.A))
+                    m_nextStep = m_stepObj[(int)m_nowStep].GetComponent<RE_NextButton>().Action();
+                    if (m_nowStep != m_nextStep)
                     {
-                        return true;
+                        return false;
                     }
                     break;
             }
@@ -131,7 +135,7 @@ public class TotalScore : MonoBehaviour {
                 m_waitTimer = 0.0f;
             }
         }
-        return false;
+        return true;
     }
 
     //===============================================================

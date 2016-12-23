@@ -74,8 +74,13 @@ public class ObjectParam : MonoBehaviour {
         m_particle = m_particleObj.GetComponent<ParticleSystem>();
         m_levelParticle = m_levelPartcleObj.GetComponent<ParticleSystem>();
     }
-    
-
+    // ----------------------------------------------------
+    //  大ビル初期化処理
+    // ----------------------------------------------------
+    public void BigBillInit()
+    {
+        m_type = GM_MathFlowerParam.EFlowerType.BigBill;
+    }
 
     //-------------------------------
     // 花更新処理

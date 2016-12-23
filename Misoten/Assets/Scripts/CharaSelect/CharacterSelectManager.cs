@@ -55,7 +55,7 @@ public class CharacterSelectManager : MonoBehaviour {
             
         }
 
-        if (Input.GetKeyDown(KeyCode.Backspace)){
+        if (XboxController.GetButtonBack_All() || Input.GetKeyDown(KeyCode.Backspace)){
             return T_SceneManager.SceneType.MENU;
         }
         

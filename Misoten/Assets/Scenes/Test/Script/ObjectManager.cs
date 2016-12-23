@@ -12,6 +12,7 @@ public class ObjectManager : MonoBehaviour {
     private static GameObject prefabFlower;     // 花のプレハブ
     private static GameObject prefabHouse;      // 家のプレハブ
     private static GameObject prefabMiddleBil;  // 中ビルのプレハブ
+    private static GameObject prefabBigBill;    // 大ビルのプレハブ
     private int m_actionId = 0;                 // アクション数
 
     //---------------------------------
@@ -41,6 +42,10 @@ public class ObjectManager : MonoBehaviour {
     public Material[] mMaterialsHouse;
     public static Material[] gMaterialsHouse;
 
+    //-----------------
+    // 大ビルマテリアル
+    public Material[] mMaterialsBig;
+    public static Material[] gMaterialBig;
     private int m_pointNum = 0;
     private int[] m_processingPoint = new int[3];
     private float m_oldtime = 0;
@@ -48,13 +53,17 @@ public class ObjectManager : MonoBehaviour {
 	// Use this for initialization
 
 	void Awake () {
-        
+
+        Debug.Log("ObjectManager 初期化");
+
         prefabFlower = (GameObject)Resources.Load("Prefabs/GameMain/Object/Flower");
         prefabHouse = (GameObject)Resources.Load("Prefabs/GameMain/Object/House");
         prefabMiddleBil = (GameObject)Resources.Load("Prefabs/GameMain/Object/MiddleBill");
-        
+        prefabBigBill = (GameObject)Resources.Load("Prefabs/GameMain/Object/BigBuilding");
+
         // つぼみマテリアル
         g_budMaterials = m_budMaterials;
+
         // 花マテリアル
         g_sangoFlowerMaterials = m_sangoFlowerMaterials;
         g_aoiFlowerMaterials = m_aoiFlowerMaterials;
@@ -62,21 +71,21 @@ public class ObjectManager : MonoBehaviour {
 
         // ビルマテリアルをセット
         gMaterialsMiddleBill = mMaterialsMiddleBill;
+
+        // ビッグビルマテリアルセット
+        gMaterialBig = mMaterialsBig;
+
         //gMaterials = mMaterials;
         Id = 0;
         m_pointNum = 0;
         m_actionId = 0;
+
         // 処理を三回に分けて行う
         m_processingPoint[0] = 600;
         m_processingPoint[1] = 1300;
         m_processingPoint[2] = 2000;
         m_oldtime = 0;
 	}
-
-    void start()
-    {
-        
-    }
 
     // object一括更新処理
 	// Update is called once per frame
@@ -104,6 +113,8 @@ public class ObjectManager : MonoBehaviour {
                         // 中ビルの更新処理
                         case GM_MathFlowerParam.EFlowerType.Bill:
                             _obj.mibbleBillUpdate();
+                            break;
+                        case GM_MathFlowerParam.EFlowerType.BigBill:
                             break;
                     }
                 }
@@ -161,10 +172,19 @@ public class ObjectManager : MonoBehaviour {
                 objectList[Id].GetComponent<ObjectParam>().MiddleBillInit();
                 objectList[Id].GetComponent<ObjectParam>().SetParam(_param);
                 break;
+            // ビル生成
+            case GM_MathFlowerParam.EFlowerType.BigBill:
+                Vector3 pos_B = new Vector3(-26, -0.3f, 8.5f);
+                objectList[Id] = Instantiate(prefabBigBill, pos_B, Quaternion.Euler(0, 150.0f, -1.7f)) as GameObject;
+                rendererList[Id] = objectList[Id].transform.FindChild("pCube23").GetComponent<Renderer>();
+                objectList[Id].GetComponent<ObjectParam>().BigBillInit();
+                objectList[Id].GetComponent<ObjectParam>().SetParam(_param);
+
+                break;
         }
 
-       
-        
+
+
         return Id++;
     }
     //---------------------------------------------------------------
@@ -242,6 +262,25 @@ public class ObjectManager : MonoBehaviour {
                             rendererList[no].materials[0],
                             gMaterialsMiddleBill[level - 1]
                         };
+                    }
+                    break;
+                    //-----------------------
+                    // 大ビル
+                case GM_MathFlowerParam.EFlowerType.BigBill:
+                    if (level == 2)
+                    {
+                        objectList[no].transform.FindChild("pCube22_polySurface4").GetComponent<Renderer>().material = gMaterialBig[0];
+                        objectList[no].transform.FindChild("pCube23").GetComponent<Renderer>().material = gMaterialBig[0];
+                        objectList[no].transform.FindChild("pCube24").GetComponent<Renderer>().material = gMaterialBig[0];
+                        objectList[no].transform.FindChild("pCube30").GetComponent<Renderer>().material = gMaterialBig[0];
+                        objectList[no].transform.FindChild("polySurface3_pCube22").GetComponent<Renderer>().material = gMaterialBig[0];
+                    }else if(level == 3)
+                    {
+                        objectList[no].transform.FindChild("pCube22_polySurface4").GetComponent<Renderer>().material = gMaterialBig[1];
+                        objectList[no].transform.FindChild("pCube23").GetComponent<Renderer>().material = gMaterialBig[1];
+                        objectList[no].transform.FindChild("pCube24").GetComponent<Renderer>().material = gMaterialBig[1];
+                        objectList[no].transform.FindChild("pCube30").GetComponent<Renderer>().materials = new Material[2] { gMaterialBig[1], gMaterialBig[2]};
+                        objectList[no].transform.FindChild("polySurface3_pCube22").GetComponent<Renderer>().material = gMaterialBig[1];
                     }
                     break;
             }
