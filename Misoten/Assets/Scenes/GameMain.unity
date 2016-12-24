@@ -6850,7 +6850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32d344c123a85c41b8e9b87cbac28ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  START_SCENE_NO: 2
+  START_SCENE_NO: 0
   SceneTopObjects:
   - {fileID: 678649795}
   - {fileID: 859979613}
@@ -6981,7 +6981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7a28d9e954c8c4b97bf5d92cce415b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GAME_TIME: 260
+  GAME_TIME: 10
   gameTime: 0
   stageOutColObj:
   - {fileID: 1230927127}
