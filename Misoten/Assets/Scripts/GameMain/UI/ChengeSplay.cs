@@ -34,9 +34,9 @@ public class ChengeSplay : MonoBehaviour {
         m_selectY = 5.0f/m_frame;
         m_selectX = 30.0f/m_frame;
         m_scallUp = 0.3f / m_frame;
-        m_leftPos = m_Icon[0].transform.position;
-        m_centerPos = m_Icon[1].transform.position;
-        m_rightPos = m_Icon[2].transform.position;
+        m_leftPos = new Vector3(-30.0f,-10.0f,0);
+        m_centerPos = new Vector3(0.0f, -5.0f, 0);
+        m_rightPos = new Vector3(30.0f, -10.0f, 0);
         m_frameCnt = 0;
         m_selectNo = 1;
       
@@ -84,20 +84,20 @@ public class ChengeSplay : MonoBehaviour {
         // 右と切り替え
         if (m_moveDir){
             // 右のが真ん中へ
-            m_Icon[m_selectNo].transform.position = new Vector3(m_Icon[m_selectNo].transform.position.x - m_selectX, m_Icon[m_selectNo].transform.position.y + m_selectY, m_Icon[m_selectNo].transform.position.z);
+            m_Icon[m_selectNo].transform.localPosition = new Vector3(m_Icon[m_selectNo].transform.localPosition.x - m_selectX, m_Icon[m_selectNo].transform.localPosition.y + m_selectY, m_Icon[m_selectNo].transform.localPosition.z);
             m_Icon[m_selectNo].transform.localScale = new Vector3(m_Icon[m_selectNo].transform.localScale.x + m_scallUp, m_Icon[m_selectNo].transform.localScale.y + m_scallUp, 1.0f);
             // 真ん中のが左へ
-            m_Icon[m_selectOld].transform.position = new Vector3(m_Icon[m_selectOld].transform.position.x - m_selectX, m_Icon[m_selectOld].transform.position.y - m_selectY, m_Icon[m_selectOld].transform.position.z);
+            m_Icon[m_selectOld].transform.localPosition = new Vector3(m_Icon[m_selectOld].transform.localPosition.x - m_selectX, m_Icon[m_selectOld].transform.localPosition.y - m_selectY, m_Icon[m_selectOld].transform.localPosition.z);
             m_Icon[m_selectOld].transform.localScale = new Vector3(m_Icon[m_selectOld].transform.localScale.x - m_scallUp, m_Icon[m_selectOld].transform.localScale.y - m_scallUp, 1.0f);
             m_frameCnt++;
             if(m_frameCnt > m_frame){
                 m_frameCnt = 0;
                 m_moveFlg = false;
-                m_Icon[m_selectNo].transform.position = m_centerPos;
+                m_Icon[m_selectNo].transform.localPosition = m_centerPos;
                 m_Icon[m_selectNo].transform.localScale = new Vector3(0.7f, 0.7f, 1.0f);
-                m_Icon[m_selectOld].transform.position = m_leftPos;
+                m_Icon[m_selectOld].transform.localPosition = m_leftPos;
                 m_Icon[m_selectOld].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
-                m_Icon[m_selectOther].transform.position = m_rightPos;
+                m_Icon[m_selectOther].transform.localPosition = m_rightPos;
                
             }
         }
@@ -105,21 +105,21 @@ public class ChengeSplay : MonoBehaviour {
         {
             // 左と切り替え
             // 左のが真ん中へ
-            m_Icon[m_selectNo].transform.position = new Vector3(m_Icon[m_selectNo].transform.position.x + m_selectX, m_Icon[m_selectNo].transform.position.y + m_selectY, m_Icon[m_selectNo].transform.position.z);
+            m_Icon[m_selectNo].transform.localPosition = new Vector3(m_Icon[m_selectNo].transform.localPosition.x + m_selectX, m_Icon[m_selectNo].transform.localPosition.y + m_selectY, m_Icon[m_selectNo].transform.localPosition.z);
             m_Icon[m_selectNo].transform.localScale = new Vector3(m_Icon[m_selectNo].transform.localScale.x + m_scallUp, m_Icon[m_selectNo].transform.localScale.y + m_scallUp, 1.0f);
             // 真ん中のが右へ
-            m_Icon[m_selectOld].transform.position = new Vector3(m_Icon[m_selectOld].transform.position.x + m_selectX, m_Icon[m_selectOld].transform.position.y - m_selectY, m_Icon[m_selectOld].transform.position.z);
+            m_Icon[m_selectOld].transform.localPosition = new Vector3(m_Icon[m_selectOld].transform.localPosition.x + m_selectX, m_Icon[m_selectOld].transform.localPosition.y - m_selectY, m_Icon[m_selectOld].transform.localPosition.z);
             m_Icon[m_selectOld].transform.localScale = new Vector3(m_Icon[m_selectOld].transform.localScale.x - m_scallUp, m_Icon[m_selectOld].transform.localScale.y - m_scallUp, 1.0f);
             m_frameCnt++;
             if (m_frameCnt > m_frame)
             {
                 m_frameCnt = 0;
                 m_moveFlg = false;
-                m_Icon[m_selectNo].transform.position = m_centerPos;
+                m_Icon[m_selectNo].transform.localPosition = m_centerPos;
                 m_Icon[m_selectNo].transform.localScale = new Vector3(0.7f, 0.7f, 1.0f);
-                m_Icon[m_selectOld].transform.position = m_rightPos;
+                m_Icon[m_selectOld].transform.localPosition = m_rightPos;
                 m_Icon[m_selectOld].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
-                m_Icon[m_selectOther].transform.position = m_leftPos;
+                m_Icon[m_selectOther].transform.localPosition = m_leftPos;
             }
                
         }

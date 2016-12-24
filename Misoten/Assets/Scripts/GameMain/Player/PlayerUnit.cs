@@ -287,13 +287,13 @@ public class PlayerUnit : MonoBehaviour {
                     switch (PLAYER_NO)
                     {
                         case  0:
-                            GameObject.Find("1P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
+                            GameObject.Find("1PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
                             break;
                         case 1:
-                            GameObject.Find("2P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
+                            GameObject.Find("2PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
                             break;
                         case 2:
-                            GameObject.Find("3P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
+                            GameObject.Find("3PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
                             break;
                     }
                    
@@ -304,13 +304,13 @@ public class PlayerUnit : MonoBehaviour {
                     switch (PLAYER_NO)
                     {
                         case 0:
-                            GameObject.Find("1P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
+                            GameObject.Find("1PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
                             break;
                         case 1:
-                            GameObject.Find("2P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
+                            GameObject.Find("2PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
                             break;
                         case 2:
-                            GameObject.Find("3P/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
+                            GameObject.Find("3PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
                             break;
                     }
                 }
