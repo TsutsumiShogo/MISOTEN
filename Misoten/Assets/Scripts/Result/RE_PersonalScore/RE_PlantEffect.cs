@@ -123,6 +123,7 @@ public class RE_PlantEffect : MonoBehaviour {
             m_fTimer = 0;
             if (m_rank > 0)
             {
+                SoundManager.PlaySe("flower_spone", 0);
                 switch (m_id) {
                     case 0:
                         GetComponent<Image>().sprite = m_flowerRed[m_flowerNo];

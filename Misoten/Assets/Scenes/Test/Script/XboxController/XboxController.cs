@@ -44,7 +44,7 @@ public class XboxController : MonoBehaviour
             if (!stickUp[i])
             {
                 // スティック倒し
-                if (GetLeftY(i) >= -1.0f)
+                if (GetLeftY(i) <= -1.0f)
                 {
                     stickUp[i] = true;
                     stickDown[i] = false;
@@ -52,7 +52,7 @@ public class XboxController : MonoBehaviour
                 }
             }
             else {
-                if (GetLeftY(i) < -1.0f)
+                if (GetLeftY(i) > -1.0f)
                     stickUp[i] = false;
             }
         }
