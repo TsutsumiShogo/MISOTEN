@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b73edafbcdfd80449370f940d478d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MISSION_EFFECT_PREFAB: {fileID: 123228, guid: bc10fa9eee60d34418cc33253b83b630,
+  MISSION_EFFECT_PREFAB: {fileID: 1940176685305248, guid: 8bd8b660b93eb1c46a3f75742096e0a4,
     type: 2}
   missionType: 0
   startTime: 0
