@@ -51,6 +51,7 @@ public class RE_PersonalScore : MonoBehaviour {
     //
     public void Init()
     {
+
         m_nowStep = m_nextStep = RE_PERSONAL_STEP.SCORE_ROLL;
         m_timer = 0.0f;
         m_strUnity = "点";
@@ -62,8 +63,7 @@ public class RE_PersonalScore : MonoBehaviour {
 
         CheckRank();    // 順位計算
 
-        for (int i = 0; i < 3; i++)
-        {
+        for (int i = 0; i < 3; i++){
             // player順にキャラオブジェクトを配置
             m_characterObj[GM_StaticParam.g_selectCharacter[i]].transform.localPosition = m_characterPos[i];
             m_characterObj[GM_StaticParam.g_selectCharacter[i]].transform.localRotation = Quaternion.Euler( m_characterRot[i]);
@@ -72,8 +72,8 @@ public class RE_PersonalScore : MonoBehaviour {
             m_scoreText[i].text = m_strUnity;
             m_plants[i].GetComponent<RE_PlantEffect>().Init(m_rank[i], GM_StaticParam.g_selectCharacter[i]); // 順位セット
         }
+
         transform.localPosition = new Vector3(800, 0, 0);   // 初期位置
-        
     }
 
     // Action - 更新処理
@@ -101,15 +101,14 @@ public class RE_PersonalScore : MonoBehaviour {
     //===============================================================
     // 未公開関数
 
-    // ScoreRoll
+    // ScoreRoll - スクロール
     //---------------------------------
     //
     private RE_PERSONAL_STEP ScoreRoll()
     {
-        Debug.Log("スコアロール");
+        // Debug.Log("スコアロール");
         m_timer += Time.deltaTime;
-        if (m_timer <= 7.0f)
-        {
+        if (m_timer <= 7.0f) {
             int _score;
             _score = Random.Range(100000, 999999);
             m_strScore[0] = string.Format("{0:#,##0}", _score);
@@ -120,14 +119,19 @@ public class RE_PersonalScore : MonoBehaviour {
             m_scoreText[0].text = m_strScore[0] + m_strUnity;
             m_scoreText[1].text = m_strScore[1] + m_strUnity;
             m_scoreText[2].text = m_strScore[2] + m_strUnity;
-        }
-        else
-        {
+
+
+        }else {
             for (int i = 0; i < 3; i++)
             {
                 m_strScore[i] = string.Format("{0:#,##0}", GM_ScoreCtrl.GetPlayerScore(i));
                 m_scoreText[i].text = m_strScore[i] + m_strUnity;
-                m_playerScore[i].transform.FindChild("rank").GetComponent<RE_PlayerRank>().OnScall(m_rank[i]+1);
+            }
+        }
+         
+        if(m_timer >= 8.0f){
+            for (int i = 0; i < 3; i++){    
+                m_playerScore[i].transform.FindChild("rank").GetComponent<RE_PlayerRank>().OnScall(m_rank[i]+1);    
             }
             return RE_PERSONAL_STEP.END_STEP;
         }

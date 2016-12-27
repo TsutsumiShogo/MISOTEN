@@ -39,19 +39,19 @@ public class charSelect : MonoBehaviour {
 
         switch (m_selectNo){
             case 0:
-                m_char[0].transform.localPosition = m_default[1];
-                m_char[1].transform.localPosition = m_default[2];
-                m_char[2].transform.localPosition = m_default[0];
+                m_char[0].transform.localPosition = new Vector3( m_default[1].x, m_char[0].transform.localPosition.y, m_char[0].transform.localPosition.z);
+                m_char[1].transform.localPosition = new Vector3( m_default[2].x, m_char[1].transform.localPosition.y, m_char[1].transform.localPosition.z);
+                m_char[2].transform.localPosition = new Vector3( m_default[0].x, m_char[2].transform.localPosition.y, m_char[2].transform.localPosition.z);
                 break;
             case 1:
-                m_char[0].transform.localPosition = m_default[0];
-                m_char[1].transform.localPosition = m_default[1];
-                m_char[2].transform.localPosition = m_default[2];
+                m_char[0].transform.localPosition = new Vector3( m_default[0].x, m_char[0].transform.localPosition.y, m_char[0].transform.localPosition.z);
+                m_char[1].transform.localPosition = new Vector3( m_default[1].x, m_char[1].transform.localPosition.y, m_char[1].transform.localPosition.z);
+                m_char[2].transform.localPosition = new Vector3( m_default[2].x, m_char[2].transform.localPosition.y, m_char[2].transform.localPosition.z);
                 break;
             case 2:
-                m_char[0].transform.localPosition = m_default[2];
-                m_char[1].transform.localPosition = m_default[0];
-                m_char[2].transform.localPosition = m_default[1];
+                m_char[0].transform.localPosition = new Vector3( m_default[2].x, m_char[0].transform.localPosition.y, m_char[0].transform.localPosition.z);
+                m_char[1].transform.localPosition = new Vector3( m_default[0].x, m_char[1].transform.localPosition.y, m_char[1].transform.localPosition.z);
+                m_char[2].transform.localPosition = new Vector3( m_default[1].x, m_char[2].transform.localPosition.y, m_char[2].transform.localPosition.z);
                 break;
         }   
 
@@ -100,14 +100,12 @@ public class charSelect : MonoBehaviour {
             }
             //------------------
             // 選択
-            if (XboxController.GetButtonA(m_playerId))
-            {
+            if (XboxController.GetButtonA(m_playerId)){
                 if (m_otherChar[0].GetComponent<charSelect>().m_decisionFlg) {
                     if (m_otherChar[0].GetComponent<charSelect>().m_selectNo == this.m_selectNo)
                         return;
                 }
-                if (m_otherChar[1].GetComponent<charSelect>().m_decisionFlg)
-                {
+                if (m_otherChar[1].GetComponent<charSelect>().m_decisionFlg){
                     if (m_otherChar[1].GetComponent<charSelect>().m_selectNo == this.m_selectNo)
                         return;
                 }
@@ -118,12 +116,10 @@ public class charSelect : MonoBehaviour {
         }
         //---------------------
         // B押下で選択取り消し
-        if (XboxController.GetButtonB(m_playerId))
-        {
+        if (XboxController.GetButtonB(m_playerId)){
             m_decisionFlg = false;
             m_decision.SetActive(false);
         }
-
     }
 
     //---------------------------------------------------------------
@@ -136,18 +132,18 @@ public class charSelect : MonoBehaviour {
         {
                 // プレイヤー1
             case 0:
-                m_char[2].transform.localPosition = m_default[0];
-                m_char[1].transform.localPosition = m_default[2];
+                m_char[2].transform.localPosition = new Vector3( m_default[0].x, m_char[2].transform.localPosition.y, m_char[2].transform.localPosition.z);
+                m_char[1].transform.localPosition = new Vector3( m_default[2].x, m_char[1].transform.localPosition.y, m_char[1].transform.localPosition.z);
                 break;
                 // プレイヤー2
             case 1:
-                m_char[0].transform.localPosition = m_default[0];
-                m_char[2].transform.localPosition = m_default[2];
+                m_char[0].transform.localPosition = new Vector3( m_default[0].x, m_char[0].transform.localPosition.y, m_char[0].transform.localPosition.z);
+                m_char[2].transform.localPosition = new Vector3( m_default[2].x, m_char[2].transform.localPosition.y, m_char[2].transform.localPosition.z);
                 break;
                 // プレイヤー3
             case 2:
-                m_char[1].transform.localPosition = m_default[0];
-                m_char[0].transform.localPosition = m_default[2];
+                m_char[1].transform.localPosition = new Vector3( m_default[0].x, m_char[1].transform.localPosition.y, m_char[1].transform.localPosition.z);
+                m_char[0].transform.localPosition = new Vector3( m_default[2].x, m_char[0].transform.localPosition.y, m_char[0].transform.localPosition.z);
                 break;
         }
     }
@@ -156,14 +152,14 @@ public class charSelect : MonoBehaviour {
     // MoveAction　キャラクタ移動＋カーソル演出
     private void MoveAction(){
         
-        // 
+        //
         if (moveLeft){
             for(int i= 0; i<3;i++){
                 m_char[i].transform.localPosition = new Vector3(m_char[i].transform.localPosition.x - ((m_default[2].x - m_default[1].x)*Time.deltaTime/m_moveTime), m_char[i].transform.localPosition.y, m_char[i].transform.localPosition.z);
             }
             if (m_char[m_selectNo].transform.localPosition.x <= m_default[1].x)
             {
-                m_char[m_selectNo].transform.localPosition = m_default[1];
+                m_char[m_selectNo].transform.localPosition = new Vector3(　m_default[1].x , m_char[m_selectNo].transform.localPosition.y, m_char[m_selectNo].transform.localPosition.z);
                 m_cursor[0].transform.localScale = m_defaultScall;
                 moveLeft = false;
             }
@@ -174,9 +170,8 @@ public class charSelect : MonoBehaviour {
             for (int i = 0; i < 3; i++){
                 m_char[i].transform.localPosition = new Vector3(m_char[i].transform.localPosition.x + ((m_default[2].x - m_default[1].x) * Time.deltaTime / m_moveTime), m_char[i].transform.localPosition.y, m_char[i].transform.localPosition.z);
             }
-            if (m_char[m_selectNo].transform.localPosition.x >= m_default[1].x)
-            {
-                m_char[m_selectNo].transform.localPosition = m_default[1];
+            if (m_char[m_selectNo].transform.localPosition.x >= m_default[1].x){
+                m_char[m_selectNo].transform.localPosition = new Vector3(m_default[1].x, m_char[m_selectNo].transform.localPosition.y, m_char[m_selectNo].transform.localPosition.z);
                 m_cursor[1].transform.localScale = m_defaultScall;
                 moveRight = false;
             }

@@ -49,7 +49,6 @@ public class CharacterSelectManager : MonoBehaviour {
                 }
                 // ゲームメインに遷移
                 GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);
-                Debug.Log("aaa");
             }
         }else{
             

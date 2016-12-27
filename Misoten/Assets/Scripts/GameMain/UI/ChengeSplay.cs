@@ -28,34 +28,44 @@ public class ChengeSplay : MonoBehaviour {
     private int m_selectOld;
     private int m_selectOther;
 
-	// Use this for initialization
-	void Start () {
+
+    //===============================================================
+    // 公開関数
+
+    // Init - 初期化処理
+    //---------------------------------
+    //
+    public void Init()
+    {
         m_moveFlg = false;
-        m_selectY = 5.0f/m_frame;
-        m_selectX = 30.0f/m_frame;
+        m_selectY = 5.0f / m_frame;
+        m_selectX = 30.0f / m_frame;
         m_scallUp = 0.3f / m_frame;
-        m_leftPos = new Vector3(-30.0f,-10.0f,0);
+        m_leftPos = new Vector3(-30.0f, -10.0f, 0);
         m_centerPos = new Vector3(0.0f, -5.0f, 0);
         m_rightPos = new Vector3(30.0f, -10.0f, 0);
         m_frameCnt = 0;
         m_selectNo = 1;
-      
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (m_moveFlg){
-            move();
-        }
-	}
 
 
-    // スプレー切り替え演出 プレイヤー操作から呼び出される
-    public void SplayChenge( bool _dir){
+        m_Icon[0].transform.localPosition = m_leftPos;
+        m_Icon[1].transform.localPosition = m_centerPos;
+        m_Icon[2].transform.localPosition = m_rightPos;
+        m_Icon[0].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
+        m_Icon[1].transform.localScale = new Vector3(0.7f, 0.7f, 1.0f);
+        m_Icon[2].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
+    }
+
+    // SplayChenge - スプレー切り替え演出 プレイヤー操作から呼び出される
+    //---------------------------------
+    //
+    public void SplayChenge(bool _dir)
+    {
         m_moveFlg = true;
         m_moveDir = _dir;
         m_selectOld = m_selectNo;
-        if (_dir){
+        if (_dir)
+        {
             m_selectNo++;
             m_selectNo = m_selectNo % 3;
             if (m_selectNo == 2)
@@ -78,6 +88,27 @@ public class ChengeSplay : MonoBehaviour {
         }
     }
 
+    
+    //===============================================================
+    // 未公開関数
+
+    // Use this for initialization
+    void Start () {
+        
+
+
+    }
+	
+	// Update is called once per frame
+	void Update () {
+        if (m_moveFlg){
+            move();
+        }
+	}
+
+
+    
+
     // スプレー移動処理
     void move(){
         
@@ -86,10 +117,12 @@ public class ChengeSplay : MonoBehaviour {
             // 右のが真ん中へ
             m_Icon[m_selectNo].transform.localPosition = new Vector3(m_Icon[m_selectNo].transform.localPosition.x - m_selectX, m_Icon[m_selectNo].transform.localPosition.y + m_selectY, m_Icon[m_selectNo].transform.localPosition.z);
             m_Icon[m_selectNo].transform.localScale = new Vector3(m_Icon[m_selectNo].transform.localScale.x + m_scallUp, m_Icon[m_selectNo].transform.localScale.y + m_scallUp, 1.0f);
+            
             // 真ん中のが左へ
             m_Icon[m_selectOld].transform.localPosition = new Vector3(m_Icon[m_selectOld].transform.localPosition.x - m_selectX, m_Icon[m_selectOld].transform.localPosition.y - m_selectY, m_Icon[m_selectOld].transform.localPosition.z);
             m_Icon[m_selectOld].transform.localScale = new Vector3(m_Icon[m_selectOld].transform.localScale.x - m_scallUp, m_Icon[m_selectOld].transform.localScale.y - m_scallUp, 1.0f);
             m_frameCnt++;
+
             if(m_frameCnt > m_frame){
                 m_frameCnt = 0;
                 m_moveFlg = false;
@@ -97,8 +130,7 @@ public class ChengeSplay : MonoBehaviour {
                 m_Icon[m_selectNo].transform.localScale = new Vector3(0.7f, 0.7f, 1.0f);
                 m_Icon[m_selectOld].transform.localPosition = m_leftPos;
                 m_Icon[m_selectOld].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
-                m_Icon[m_selectOther].transform.localPosition = m_rightPos;
-               
+                m_Icon[m_selectOther].transform.localPosition = m_rightPos;   
             }
         }
         else
@@ -107,12 +139,13 @@ public class ChengeSplay : MonoBehaviour {
             // 左のが真ん中へ
             m_Icon[m_selectNo].transform.localPosition = new Vector3(m_Icon[m_selectNo].transform.localPosition.x + m_selectX, m_Icon[m_selectNo].transform.localPosition.y + m_selectY, m_Icon[m_selectNo].transform.localPosition.z);
             m_Icon[m_selectNo].transform.localScale = new Vector3(m_Icon[m_selectNo].transform.localScale.x + m_scallUp, m_Icon[m_selectNo].transform.localScale.y + m_scallUp, 1.0f);
+            
             // 真ん中のが右へ
             m_Icon[m_selectOld].transform.localPosition = new Vector3(m_Icon[m_selectOld].transform.localPosition.x + m_selectX, m_Icon[m_selectOld].transform.localPosition.y - m_selectY, m_Icon[m_selectOld].transform.localPosition.z);
             m_Icon[m_selectOld].transform.localScale = new Vector3(m_Icon[m_selectOld].transform.localScale.x - m_scallUp, m_Icon[m_selectOld].transform.localScale.y - m_scallUp, 1.0f);
             m_frameCnt++;
-            if (m_frameCnt > m_frame)
-            {
+
+            if (m_frameCnt > m_frame){
                 m_frameCnt = 0;
                 m_moveFlg = false;
                 m_Icon[m_selectNo].transform.localPosition = m_centerPos;
@@ -121,7 +154,6 @@ public class ChengeSplay : MonoBehaviour {
                 m_Icon[m_selectOld].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
                 m_Icon[m_selectOther].transform.localPosition = m_leftPos;
             }
-               
         }
     }
 }

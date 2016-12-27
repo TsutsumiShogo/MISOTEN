@@ -81,6 +81,7 @@ public class RE_PlantEffect : MonoBehaviour {
                 case 1:
                     GreadUp();
                     break;
+
                 //--------------------
                 // 花になるよ
                 case 2:

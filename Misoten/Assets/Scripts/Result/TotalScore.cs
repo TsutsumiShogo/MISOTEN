@@ -38,6 +38,7 @@ public class TotalScore : MonoBehaviour {
 
     public float m_score = 0.0f;            // スコア
     public float m_afterScore = 0.0f;
+    private bool m_initFlg = false;
 
     // MathManager
     [SerializeField]
@@ -51,18 +52,23 @@ public class TotalScore : MonoBehaviour {
     //
     public void Init()
     {
-        m_score = GM_ScoreCtrl.GetPlayersScore();       // スコア取得
-        m_waitFlg = false;
-        m_waitTimer = 0.0f;
-        m_nowStep = m_nextStep = RE_TOTAL_STEP.HEADER_IN;
-        transform.localPosition = new Vector3(0, 0, 0);        // 初期座標
-        m_stepObj[(int)RE_TOTAL_STEP.HEADER_IN].GetComponent<RE_Header>().Init();
-        m_stepObj[(int)RE_TOTAL_STEP.SCORE_IN].GetComponent<TextInEffect>().Init();
-        m_stepObj[(int)RE_TOTAL_STEP.BONUS_IN].GetComponent<RE_Bonus>().Init();
-        m_stepObj[(int)RE_TOTAL_STEP.LASTSCORE_IN].GetComponent<RE_LastScore>().Init();
-        m_stepObj[(int)RE_TOTAL_STEP.NEXT_BUTTON].GetComponent<RE_NextButton>().Init();
-        for ( int i =0;i<(int)RE_TOTAL_STEP.RE_TOTAL_STEP_MAX;i++){
+        if (!m_initFlg)
+        {
+            m_initFlg = true;
+            m_score = GM_ScoreCtrl.GetPlayersScore();       // スコア取得
+            m_waitFlg = false;
+            m_waitTimer = 0.0f;
+            m_nowStep = m_nextStep = RE_TOTAL_STEP.HEADER_IN;
+            transform.localPosition = new Vector3(0, 0, 0);        // 初期座標
+            m_stepObj[(int)RE_TOTAL_STEP.HEADER_IN].GetComponent<RE_Header>().Init();
+            m_stepObj[(int)RE_TOTAL_STEP.SCORE_IN].GetComponent<TextInEffect>().Init();
+            m_stepObj[(int)RE_TOTAL_STEP.BONUS_IN].GetComponent<RE_Bonus>().Init();
+            m_stepObj[(int)RE_TOTAL_STEP.LASTSCORE_IN].GetComponent<RE_LastScore>().Init();
+            m_stepObj[(int)RE_TOTAL_STEP.NEXT_BUTTON].GetComponent<RE_NextButton>().Init();
+            for (int i = 0; i < (int)RE_TOTAL_STEP.RE_TOTAL_STEP_MAX; i++)
+            {
 
+            }
         }
     }
 
@@ -118,8 +124,8 @@ public class TotalScore : MonoBehaviour {
                 // 最終スコア
                 case RE_TOTAL_STEP.NEXT_BUTTON:
                     m_nextStep = m_stepObj[(int)m_nowStep].GetComponent<RE_NextButton>().Action();
-                    if (m_nowStep != m_nextStep)
-                    {
+                    if (m_nowStep != m_nextStep){
+                        m_initFlg = false;
                         return false;
                     }
                     break;

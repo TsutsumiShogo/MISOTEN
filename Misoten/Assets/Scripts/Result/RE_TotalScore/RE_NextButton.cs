@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class RE_NextButton : MonoBehaviour {
 
-    private float m_startPos = 400.0f;
-    private float m_afterPos = 420.0f;
+    public float m_startPos = 400.0f;
+    public float m_afterPos = 420.0f;
     private float m_time = 0.5f;
     private bool m_flg = true;
 
@@ -16,8 +16,7 @@ public class RE_NextButton : MonoBehaviour {
     // Init - 初期化
     //---------------------------------
     // 
-    public void Init()
-    {
+    public void Init(){
         GetComponent<Text>().color = new Color(1, 1, 1, 0);
         transform.localPosition = new Vector3(m_startPos,transform.localPosition.y, transform.localPosition.z);
     }

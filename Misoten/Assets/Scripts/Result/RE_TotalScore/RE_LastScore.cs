@@ -16,6 +16,13 @@ public class RE_LastScore : MonoBehaviour {
     public void Init(){
         m_score = GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_score; // スコア
         m_afterScore = GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore; // スコア
+
+        // ランキング更新処理
+        Debug.Log("Rank");
+        if (RankingManager.CheckRankIn((int)m_afterScore)){
+            RankingManager.UpdateRanking((int)m_afterScore, "NEW");
+            SaveContainer.Save();
+        }
         // スコアセット
         transform.FindChild("score").GetComponent<Text>().text = string.Format("{0:#,##0}", m_score);
         transform.GetComponent<TextInEffect>().Init();

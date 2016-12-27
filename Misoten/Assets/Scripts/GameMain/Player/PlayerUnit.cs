@@ -51,6 +51,11 @@ public class PlayerUnit : MonoBehaviour {
         status.Init();
         controll.Init();
         collisionBill.Init();
+
+        // SprayUI初期化
+        GameObject.Find("1PCanvas/SplayMode").GetComponent<ChengeSplay>().Init();
+        GameObject.Find("2PCanvas/SplayMode").GetComponent<ChengeSplay>().Init();
+        GameObject.Find("3PCanvas/SplayMode").GetComponent<ChengeSplay>().Init();
     }
 	
 	// Update is called once per frame
