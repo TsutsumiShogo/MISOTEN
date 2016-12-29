@@ -37,7 +37,7 @@ public class GM_Mission : MonoBehaviour {
 
         //パラメータ初期化
         missionType = _type;
-        startTime = 1.0f;
+        startTime = 3.0f;
         timeCountDown = _timeLimit;
         clearColor = GM_MathFlowerParam.EFlowerColor.WHITE;
 

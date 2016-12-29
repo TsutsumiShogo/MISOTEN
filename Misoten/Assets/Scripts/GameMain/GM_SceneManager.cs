@@ -220,4 +220,22 @@ public class GM_SceneManager : MonoBehaviour {
 
         return true;
     }//EndFunc()
+
+    //ステージの開放状況を外部へ渡す0→1→2
+    public int StageOpenSituation()
+    {
+        int _openNum = 0;
+
+        if (stageFlg[0] == true)
+        {
+            _openNum = 1;
+        }
+        if (stageFlg[1] == true)
+        {
+            _openNum = 2;
+        }
+
+        return _openNum;
+    }
+
 }

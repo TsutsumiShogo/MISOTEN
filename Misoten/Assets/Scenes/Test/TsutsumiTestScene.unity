@@ -741,7 +741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32d344c123a85c41b8e9b87cbac28ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  START_SCENE_NO: 0
+  START_SCENE_NO: 2
   SceneTopObjects:
   - {fileID: 710344945}
   - {fileID: 1090257919}
@@ -1054,21 +1054,21 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114528424613233350, guid: 9305069066b89b249a2a0a9e60026c0a,
-        type: 2}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 626443961}
-    - target: {fileID: 114419129426590490, guid: 9305069066b89b249a2a0a9e60026c0a,
-        type: 2}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 626443958}
     - target: {fileID: 114294829925910228, guid: 9305069066b89b249a2a0a9e60026c0a,
         type: 2}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 1090257917}
+    - target: {fileID: 114419129426590490, guid: 9305069066b89b249a2a0a9e60026c0a,
+        type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 626443958}
+    - target: {fileID: 114528424613233350, guid: 9305069066b89b249a2a0a9e60026c0a,
+        type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 626443961}
     - target: {fileID: 114135575587858510, guid: 9305069066b89b249a2a0a9e60026c0a,
         type: 2}
       propertyPath: gameObjects

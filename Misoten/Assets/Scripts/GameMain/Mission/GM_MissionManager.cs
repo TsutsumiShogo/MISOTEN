@@ -15,9 +15,10 @@ public class GM_MissionManager : MonoBehaviour {
 
     private GM_SceneManager sceneManager;   //シーンマネージャー(試合の経過時間が欲しい)
     private GM_MathManager mathManager;     //マスマネージャ(セルの位置欲しい)
+    private MobsManager mobManager;         //モブマネージャ
 
     //変数宣言
-    private bool canMissionCreateFlg;         //ミッション作成許可
+    private bool canMissionCreateFlg;       //ミッション作成許可
     private float nonMissionTime;       //ミッションが無い時間を計測
 
     void Awake()
@@ -25,6 +26,7 @@ public class GM_MissionManager : MonoBehaviour {
         sceneManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects").GetComponent<GM_SceneManager>();
         mathManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects/Stage/MathManager").GetComponent<GM_MathManager>();
         announce = GameObject.Find("Canvas").transform.Find("GameMainUI/Game/MissionAnnounce").GetComponent<GM_UIMissionAnnounce>();
+        mobManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects/ObjectManager/MobsManager").GetComponent<MobsManager>();
     }
 
 	public void Init () {
@@ -46,6 +48,9 @@ public class GM_MissionManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //アナウンス部のタイム表記部分に情報を知らせる(nullが許可されてる)
+        announce.MissionTimeCount(nowMission);
+
         //ミッション作成の許可が無ければ何もしない
         if (canMissionCreateFlg == false)
         {
@@ -64,24 +69,46 @@ public class GM_MissionManager : MonoBehaviour {
                 Vector3 _createPos = Vector3.zero;
                 int _index;
 
+                //一応複数回回るかも
                 for(int i=0; i<mathManager.cells.Count; ++i){
                     _index = Random.Range(0,mathManager.cells.Count);
-                    if (mathManager.cells[_index].stageNo == GM_MathManager.EMathStageNo.STAGE1)
+
+                    //花か家マスじゃないとクリアできないので
+                    if (mathManager.cells[_index].cellType == GM_MathCell.ECellType.CELL_FLOWER ||
+                        mathManager.cells[_index].cellType == GM_MathCell.ECellType.CELL_HOUSE)
                     {
-                        _createPos = mathManager.cells[_index].transform.position;
+                        //ステージの開放具合でミッション作成位置を変更する
+                        if (sceneManager.StageOpenSituation() == 0)
+                        {
+                            if (mathManager.cells[_index].stageNo == GM_MathManager.EMathStageNo.STAGE1)
+                            {
+                                _createPos = mathManager.cells[_index].transform.position;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            if (mathManager.cells[_index].stageNo == GM_MathManager.EMathStageNo.STAGE1 ||
+                                mathManager.cells[_index].stageNo == GM_MathManager.EMathStageNo.STAGE2)
+                            {
+                                _createPos = mathManager.cells[_index].transform.position;
+                                break;
+                            }
+                        }
                     }
-                }
+                    
+                }//EndFor
 
                 //ミッションオブジェクトの生成
                 GM_MathFlowerParam.EFlowerColor _missionClearColor;
                 _missionClearColor = (GM_MathFlowerParam.EFlowerColor)Random.Range(0, (int)(GM_MathFlowerParam.EFlowerColor.WHITE) + 1);
                 if (sceneManager.gameTime < 60)
                 {
-                    CreateMission(GM_Mission.EMissionType.FLOWER_GROWTH_MISSION, _missionClearColor, 999.0f, _createPos);
+                    CreateMission(GM_Mission.EMissionType.FLOWER_GROWTH_MISSION, _missionClearColor, 40.0f, _createPos);
                 }
                 else
                 {
-                    CreateMission(GM_Mission.EMissionType.FLOWER_COLOR_MISSTION, _missionClearColor, 999.0f, _createPos);
+                    CreateMission(GM_Mission.EMissionType.FLOWER_COLOR_MISSTION, _missionClearColor, 40.0f, _createPos);
                 }
                 nonMissionTime = 0.0f;
             }
@@ -125,6 +152,9 @@ public class GM_MissionManager : MonoBehaviour {
     public void FailedSignal()
     {
         Destroy(nowMission.gameObject);
+
+        //ミッション失敗アナウンスを流す
+        announce.FailedAnnounceMessage();
     }
     //ミッションオブジェクトから成功のシグナルが来た
     public void SuccessSignal()

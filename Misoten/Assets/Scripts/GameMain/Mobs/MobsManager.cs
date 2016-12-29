@@ -171,4 +171,14 @@ public class MobsManager : MonoBehaviour {
         }
     }
 
+    //ランダムなモブが欲しいから追加した＠堤
+    private GameObject GetRundomMob()
+    {
+        int _objID;
+
+        _objID = Random.Range(0, m_childNum[m_stageNo]);
+
+        return m_objList[_objID];
+    }
+
 }

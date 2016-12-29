@@ -13,6 +13,8 @@ public class GM_UIMissionAnnounce : MonoBehaviour {
     private GameObject startPointObj;
     [SerializeField]
     private GameObject endPointObj;
+    [SerializeField]
+    private Text missionTimeTextObj;
 
     //定数定義
     [SerializeField]
@@ -126,46 +128,7 @@ public class GM_UIMissionAnnounce : MonoBehaviour {
         nowTime = 0.0f;
 
         //ミッションの種類毎にテキストメッセージの内容を変更
-        switch (_missionType)
-        {
-            case GM_Mission.EMissionType.FLOWER_GROWTH_MISSION:
-                missionMessageObj.text = "指定のエリアで花を咲かせてみよう！";
-                break;
-            case GM_Mission.EMissionType.FLOWER_COLOR_MISSTION:
-                missionMessageObj.text = "指定のエリアを";
-                switch (_missionColor)
-                {
-                    case GM_MathFlowerParam.EFlowerColor.RED:
-                        missionMessageObj.text = missionMessageObj.text + "<color=red>赤</color>";
-                        break;
-                    case GM_MathFlowerParam.EFlowerColor.GREEN:
-                        missionMessageObj.text = missionMessageObj.text + "<color=green>緑</color>";
-                        break;
-                    case GM_MathFlowerParam.EFlowerColor.BLUE:
-                        missionMessageObj.text = missionMessageObj.text + "<color=blue>青</color>";
-                        break;
-                    case GM_MathFlowerParam.EFlowerColor.CYAN:
-                        missionMessageObj.text = missionMessageObj.text + "<color=cyan>シアン</color>";
-                        break;
-                    case GM_MathFlowerParam.EFlowerColor.MAGENTA:
-                        missionMessageObj.text = missionMessageObj.text + "<color=magenta>マゼンタ</color>";
-                        break;
-                    case GM_MathFlowerParam.EFlowerColor.YELLOW:
-                        missionMessageObj.text = missionMessageObj.text + "<color=yellow>イエロー</color>";
-                        break;
-                    case GM_MathFlowerParam.EFlowerColor.WHITE:
-                        missionMessageObj.text = missionMessageObj.text + "<color=white>力を合わせて白</color>";
-                        break;
-                }
-                missionMessageObj.text = missionMessageObj.text + "の花で埋め尽くそう！";
-                break;
-            case GM_Mission.EMissionType.BILL_GROWTH_MISSION:
-                missionMessageObj.text = "指定のエリアのビルを最後まで成長させよう！";
-                break;
-            case GM_Mission.EMissionType.BIGBILL_GROWTH_MISSION:
-                missionMessageObj.text = "指定のエリアの大きなビルを最後まで成長させよう！";
-                break;
-        }
+        missionMessageObj.text = GetMissionAnnounceText(_missionType, _missionColor);
 
         //テキストメッセージをスタートポイントに移動させる
         missionMessageObj.transform.position = startPointObj.transform.position;
@@ -180,5 +143,84 @@ public class GM_UIMissionAnnounce : MonoBehaviour {
 
         //テキストメッセージをスタートポイントに移動させる
         missionMessageObj.transform.position = startPointObj.transform.position;
+    }
+    //ミッション失敗のアナウンスを流す
+    public void FailedAnnounceMessage()
+    {
+        //カウントを戻す
+        nowTime = 0.0f;
+
+        missionMessageObj.text = "残念。ミッション失敗～";
+
+        //テキストメッセージをスタートポイントに移動させる
+        missionMessageObj.transform.position = startPointObj.transform.position;
+    }
+
+    //ミッションの内容テキストを取得する
+    public string GetMissionAnnounceText(GM_Mission.EMissionType _missionType, GM_MathFlowerParam.EFlowerColor _missionColor)
+    {
+        string _missionText;
+        _missionText = "";
+
+        //ミッションの種類毎にテキストメッセージの内容を変更
+        switch (_missionType)
+        {
+            case GM_Mission.EMissionType.FLOWER_GROWTH_MISSION:
+                _missionText = "指定のエリアで花を咲かせてみよう！";
+                break;
+            case GM_Mission.EMissionType.FLOWER_COLOR_MISSTION:
+                _missionText = "指定のエリアを";
+                switch (_missionColor)
+                {
+                    case GM_MathFlowerParam.EFlowerColor.RED:
+                        _missionText = _missionText + "<color=red>赤</color>";
+                        break;
+                    case GM_MathFlowerParam.EFlowerColor.GREEN:
+                        _missionText = _missionText + "<color=green>緑</color>";
+                        break;
+                    case GM_MathFlowerParam.EFlowerColor.BLUE:
+                        _missionText = _missionText + "<color=blue>青</color>";
+                        break;
+                    case GM_MathFlowerParam.EFlowerColor.CYAN:
+                        _missionText = _missionText + "<color=cyan>シアン</color>";
+                        break;
+                    case GM_MathFlowerParam.EFlowerColor.MAGENTA:
+                        _missionText = _missionText + "<color=magenta>マゼンタ</color>";
+                        break;
+                    case GM_MathFlowerParam.EFlowerColor.YELLOW:
+                        _missionText = _missionText + "<color=yellow>イエロー</color>";
+                        break;
+                    case GM_MathFlowerParam.EFlowerColor.WHITE:
+                        _missionText = _missionText + "<color=white>力を合わせて白</color>";
+                        break;
+                }
+                _missionText = _missionText + "の花で埋め尽くそう！";
+                break;
+            case GM_Mission.EMissionType.BILL_GROWTH_MISSION:
+                _missionText = "指定のエリアのビルを最後まで成長させよう！";
+                break;
+            case GM_Mission.EMissionType.BIGBILL_GROWTH_MISSION:
+                _missionText = "指定のエリアの大きなビルを最後まで成長させよう！";
+                break;
+        }
+
+        return _missionText;
+
+    }//EndFunc
+
+    //null送ってもらったらテキストを消すよ
+    public void MissionTimeCount(GM_Mission _missionObj)
+    {
+        //ミッションが無いのでテキストを消去
+        if (_missionObj == null)
+        {
+            missionTimeTextObj.text = "";
+            return;
+        }
+
+        //ミッションがあるのでテキストを代入
+        int _timeCount = (int)_missionObj.timeCountDown;
+        missionTimeTextObj.text = GetMissionAnnounceText(_missionObj.missionType, _missionObj.clearColor);
+        missionTimeTextObj.text = missionTimeTextObj.text + "　残り制限時間 " + _timeCount.ToString() + "秒";
     }
 }
