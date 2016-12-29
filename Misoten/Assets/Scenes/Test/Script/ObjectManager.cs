@@ -267,6 +267,8 @@ public class ObjectManager : MonoBehaviour {
                     //-----------------------
                     // 大ビル
                 case GM_MathFlowerParam.EFlowerType.BigBill:
+                    SoundManager.PlaySe("cheer", 3);       // 歓声
+                    objectList[no].GetComponent<ObjectParam>().LevelUpEff();     // レベルアップ時エフェクト
                     if (level == 2)
                     {
                         objectList[no].transform.FindChild("pCube22_polySurface4").GetComponent<Renderer>().material = gMaterialBig[0];
