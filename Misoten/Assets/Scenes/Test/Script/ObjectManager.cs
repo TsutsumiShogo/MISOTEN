@@ -50,8 +50,9 @@ public class ObjectManager : MonoBehaviour {
     private int[] m_processingPoint = new int[3];
     private float m_oldtime = 0;
     private const float m_updateTime = 0.01f;    // オブジェクト更新間隔
-	// Use this for initialization
 
+
+	// Use this for initialization
 	void Awake () {
 
         Debug.Log("ObjectManager 初期化");
@@ -81,9 +82,10 @@ public class ObjectManager : MonoBehaviour {
         m_actionId = 0;
 
         // 処理を三回に分けて行う
-        m_processingPoint[0] = 600;
-        m_processingPoint[1] = 1300;
-        m_processingPoint[2] = 2000;
+        m_processingPoint[0] = 1000;
+        m_processingPoint[1] = 2000;
+        m_processingPoint[2] = 3000;
+        
         m_oldtime = 0;
 	}
 
@@ -114,7 +116,9 @@ public class ObjectManager : MonoBehaviour {
                         case GM_MathFlowerParam.EFlowerType.Bill:
                             _obj.mibbleBillUpdate();
                             break;
+                        // 大ビルの更新処理
                         case GM_MathFlowerParam.EFlowerType.BigBill:
+                            _obj.mibbleBillUpdate();
                             break;
                     }
                 }

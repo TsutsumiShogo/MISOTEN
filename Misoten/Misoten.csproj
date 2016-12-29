@@ -129,6 +129,7 @@
     <Compile Include="Assets\Scripts\GameMain\UI\GM_UIGreenPercent.cs" />
     <Compile Include="Assets\Scripts\GameMain\UI\GM_UIManager.cs" />
     <Compile Include="Assets\Scripts\GameMain\UI\GM_UIMissionAnnounce.cs" />
+    <Compile Include="Assets\Scripts\GameMain\UI\TextEffecter.cs" />
     <Compile Include="Assets\Scripts\Menu\ButterflyMove.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuManager.cs" />
     <Compile Include="Assets\Scripts\Menu\ModeEffect.cs" />
