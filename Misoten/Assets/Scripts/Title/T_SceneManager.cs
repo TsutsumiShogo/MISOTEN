@@ -62,7 +62,7 @@ public class T_SceneManager : MonoBehaviour {
         m_titlePos = new Vector3(0, 0, 0);                      // タイトル座標
         m_menuPos = new Vector3(0, 1350.0f, 0);                 // メニュー座標
         m_charaSelePos = new Vector3(1600.0f, 1350.0f, 0);      // キャラセレ座標
-
+        m_rankingPos = new Vector3(-1600.0f, 1350.0f, 0);       // ランキング座標
         // タイトルシーン開始位置を決定 2周目にここで
         switch (GM_StaticParam.g_titleStartStep){
             case 0:
@@ -185,6 +185,7 @@ public class T_SceneManager : MonoBehaviour {
                 {
                     m_nowSceneType = m_nextSceneType;
                     m_cameraMoveFlg = true;
+                    m_sceneCanvas[(int)SceneType.RANKING].SetActive(false);
                     if (m_nextSceneType == SceneType.MENU)
                     {
                         m_cameraMoveType = CameraMoveType.FROM_RANKING_TO_MENU;
@@ -233,17 +234,23 @@ public class T_SceneManager : MonoBehaviour {
                 //--------------------
                 // メニューからランキングへ
             case CameraMoveType.FROM_MENU_TO_RANKING:
-                //m_mainCamera.transform.position = m_RankingPos;
-                
-                m_cameraMoveFlg = false;
-
-                m_sceneCanvas[(int)m_nowSceneType].SetActive(true);
-                m_sceneManagers[(int)m_nowSceneType].GetComponent<RankingManager>().Init();
+            
+                m_moveBackObj.transform.localPosition = new Vector3(m_moveBackObj.transform.localPosition.x + m_rankingPos.x * Time.deltaTime / 1.0f, 1350.0f, 0);
+                if (m_moveBackObj.transform.localPosition.x <= m_rankingPos.x)
+                {
+                    m_moveBackObj.transform.localPosition = m_rankingPos;
+                    m_cameraMoveFlg = false;
+                    m_sceneCanvas[(int)m_nowSceneType].SetActive(true);
+                    m_sceneManagers[(int)m_nowSceneType].GetComponent<RankingManager>().Init();
+                   
+                }
+               
+       
+              
                 break;
                 //--------------------
                 // キャラセレからメニューへ
             case CameraMoveType.FROM_CHARASELECT_TO_MENU:
-                //m_mainCamera.transform.position = m_MenuPos;
                 m_moveBackObj.transform.localPosition = new Vector3(m_moveBackObj.transform.localPosition.x - m_charaSelePos.x * Time.deltaTime / 1.0f, 1350.0f, 0);
                 if (m_moveBackObj.transform.localPosition.x <= m_menuPos.x)
                 {
@@ -256,11 +263,14 @@ public class T_SceneManager : MonoBehaviour {
                 //--------------------
                 // ランキングからメニューへ
             case CameraMoveType.FROM_RANKING_TO_MENU:
-                //m_mainCamera.transform.position = m_MenuPos;
-                m_cameraMoveFlg = false;
-                m_sceneCanvas[(int)m_nowSceneType].SetActive(true);
-                m_sceneCanvas[(int)SceneType.RANKING].SetActive(false);
-                m_sceneManagers[(int)m_nowSceneType].GetComponent<MenuManager>().Init();
+                m_moveBackObj.transform.localPosition = new Vector3(m_moveBackObj.transform.localPosition.x - m_rankingPos.x * Time.deltaTime / 1.0f, 1350.0f, 0);
+                if (m_moveBackObj.transform.localPosition.x >= m_menuPos.x)
+                {
+                    m_moveBackObj.transform.localPosition = m_menuPos;
+                    m_cameraMoveFlg = false;
+                    m_sceneManagers[(int)m_nowSceneType].GetComponent<MenuManager>().Init();
+                    m_sceneCanvas[(int)m_nowSceneType].SetActive(true);
+                }
                 break;
                 //--------------------
                 // メニューからタイトルへ
