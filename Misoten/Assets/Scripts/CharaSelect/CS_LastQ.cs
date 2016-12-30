@@ -33,14 +33,14 @@ public class CS_LastQ : MonoBehaviour {
         if( !m_openFlg && !m_closeFlg){
             m_mode[m_selectNo].GetComponent<ModeEffect>().Action();
         }
-        if( XboxController.GetLeftTriggerUp_All() || Input.GetKeyDown(KeyCode.UpArrow)){
+        if( XboxController.GetLeftTriggerDown_All() || Input.GetKeyDown(KeyCode.UpArrow)){
             if (m_selectNo != 0){
                 m_selectNo = 0;
                 m_mode[0].GetComponent<ModeEffect>().OnScalling(true);
                 m_mode[1].GetComponent<ModeEffect>().OffScalling(true);
             }
         }
-        if(XboxController.GetLeftTriggerDown_All() || Input.GetKeyDown(KeyCode.DownArrow)){
+        if(XboxController.GetLeftTriggerUp_All() || Input.GetKeyDown(KeyCode.DownArrow)){
             if (m_selectNo != 1){
                 m_selectNo = 1;
                 m_mode[0].GetComponent<ModeEffect>().OffScalling(true);

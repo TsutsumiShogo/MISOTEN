@@ -245,7 +245,7 @@ public class T_SceneManager : MonoBehaviour {
             case CameraMoveType.FROM_CHARASELECT_TO_MENU:
                 //m_mainCamera.transform.position = m_MenuPos;
                 m_moveBackObj.transform.localPosition = new Vector3(m_moveBackObj.transform.localPosition.x - m_charaSelePos.x * Time.deltaTime / 1.0f, 1350.0f, 0);
-                if (m_moveBackObj.transform.localPosition.x <= -m_charaSelePos.x)
+                if (m_moveBackObj.transform.localPosition.x <= m_menuPos.x)
                 {
                     m_moveBackObj.transform.localPosition = m_menuPos;
                     m_cameraMoveFlg = false;

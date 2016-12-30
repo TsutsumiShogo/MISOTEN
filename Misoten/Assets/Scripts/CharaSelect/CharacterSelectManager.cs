@@ -52,7 +52,6 @@ public class CharacterSelectManager : MonoBehaviour {
                     Debug.Log(GM_StaticParam.g_selectCharacter[i].ToString());
                 }
                 // ゲームメインに遷移
-                //GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);
                 m_lastMenu.GetComponent<CS_LastQ>().Open(); // 初期化
             }
         }else{
@@ -60,7 +59,15 @@ public class CharacterSelectManager : MonoBehaviour {
         }
 
         if (XboxController.GetButtonBack_All() || Input.GetKeyDown(KeyCode.Backspace)){
-            return T_SceneManager.SceneType.MENU;
+            if (!m_allSelectedFlg){
+                return T_SceneManager.SceneType.MENU;
+            }else{
+                m_lastMenu.GetComponent<CS_LastQ>().Close();
+                m_allSelectedFlg = false;
+                m_charSelect[0].Back();
+                m_charSelect[1].Back();
+                m_charSelect[2].Back();
+            }
         }
         
 
