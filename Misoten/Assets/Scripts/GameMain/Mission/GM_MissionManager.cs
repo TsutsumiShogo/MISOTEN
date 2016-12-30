@@ -26,7 +26,7 @@ public class GM_MissionManager : MonoBehaviour {
         sceneManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects").GetComponent<GM_SceneManager>();
         mathManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects/Stage/MathManager").GetComponent<GM_MathManager>();
         announce = GameObject.Find("SceneCanvas").transform.Find("GameMainUI/Game/MissionAnnounce").GetComponent<GM_UIMissionAnnounce>();
-        mobManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects/ObjectManager/MobsManager").GetComponent<MobsManager>();
+        mobManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects/MobsManager").GetComponent<MobsManager>();
     }
 
 	public void Init () {

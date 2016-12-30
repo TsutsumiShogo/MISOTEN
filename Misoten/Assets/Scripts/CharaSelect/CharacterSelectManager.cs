@@ -15,6 +15,10 @@ public class CharacterSelectManager : MonoBehaviour {
     public bool m_AllSelected = false;     // 全員決定状態
     private float m_color = 0;
 
+    //ゲーム開始質問メニュー
+    [SerializeField]
+    private GameObject m_lastMenu;      // 選択
+
     //===============================================================
     // 公開関数　T_SceneManagerで呼び出す
     
@@ -26,7 +30,7 @@ public class CharacterSelectManager : MonoBehaviour {
             m_charSelect[i] = m_PlayerSelect[i].GetComponent<charSelect>();
             m_charSelect[i].Init();
         }
-
+        m_lastMenu.GetComponent<CS_LastQ>().Init(); // 初期化
         m_allSelectedFlg = false;
     }
 	
@@ -48,10 +52,11 @@ public class CharacterSelectManager : MonoBehaviour {
                     Debug.Log(GM_StaticParam.g_selectCharacter[i].ToString());
                 }
                 // ゲームメインに遷移
-                GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);
+                //GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);
+                m_lastMenu.GetComponent<CS_LastQ>().Open(); // 初期化
             }
         }else{
-            
+            m_lastMenu.GetComponent<CS_LastQ>().Action();
         }
 
         if (XboxController.GetButtonBack_All() || Input.GetKeyDown(KeyCode.Backspace)){

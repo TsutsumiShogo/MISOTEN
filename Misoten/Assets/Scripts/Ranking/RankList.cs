@@ -30,7 +30,10 @@ public class RankList : MonoBehaviour {
     //
     public void ResultInit()
     {
+        m_cameraTimer = 0.0f;
+        m_flg = false;
         SetObject();            // オブジェクト取得
+        SetData();              // データセット
         transform.localPosition = new Vector3(0, 0, 0);
         for( int i=0;i<10;i++)
         {
