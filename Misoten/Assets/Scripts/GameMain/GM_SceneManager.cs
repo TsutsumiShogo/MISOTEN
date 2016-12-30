@@ -56,9 +56,9 @@ public class GM_SceneManager : MonoBehaviour {
         //ミッションマネージャ保存
         missionManager = transform.Find("GameObjects/MissionManager").GetComponent<GM_MissionManager>();
         //ゲーム開始演出テキスト保存
-        startObj = GameObject.Find("Canvas").transform.Find("GameMainUI/Game/Start").GetComponent<Text>();
+        startObj = GameObject.Find("SceneCanvas").transform.Find("GameMainUI/Game/Start").GetComponent<Text>();
         //タイムアップ演出テキスト保存
-        timeUpObj = GameObject.Find("Canvas").transform.Find("GameMainUI/Game/TimeUp").GetComponent<Text>();
+        timeUpObj = GameObject.Find("SceneCanvas").transform.Find("GameMainUI/Game/TimeUp").GetComponent<Text>();
     }
 
     //ゲーム開始時にこの初期化関数が呼ばれる。

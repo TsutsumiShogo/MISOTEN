@@ -47,7 +47,7 @@ public class TS_SceneManager : MonoBehaviour {
         //プレイヤーマネージャー保存
         playerManager = gameObject.GetComponentInChildren<PlayerManager>();
         //チュートリアルUIマネージャ保存
-        tutorialUiManager = GameObject.Find("Canvas").transform.Find("TutorialUI").GetComponent<TS_UIManager>();
+        tutorialUiManager = GameObject.Find("SceneCanvas").transform.Find("TutorialUI").GetComponent<TS_UIManager>();
         //シーンチェンジマネージャー保存
         sceneChangeManager = GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>();
 	}
