@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scenes\Test\Script\TextureAnimation.cs" />
     <Compile Include="Assets\Scenes\Test\Script\XboxController\XboxController.cs" />
     <Compile Include="Assets\Scripts\CharaSelect\ArrowMove.cs" />
+    <Compile Include="Assets\Scripts\CharaSelect\CS_LastQ.cs" />
     <Compile Include="Assets\Scripts\CharaSelect\CharacterSelectManager.cs" />
     <Compile Include="Assets\Scripts\GameMain\Effect\GM_BillXButtonEffect.cs" />
     <Compile Include="Assets\Scripts\GameMain\Effect\GunParticle.cs" />

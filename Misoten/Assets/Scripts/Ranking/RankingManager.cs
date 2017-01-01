@@ -6,13 +6,13 @@ public class RankingManager : MonoBehaviour {
 
     [SerializeField]    // Unity上でセット
     private GameObject m_rankingList;       // ランキングリスト
-
+    private bool m_roolFlg;
 
     //------------------
     // static 変数
     public static bool g_rankInFlg;        // ランクインフラグ
     public static int g_changeRank;        // 挿入されるランキングを保持
-
+    
     //===============================================================
     // 公開関数 - T_SceneManegerで呼び出す
 
@@ -21,6 +21,7 @@ public class RankingManager : MonoBehaviour {
     //
     public void Init(){
         m_rankingList.GetComponent<RankList>().Init();
+        m_roolFlg = true;
     }
 
     // Action - 更新処理
@@ -28,9 +29,12 @@ public class RankingManager : MonoBehaviour {
     //
     public T_SceneManager.SceneType Action()
     {
-        m_rankingList.GetComponent<RankList>().Action();
-        if ( XboxController.GetButtonBack_All()){
-            return T_SceneManager.SceneType.MENU;
+        m_roolFlg = m_rankingList.GetComponent<RankList>().Action();
+        if (!m_roolFlg){
+            if (XboxController.GetButtonBack_All() || Input.GetKeyDown(KeyCode.Backspace))
+            {
+                return T_SceneManager.SceneType.MENU;
+            }
         }
         return T_SceneManager.SceneType.RANKING;
     }

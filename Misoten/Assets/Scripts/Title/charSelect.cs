@@ -177,4 +177,11 @@ public class charSelect : MonoBehaviour {
             }
         }
     }
+
+    //---------------------------------
+    // 選択取り消し
+    public void Back(){
+        m_decisionFlg = false;
+        m_decision.SetActive(false);
+    }
 }
