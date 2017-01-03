@@ -9,7 +9,7 @@ public class PushAEffect : MonoBehaviour
     private Vector3 DefaultSize;        // 初期サイズ
     private Vector3 ScaleUpSize;        // 拡大後のサイズ
     private bool SizeChangeflg;         // 拡大縮小の切り替えフラグ     拡大:false    縮小:true
-    
+
     //-----------------
     // 点滅用変数
     private float m_scallmag = 20.0f;   // スケール変化速度倍率

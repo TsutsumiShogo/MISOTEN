@@ -63,7 +63,7 @@ public class SoundLoader : MonoBehaviour
         SoundManager.GetInstance().ChangePitch(SoundManager.SoundType.SE, 1.0f, 2);
         SoundManager.GetInstance().ChangePitch(SoundManager.SoundType.SE, 1.0f, 3);
 
-        SoundManager.GetInstance().ChangeVolume(SoundManager.SoundType.BGM, SoundManager.FIRST_VOLUME);
+        SoundManager.GetInstance().ChangeVolume(SoundManager.SoundType.BGM, 0.01f);
         SoundManager.GetInstance().ChangeVolume(SoundManager.SoundType.BGM2, SoundManager.FIRST_VOLUME);
         SoundManager.GetInstance().ChangeVolume(SoundManager.SoundType.SE, SoundManager.FIRST_VOLUME, -1);
         SoundManager.GetInstance().ChangeVolume(SoundManager.SoundType.SE, SoundManager.FIRST_VOLUME, 0);

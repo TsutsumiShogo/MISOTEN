@@ -211,6 +211,7 @@ public class T_SceneManager : MonoBehaviour {
                     m_moveBackObj.transform.localPosition = new Vector3(0, m_moveBackObj.transform.localPosition.y + m_menuPos.y * Time.deltaTime / 0.5f, 0);
                 }
                 if( m_moveBackObj.transform.localPosition.y >= m_menuPos.y){
+                    m_cTimer = 0;
                     m_moveBackObj.transform.localPosition = m_menuPos;
                     m_cameraMoveFlg = false;
                     m_sceneManagers[(int)m_nowSceneType].GetComponent<MenuManager>().Init();
@@ -220,7 +221,10 @@ public class T_SceneManager : MonoBehaviour {
                 //--------------------
                 // メニューからキャラセレへ
             case CameraMoveType.FROM_MENU_TO_CHARACTORSELECE:
-                //m_mainCamera.transform.position = m_CharaSelePos;
+                m_cTimer += Time.deltaTime;
+                if(m_cTimer >= 0.5f){
+                               
+                }
                 m_moveBackObj.transform.localPosition = new Vector3(m_moveBackObj.transform.localPosition.x + m_charaSelePos.x * Time.deltaTime / 1.0f, 1350.0f, 0);
                 if (m_moveBackObj.transform.localPosition.x >= m_charaSelePos.x)
                 {

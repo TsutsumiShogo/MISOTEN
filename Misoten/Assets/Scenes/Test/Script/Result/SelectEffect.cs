@@ -26,6 +26,7 @@ public class SelectEffect : MonoBehaviour {
     //
     public void Init(){
         m_flashCounter = 0; // 計測を初期化
+        m_swichFlg = true;
     }
 
     // Action - 更新処理
@@ -60,8 +61,31 @@ public class SelectEffect : MonoBehaviour {
         return true;       // 実行中
     }
 
+    // WaitAction - 待機アクション
+    //---------------------------------
+    //
+    public void WaitAction(){
+        if (!m_swichFlg)
+        {
+            GetComponent<Text>().color = new Color(m_defaultColor.r, m_defaultColor.g, m_defaultColor.b, GetComponent<Text>().color.a + (m_alpha - 1.0f) * Time.deltaTime / 2.0f);
+            if (GetComponent<Text>().color.a <= m_alpha){
+                GetComponent<Text>().color = new Color(m_defaultColor.r, m_defaultColor.g, m_defaultColor.b, m_alpha);
+                m_swichFlg = true;
+            }
+        }
+        else
+        {
+            GetComponent<Text>().color = new Color(m_defaultColor.r, m_defaultColor.g, m_defaultColor.b, GetComponent<Text>().color.a - (m_alpha - 1) * Time.deltaTime / 1.5f);
+            if (GetComponent<Text>().color.a >= 1.0f){
+                GetComponent<Text>().color = new Color(m_defaultColor.r, m_defaultColor.g, m_defaultColor.b, 1);
+                m_swichFlg = false;
+            }
+        }
+    }
+
     //===============================================================
     // 未公開関数
 
-	
+
+
 }

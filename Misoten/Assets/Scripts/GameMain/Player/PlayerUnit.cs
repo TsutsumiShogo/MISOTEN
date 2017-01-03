@@ -26,6 +26,8 @@ public class PlayerUnit : MonoBehaviour {
     public GM_MathFlowerParam.EFlowerColor PLAYER_COLOR;
     public bool moveFlg;
 
+    private float m_soundTimer = 0.0f;
+
 	// Use this for initialization
 	void Awake () {
         //部品取得
@@ -42,6 +44,7 @@ public class PlayerUnit : MonoBehaviour {
 	}
     public void Init()
     {
+        m_soundTimer = 0.0f;
         nextState = PlayerStatus.EStateTransition.START;
 
         motionTimeCount = 0.0f;
@@ -195,7 +198,7 @@ public class PlayerUnit : MonoBehaviour {
                 
                 break;
             case PlayerStatus.EStateTransition.WALK:
-                
+                m_soundTimer = 0.0f;
                 //移動処理
                 controll.SetMoveVec(inputVec);
 
@@ -215,7 +218,7 @@ public class PlayerUnit : MonoBehaviour {
                 
                 break;
             case PlayerStatus.EStateTransition.RUN:
-                
+                m_soundTimer = 0.0f;
                 //移動処理
                 controll.SetMoveVec(inputVec);
 
@@ -231,7 +234,13 @@ public class PlayerUnit : MonoBehaviour {
             //action
             case PlayerStatus.EStateTransition.SOWING_SEEDS:
                 //移動処理
+                m_soundTimer -= Time.deltaTime;
+                if (m_soundTimer <= 0.0f){
+                    m_soundTimer = 2.0f;
+                    SoundManager.PlaySe("seed", 3);
+                }
                 controll.SetMoveVec(inputVec);
+                
                 sprayCon.Spray(PlayerSprayControll.EPlayerSprayMode.SEED, 0.1f);
                 break;
             case PlayerStatus.EStateTransition.GROWING:

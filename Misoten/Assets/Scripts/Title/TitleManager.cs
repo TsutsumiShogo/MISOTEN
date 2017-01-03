@@ -20,6 +20,8 @@ public class TitleManager : MonoBehaviour {
     {
         m_pushAFlg = false;
         m_flashUIFlg = false;
+        m_UI.GetComponent<SelectEffect>().Init();
+
     }
 
     //---------------------------------
@@ -28,12 +30,13 @@ public class TitleManager : MonoBehaviour {
     {    
         if (m_pushAFlg){
             // ボタンを押した後
-            if (m_UI.GetComponent<PushAEffect>().m_flashEnd){
+            if (!m_UI.GetComponent<SelectEffect>().Action()){
                 return T_SceneManager.SceneType.MENU;
             }
         }else{
             // ボタン押下待機
             InputFunc();
+            m_UI.GetComponent<SelectEffect>().WaitAction();
         }
         return T_SceneManager.SceneType.TITLE;
     }
@@ -47,18 +50,13 @@ public class TitleManager : MonoBehaviour {
             // Aボタンでメニューへ
             if (Input.GetKeyDown(KeyCode.A) || XboxController.GetButtonA_All()){
                 m_pushAFlg = true;
-                m_UI.GetComponent<PushAEffect>().m_buttonFlg = true;
+                SoundManager.PlaySe("decision_1",4);
+                
             }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                ga++;
-                if (RankingManager.CheckRankIn(ga)){
-                    RankingManager.UpdateRanking(ga, "HAL");
-                    SaveContainer.Save();
-                    SaveContainer.CheckRanking();
-                }
-            }
+            
         }
+
+
     }
 
 
