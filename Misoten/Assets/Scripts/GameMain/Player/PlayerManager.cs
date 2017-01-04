@@ -40,10 +40,10 @@ public class PlayerManager : MonoBehaviour {
                     playerUnits[i].PLAYER_COLOR = GM_MathFlowerParam.EFlowerColor.RED;
                     break;
                 case 1:
-                    playerUnits[i].PLAYER_COLOR = GM_MathFlowerParam.EFlowerColor.GREEN;
+                    playerUnits[i].PLAYER_COLOR = GM_MathFlowerParam.EFlowerColor.BLUE;
                     break;
                 case 2:
-                    playerUnits[i].PLAYER_COLOR = GM_MathFlowerParam.EFlowerColor.BLUE;
+                    playerUnits[i].PLAYER_COLOR = GM_MathFlowerParam.EFlowerColor.GREEN;
                     break;
             }
 
