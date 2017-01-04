@@ -65,7 +65,11 @@ public class charSelect : MonoBehaviour {
                 m_desideObj[1].transform.localPosition = new Vector3(4.6f, m_desideObj[1].transform.localPosition.y, m_desideObj[1].transform.localPosition.z);
                 m_desideObj[2].transform.localPosition = new Vector3(0.0f, m_desideObj[2].transform.localPosition.y, m_desideObj[2].transform.localPosition.z);
                 break;
-        }   
+        }
+
+        m_desideObj[0].SetActive(false);
+        m_desideObj[1].SetActive(false);
+        m_desideObj[2].SetActive(false);
 
         m_defaultScall = m_cursor[0].transform.localScale;
         m_bigScall = new Vector3(30,38,1);
