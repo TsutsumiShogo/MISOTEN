@@ -113,7 +113,13 @@ public class GM_SceneManager : MonoBehaviour {
         m_whistleFlg = false;
         m_seTime = 0.0f;
 	}
-	
+    //終了処理
+    public void Delete()
+    {
+        //プレイヤーの削除
+        playerManager.Delete();
+    }
+
 	// Update is called once per frame
 	void Update () {
         //スタート演出中
