@@ -24,6 +24,9 @@ public class PlayerManager : MonoBehaviour {
     //初期化関数
     public void Init()
     {
+        //もしすでにプレイヤーオブジェクトがあれば削除する
+        DestroyPlayers();
+
         //プレイヤーオブジェクトを生成する
         GameObject[] playerObjects;
         playerObjects = new GameObject[3];
@@ -70,16 +73,7 @@ public class PlayerManager : MonoBehaviour {
     //終了処理
     public void Delete()
     {
-        if (playerUnits[0] == null)
-        {
-            return;
-        }
-
-        for (int i = 0; i < 3; ++i)
-        {
-            Destroy(playerUnits[i].gameObject);
-            playerUnits[i] = null;
-        }
+        DestroyPlayers();
     }
 
 
@@ -125,5 +119,16 @@ public class PlayerManager : MonoBehaviour {
             playerUnits[i].StopPlayer();
         }
     }
-    
+    private void DestroyPlayers()
+    {
+        for (int i = 0; i < 3; ++i)
+        {
+            if (playerUnits[i] != null)
+            {
+                playerUnits[i].StopPlayer();
+                Destroy(playerUnits[i].gameObject);
+                playerUnits[i] = null;
+            }
+        }
+    }
 }

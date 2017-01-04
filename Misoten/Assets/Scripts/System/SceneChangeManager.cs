@@ -79,12 +79,15 @@ public class SceneChangeManager : MonoBehaviour {
             return;
         }
 
-        //オブジェクト切り替え
+        //シーン終了処理
+        SceneEndProcess(nowSceneNo);
+
         //オブジェクトを切り替える
         SceneObjectSwitch(nowSceneNo, false);
         SceneObjectSwitch(nextSceneNo, true);
         //シーン番号切り替え
         nowSceneNo = nextSceneNo;
+
         //シーン開始処理
         SceneStartProcess(nextSceneNo);
 
@@ -161,6 +164,40 @@ public class SceneChangeManager : MonoBehaviour {
                 GM_UIManager gameUiManager;
                 gameUiManager = SceneCanvasTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GM_UIManager>();
                 gameUiManager.Init();
+
+                break;
+            default:
+                break;
+        }//EndSwitch
+
+    }//EndFunc
+
+    //シーン開始時の初期化処理
+    private void SceneEndProcess(ESceneNo endSceneNo)
+    {
+        //各自シーン終了時に何かしたい処理があればここに関数を追加
+        switch (endSceneNo)
+        {
+            case ESceneNo.SCENE_TITLE:
+                break;
+
+            case ESceneNo.SCENE_STORY:
+                //チュートリアルシーンマネージャーで初期化を伝達
+                TS_SceneManager tutorialManager;
+                tutorialManager = SceneTopObjects[(int)ESceneNo.SCENE_STORY].GetComponent<TS_SceneManager>();
+                tutorialManager.Delete();
+                break;
+
+            case ESceneNo.SCENE_GAME:
+                //ゲームメインシーンマネージャーで初期化を伝達
+                GM_SceneManager gameManager;
+                gameManager = SceneTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GM_SceneManager>();
+                gameManager.Delete();
+
+                //ゲームメインUIマネージャーで初期化を伝達
+                GM_UIManager gameUiManager;
+                gameUiManager = SceneCanvasTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GM_UIManager>();
+                //gameUiManager.Init();
 
                 break;
             default:

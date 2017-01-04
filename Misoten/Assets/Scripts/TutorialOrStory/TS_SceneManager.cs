@@ -72,6 +72,12 @@ public class TS_SceneManager : MonoBehaviour {
         //テキスト初期化
         tutorialUiManager.ChangeText(nowTextNo);
     }
+    //終了処理
+    public void Delete()
+    {
+        //プレイヤー削除
+        playerManager.Delete();
+    }
 
 	// Update is called once per frame
 	void Update () {
