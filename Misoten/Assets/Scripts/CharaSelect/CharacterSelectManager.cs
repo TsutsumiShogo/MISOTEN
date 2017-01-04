@@ -58,8 +58,11 @@ public class CharacterSelectManager : MonoBehaviour {
             m_lastMenu.GetComponent<CS_LastQ>().Action();
         }
 
+        //-------------------
+        // メニューへ戻る
         if (XboxController.GetButtonBack_All() || Input.GetKeyDown(KeyCode.Backspace)){
             if (!m_allSelectedFlg){
+                SoundManager.PlaySe("cansel",4);
                 return T_SceneManager.SceneType.MENU;
             }else{
                 m_lastMenu.GetComponent<CS_LastQ>().Close();

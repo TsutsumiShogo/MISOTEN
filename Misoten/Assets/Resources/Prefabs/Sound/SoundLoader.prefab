@@ -5,10 +5,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 491806}
-  - 114: {fileID: 11495930}
+  - component: {fileID: 491806}
+  - component: {fileID: 11495930}
   m_Layer: 0
   m_Name: SoundLoader
   m_TagString: Untagged
@@ -23,11 +23,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 127532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.362560868, y: -.759787798, z: 4.94290495}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11495930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -40,14 +41,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmData:
-    key: bgm
-    clip: {fileID: 8300000, guid: a3ee4f22133f9204d80e618d5d0fac35, type: 3}
+    key: title_bgm
+    clip: {fileID: 8300000, guid: 12d425d61e7bb0049b9026d118d9bf2d, type: 3}
   bgmData2:
+    key: game_bgm
+    clip: {fileID: 8300000, guid: a3ee4f22133f9204d80e618d5d0fac35, type: 3}
+  bgmData3:
+    key: 
+    clip: {fileID: 0}
+  bgmData4:
     key: 
     clip: {fileID: 0}
   seData:
   - key: flower_spone
-    clip: {fileID: 8300000, guid: 5549c69ec718c224da702ac2baa79842, type: 3}
+    clip: {fileID: 8300000, guid: 5b19adb10b8b76649a1391c8d89d3237, type: 3}
+  - key: grow_se
+    clip: {fileID: 8300000, guid: 9c432d6fb608aaf42b4b1bd709b5fbdd, type: 3}
+  - key: cheer
+    clip: {fileID: 8300000, guid: 49be370f236a25b44a28e14bfec0a0e2, type: 3}
+  - key: seed
+    clip: {fileID: 8300000, guid: 2b2a7b391013a614f861d0d1539c8f3b, type: 3}
+  - key: decision_1
+    clip: {fileID: 8300000, guid: ea44885dda544f649b07413b30625157, type: 3}
+  - key: cursol
+    clip: {fileID: 8300000, guid: 8f436ad4bcaf5354eb9b2fb52b4b7475, type: 3}
+  - key: boo
+    clip: {fileID: 8300000, guid: f9e76ffbb65e1a84d804c356e7ce2bac, type: 3}
+  - key: cansel
+    clip: {fileID: 8300000, guid: dced89f26ea34104dafd952c44934265, type: 3}
+  - key: call_1
+    clip: {fileID: 8300000, guid: cdbb6a49d2d6cbf43a1f701bd351dfac, type: 3}
+  - key: call_2
+    clip: {fileID: 8300000, guid: 66fa9990fc2de684ca6ac62acd7e7bbf, type: 3}
+  - key: call_3
+    clip: {fileID: 8300000, guid: 9eaf4523c6a88264095324d1fc5501c7, type: 3}
+  - key: roll
+    clip: {fileID: 8300000, guid: c7099b49c68c0a34bb8c04c896125de8, type: 3}
+  - key: call_2
+    clip: {fileID: 8300000, guid: 66fa9990fc2de684ca6ac62acd7e7bbf, type: 3}
+  - key: call_2
+    clip: {fileID: 8300000, guid: 66fa9990fc2de684ca6ac62acd7e7bbf, type: 3}
+  - key: call_2
+    clip: {fileID: 8300000, guid: 66fa9990fc2de684ca6ac62acd7e7bbf, type: 3}
   g_StartPlay: 1
   g_StartPlay2: 0
 --- !u!1001 &100100000

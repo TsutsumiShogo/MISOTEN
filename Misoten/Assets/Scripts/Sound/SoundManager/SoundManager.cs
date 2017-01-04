@@ -55,7 +55,7 @@ public class SoundManager
         public Data(string _key, string _res)
         {
             key = _key;
-            resName = "Sounds/" + _res;
+            resName = "Sound/" + _res;
             // オーディオクリップを取得
             clip = Resources.Load(resName) as AudioClip;
         }

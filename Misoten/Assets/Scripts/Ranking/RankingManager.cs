@@ -4,7 +4,7 @@ using System.Collections;
 public class RankingManager : MonoBehaviour {
 
 
-    [SerializeField]    // Unity上でセット
+    [SerializeField]                        // Unity上でセット
     private GameObject m_rankingList;       // ランキングリスト
     private bool m_roolFlg;
 
@@ -33,6 +33,7 @@ public class RankingManager : MonoBehaviour {
         if (!m_roolFlg){
             if (XboxController.GetButtonBack_All() || Input.GetKeyDown(KeyCode.Backspace))
             {
+                SoundManager.PlaySe("cansel", 2);
                 return T_SceneManager.SceneType.MENU;
             }
         }

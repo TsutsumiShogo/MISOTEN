@@ -43,6 +43,7 @@ public class RE_PersonalScore : MonoBehaviour {
     private float m_timer = 0.0f;
     private float[] m_score = new float[3];
     private int[] m_rank = new int[3];
+    private bool m_seFlg = false;
     //===============================================================
     // 公開関数
 
@@ -51,7 +52,7 @@ public class RE_PersonalScore : MonoBehaviour {
     //
     public void Init()
     {
-
+        m_seFlg = false;
         m_nowStep = m_nextStep = RE_PERSONAL_STEP.SCORE_ROLL;
         m_timer = 0.0f;
         m_strUnity = "点";
@@ -69,7 +70,7 @@ public class RE_PersonalScore : MonoBehaviour {
             m_characterObj[GM_StaticParam.g_selectCharacter[i]].transform.localRotation = Quaternion.Euler( m_characterRot[i]);
             m_scoreText[i] = m_playerScore[i].transform.FindChild("score").GetComponent<Text>();
             m_playerScore[i].transform.FindChild("rank").GetComponent<RE_PlayerRank>().Init();
-            m_scoreText[i].text = m_strUnity;
+            m_scoreText[i].text = "0" + m_strUnity;
             m_plants[i].GetComponent<RE_PlantEffect>().Init(m_rank[i], GM_StaticParam.g_selectCharacter[i]); // 順位セット
         }
 
@@ -108,7 +109,12 @@ public class RE_PersonalScore : MonoBehaviour {
     {
         // Debug.Log("スコアロール");
         m_timer += Time.deltaTime;
-        if (m_timer <= 7.0f) {
+        if ((m_timer <= 5.4f) && (m_timer > 0.2f) ) {
+            if( !m_seFlg)
+            {
+                SoundManager.PlaySe("roll", 5);
+                m_seFlg = true;
+            }
             int _score;
             _score = Random.Range(100000, 999999);
             m_strScore[0] = string.Format("{0:#,##0}", _score);
@@ -121,7 +127,8 @@ public class RE_PersonalScore : MonoBehaviour {
             m_scoreText[2].text = m_strScore[2] + m_strUnity;
 
 
-        }else {
+        }else if(m_timer > 5.4f)
+        {
             for (int i = 0; i < 3; i++)
             {
                 m_strScore[i] = string.Format("{0:#,##0}", GM_ScoreCtrl.GetPlayerScore(i));
@@ -129,7 +136,7 @@ public class RE_PersonalScore : MonoBehaviour {
             }
         }
          
-        if(m_timer >= 8.0f){
+        if(m_timer >= 6.0f){
             for (int i = 0; i < 3; i++){    
                 m_playerScore[i].transform.FindChild("rank").GetComponent<RE_PlayerRank>().OnScall(m_rank[i]+1);    
             }

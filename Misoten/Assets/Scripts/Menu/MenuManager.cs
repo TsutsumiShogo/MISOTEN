@@ -41,7 +41,7 @@ public class MenuManager : MonoBehaviour {
                 //-------------------------
                 // 右入力処理
                 if (XboxController.GetLeftTriggerLeft(0) || Input.GetKeyDown(KeyCode.RightArrow)){
-                    SoundManager.PlaySe("decision_2", 5);
+                    SoundManager.PlaySe("cursol", 5);
                     m_selectId = RANKING;
                     m_modObj[CHARACTOR_SELECT].GetComponent<ModeEffect>().OffScalling();
                     m_modObj[RANKING].GetComponent<ModeEffect>().OnScalling();
@@ -50,7 +50,7 @@ public class MenuManager : MonoBehaviour {
                 //-------------------------
                 // 左入力処理
                 if (XboxController.GetLeftTriggerRight(0) || Input.GetKeyDown(KeyCode.LeftArrow)){
-                    SoundManager.PlaySe("decision_2", 5);
+                    SoundManager.PlaySe("cursol", 5);
                     m_selectId = CHARACTOR_SELECT;
                     m_modObj[CHARACTOR_SELECT].GetComponent<ModeEffect>().OnScalling();
                     m_modObj[RANKING].GetComponent<ModeEffect>().OffScalling();
@@ -58,7 +58,7 @@ public class MenuManager : MonoBehaviour {
             }
             // 決定ボタン処理
             if (XboxController.GetButtonA_All() || Input.GetKeyDown(KeyCode.A)){
-                SoundManager.PlaySe("decisioon_2",4);
+                SoundManager.PlaySe("decision_1",4);
                 if (m_selectId == CHARACTOR_SELECT){
                     return T_SceneManager.SceneType.CHARCTER_SELECT;
                 }else{

@@ -55,20 +55,16 @@ public class TotalScore : MonoBehaviour {
         if (!m_initFlg)
         {
             m_initFlg = true;
-            m_score = GM_ScoreCtrl.GetPlayersScore();       // スコア取得
-            m_waitFlg = false;
-            m_waitTimer = 0.0f;
-            m_nowStep = m_nextStep = RE_TOTAL_STEP.HEADER_IN;
-            transform.localPosition = new Vector3(0, 0, 0);        // 初期座標
+            m_score = GM_ScoreCtrl.GetPlayersScore();               // スコア取得
+            m_waitFlg = false;                                                          // 
+            m_waitTimer = 0.0f;                                                         //  
+            m_nowStep = m_nextStep = RE_TOTAL_STEP.HEADER_IN;                           // 
+            transform.localPosition = new Vector3(0, 0, 0);                             // 初期座標
             m_stepObj[(int)RE_TOTAL_STEP.HEADER_IN].GetComponent<RE_Header>().Init();
             m_stepObj[(int)RE_TOTAL_STEP.SCORE_IN].GetComponent<TextInEffect>().Init();
             m_stepObj[(int)RE_TOTAL_STEP.BONUS_IN].GetComponent<RE_Bonus>().Init();
             m_stepObj[(int)RE_TOTAL_STEP.LASTSCORE_IN].GetComponent<RE_LastScore>().Init();
             m_stepObj[(int)RE_TOTAL_STEP.NEXT_BUTTON].GetComponent<RE_NextButton>().Init();
-            for (int i = 0; i < (int)RE_TOTAL_STEP.RE_TOTAL_STEP_MAX; i++)
-            {
-
-            }
         }
     }
 
@@ -86,6 +82,7 @@ public class TotalScore : MonoBehaviour {
                     m_nextStep = m_stepObj[(int)m_nowStep].GetComponent<RE_Header>().Action();
                     if (m_nowStep != m_nextStep)
                     {
+                        
                         m_waitFlg = true;
                         m_nowStep = m_nextStep;
                     }
@@ -96,6 +93,7 @@ public class TotalScore : MonoBehaviour {
                     m_nextStep = m_stepObj[(int)m_nowStep].GetComponent<TextInEffect>().Action();
                     if (m_nowStep != m_nextStep)
                     {
+                        SoundManager.PlaySe("cursol", 0);
                         m_waitFlg = true;
                         m_nowStep = m_nextStep;
                     }
@@ -106,6 +104,7 @@ public class TotalScore : MonoBehaviour {
                     m_nextStep = m_stepObj[(int)m_nowStep].GetComponent<RE_Bonus>().Action();
                     if (m_nowStep != m_nextStep)
                     {
+                        SoundManager.PlaySe("cursol", 0);
                         m_waitFlg = true;
                         m_nowStep = m_nextStep;
                     }
@@ -116,6 +115,7 @@ public class TotalScore : MonoBehaviour {
                     m_nextStep = m_stepObj[(int)m_nowStep].GetComponent<RE_LastScore>().Action();
                     if (m_nowStep != m_nextStep)
                     {
+                        SoundManager.PlaySe("cursol", 0);
                         m_waitFlg = true;
                         m_nowStep = m_nextStep;
                     }

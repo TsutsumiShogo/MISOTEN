@@ -42,8 +42,8 @@ public class PlayerUnit : MonoBehaviour {
         //パラメータ初期化
         Init();
 	}
-    public void Init()
-    {
+
+    public void Init(){
         m_soundTimer = 0.0f;
         nextState = PlayerStatus.EStateTransition.START;
 
@@ -62,7 +62,7 @@ public class PlayerUnit : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update (){
         int checkNo;
 
         //モーション経過時間を進める。
@@ -85,21 +85,20 @@ public class PlayerUnit : MonoBehaviour {
         controll.Move();
 	}
 
-    public void StartPlayer()
-    {
+    public void StartPlayer(){
         nextState = PlayerStatus.EStateTransition.STAND;
         ChangeStateTransitionProcess();
     }
-    public void StopPlayer()
-    {
+
+    public void StopPlayer(){
         if (status.GetStateTransition() != PlayerStatus.EStateTransition.END)
         {
             nextState = PlayerStatus.EStateTransition.END;
             ChangeStateTransitionProcess();
         }
     }
-    public void KnockBack(Vector3 _knockBackVec)
-    {
+
+    public void KnockBack(Vector3 _knockBackVec){
         //吹き飛びベクトルセット
         controll.SetVector(_knockBackVec);
 
@@ -119,13 +118,13 @@ public class PlayerUnit : MonoBehaviour {
         //状態切り替え時に何か特別な処理が必要であれば実行
         switch (nextState)
         {
-            //system
+            // system
             case PlayerStatus.EStateTransition.START:
                 break;
             case PlayerStatus.EStateTransition.END:
                 break;
 
-            //normal
+            // normal
             case PlayerStatus.EStateTransition.STAND:
                 moveFlg = false;
                 break;
@@ -136,7 +135,7 @@ public class PlayerUnit : MonoBehaviour {
                 moveFlg = true;
                 break;
 
-            //action
+            // action
             case PlayerStatus.EStateTransition.SOWING_SEEDS:
                 break;
             case PlayerStatus.EStateTransition.GROWING:
@@ -144,12 +143,12 @@ public class PlayerUnit : MonoBehaviour {
             case PlayerStatus.EStateTransition.SPRAY:
                 break;
 
-            //billAction
+            // billAction
             case PlayerStatus.EStateTransition.GROWING_BILL:
                 moveFlg = false;
                 break;
 
-            //damage
+            // damage
             case PlayerStatus.EStateTransition.KNOCKBACK:
                 moveFlg = false;
                 break;
@@ -297,7 +296,6 @@ public class PlayerUnit : MonoBehaviour {
                 if (XboxController.GetButtonL(PLAYER_NO) == true)
                 {
                     status.ChangeSprayMode(false);
-
                     switch (PLAYER_NO)
                     {
                         case  0:
@@ -310,7 +308,6 @@ public class PlayerUnit : MonoBehaviour {
                             GameObject.Find("3PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
                             break;
                     }
-                   
                 }
                 if (XboxController.GetButtonR(PLAYER_NO) == true)
                 {
@@ -357,8 +354,8 @@ public class PlayerUnit : MonoBehaviour {
                         nextState = PlayerStatus.EStateTransition.GROWING_BILL;
                     }
                 }
-
                 break;
+
             case PlayerStatus.EStateTransitionMode.ACTION:
                 //色スプレーだけ例外
                 if (status.GetStateTransition() != PlayerStatus.EStateTransition.SPRAY)
@@ -380,7 +377,6 @@ public class PlayerUnit : MonoBehaviour {
                                 GameObject.Find("3PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
                                 break;
                         }
-
                     }
                     if (XboxController.GetButtonR(PLAYER_NO) == true)
                     {
@@ -428,13 +424,11 @@ public class PlayerUnit : MonoBehaviour {
                     pos = transform.position + (transform.forward * 2.25f);
                     sprayCon.transform.position = pos;
                     sprayCon.ChangeScale(2.25f);
-
                     break;
                 }
 
                 //スプレーあたり判定のサイズを変化
-                if (motionTimeCount < status.SPRAY_MAX_SCALE_NEED_TIME)
-                {
+                if (motionTimeCount < status.SPRAY_MAX_SCALE_NEED_TIME){
                     sprayScalePercent = motionTimeCount / status.SPRAY_MAX_SCALE_NEED_TIME;
                 }
                 else

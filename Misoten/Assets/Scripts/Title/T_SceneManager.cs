@@ -53,16 +53,20 @@ public class T_SceneManager : MonoBehaviour {
 
     void start(){
         Init();
+        
+        
     }
    
     //-----------------------------------------------------
     // Init ここで一括して初期化を行う
     public void Init()
     {
+        SoundManager.PlayBgm("title_bgm");
         m_titlePos = new Vector3(0, 0, 0);                      // タイトル座標
         m_menuPos = new Vector3(0, 1350.0f, 0);                 // メニュー座標
         m_charaSelePos = new Vector3(1600.0f, 1350.0f, 0);      // キャラセレ座標
         m_rankingPos = new Vector3(-1600.0f, 1350.0f, 0);       // ランキング座標
+        m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].transform.localPosition = new Vector3(-800, 0, 0);
         // タイトルシーン開始位置を決定 2周目にここで
         switch (GM_StaticParam.g_titleStartStep){
             case 0:
@@ -158,7 +162,10 @@ public class T_SceneManager : MonoBehaviour {
                     m_sceneCanvas[(int)SceneType.MENU].SetActive(false);
                     if (m_nextSceneType == SceneType.CHARCTER_SELECT){
                         m_cameraMoveType = CameraMoveType.FROM_MENU_TO_CHARACTORSELECE;
-                    }else{
+                        m_sceneCanvas[(int)m_nowSceneType].SetActive(true);
+                        m_sceneManagers[(int)m_nowSceneType].GetComponent<CharacterSelectManager>().Init();
+                    }
+                    else{
                         m_cameraMoveType = CameraMoveType.FROM_MENU_TO_RANKING;
                     }
                 }
@@ -171,7 +178,6 @@ public class T_SceneManager : MonoBehaviour {
                 {
                     m_nowSceneType = m_nextSceneType;
                     m_cameraMoveFlg = true;
-                    m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].SetActive(false);
                     if (m_nextSceneType == SceneType.MENU){
                         m_cameraMoveType = CameraMoveType.FROM_CHARASELECT_TO_MENU;
                     }
@@ -223,15 +229,17 @@ public class T_SceneManager : MonoBehaviour {
             case CameraMoveType.FROM_MENU_TO_CHARACTORSELECE:
                 m_cTimer += Time.deltaTime;
                 if(m_cTimer >= 0.5f){
-                               
+                    m_sceneCanvas[(int)m_nowSceneType].transform.localPosition = new Vector3(
+                        m_sceneCanvas[(int)m_nowSceneType].transform.localPosition.x + 800.0f * Time.deltaTime / 0.5f,0,0);
                 }
                 m_moveBackObj.transform.localPosition = new Vector3(m_moveBackObj.transform.localPosition.x + m_charaSelePos.x * Time.deltaTime / 1.0f, 1350.0f, 0);
                 if (m_moveBackObj.transform.localPosition.x >= m_charaSelePos.x)
                 {
+                    SoundManager.PlaySe("cursol", 1);   // ページ切り替え完了音
                     m_moveBackObj.transform.localPosition = m_charaSelePos;
+                    m_sceneCanvas[(int)m_nowSceneType].transform.localPosition = new Vector3(0, 0, 0);
                     m_cameraMoveFlg = false;
-                    m_sceneManagers[(int)m_nowSceneType].GetComponent<CharacterSelectManager>().Init();
-                    m_sceneCanvas[(int)m_nowSceneType].SetActive(true);
+                    m_cTimer = 0.0f;           
                 }
               
                 break;
@@ -255,12 +263,16 @@ public class T_SceneManager : MonoBehaviour {
                 //--------------------
                 // キャラセレからメニューへ
             case CameraMoveType.FROM_CHARASELECT_TO_MENU:
+                m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].transform.localPosition = new Vector3(
+                        m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].transform.localPosition.x - 800.0f * Time.deltaTime / 0.5f, 0, 0);
                 m_moveBackObj.transform.localPosition = new Vector3(m_moveBackObj.transform.localPosition.x - m_charaSelePos.x * Time.deltaTime / 1.0f, 1350.0f, 0);
                 if (m_moveBackObj.transform.localPosition.x <= m_menuPos.x)
                 {
+                    m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].transform.localPosition = new Vector3(-800.0f, 0, 0);
                     m_moveBackObj.transform.localPosition = m_menuPos;
                     m_cameraMoveFlg = false;
                     m_sceneManagers[(int)m_nowSceneType].GetComponent<MenuManager>().Init();
+                    m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].SetActive(false);
                     m_sceneCanvas[(int)m_nowSceneType].SetActive(true);
                 }
                 break;

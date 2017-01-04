@@ -55,8 +55,6 @@ public class SceneChangeManager : MonoBehaviour {
             SceneObjectSwitch((ESceneNo)i, false);
         }
 
-      
-
         //仮の値をセット
         nowSceneNo = ESceneNo.SCENE_TITLE;
         nextSceneNo = nowSceneNo;
@@ -138,25 +136,24 @@ public class SceneChangeManager : MonoBehaviour {
         switch (startSceneNo)
         {
             case ESceneNo.SCENE_TITLE:
-                Debug.Log("Title");
-                SoundManager.PlayBgm("bgm");
                 GameObject.Find("T_SceneManager").GetComponent<T_SceneManager>().Init();
-                ObjectManager.Clean();      // オブジェクト初期化
+                ObjectManager.Clean();              // オブジェクト初期化
                 break;
+
             case ESceneNo.SCENE_STORY:
                 //チュートリアルシーンマネージャーで初期化を伝達
                 TS_SceneManager tutorialManager;
                 tutorialManager = SceneTopObjects[(int)ESceneNo.SCENE_STORY].GetComponent<TS_SceneManager>();
                 tutorialManager.Init();
-
                 break;
+
             case ESceneNo.SCENE_GAME:
                 //ゲームメインシーンマネージャーで初期化を伝達
                 GM_SceneManager gameManager;
-                //SoundManager.PlayBgm("bgm");
-                ObjectManager.Clean();      // オブジェクト初期化
+                ObjectManager.Clean();              // オブジェクト初期化
                 gameManager = SceneTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GM_SceneManager>();
                 gameManager.Init();
+                SoundManager.PlayBgm2("game_bgm");  // BGM再生
                 GameObject.Find("MobsManager").GetComponent<MobsManager>().Init();  // モブ初期化
                 Debug.Log("初期化処理");
 

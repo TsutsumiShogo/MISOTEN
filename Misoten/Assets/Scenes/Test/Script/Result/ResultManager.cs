@@ -25,6 +25,8 @@ public class ResultManager : MonoBehaviour {
     private bool m_pushAFlg = false;
     private float m_timer;                  // タイマー
 
+    private bool m_bgmFlg = false;          // bgm再生フラグ
+
     //===============================================================
     // 公開関数
     
@@ -48,7 +50,7 @@ public class ResultManager : MonoBehaviour {
         m_rankingList.GetComponent<RE_Ranking>().Init();
 
         m_backObj.transform.localPosition = new Vector3(0.0f, 0, 0);
-        
+        m_bgmFlg = false;
     }
 
     //===============================================================
@@ -62,6 +64,10 @@ public class ResultManager : MonoBehaviour {
     //---------------------------------
     //
     void Update () {
+        if( !m_bgmFlg){
+            m_bgmFlg = true;
+            SoundManager.PlayBgm("result_bgm");
+        }
         if (!m_toPersonalFlg && !m_toRankingFlg && !m_pushAFlg) {
             if (m_totalFlg){
                 //---------------------
@@ -100,6 +106,7 @@ public class ResultManager : MonoBehaviour {
             m_next.GetComponent<RE_NextButton>().Action();
             if (m_rankingFlg){
                 if (XboxController.GetButtonA_All()){
+                    SoundManager.PlaySe("decision_1", 2);
                     m_next.GetComponent<RE_NextButton>().Init();
                     m_toRankingFlg = true;
                     m_pushAFlg = false;

@@ -18,6 +18,10 @@ public class SoundLoader : MonoBehaviour
     public SoundData bgmData;
     // BGMデータ
     public SoundData bgmData2;
+    // BGMデータ
+    public SoundData bgmData3;
+    // BGMデータ
+    public SoundData bgmData4;
     // SEデータ
     public SoundData[] seData;
     // 開始時から鳴らす
@@ -36,6 +40,16 @@ public class SoundLoader : MonoBehaviour
         if (bgmData2.key != "")
         {
             SoundManager.LoadBgm(bgmData2.key, bgmData2.clip.name);
+        }
+        // BGM読み込み
+        if (bgmData3.key != "")
+        {
+            SoundManager.LoadBgm(bgmData3.key, bgmData3.clip.name);
+        }
+        // BGM読み込み
+        if (bgmData4.key != "")
+        {
+            SoundManager.LoadBgm(bgmData4.key, bgmData4.clip.name);
         }
 
         // BGMを最初に鳴らす
@@ -63,7 +77,7 @@ public class SoundLoader : MonoBehaviour
         SoundManager.GetInstance().ChangePitch(SoundManager.SoundType.SE, 1.0f, 2);
         SoundManager.GetInstance().ChangePitch(SoundManager.SoundType.SE, 1.0f, 3);
 
-        SoundManager.GetInstance().ChangeVolume(SoundManager.SoundType.BGM, 0.01f);
+        SoundManager.GetInstance().ChangeVolume(SoundManager.SoundType.BGM, 0.1f);
         SoundManager.GetInstance().ChangeVolume(SoundManager.SoundType.BGM2, SoundManager.FIRST_VOLUME);
         SoundManager.GetInstance().ChangeVolume(SoundManager.SoundType.SE, SoundManager.FIRST_VOLUME, -1);
         SoundManager.GetInstance().ChangeVolume(SoundManager.SoundType.SE, SoundManager.FIRST_VOLUME, 0);

@@ -92,7 +92,7 @@ public class charSelect : MonoBehaviour {
             // 左押
             if (XboxController.GetLeftTriggerLeft(m_playerId))
             {
-                SoundManager.PlaySe("decision_2", 3);
+                SoundManager.PlaySe("cursol", m_playerId);
                 SetPosition();
                 m_selectNo++;
                 m_selectNo = m_selectNo % 3;
@@ -104,7 +104,7 @@ public class charSelect : MonoBehaviour {
             // 右押
             if (XboxController.GetLeftTriggerRight(m_playerId))
             {
-                SoundManager.PlaySe("decision_2", 3);
+                SoundManager.PlaySe("cursol", m_playerId);
                 SetPosition();
                 m_selectNo--;
                 if (m_selectNo < 0) m_selectNo = 2;
@@ -116,22 +116,29 @@ public class charSelect : MonoBehaviour {
             // 選択
             if (XboxController.GetButtonA(m_playerId))
             {
-                SoundManager.PlaySe("decision_2", 3);
+                
                 if (m_otherChar[0].GetComponent<charSelect>().m_decisionFlg)
                 {
                     if (m_otherChar[0].GetComponent<charSelect>().m_selectNo == this.m_selectNo)
+                    {
+                        SoundManager.PlaySe("boo", m_playerId);
                         return;
+                    }
                 }
                 if (m_otherChar[1].GetComponent<charSelect>().m_decisionFlg)
                 {
-                    if (m_otherChar[1].GetComponent<charSelect>().m_selectNo == this.m_selectNo)
+                    if (m_otherChar[1].GetComponent<charSelect>().m_selectNo == this.m_selectNo){
+                        SoundManager.PlaySe("boo", m_playerId);
                         return;
+                    }
                 }
                 GM_StaticParam.g_selectCharacter[m_playerId] = m_selectNo;
                 m_decisionFlg = true;
                 m_decision.SetActive(true);
+                SoundManager.PlaySe("decision_1", m_playerId);
             }
 
+            
 
             if (m_otherChar[0].GetComponent<charSelect>().m_decisionFlg)
             {
@@ -149,13 +156,16 @@ public class charSelect : MonoBehaviour {
             }
 
 
-            //---------------------
-            // B押下で選択取り消し
-            if (XboxController.GetButtonB(m_playerId))
-            {
-                m_decisionFlg = false;
-                m_decision.SetActive(false);
-            }
+            
+        }
+        //---------------------
+        // B押下で選択取り消し
+        if (XboxController.GetButtonB(m_playerId))
+        {
+            Debug.Log("キャンセル");
+            SoundManager.PlaySe("cansel", m_playerId);
+            m_decisionFlg = false;
+            m_decision.SetActive(false);
         }
     }
     //---------------------------------------------------------------

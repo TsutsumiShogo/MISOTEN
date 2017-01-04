@@ -119,7 +119,7 @@ public class RE_PlantEffect : MonoBehaviour {
     private void GreadUp()
     {
         m_fTimer += Time.deltaTime;
-        if (m_fTimer > 2.0f)
+        if (m_fTimer > 1.0f)
         {
             m_fTimer = 0;
             if (m_rank > 0)

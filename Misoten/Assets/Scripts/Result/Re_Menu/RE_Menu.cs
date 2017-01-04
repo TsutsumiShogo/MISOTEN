@@ -53,6 +53,7 @@ public class RE_Menu : MonoBehaviour {
         m_mode[m_selectNo+2].GetComponent<ModeEffect>().OffScalling(true);
 
         m_flashFlg = false;     // 点滅フラグ
+
     }
 
     // Action - 更新処理
@@ -103,32 +104,27 @@ public class RE_Menu : MonoBehaviour {
         if (XboxController.GetLeftTriggerDown_All())
         {
             m_selectNo--;
-            if (m_selectNo < 0)
-            {
+            if (m_selectNo < 0){
                 m_selectNo = 0;
-            }
-            else
-            {
+            }else{
+                SoundManager.PlaySe("cursol", 2);
                 m_mode[m_selectNo + 1].GetComponent<ModeEffect>().OffScalling(true);
                 m_mode[m_selectNo].GetComponent<ModeEffect>().OnScalling(true);
             }
         }
-        if (XboxController.GetLeftTriggerUp_All())
-        {
+
+        if (XboxController.GetLeftTriggerUp_All()){
             m_selectNo++;
-            if (m_selectNo > 2)
-            {
+            if (m_selectNo > 2){
                 m_selectNo = 2;
-            }
-            else
-            {
+            }else{
+                SoundManager.PlaySe("cursol",2);
                 m_mode[m_selectNo - 1].GetComponent<ModeEffect>().OffScalling(true);
                 m_mode[m_selectNo].GetComponent<ModeEffect>().OnScalling(true);
             }
         }
 
         Decision(); // 決定処理
-        
     }
 
     // Decision - 決定処理
@@ -138,8 +134,8 @@ public class RE_Menu : MonoBehaviour {
     {
         //-------------------
         // 遷移先決定
-        if (XboxController.GetButtonA_All())
-        {
+        if (XboxController.GetButtonA_All()){
+            SoundManager.PlaySe("decision_1",0);
             m_desided = true;
             GameObject.Find("MobsManager").GetComponent<MobsManager>().Clean();
             m_flashFlg = true;
@@ -165,8 +161,7 @@ public class RE_Menu : MonoBehaviour {
     //---------------------------------
     //
     private void ToScene(){
-        switch (m_selectNo)
-        {
+        switch (m_selectNo){
             case 0:
                 GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);
                 break;
@@ -178,7 +173,6 @@ public class RE_Menu : MonoBehaviour {
                 GM_StaticParam.g_titleStartStep = 1;
                 GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_TITLE);
                 break;
-
         }
     }
 }

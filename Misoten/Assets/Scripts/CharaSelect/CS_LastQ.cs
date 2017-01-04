@@ -35,6 +35,7 @@ public class CS_LastQ : MonoBehaviour {
         }
         if( XboxController.GetLeftTriggerDown_All() || Input.GetKeyDown(KeyCode.UpArrow)){
             if (m_selectNo != 0){
+                SoundManager.PlaySe("cursol", 1);
                 m_selectNo = 0;
                 m_mode[0].GetComponent<ModeEffect>().OnScalling(true);
                 m_mode[1].GetComponent<ModeEffect>().OffScalling(true);
@@ -42,12 +43,15 @@ public class CS_LastQ : MonoBehaviour {
         }
         if(XboxController.GetLeftTriggerUp_All() || Input.GetKeyDown(KeyCode.DownArrow)){
             if (m_selectNo != 1){
+                SoundManager.PlaySe("cursol", 1);
                 m_selectNo = 1;
                 m_mode[0].GetComponent<ModeEffect>().OffScalling(true);
                 m_mode[1].GetComponent<ModeEffect>().OnScalling(true);
             }
         }
         if( XboxController.GetButtonA_All() || Input.GetKeyDown(KeyCode.A)){
+            SoundManager.StopBgm();     // bgm停止
+            SoundManager.PlaySe("decision_1", 0);
             if(m_selectNo == 0){
                 GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_STORY);
             }

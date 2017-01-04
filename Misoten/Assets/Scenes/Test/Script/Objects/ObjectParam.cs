@@ -25,13 +25,13 @@ public class ObjectParam : MonoBehaviour {
     //-----------------------------------------------------
     // 花用辺巣
     public GameObject     m_compParticleObj;        // 花パーティクルオブジェ
-    private ParticleSystem m_compParticle;           // 花パーティクル
-    public GameObject m_lastParticleObj;        // 花パーティクルオブジェ
-    private ParticleSystem m_lastParticle;           // 花パーティクル
+    private ParticleSystem m_compParticle;          // 花パーティクル
+    public GameObject m_lastParticleObj;            // 花パーティクルオブジェ
+    private ParticleSystem m_lastParticle;          // 花パーティクル
     // ----------------------------------------------------
     // 中ビル用変数
     private ParticleSystem m_particle;              // パーティクルシステム
-    private ParticleSystem m_levelParticle;       // 特別アクションパーティクル
+    private ParticleSystem m_levelParticle;         // 特別アクションパーティクル
     private bool m_special;                         // specialアクションFlag
     private bool m_particleOn = false;
     private int m_menberNum = 0;

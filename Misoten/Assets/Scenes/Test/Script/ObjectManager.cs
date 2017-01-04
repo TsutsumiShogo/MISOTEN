@@ -51,6 +51,11 @@ public class ObjectManager : MonoBehaviour {
     private float m_oldtime = 0;
     private const float m_updateTime = 0.01f;    // オブジェクト更新間隔
 
+    //-----------------
+    // 育成音再生用
+    private static bool[] m_seUseFlg = new bool[4];    // Channel使用フラグ
+    private static float[] m_seTimer = new float[4];   // タイマー
+    private static float m_soundTImer;
 
 	// Use this for initialization
 	void Awake () {
@@ -87,12 +92,35 @@ public class ObjectManager : MonoBehaviour {
         m_processingPoint[2] = 3000;
         
         m_oldtime = 0;
+
+        // サウンド用変数初期化
+        for( int i=0;i<4;i++){
+            m_seUseFlg[i] = false;
+            m_seTimer[i] = 0.0f;
+        }
+        m_soundTImer = 0.0f;
 	}
 
     // object一括更新処理
 	// Update is called once per frame
 	void Update () {
 
+        if( m_soundTImer > 0.0f){
+            m_soundTImer -= Time.deltaTime;
+            if(m_soundTImer <= 0.0){
+                m_soundTImer = 0.0f;
+            }
+        }
+
+        for( int i= 0;i<4;i++){
+            if(m_seUseFlg[i]){
+                m_seTimer[i] -= Time.deltaTime;
+                if( m_seTimer[i] <= 0.0f){
+                    m_seTimer[i] = 0.0f;
+                    m_seUseFlg[i] = false;
+                }
+            }
+        }
         m_oldtime += Time.deltaTime;
         if ( m_oldtime >= m_updateTime)
         {
@@ -154,7 +182,18 @@ public class ObjectManager : MonoBehaviour {
                 objectList[Id].GetComponent<ObjectParam>().SetParam(_param);
                 objectList[Id].GetComponent<ObjectParam>().FlowerInit();
                 objectList[Id].GetComponent<ObjectParam>().scallOn();
-                SoundManager.PlaySe("flower_spone",1);        // 花SE
+
+                //for( int i=0;i<1;i++){
+                if( m_soundTImer == 0.0f){
+                    //m_seUseFlg[i] = true;
+                    //m_seTimer[i] = 0.4f;
+                    m_soundTImer = 0.1f;
+                    SoundManager.PlaySe("flower_spone", 1);
+                    break;
+                }
+                //}
+
+                //SoundManager.PlaySe("flower_spone",1);        // 花SE
                 break;
                 
                 // 家

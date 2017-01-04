@@ -97,6 +97,7 @@ public class RankList : MonoBehaviour {
                     _pos.y = 1350.0f + m_pos;
                     GameObject.Find("BG_MoveObj").transform.localPosition = _pos;
                     if (XboxController.GetButtonBack_All() || Input.GetKeyDown(KeyCode.Backspace)){
+                        SoundManager.PlaySe("cansel", 2);
                         m_underFlg = true;
                     }
                     if (m_pos == 0)

@@ -42,7 +42,7 @@ public class TitleManager : MonoBehaviour {
     }
 
     //===============================================================
-    // 未公開関数　
+    // 未公開関数
     //---------------------------------
     // Input 入力処理
     private void InputFunc() {
@@ -50,15 +50,9 @@ public class TitleManager : MonoBehaviour {
             // Aボタンでメニューへ
             if (Input.GetKeyDown(KeyCode.A) || XboxController.GetButtonA_All()){
                 m_pushAFlg = true;
-                SoundManager.PlaySe("decision_1",4);
-                
-            }
-            
+                //SoundManager.PlaySe("call_1", 4);
+                SoundManager.PlaySe("decision_1",4);   
+            }       
         }
-
-
     }
-
-
-
 }

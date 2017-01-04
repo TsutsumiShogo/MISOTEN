@@ -29,6 +29,7 @@ public class RE_NextButton : MonoBehaviour {
         Move();
         if (XboxController.GetButtonA_All() || Input.GetKeyDown(KeyCode.A))
         {
+            SoundManager.PlaySe("decision_1", 2);
             GetComponent<Text>().color = new Color(1, 1, 1,0);
             return TotalScore.RE_TOTAL_STEP.RE_TOTAL_STEP_MAX;
         }

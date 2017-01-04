@@ -30,6 +30,7 @@ public class GM_SceneManager : MonoBehaviour {
 
     //ゲーム開始演出オブジェクト
     private Text startObj;
+
     //タイムアップ演出オブジェクト
     private Text timeUpObj;
 
@@ -41,10 +42,14 @@ public class GM_SceneManager : MonoBehaviour {
     [SerializeField]
     private GM_UIFadeUnit fadeUnit; //Unity上でセット
 
+    private bool m_callFlg_1 = false;       // ボイス再生フラグ1
+    private bool m_callFlg_2 = false;       // ボイス再生フラグ2
+    private bool m_callFlg_3 = false;       // ボイス再生フラグ3
+    private bool m_whistleFlg = false;      // ホイッスル再生フラグ
+    private float m_seTime = 0.0f;
     
     //Init関数をシーンチェンジマネージャに呼ばせるようになったらAwakeへ変更すること。
-    void Awake()
-    {
+    void Awake(){
         //シーンチェンジマネージャーを取得
         sceneChangeManager = transform.parent.GetComponent<SceneChangeManager>();
         //マスマネージャー保存
@@ -100,6 +105,13 @@ public class GM_SceneManager : MonoBehaviour {
         //ステージ外周オブジェクトを有効化
         stageOutColObj[0].SetActive(true);
         stageOutColObj[1].SetActive(true);
+
+        // 再生フラグ初期化
+        m_callFlg_1 = false;
+        m_callFlg_2 = false;
+        m_callFlg_3 = false;
+        m_whistleFlg = false;
+        m_seTime = 0.0f;
 	}
 	
 	// Update is called once per frame
@@ -110,10 +122,11 @@ public class GM_SceneManager : MonoBehaviour {
             return;
         }
         //プレイヤースタートしてなければスタート処理
-        if (playerStartFlg == false)
-        {
+        if (playerStartFlg == false){
+
             //プレイヤー行動開始
             playerManager.StartPlayers();
+
             //ミッションの作成を許可
             missionManager.MissionCreateFlgChange(true);
 
@@ -124,16 +137,16 @@ public class GM_SceneManager : MonoBehaviour {
         gameTime += Time.deltaTime;
 
         //ステージ解放処理
-        if (stageFlg[0] == false && mathManager.totalFlowerLevel > 500)
-        {
+        if (stageFlg[0] == false && mathManager.totalFlowerLevel > 500){
             stageFlg[0] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
             minimapManager.StartStage(GM_MathManager.EMathStageNo.STAGE2);
-            stageOutColObj[0].SetActive(false);
             GameObject.Find("MobsManager").GetComponent<MobsManager>().move();      // モブ追加
+            //ステージ外周オブジェクトを消す
+            stageOutColObj[0].SetActive(false);
         }
-        if (stageFlg[1] == false && mathManager.totalFlowerLevel > 1500)
-        {
+
+        if (stageFlg[1] == false && mathManager.totalFlowerLevel > 1500){
             stageFlg[1] = true;
             mathManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
             minimapManager.StartStage(GM_MathManager.EMathStageNo.STAGE3);
@@ -145,6 +158,7 @@ public class GM_SceneManager : MonoBehaviour {
         //ゲーム終了の時間になったらタイムアップ演出をする
         if (gameTime > GAME_TIME)
         {
+            m_seTime += Time.deltaTime;
             //ミッションの作成を停止
             missionManager.MissionCreateFlgChange(false);
 
@@ -160,7 +174,21 @@ public class GM_SceneManager : MonoBehaviour {
             Color color = timeUpObj.color;
             color.a = 0.5f + _percent * 0.5f;
 
-            //プレイヤー停止信号を送信
+            // ボイス再生フラグ
+            if (m_whistleFlg == false){
+                SoundManager.PlaySe("whistle", 5);
+                m_whistleFlg = true;
+            }
+
+            if( m_seTime > 3.0f){
+                if (m_callFlg_3 == false){
+                    SoundManager.PlaySe("call_3", 6);
+                    SoundManager.StopBgm2();
+                    m_callFlg_3 = true;
+                }
+            }
+
+            //　プレイヤー停止信号を送信
             playerManager.StopPlayers();
 
             //タイムアップ演出終了
@@ -181,8 +209,7 @@ public class GM_SceneManager : MonoBehaviour {
     private bool UpdateStartObj()
     {
         //演出終了
-        if (startTime >= 1.0f)
-        {
+        if (startTime >= 1.0f){
             return true;
         }
 
@@ -191,21 +218,29 @@ public class GM_SceneManager : MonoBehaviour {
         if (startTime > 1.0f)
         {
             startTime = 1.0f;
+
+            
         }
 
         //よーいの出現タイミングをはかる
         if (startTime > -2.0f)
         {
-            if (startObj.gameObject.active == false)
-            {
+            if (startObj.gameObject.active == false){
+                // 「ようい」の掛け声
+                SoundManager.PlaySe("call_1",2);
                 startObj.gameObject.SetActive(true);
             }
         }
 
         //ゲーム開始までまだ時間がある
-        if (startTime < 0.0f)
-        {
+        if (startTime < 0.0f){
             return false;
+        }
+        
+        if (m_callFlg_2 == false ){
+            m_callFlg_2 = true;
+            // 「スタート」の掛け声
+            SoundManager.PlaySe("call_2",3);
         }
 
         //ゲーム開始
