@@ -207,19 +207,15 @@ public class ObjectParam : MonoBehaviour {
             }
             // -------------------------------------
             // 成長中であればパーティクルを飛ばす
-            if (m_menberNum >= 2)
-            {
+            if (m_menberNum >= 2){
                 // 特別アクション
                 m_special = true;
-            }
-            else
-            {
+            }else{
                 // 特別アクション
                 m_special = false;
             }
             
-            if (!m_particleOn)
-            {
+            if (!m_particleOn){
                 m_particleOn = true;
                 m_particle.Play();
             }
