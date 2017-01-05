@@ -2523,7 +2523,7 @@ MonoBehaviour:
   - 
   - 
   BACK_GROUND_COLOR: {r: 0, g: 0, b: 0, a: 0.6862745}
-  CHANGE_TIME: 2
+  CHANGE_TIME: 0.5
 --- !u!114 &114931924253500012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2540,6 +2540,10 @@ MonoBehaviour:
   - {fileID: 1228337049935202}
   - {fileID: 1171437117040460}
   m_frame: 10
+  m_button:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_splayName: {fileID: 0}
 --- !u!114 &114936958281079008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3866,7 +3870,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1652598949330438}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

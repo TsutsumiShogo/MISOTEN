@@ -4067,15 +4067,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  houseSettiFlg: 000000000000000000
-  houseSettiFlg2: 000000000000000000
-  houseSettiFlg3: 000000000000000000
+  houseSettiFlg: 000001000000000000
+  houseSettiFlg2: 000001000000000000
+  houseSettiFlg3: 000001000000000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
   mathCellColorCon: {fileID: 0}
   stageNo: 0
-  createCellType: 000000000000000000000000
+  createCellType: 010000000100000001000000
   cellType: 0
   startFlg: 0
 --- !u!114 &114804635535028534
@@ -4266,15 +4266,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d924d3d9e67883d44bfdfb77decf9da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  houseSettiFlg: 000000000000000000
-  houseSettiFlg2: 000000000000000000
-  houseSettiFlg3: 000000000000000000
+  houseSettiFlg: 000000000001000000
+  houseSettiFlg2: 000000000001000000
+  houseSettiFlg3: 000000000001000000
   math: []
   flowerParams: []
   manager: {fileID: 0}
   mathCellColorCon: {fileID: 0}
   stageNo: 0
-  createCellType: 000000000000000000000000
+  createCellType: 010000000100000001000000
   cellType: 0
   startFlg: 0
 --- !u!114 &114938767509606156
