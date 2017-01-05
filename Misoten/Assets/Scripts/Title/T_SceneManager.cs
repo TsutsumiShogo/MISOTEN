@@ -95,6 +95,7 @@ public class T_SceneManager : MonoBehaviour {
                 m_nextSceneType = SceneType.CHARCTER_SELECT;
                 m_nowSceneType = SceneType.CHARCTER_SELECT;
                 m_sceneManagers[(int)SceneType.CHARCTER_SELECT].GetComponent<CharacterSelectManager>().Init(); // タイトル初期化処理
+                m_sceneCanvas[(int)m_nowSceneType].transform.localPosition = new Vector3(0, 0, 0);
                 m_sceneCanvas[(int)SceneType.TITLE].SetActive(false);
                 m_sceneCanvas[(int)SceneType.MENU].SetActive(false);
                 m_sceneCanvas[(int)SceneType.CHARCTER_SELECT].SetActive(true);
