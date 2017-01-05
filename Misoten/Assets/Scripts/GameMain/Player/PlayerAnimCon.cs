@@ -38,15 +38,13 @@ public class PlayerAnimCon : MonoBehaviour {
             //camPosVec += Vector3.right * 1.5f;
 
             //カメラの距離を計算
-            if (playerStatus.GetStateTransition() == PlayerStatus.EStateTransition.GROWING_BILL)
-            {
-                //大ビルのカメラ距離
+            if (playerStatus.GetStateTransition() == PlayerStatus.EStateTransition.GROWING_BILL){
                 if (checkCollisionBill.billParam.flowerType == GM_MathFlowerParam.EFlowerType.BigBill)
                 {
+                    //大ビルのカメラ距離
                     cameraDistancePercent = 3.0f * 0.05f + cameraDistancePercent * 0.95f;
-                }
-                else//通常ビルのカメラ距離
-                {
+                }else{
+                    //通常ビルのカメラ距離
                     cameraDistancePercent = 2.0f * 0.05f + cameraDistancePercent * 0.95f;
                 }
             }
@@ -55,7 +53,6 @@ public class PlayerAnimCon : MonoBehaviour {
                 cameraDistancePercent = 1.0f * 0.05f + cameraDistancePercent * 0.95f;
             }
             camPosVec = camPosVec * cameraDistancePercent;
-
             playerCamera.transform.position = transform.position + camPosVec;
         }
 	}

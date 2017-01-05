@@ -28,6 +28,10 @@ public class PlayerUnit : MonoBehaviour {
 
     private float m_soundTimer = 0.0f;
 
+    // 色パーティクル@栗栖
+    [SerializeField]
+    private GameObject m_particleColor;
+
 	// Use this for initialization
 	void Awake () {
         //部品取得
@@ -339,6 +343,8 @@ public class PlayerUnit : MonoBehaviour {
                             nextState = PlayerStatus.EStateTransition.GROWING;
                             break;
                         case PlayerSprayControll.EPlayerSprayMode.COLOR:
+                            Debug.Log("色変え");
+                            m_particleColor.GetComponent<ParticleSystem>().Play();
                             nextState = PlayerStatus.EStateTransition.SPRAY;
                             break;
                     }

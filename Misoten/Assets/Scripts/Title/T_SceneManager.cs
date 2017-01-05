@@ -111,13 +111,11 @@ public class T_SceneManager : MonoBehaviour {
         m_timer += Time.deltaTime;
         if (m_timer >= TIME)
         {
-            
             m_timer = 0;
             if (!m_cameraMoveFlg)
             {
                 //-------------------------
                 // 各シーン更新処理を行う
-
                 Action();
             }
             else
@@ -230,7 +228,6 @@ public class T_SceneManager : MonoBehaviour {
                 m_moveBackObj.transform.localPosition = new Vector3(m_moveBackObj.transform.localPosition.x + m_charaSelePos.x * Time.deltaTime / 1.0f, 1350.0f, 0);
                 if (m_moveBackObj.transform.localPosition.x >= m_charaSelePos.x)
                 {
-                    
                     m_moveBackObj.transform.localPosition = m_charaSelePos;
                     m_sceneCanvas[(int)m_nowSceneType].transform.localPosition = new Vector3(0, 0, 0);
                     m_cameraMoveFlg = false;
@@ -251,9 +248,6 @@ public class T_SceneManager : MonoBehaviour {
                     m_sceneManagers[(int)m_nowSceneType].GetComponent<RankingManager>().Init();
                    
                 }
-               
-       
-              
                 break;
                 //--------------------
                 // キャラセレからメニューへ
