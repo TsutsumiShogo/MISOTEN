@@ -28,11 +28,20 @@ public class ChengeSplay : MonoBehaviour {
     private int m_selectNo;
     private int m_selectOld;
     private int m_selectOther;
+    
+
+    private Color[] m_color = new Color[3];  // LRボタンカラー
+    private Color[] m_colorLR = new Color[2];
+
     [SerializeField]
-    private GameObject m_splayName;     // スプレーの名前
+    private GameObject[] m_button = new GameObject[2];  // LRButton
+    [SerializeField]
+    private GameObject m_splayName;                     // スプレーの名前
     private string[] m_splayStr = new string[3];
-    private Color[] m_color = new Color[3];
-     //===============================================================
+    
+    private bool[] m_pushFlg = new bool[2];
+    private float[] m_pushTimer = new float[2];
+    //===============================================================
     // 公開関数
 
     // Init - 初期化処理
@@ -55,7 +64,12 @@ public class ChengeSplay : MonoBehaviour {
         m_color[0] = new Color(255.0f/255.0f, 143.0f/255.0f, 239.0f/255.0f);
         m_color[1] = new Color(115.0f / 255.0f, 255.0f / 255.0f, 0);
         m_color[2] = new Color(255.0f / 255.0f, 142.0f / 255.0f, 0);
-
+        m_colorLR[0] = new Color(176.0f / 255.0f, 176.0f / 255.0f, 176.0f / 255.0f);
+        m_colorLR[1] = new Color(129.0f / 255.0f, 129.0f / 255.0f, 129.0f / 255.0f);
+        m_button[0].GetComponent<Image>().color = m_colorLR[0];
+        m_button[1].GetComponent<Image>().color = m_colorLR[0];
+        m_pushFlg[0] = false;
+        m_pushFlg[1] = false;
 
         m_Icon[0].transform.localPosition = m_leftPos;
         m_Icon[1].transform.localPosition = m_centerPos;
@@ -65,6 +79,7 @@ public class ChengeSplay : MonoBehaviour {
         m_Icon[2].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
         m_splayName.GetComponent<Text>().text = m_splayStr[1];
         m_splayName.GetComponent<Text>().color = m_color[1];
+
     }
 
     // SplayChenge - スプレー切り替え演出 プレイヤー操作から呼び出される
@@ -118,6 +133,15 @@ public class ChengeSplay : MonoBehaviour {
         if (m_moveFlg){
             move();
         }
+        for(int i = 0; i < 2; i++){
+            if( m_pushFlg[i]){
+                m_pushTimer[i] -= Time.deltaTime;
+                if(m_pushTimer[i]<= 0){
+                    m_pushFlg[i] = false;
+                    m_button[i].GetComponent<Image>().color = m_colorLR[0];
+                }
+            }
+        }
 	}
 
 
@@ -125,9 +149,12 @@ public class ChengeSplay : MonoBehaviour {
 
     // スプレー移動処理
     void move(){
-        
         // 右と切り替え
         if (m_moveDir){
+            m_pushFlg[0] = true;
+            m_pushTimer[0] = 0.3f;
+            m_button[0].GetComponent<Image>().color = m_colorLR[1]; 
+            
             // 右のが真ん中へ
             m_Icon[m_selectNo].transform.localPosition = new Vector3(m_Icon[m_selectNo].transform.localPosition.x - m_selectX, m_Icon[m_selectNo].transform.localPosition.y + m_selectY, m_Icon[m_selectNo].transform.localPosition.z);
             m_Icon[m_selectNo].transform.localScale = new Vector3(m_Icon[m_selectNo].transform.localScale.x + m_scallUp, m_Icon[m_selectNo].transform.localScale.y + m_scallUp, 1.0f);
@@ -146,10 +173,14 @@ public class ChengeSplay : MonoBehaviour {
                 m_Icon[m_selectOld].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
                 m_Icon[m_selectOther].transform.localPosition = m_rightPos;   
             }
+
         }
         else
         {
             // 左と切り替え
+            m_pushFlg[1] = true;
+            m_pushTimer[1] = 0.3f;
+            m_button[1].GetComponent<Image>().color = m_colorLR[1];
             // 左のが真ん中へ
             m_Icon[m_selectNo].transform.localPosition = new Vector3(m_Icon[m_selectNo].transform.localPosition.x + m_selectX, m_Icon[m_selectNo].transform.localPosition.y + m_selectY, m_Icon[m_selectNo].transform.localPosition.z);
             m_Icon[m_selectNo].transform.localScale = new Vector3(m_Icon[m_selectNo].transform.localScale.x + m_scallUp, m_Icon[m_selectNo].transform.localScale.y + m_scallUp, 1.0f);
