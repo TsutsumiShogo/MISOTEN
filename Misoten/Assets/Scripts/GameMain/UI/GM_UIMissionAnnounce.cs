@@ -25,6 +25,8 @@ public class GM_UIMissionAnnounce : MonoBehaviour {
     //変数定義
     private float nowTime;
 
+    public bool announceFlg;        //アナウンス動作中ならtrue
+
     //初期化
 	public void Init () {
         //時間を終了時間まで持っていく
@@ -37,6 +39,8 @@ public class GM_UIMissionAnnounce : MonoBehaviour {
 
         //メッセージをスタートポイントの位置へ
         missionMessageObj.transform.position = startPointObj.transform.position;
+
+        announceFlg = false;
 	}
 	
 	// Update is called once per frame
@@ -57,10 +61,14 @@ public class GM_UIMissionAnnounce : MonoBehaviour {
             //テキストメッセージをスタートポイントへ固定
             missionMessageObj.transform.position = startPointObj.transform.position;
 
+            //動作フラグは下す
+            announceFlg = false;
             return;
         }
 
         //================以下はミッションアナウンス動作中=====================
+        //動作フラグを立てる
+        announceFlg = true;
 
         //段階の時間を進める
         nowTime += Time.deltaTime;

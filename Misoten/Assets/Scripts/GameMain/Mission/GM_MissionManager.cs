@@ -49,7 +49,14 @@ public class GM_MissionManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //アナウンス部のタイム表記部分に情報を知らせる(nullが許可されてる)
-        announce.MissionTimeCount(nowMission);
+        if (announce.announceFlg == false)
+        {
+            announce.MissionTimeCount(nowMission);
+        }
+        else
+        {
+            announce.MissionTimeCount(null);
+        }
 
         //ミッション作成の許可が無ければ何もしない
         if (canMissionCreateFlg == false)
