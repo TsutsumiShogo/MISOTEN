@@ -343,4 +343,43 @@ public class GM_MathCell : MonoBehaviour {
             flowerParams.Add(tempMath.flowerParams[i]);
         }
     }
+
+    //レベル最大かつ指定の色の花の数を返す(noneですべての花の個数)
+    public int GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor _color)
+    {
+        int _num = 0;
+
+        //このセルの全オブジェクト検索
+        for (int i = 0; i < flowerParams.Count; ++i)
+        {
+            //花じゃないなら何もしない
+            if(flowerParams[i].flowerType == GM_MathFlowerParam.EFlowerType.BigBill || 
+                flowerParams[i].flowerType == GM_MathFlowerParam.EFlowerType.Bill ||
+                flowerParams[i].flowerType == GM_MathFlowerParam.EFlowerType.House)
+            {
+                continue;
+            }
+
+            //全ての花の個数を調べる指示だった
+            if (_color == GM_MathFlowerParam.EFlowerColor.NONE)
+            {
+                _num++;
+                continue;
+            }
+
+            //レベル最大じゃないなら何もしない
+            if (flowerParams[i].flowerLevel != GM_MathFlowerParam.EFlowerLevel.Level3)
+            {
+                continue;
+            }
+
+            //指定の色の花なら数に入れる
+            if (flowerParams[i].flowerColor == _color)
+            {
+                _num++;
+            }
+        }
+
+        return _num;
+    }
 }

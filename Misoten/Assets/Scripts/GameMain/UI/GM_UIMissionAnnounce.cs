@@ -190,16 +190,16 @@ public class GM_UIMissionAnnounce : MonoBehaviour {
                         _missionText = _missionText + "<color=blue>青</color>";
                         break;
                     case GM_MathFlowerParam.EFlowerColor.CYAN:
-                        _missionText = _missionText + "<color=cyan>シアン</color>";
+                        _missionText = _missionText + "<color=green>緑</color> + <color=blue>青</color>";
                         break;
                     case GM_MathFlowerParam.EFlowerColor.MAGENTA:
-                        _missionText = _missionText + "<color=magenta>マゼンタ</color>";
+                        _missionText = _missionText + "<color=red>赤</color> + <color=blue>青</color>";
                         break;
                     case GM_MathFlowerParam.EFlowerColor.YELLOW:
-                        _missionText = _missionText + "<color=yellow>イエロー</color>";
+                        _missionText = _missionText + "<color=red>赤</color> + <color=green>緑</color>";
                         break;
                     case GM_MathFlowerParam.EFlowerColor.WHITE:
-                        _missionText = _missionText + "<color=white>力を合わせて白</color>";
+                        _missionText = _missionText + "<color=white>力を合わせて</color><color=red>赤</color> + <color=green>緑</color> + <color=blue>青</color>";
                         break;
                 }
                 _missionText = _missionText + "の花で埋め尽くそう！";

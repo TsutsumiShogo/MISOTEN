@@ -162,6 +162,19 @@ public class GM_MathManager : MonoBehaviour {
         return _greenPercent;
     }
 
+    //指定の色の花の数を調べる
+    public int GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor _color)
+    {
+        int _num = 0;
+
+        for (int i = 0; i < cells.Count; ++i)
+        {
+            _num += cells[i].GetFlowerColorNum(_color);
+        }
+
+        return _num;
+    }
+
 
     //===========================非公開関数=====================================
     //植物の自然成長処理

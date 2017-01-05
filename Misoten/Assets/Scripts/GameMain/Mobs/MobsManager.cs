@@ -172,7 +172,7 @@ public class MobsManager : MonoBehaviour {
     }
 
     //ランダムなモブが欲しいから追加した＠堤
-    private GameObject GetRundomMob()
+    public GameObject GetRundomMob()
     {
         int _objID;
 
