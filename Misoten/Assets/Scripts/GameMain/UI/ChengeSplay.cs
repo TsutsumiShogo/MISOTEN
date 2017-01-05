@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ChengeSplay : MonoBehaviour {
@@ -27,9 +28,11 @@ public class ChengeSplay : MonoBehaviour {
     private int m_selectNo;
     private int m_selectOld;
     private int m_selectOther;
-
-
-    //===============================================================
+    [SerializeField]
+    private GameObject m_splayName;     // スプレーの名前
+    private string[] m_splayStr = new string[3];
+    private Color[] m_color = new Color[3];
+     //===============================================================
     // 公開関数
 
     // Init - 初期化処理
@@ -46,6 +49,12 @@ public class ChengeSplay : MonoBehaviour {
         m_rightPos = new Vector3(30.0f, -10.0f, 0);
         m_frameCnt = 0;
         m_selectNo = 1;
+        m_splayStr[0] = "カラーモード";
+        m_splayStr[1] = "種まきモード";
+        m_splayStr[2] = "成長モード";
+        m_color[0] = new Color(255.0f/255.0f, 143.0f/255.0f, 239.0f/255.0f);
+        m_color[1] = new Color(115.0f / 255.0f, 255.0f / 255.0f, 0);
+        m_color[2] = new Color(255.0f / 255.0f, 142.0f / 255.0f, 0);
 
 
         m_Icon[0].transform.localPosition = m_leftPos;
@@ -54,6 +63,8 @@ public class ChengeSplay : MonoBehaviour {
         m_Icon[0].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
         m_Icon[1].transform.localScale = new Vector3(0.7f, 0.7f, 1.0f);
         m_Icon[2].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
+        m_splayName.GetComponent<Text>().text = m_splayStr[1];
+        m_splayName.GetComponent<Text>().color = m_color[1];
     }
 
     // SplayChenge - スプレー切り替え演出 プレイヤー操作から呼び出される
@@ -86,6 +97,9 @@ public class ChengeSplay : MonoBehaviour {
             else
                 m_selectOther = 0;
         }
+        m_splayName.GetComponent<Text>().text = m_splayStr[m_selectNo];
+        m_splayName.GetComponent<Text>().color = m_color[m_selectNo];
+        SoundManager.PlaySe("chengesplay", 6);
     }
 
     

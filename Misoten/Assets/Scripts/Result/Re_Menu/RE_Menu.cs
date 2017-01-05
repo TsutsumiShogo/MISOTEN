@@ -161,6 +161,7 @@ public class RE_Menu : MonoBehaviour {
     //---------------------------------
     //
     private void ToScene(){
+        SoundManager.StopBgm();
         switch (m_selectNo){
             case 0:
                 GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);
