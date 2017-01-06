@@ -30,8 +30,9 @@ public class PlayerManager : MonoBehaviour {
         {
             playerObjects[i] = Instantiate(SET_PLAYER_UNIT_PREFABS[GM_StaticParam.g_selectCharacter[i]]);
             playerUnits[i] = playerObjects[i].GetComponent<PlayerUnit>();
-            playerUnits[i].Init(this);
             playerUnits[i].PLAYER_NO = i;
+            playerUnits[i].Init(this);
+            
 
             //プレイヤーの色を指定する
             switch (GM_StaticParam.g_selectCharacter[i])
@@ -41,6 +42,7 @@ public class PlayerManager : MonoBehaviour {
                     break;
                 case 1:
                     playerUnits[i].PLAYER_COLOR = GM_MathFlowerParam.EFlowerColor.GREEN;
+
                     break;
                 case 2: 
                     playerUnits[i].PLAYER_COLOR = GM_MathFlowerParam.EFlowerColor.BLUE;

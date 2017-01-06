@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerUnit : MonoBehaviour {
@@ -33,8 +34,13 @@ public class PlayerUnit : MonoBehaviour {
     [SerializeField]
     private GameObject m_particleColor;
 
+    private bool m_canvasInit;      // キャンバス初期設定用
+    private string[] m_canvasPass = new string[3];
 	// Use this for initialization
 	void Awake () {
+        m_canvasPass[0] = "1PCanvas/";
+        m_canvasPass[1] = "2PCanvas/";
+        m_canvasPass[2] = "3PCanvas/";
         //部品取得
         collisionActor = transform.GetComponent<PlayerCollisionActor>();
         animCon = transform.GetComponent<PlayerAnimCon>();
@@ -46,28 +52,63 @@ public class PlayerUnit : MonoBehaviour {
 
 	}
 
-    public void Init(PlayerManager _manager){
+    public void Init(PlayerManager _manager) {
         m_soundTimer = 0.0f;
         nextState = PlayerStatus.EStateTransition.START;
 
         motionTimeCount = 0.0f;
         moveFlg = false;
-
+        m_canvasInit = false;
         animCon.Init();
         status.Init();
         controll.Init();
         collisionBill.Init();
 
-        // SprayUI初期化
-        GameObject.Find("1PCanvas/SplayMode").GetComponent<ChengeSplay>().Init();
-        GameObject.Find("2PCanvas/SplayMode").GetComponent<ChengeSplay>().Init();
-        GameObject.Find("3PCanvas/SplayMode").GetComponent<ChengeSplay>().Init();
-
+        switch (PLAYER_NO)
+        {
+            // SprayUI初期化
+            case 0:
+                GameObject.Find("1PCanvas/SplayMode").GetComponent<ChengeSplay>().Init();
+                break;
+            case 1:
+                GameObject.Find("2PCanvas/SplayMode").GetComponent<ChengeSplay>().Init();
+                break;
+            case 2:
+                GameObject.Find("3PCanvas/SplayMode").GetComponent<ChengeSplay>().Init();
+                break;
+         
+    }
+        
+    
+    
         playerManager = _manager;
     }
 	
 	// Update is called once per frame
 	void Update (){
+        if( !m_canvasInit){
+            m_canvasInit = true;
+            switch( PLAYER_COLOR) {
+                case GM_MathFlowerParam.EFlowerColor.RED:
+                    GameObject.Find(m_canvasPass[PLAYER_NO]+"Image").GetComponent<Image>().color = new Color(255.0f/255.0f,0.0f,125.0f / 255.0f);
+                    GameObject.Find(m_canvasPass[PLAYER_NO] + "PlayerIdFrame").GetComponent<Image>().color = new Color(255.0f / 255.0f, 0.0f, 125.0f / 255.0f);
+                    GameObject.Find(m_canvasPass[PLAYER_NO] + "PlayerId").GetComponent<Text>().color = new Color(255.0f / 255.0f, 0.0f, 125.0f / 255.0f);
+                    GameObject.Find(m_canvasPass[PLAYER_NO] + "PlayerId").GetComponent<Text>().text = (PLAYER_NO + 1).ToString() + "P";
+                    break;
+                case GM_MathFlowerParam.EFlowerColor.GREEN:
+                    GameObject.Find(m_canvasPass[PLAYER_NO] + "Image").GetComponent<Image>().color = new Color(0.0f, 255.0f / 255.0f, 0.0f);
+                    GameObject.Find(m_canvasPass[PLAYER_NO] + "PlayerIdFrame").GetComponent<Image>().color = new Color(0.0f, 255.0f / 255.0f, 0.0f);
+                    GameObject.Find(m_canvasPass[PLAYER_NO] + "PlayerId").GetComponent<Text>().color = new Color(0.0f, 255.0f / 255.0f, 0.0f);
+                    GameObject.Find(m_canvasPass[PLAYER_NO] + "PlayerId").GetComponent<Text>().text = (PLAYER_NO + 1).ToString() + "P";
+                    break;
+                case GM_MathFlowerParam.EFlowerColor.BLUE:
+                    GameObject.Find(m_canvasPass[PLAYER_NO] + "Image").GetComponent<Image>().color = new Color(40.0f / 255.0f, 184.0f / 255.0f, 255.0f / 255.0f);
+                    GameObject.Find(m_canvasPass[PLAYER_NO] + "PlayerIdFrame").GetComponent<Image>().color = new Color(40.0f / 255.0f, 184.0f / 255.0f, 255.0f / 255.0f);
+                    GameObject.Find(m_canvasPass[PLAYER_NO] + "PlayerId").GetComponent<Text>().color = new Color(40.0f / 255.0f, 184.0f / 255.0f, 255.0f / 255.0f);
+                    GameObject.Find(m_canvasPass[PLAYER_NO] + "PlayerId").GetComponent<Text>().text = (PLAYER_NO + 1).ToString() + "P";
+                    break;
+            }
+        }
         int checkNo;
 
         //モーション経過時間を進める。

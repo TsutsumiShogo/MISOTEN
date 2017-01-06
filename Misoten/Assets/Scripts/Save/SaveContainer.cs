@@ -26,6 +26,9 @@ public class SaveContainer : MonoBehaviour {
 
     // ランキング名前データ
     public static string[] g_rankingName = new string[(int)SAVE_KEY.SAVE_KEY_MAX];
+
+    // プレイ回数
+    public static int g_playCount;
     //===============================================================
     // 未公開関数
  
@@ -60,8 +63,9 @@ public class SaveContainer : MonoBehaviour {
         for (int i = 0; i < (int)SAVE_KEY.SAVE_KEY_MAX; i++)
         {
             g_rankingScore[i] = PlayerPrefs.GetInt("Score_" + i.ToString(),0);
-            g_rankingName[i] = PlayerPrefs.GetString("Name_" + i.ToString(), "AAA");
+            g_rankingName[i] = PlayerPrefs.GetString("Name_" + i.ToString(), "TeamNo."+"TEST");
         }
+        g_playCount = PlayerPrefs.GetInt("PlayCount", 0);
         Debug.Log("読み込み完了");
     }
 
