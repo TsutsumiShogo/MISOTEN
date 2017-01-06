@@ -16,6 +16,7 @@ public class TS_UIManager : MonoBehaviour {
     private float CHANGE_TIME = 2.0f;
 
     //オブジェクト
+    private GM_UIGreenPercent greenScore;   //緑化スコア
     private GameObject tutorialObject;      //テキストなどの親オブジェクト
     private Image backGround;               //説明時の背景表示部分
 
@@ -30,6 +31,7 @@ public class TS_UIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+        greenScore = transform.FindChild("GreenScore").GetComponent<GM_UIGreenPercent>();
         tutorialObject = transform.FindChild("TS_Tutorial").gameObject;
         backGround = transform.FindChild("TS_BackGround").GetComponent<Image>();
 
@@ -47,6 +49,7 @@ public class TS_UIManager : MonoBehaviour {
 	}
     public void Init()
     {
+        greenScore.Init();
         backGround.color = BACK_GROUND_COLOR;
 
         for (int i = 0; i < charactorImages.Count; ++i)

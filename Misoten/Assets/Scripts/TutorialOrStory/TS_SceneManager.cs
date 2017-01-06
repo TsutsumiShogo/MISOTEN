@@ -71,6 +71,9 @@ public class TS_SceneManager : MonoBehaviour {
 
         //テキスト初期化
         tutorialUiManager.ChangeText(nowTextNo);
+
+        //スコア初期化
+        GM_ScoreCtrl.Reset();
     }
     //終了処理
     public void Delete()

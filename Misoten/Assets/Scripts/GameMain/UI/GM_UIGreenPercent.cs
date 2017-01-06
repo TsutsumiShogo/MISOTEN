@@ -30,7 +30,6 @@ public class GM_UIGreenPercent : MonoBehaviour {
         greenScoreName = transform.FindChild("GreenScoreName").GetComponent<Text>();
         greenScorePoint = transform.FindChild("GreenScorePoint").GetComponent<Text>();
         greenScorePointName = transform.FindChild("GreenScorePointName").GetComponent<Text>();
-        Init();
 	}
     public void Init()
     {

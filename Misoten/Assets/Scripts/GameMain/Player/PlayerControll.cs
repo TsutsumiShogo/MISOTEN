@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerControll : MonoBehaviour {
 
+    private PlayerUnit playerUnit;
     private PlayerStatus playerStatus;
     private Rigidbody rigid;
     private Vector3 moveVec;    //移動入力
@@ -10,6 +11,7 @@ public class PlayerControll : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+        playerUnit = transform.GetComponent<PlayerUnit>();
         playerStatus = transform.GetComponent<PlayerStatus>();
         rigid = transform.GetComponent<Rigidbody>();
         notMoveTime = 0;
@@ -39,7 +41,7 @@ public class PlayerControll : MonoBehaviour {
         xzVector.y = 0.0f;
 
         //移動処理
-        float _plusSpeed = 0.002f*(float)GameObject.Find("MathManager").GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.RED);
+        float _plusSpeed = 0.002f * (float)playerUnit.playerManager.mathManager.GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.RED);
         rigid.velocity = yVector + xzVector * 0.85f + (moveVec * (playerStatus.DEFAULT_MOVE_SPEED+_plusSpeed)) * 0.15f;
         //rigid.MovePosition( transform.position + (xzVector * 0.85f + (moveVec * playerStatus.DEFAULT_MOVE_SPEED * Time.deltaTime) * 0.15f));
         moveVec = moveVec * 0.95f;

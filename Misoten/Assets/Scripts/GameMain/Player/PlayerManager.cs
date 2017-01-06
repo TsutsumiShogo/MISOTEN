@@ -15,11 +15,7 @@ public class PlayerManager : MonoBehaviour {
     //private GameObject[] playerUnits;
     private PlayerUnit[] playerUnits = new PlayerUnit[3];
 
-    void Awake()
-    {
-        
-
-    }
+    public GM_MathManager mathManager;  //Unity上でセット。プレイヤーがマス情報参照するときに使用。
 
     //初期化関数
     public void Init()
@@ -34,6 +30,7 @@ public class PlayerManager : MonoBehaviour {
         {
             playerObjects[i] = Instantiate(SET_PLAYER_UNIT_PREFABS[GM_StaticParam.g_selectCharacter[i]]);
             playerUnits[i] = playerObjects[i].GetComponent<PlayerUnit>();
+            playerUnits[i].Init(this);
             playerUnits[i].PLAYER_NO = i;
 
             //プレイヤーの色を指定する

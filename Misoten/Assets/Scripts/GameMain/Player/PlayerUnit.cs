@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerUnit : MonoBehaviour {
 
+    public PlayerManager playerManager;             //Initでセットされる
     //各種プレイヤーモジュール部品
     private PlayerCollisionActor collisionActor;    //衝突時の処理に対応
     private PlayerAnimCon animCon;                  //アニメーション管理
@@ -43,11 +44,9 @@ public class PlayerUnit : MonoBehaviour {
         sprayCon = transform.GetComponentInChildren<PlayerSprayControll>();
         collisionBill = transform.GetComponentInChildren<PlayerCheckCollisionBill>();
 
-        //パラメータ初期化
-        Init();
 	}
 
-    public void Init(){
+    public void Init(PlayerManager _manager){
         m_soundTimer = 0.0f;
         nextState = PlayerStatus.EStateTransition.START;
 
@@ -63,6 +62,8 @@ public class PlayerUnit : MonoBehaviour {
         GameObject.Find("1PCanvas/SplayMode").GetComponent<ChengeSplay>().Init();
         GameObject.Find("2PCanvas/SplayMode").GetComponent<ChengeSplay>().Init();
         GameObject.Find("3PCanvas/SplayMode").GetComponent<ChengeSplay>().Init();
+
+        playerManager = _manager;
     }
 	
 	// Update is called once per frame
@@ -442,10 +443,10 @@ public class PlayerUnit : MonoBehaviour {
                     sprayScalePercent = 1.0f;
                 }
 
-                float _scall = 2.25f + (0.01f*GameObject.Find("MathManager").GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.GREEN));  // 緑分
-                _scall += 0.01f * GameObject.Find("MathManager").GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.CYAN);                // シアン分
-                _scall += 0.01f * GameObject.Find("MathManager").GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.YELLOW);              // イエロー分
-                _scall += 0.01f * GameObject.Find("MathManager").GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.WHITE);               // ホワイト分
+                float _scall = 2.25f + (0.01f*playerManager.mathManager.GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.GREEN));  // 緑分
+                _scall += 0.01f * playerManager.mathManager.GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.CYAN);                // シアン分
+                _scall += 0.01f * playerManager.mathManager.GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.YELLOW);              // イエロー分
+                _scall += 0.01f * playerManager.mathManager.GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.WHITE);               // ホワイト分
                 pos = transform.position + (transform.forward * sprayScalePercent * _scall);
                 sprayCon.transform.position = pos;
                 sprayCon.ChangeScale(sprayScalePercent * _scall);

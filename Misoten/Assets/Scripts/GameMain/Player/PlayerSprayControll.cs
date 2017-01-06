@@ -144,10 +144,10 @@ public class PlayerSprayControll : MonoBehaviour {
     private void GrowPlant(GM_MathFlowerParam _flowerParam)
     {
         //花に経験値を加算(植物成長)
-        float _base = 180.0f + (0.001f*GameObject.Find("MathManager").GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.BLUE));
-        _base += (0.001f * GameObject.Find("MathManager").GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.CYAN));
-        _base += (0.001f * GameObject.Find("MathManager").GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.MAGENTA));
-        _base += (0.001f * GameObject.Find("MathManager").GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.WHITE));
+        float _base = 180.0f + (0.001f * playerUnit.playerManager.mathManager.GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.BLUE));
+        _base += (0.001f * playerUnit.playerManager.mathManager.GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.CYAN));
+        _base += (0.001f * playerUnit.playerManager.mathManager.GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.MAGENTA));
+        _base += (0.001f * playerUnit.playerManager.mathManager.GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.WHITE));
         _flowerParam.AddExp(playerUnit.PLAYER_NO, _base * Time.deltaTime);    //引数：加算経験値量
     }
 

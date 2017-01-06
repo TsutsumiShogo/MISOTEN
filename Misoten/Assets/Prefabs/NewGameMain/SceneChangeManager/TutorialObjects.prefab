@@ -2755,7 +2755,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329445070045572}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!81 &81660056539956410
 AudioListener:
   m_ObjectHideFlags: 1
@@ -3568,6 +3568,7 @@ MonoBehaviour:
   - {fileID: 169678, guid: 44828e0420b7b714f875e75d993dbbf9, type: 2}
   - {fileID: 169678, guid: 44828e0420b7b714f875e75d993dbbf9, type: 2}
   - {fileID: 169678, guid: 44828e0420b7b714f875e75d993dbbf9, type: 2}
+  mathManager: {fileID: 114136612981622504}
 --- !u!114 &114396315344635148
 MonoBehaviour:
   m_ObjectHideFlags: 1
