@@ -441,10 +441,14 @@ public class PlayerUnit : MonoBehaviour {
                 {
                     sprayScalePercent = 1.0f;
                 }
-                
-                pos = transform.position + (transform.forward * sprayScalePercent * 2.25f);
+
+                float _scall = 2.25f + (0.01f*GameObject.Find("MathManager").GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.GREEN));  // 緑分
+                _scall += 0.01f * GameObject.Find("MathManager").GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.CYAN);                // シアン分
+                _scall += 0.01f * GameObject.Find("MathManager").GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.YELLOW);              // イエロー分
+                _scall += 0.01f * GameObject.Find("MathManager").GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.WHITE);               // ホワイト分
+                pos = transform.position + (transform.forward * sprayScalePercent * _scall);
                 sprayCon.transform.position = pos;
-                sprayCon.ChangeScale(sprayScalePercent * 2.25f);
+                sprayCon.ChangeScale(sprayScalePercent * _scall);
 
                 //スプレー入力が無くなった
                 if (XboxController.GetButtonHoldA(PLAYER_NO) == false)

@@ -154,16 +154,18 @@ public class SceneChangeManager : MonoBehaviour {
                 //ゲームメインシーンマネージャーで初期化を伝達
                 GM_SceneManager gameManager;
                 ObjectManager.Clean();              // オブジェクト初期化
+
+                //ゲームメインUIマネージャーで初期化を伝達
+                GM_UIManager gameUiManager;
+                gameUiManager = SceneCanvasTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GM_UIManager>();
+                gameUiManager.Init();
                 gameManager = SceneTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GM_SceneManager>();
                 gameManager.Init();
                 SoundManager.PlayBgm2("game_bgm");  // BGM再生
                 GameObject.Find("MobsManager").GetComponent<MobsManager>().Init();  // モブ初期化
                 Debug.Log("初期化処理");
 
-                //ゲームメインUIマネージャーで初期化を伝達
-                GM_UIManager gameUiManager;
-                gameUiManager = SceneCanvasTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GM_UIManager>();
-                gameUiManager.Init();
+                
 
                 break;
             default:
