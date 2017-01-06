@@ -43,6 +43,12 @@ public class GM_BillXButtonEffect : MonoBehaviour {
             thisRender.sprite = null;
             return;
         }
+        //ビル最大レベルなら描画しない
+        if (checkCollisionBill.billParam.flowerLevel == GM_MathFlowerParam.EFlowerLevel.Level3)
+        {
+            thisRender.sprite = null;
+            return;
+        }
 
         //プレイヤーに合わせて回転したくない
         transform.rotation = Quaternion.Euler(0, 0, 0);
