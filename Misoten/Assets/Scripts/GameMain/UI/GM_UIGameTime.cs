@@ -37,11 +37,11 @@ public class GM_UIGameTime : MonoBehaviour {
         sec = (int)(countDown) % 60;
         if (sec < 10)
         {
-            timeCount.text = "TIME " + min.ToString() + ":" + "0" + sec.ToString();
+            timeCount.text = min.ToString() + ":" + "0" + sec.ToString();
         }
         else
         {
-            timeCount.text = "TIME " + min.ToString() + ":" + sec.ToString();
+            timeCount.text = min.ToString() + ":" + sec.ToString();
         }
 
         //===================太陽の更新=========================

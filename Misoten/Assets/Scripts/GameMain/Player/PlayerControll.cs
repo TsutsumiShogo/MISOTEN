@@ -39,7 +39,8 @@ public class PlayerControll : MonoBehaviour {
         xzVector.y = 0.0f;
 
         //移動処理
-        rigid.velocity = yVector + xzVector * 0.85f + (moveVec * playerStatus.DEFAULT_MOVE_SPEED) * 0.15f;
+        float _plusSpeed = 0.002f*(float)GameObject.Find("MathManager").GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.RED);
+        rigid.velocity = yVector + xzVector * 0.85f + (moveVec * (playerStatus.DEFAULT_MOVE_SPEED+_plusSpeed)) * 0.15f;
         //rigid.MovePosition( transform.position + (xzVector * 0.85f + (moveVec * playerStatus.DEFAULT_MOVE_SPEED * Time.deltaTime) * 0.15f));
         moveVec = moveVec * 0.95f;
     }

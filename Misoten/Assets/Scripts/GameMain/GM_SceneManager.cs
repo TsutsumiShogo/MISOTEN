@@ -112,7 +112,12 @@ public class GM_SceneManager : MonoBehaviour {
         m_callFlg_3 = false;
         m_whistleFlg = false;
         m_seTime = 0.0f;
-	}
+
+        // Gage初期化
+        //Debug.Log("Gage初期化");
+        //GameObject.Find("GameObjects/FlowerGageManager").GetComponent<GM_FlowerGageManager>().Init();
+
+    }
     //終了処理
     public void Delete()
     {
