@@ -56,5 +56,5 @@ MonoBehaviour:
   CAMERA2: {fileID: 0}
   SET_PLAYER_UNIT_PREFABS:
   - {fileID: 169678, guid: 44828e0420b7b714f875e75d993dbbf9, type: 2}
-  - {fileID: 198042, guid: 743bb4bc3dc74e04497be71b10c3b356, type: 2}
   - {fileID: 193598, guid: 34d1b4fb88c4bef409c4a0ef00847098, type: 2}
+  - {fileID: 198042, guid: 743bb4bc3dc74e04497be71b10c3b356, type: 2}
