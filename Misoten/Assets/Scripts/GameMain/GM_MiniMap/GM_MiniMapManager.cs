@@ -12,6 +12,8 @@ public class GM_MiniMapManager : MonoBehaviour {
     private GameObject MINIMAP_CELL_PREFAB;     //動的生成させたいので
     [SerializeField]
     private GameObject cameraObject;            //ズームアウト処理を掛けたい。
+    private GM_MiniMapPlayers minimapPlayer;    //ミニマップのプレイヤー管理部
+
 
     //外部公開変数
     public GM_MathManager mathManager;              //マスマネージャ
@@ -25,7 +27,8 @@ public class GM_MiniMapManager : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         mathManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects/Stage/MathManager").GetComponent<GM_MathManager>();
-	}
+        minimapPlayer = transform.FindChild("Map_Players").GetComponent<GM_MiniMapPlayers>();	
+    }
     //マスマネージャーのInitが呼ばれた後に呼んで下さい。
     public void Init()
     {
@@ -39,6 +42,9 @@ public class GM_MiniMapManager : MonoBehaviour {
 
         //更新セル番号を初期化
         updateCellNo = 0;
+
+        //ミニマッププレイヤー初期化
+        minimapPlayer.Init(GM_StaticParam.g_selectCharacter[0], GM_StaticParam.g_selectCharacter[1], GM_StaticParam.g_selectCharacter[2]);
 
         GameObject temp;
         for (int i = 0; i < mathManager.cells.Count; ++i)

@@ -90,7 +90,7 @@ public class PlayerManager : MonoBehaviour {
         }
         else
         {
-            return playerUnits[GM_StaticParam.g_selectCharacter[playerNo]].gameObject;
+            return playerUnits[playerNo].gameObject;
         }
     }
 

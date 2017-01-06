@@ -22,9 +22,10 @@ public class GM_MiniMapPlayers : MonoBehaviour {
 	}
 
     //プレイヤーのアイコンを1~3P決める(できればenum型にしたい)
-    void Init(int iconNo1, int iconNo2, int iconNo3)
+    public void Init(int iconNo1, int iconNo2, int iconNo3)
     {
         //アイコンのテクスチャを変更する
+        Debug.Log("MinimapPlayer IconNo" + iconNo1.ToString() + ", " + iconNo2.ToString() + ", " + iconNo3.ToString());
         playerIcon[0].sprite = PLAYER_ICON_TEXTURE[iconNo1];
         playerIcon[1].sprite = PLAYER_ICON_TEXTURE[iconNo2];
         playerIcon[2].sprite = PLAYER_ICON_TEXTURE[iconNo3];

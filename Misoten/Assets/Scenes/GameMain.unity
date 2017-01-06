@@ -8946,7 +8946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7a28d9e954c8c4b97bf5d92cce415b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GAME_TIME: 10
+  GAME_TIME: 300
   gameTime: 0
   stageOutColObj:
   - {fileID: 1621}
@@ -10620,72 +10620,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114244308038069714, guid: 08f14d490a670eb488a6a7eaf10c0cee,
-        type: 2}
-      propertyPath: m_mathManager
-      value: 
-      objectReference: {fileID: 1188}
     - target: {fileID: 114929993709451476, guid: 08f14d490a670eb488a6a7eaf10c0cee,
         type: 2}
       propertyPath: mathManager
       value: 
       objectReference: {fileID: 8345}
-    - target: {fileID: 224187710481600314, guid: 08f14d490a670eb488a6a7eaf10c0cee,
+    - target: {fileID: 114244308038069714, guid: 08f14d490a670eb488a6a7eaf10c0cee,
         type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 224241760413716142, guid: 08f14d490a670eb488a6a7eaf10c0cee,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212380395389125372, guid: 08f14d490a670eb488a6a7eaf10c0cee,
-        type: 2}
-      propertyPath: m_Sprite
+      propertyPath: m_mathManager
       value: 
-      objectReference: {fileID: 21300000, guid: ba707445c1d6f50478d0cad605f39ec2,
-        type: 3}
-    - target: {fileID: 4065153793410830, guid: 08f14d490a670eb488a6a7eaf10c0cee, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065153793410830, guid: 08f14d490a670eb488a6a7eaf10c0cee, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 212643726350253624, guid: 08f14d490a670eb488a6a7eaf10c0cee,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c2ccb8fb30df2c344901a0372a00dc7d,
-        type: 3}
-    - target: {fileID: 4808824026290828, guid: 08f14d490a670eb488a6a7eaf10c0cee, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4808824026290828, guid: 08f14d490a670eb488a6a7eaf10c0cee, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 212531615787526342, guid: 08f14d490a670eb488a6a7eaf10c0cee,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 64fe32b7b63495a4aa155e969100e74f,
-        type: 3}
-    - target: {fileID: 4204651422131682, guid: 08f14d490a670eb488a6a7eaf10c0cee, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4204651422131682, guid: 08f14d490a670eb488a6a7eaf10c0cee, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1286675966020754, guid: 08f14d490a670eb488a6a7eaf10c0cee, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1188}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08f14d490a670eb488a6a7eaf10c0cee, type: 2}
   m_IsPrefabParent: 0
