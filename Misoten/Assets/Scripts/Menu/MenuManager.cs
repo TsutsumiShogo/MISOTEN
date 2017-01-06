@@ -40,7 +40,7 @@ public class MenuManager : MonoBehaviour {
             if (m_selectId == CHARACTOR_SELECT){
                 //-------------------------
                 // 右入力処理
-                if (XboxController.GetLeftTriggerLeft(0) || Input.GetKeyDown(KeyCode.RightArrow)){
+                if (XboxController.GetLeftTriggerLeft(0) || XboxController.GetLeftTriggerLeft(1) || XboxController.GetLeftTriggerLeft(2) || Input.GetKeyDown(KeyCode.RightArrow)){
                     SoundManager.PlaySe("cursol", 5);
                     m_selectId = RANKING;
                     m_modObj[CHARACTOR_SELECT].GetComponent<ModeEffect>().OffScalling();
@@ -49,7 +49,7 @@ public class MenuManager : MonoBehaviour {
             }else if( m_selectId == RANKING ){
                 //-------------------------
                 // 左入力処理
-                if (XboxController.GetLeftTriggerRight(0) || Input.GetKeyDown(KeyCode.LeftArrow)){
+                if (XboxController.GetLeftTriggerRight(0) || XboxController.GetLeftTriggerRight(1) || XboxController.GetLeftTriggerRight(2) || Input.GetKeyDown(KeyCode.LeftArrow)){
                     SoundManager.PlaySe("cursol", 5);
                     m_selectId = CHARACTOR_SELECT;
                     m_modObj[CHARACTOR_SELECT].GetComponent<ModeEffect>().OnScalling();

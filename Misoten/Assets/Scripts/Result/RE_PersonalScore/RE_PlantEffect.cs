@@ -37,8 +37,8 @@ public class RE_PlantEffect : MonoBehaviour {
     {
         m_defaultScall = 1.0f;
         transform.localScale = new Vector3(m_defaultScall, m_defaultScall, m_defaultScall);
-        m_scall[0] = 1.5f;
-        m_scall[1] = 2.0f;
+        m_scall[0] = 1.3f;
+        m_scall[1] = 1.7f;
         m_firstWait = 0.0f;
         m_id = _id;
         m_fTimer = 0.0f;

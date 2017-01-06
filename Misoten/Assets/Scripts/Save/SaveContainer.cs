@@ -29,6 +29,9 @@ public class SaveContainer : MonoBehaviour {
 
     // プレイ回数
     public static int g_playCount;
+
+    private bool m_clearDataFlg = false;        // 起動時、これがtrueでデータ消去　エディタ起動用
+
     //===============================================================
     // 未公開関数
  
@@ -36,7 +39,9 @@ public class SaveContainer : MonoBehaviour {
     //--------------------------------------
     //
     void Awake() {
-
+        if (m_clearDataFlg){
+            ClearData();
+        }
         // 初期化＆ロード
         Initalize();
         Load();
@@ -63,7 +68,7 @@ public class SaveContainer : MonoBehaviour {
         for (int i = 0; i < (int)SAVE_KEY.SAVE_KEY_MAX; i++)
         {
             g_rankingScore[i] = PlayerPrefs.GetInt("Score_" + i.ToString(),0);
-            g_rankingName[i] = PlayerPrefs.GetString("Name_" + i.ToString(), "TeamNo."+"TEST");
+            g_rankingName[i] = PlayerPrefs.GetString("Name_" + i.ToString(), "No."+"TEST");
         }
         g_playCount = PlayerPrefs.GetInt("PlayCount", 0);
         Debug.Log("読み込み完了");
@@ -79,6 +84,7 @@ public class SaveContainer : MonoBehaviour {
             PlayerPrefs.SetInt("Score_" + i.ToString(), g_rankingScore[i]);
             PlayerPrefs.SetString("Name_" + i.ToString(), g_rankingName[i]);
         }
+        PlayerPrefs.SetInt("PlayerCount", g_playCount);
         PlayerPrefs.Save();     // セーブデータ更新
     }
 
@@ -93,4 +99,18 @@ public class SaveContainer : MonoBehaviour {
         }
     }
    
+
+    // ClearData - データ初期化関数
+    //--------------------------------------
+    //
+    private static void ClearData(){
+        Debug.Log("セーブデータ初期化");
+        for (int i = 0; i < (int)SAVE_KEY.SAVE_KEY_MAX; i++)
+        {
+            PlayerPrefs.SetInt("Score_" + i.ToString(), 0);
+            PlayerPrefs.SetString("Name_" + i.ToString(), "No." + "TEST");
+        }
+        PlayerPrefs.SetInt("PlayerCount", 0);
+        PlayerPrefs.Save();     // セーブデータ更新
+    }
 }

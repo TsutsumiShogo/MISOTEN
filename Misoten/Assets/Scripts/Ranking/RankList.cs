@@ -68,11 +68,21 @@ public class RankList : MonoBehaviour {
         Vector3 _pos = GameObject.Find("BG_MoveObj").transform.localPosition;
         if (m_cameraTimer > 2.0f){
             if (!m_flg){
-                transform.localPosition = new Vector3(
+                if (XboxController.GetButtonHoldA_All())
+                {
+                    _pos.y -= 1350.0f * Time.deltaTime*3.0f / m_cTime;
+                    transform.localPosition = new Vector3(
+                    transform.localPosition.x,
+                    transform.localPosition.y + m_topPos * Time.deltaTime*3.0f / m_cTime,
+                    transform.localPosition.z);
+                }
+                else {
+                    _pos.y -= 1350.0f * Time.deltaTime / m_cTime;
+                    transform.localPosition = new Vector3(
                     transform.localPosition.x,
                     transform.localPosition.y + m_topPos * Time.deltaTime / m_cTime,
                     transform.localPosition.z);
-                _pos.y -= 1350.0f * Time.deltaTime / m_cTime;
+                }
                 GameObject.Find("BG_MoveObj").transform.localPosition = _pos;
                 if ( m_topPos >= transform.localPosition.y){
                     transform.localPosition = new Vector3(transform.localPosition.x, m_topPos,transform.localPosition.z);
@@ -137,11 +147,11 @@ public class RankList : MonoBehaviour {
             {
                 transform.localPosition = new Vector3(
                     transform.localPosition.x,
-                    transform.localPosition.y + m_topPos * Time.deltaTime / m_cTime,
+                    transform.localPosition.y + -750.0f * Time.deltaTime / m_cTime,
                     transform.localPosition.z);
-                if (m_topPos >= transform.localPosition.y)
+                if (-750.0f >= transform.localPosition.y)
                 {
-                    transform.localPosition = new Vector3(transform.localPosition.x, m_topPos, transform.localPosition.z);
+                    transform.localPosition = new Vector3(transform.localPosition.x, -750.0f, transform.localPosition.z);
                     m_pos = transform.localPosition.y;
                     m_flg = true;
                     return false;

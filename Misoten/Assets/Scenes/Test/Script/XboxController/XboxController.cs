@@ -279,8 +279,21 @@ public class XboxController : MonoBehaviour
         }
         return false;
     }
-    
-    
+    //---------------------------------------------------------------
+    // GetButtonHoldB
+    //---------------------------------------------------------------
+    public static bool GetButtonHoldA_All()
+    {
+
+        if (Input.GetKey(KeyCode.Joystick1Button0))
+            return true;
+        if (Input.GetKey(KeyCode.Joystick2Button0))
+            return true;
+        if (Input.GetKey(KeyCode.Joystick3Button0))
+            return true;
+        return false;
+    }
+
     //---------------------------------------------------------------
     // GetButtonB 
     //---------------------------------------------------------------

@@ -31,11 +31,11 @@ public class RankingManager : MonoBehaviour {
     {
         m_roolFlg = m_rankingList.GetComponent<RankList>().Action();
         if (!m_roolFlg){
-            if (XboxController.GetButtonBack_All() || Input.GetKeyDown(KeyCode.Backspace))
-            {
-                SoundManager.PlaySe("cansel", 2);
-                return T_SceneManager.SceneType.MENU;
-            }
+            //if (XboxController.GetButtonBack_All() || Input.GetKeyDown(KeyCode.Backspace))
+            //{
+                //SoundManager.PlaySe("cansel", 2);
+            return T_SceneManager.SceneType.MENU;
+            //}
         }
         return T_SceneManager.SceneType.RANKING;
     }

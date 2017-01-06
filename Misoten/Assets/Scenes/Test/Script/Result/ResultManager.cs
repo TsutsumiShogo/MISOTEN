@@ -51,6 +51,7 @@ public class ResultManager : MonoBehaviour {
 
         m_backObj.transform.localPosition = new Vector3(0.0f, 0, 0);
         m_bgmFlg = false;
+
     }
 
     //===============================================================
@@ -137,11 +138,11 @@ public class ResultManager : MonoBehaviour {
             //-------------------------
             // 個人成績からランキングへ
             m_backObj.transform.localPosition = new Vector3(
-                m_backObj.transform.localPosition.x - 10.0f * Time.deltaTime / 2.0f,
+                m_backObj.transform.localPosition.x - 10.0f * Time.deltaTime / 3.0f,
                 m_backObj.transform.localPosition.y,
                 m_backObj.transform.localPosition.z);
             m_rankingList.transform.localPosition = new Vector3(
-                m_rankingList.transform.localPosition.x - 1000.0f * Time.deltaTime / 2.0f,
+                m_rankingList.transform.localPosition.x - 700.0f * Time.deltaTime / 2.0f,
                 m_rankingList.transform.localPosition.y,
                 m_rankingList.transform.localPosition.z);
             m_personalScore.transform.localPosition = new Vector3(
@@ -150,7 +151,7 @@ public class ResultManager : MonoBehaviour {
                 m_personalScore.transform.localPosition.z);
             if ( m_backObj.transform.localPosition.x <= -10.0f){
                 m_backObj.transform.localPosition = new Vector3(-10.0f, 0, 0);
-                m_rankingList.transform.localPosition = new Vector3(0, 0, 0);
+                m_rankingList.transform.localPosition = new Vector3(-50, 0, 0);
                 m_personalScore.transform.localPosition = new Vector3(-1000.0f, 0, 0);
                 m_toRankingFlg = false;
             }

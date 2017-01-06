@@ -80,6 +80,8 @@ public class ObjectParam : MonoBehaviour {
     public void BigBillInit()
     {
         m_type = GM_MathFlowerParam.EFlowerType.BigBill;
+        m_particle = m_particleObj.GetComponent<ParticleSystem>();
+        m_levelParticle = m_levelPartcleObj.GetComponent<ParticleSystem>();
     }
 
     //-------------------------------

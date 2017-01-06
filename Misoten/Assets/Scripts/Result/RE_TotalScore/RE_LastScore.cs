@@ -20,7 +20,8 @@ public class RE_LastScore : MonoBehaviour {
         // ランキング更新処理
         Debug.Log("Rank");
         if (RankingManager.CheckRankIn((int)m_afterScore)){
-            RankingManager.UpdateRanking((int)m_afterScore, "NEW");
+            RankingManager.UpdateRanking((int)m_afterScore, "No." + SaveContainer.g_playCount.ToString().PadLeft(4,'0'));
+            SaveContainer.g_playCount++;
             SaveContainer.Save();
         }
         // スコアセット
