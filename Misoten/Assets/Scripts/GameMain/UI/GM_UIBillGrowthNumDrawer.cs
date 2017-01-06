@@ -148,13 +148,13 @@ public class GM_UIBillGrowthNumDrawer : MonoBehaviour {
         switch (playerNo)
         {
             case 0:
+                break;
+            case 1:
                 offSetX = Screen.width * 0.25f;
                 offSetY = Screen.height * 0.5f;
                 break;
-            case 1:
-                offSetX = Screen.width * 0.5f;
-                break;
             case 2:
+                offSetX = Screen.width * 0.5f;
                 break;
         }
 
