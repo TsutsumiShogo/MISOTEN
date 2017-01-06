@@ -37,6 +37,10 @@ public class GM_MathManager : MonoBehaviour {
     //セルオブジェクト達
     public List<GM_MathCell> cells;
 
+    //ステージオブジェクト
+    [SerializeField]
+    private GameObject[] stageObj = new GameObject[3];
+
     //内部変数
     private GM_MathBillList billList;
     int lastUpdateCellNo = 0;
@@ -60,6 +64,22 @@ public class GM_MathManager : MonoBehaviour {
 
         debug_StageTypeNo = _randamStageTypeNo;
         
+        //生成するステージパターンに合わせてステージオブジェクトをアクティブに
+        for (int i = 0; i < 3; ++i)
+        {
+            if (stageObj[i] != null)
+            {
+                if (i == _randamStageTypeNo)
+                {
+                    stageObj[i].SetActive(true);
+                }
+                else
+                {
+                    stageObj[i].SetActive(false);
+                }
+            }
+        }
+
         //各セルを初期化
         for (int i = 0; i < cells.Count; ++i)
         {
