@@ -1255,7 +1255,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0f7d584f4c78e8044a30e928f196c975, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ab0bfbe658d99da49be03f5906d9c87d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1586,7 +1586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charaSpriteDataList:
-  - {fileID: 21300000, guid: 9884d1165e5d27849a247fb8c6cab8c6, type: 3}
+  - {fileID: 21300000, guid: 5052ab0e93a6350409c3f8f8ae85d731, type: 3}
   charaDrawSpriteNoList: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   charaFrontFlgList: 0100000000010001000000010101000000000000010001010000000101000000
   FRONT_COLOR: {r: 1, g: 1, b: 1, a: 1}
@@ -1706,7 +1706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charaSpriteDataList:
-  - {fileID: 21300000, guid: 0f7d584f4c78e8044a30e928f196c975, type: 3}
+  - {fileID: 21300000, guid: ab0bfbe658d99da49be03f5906d9c87d, type: 3}
   charaDrawSpriteNoList: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   charaFrontFlgList: 0000010100000100010001000000000000010000000100000000010000000101
   FRONT_COLOR: {r: 1, g: 1, b: 1, a: 1}
@@ -1879,7 +1879,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9884d1165e5d27849a247fb8c6cab8c6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5052ab0e93a6350409c3f8f8ae85d731, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2007,7 +2007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charaSpriteDataList:
-  - {fileID: 21300000, guid: 836ff52bdb3597946b7a4dd85d62d457, type: 3}
+  - {fileID: 21300000, guid: 6df3039c98620a5469ce74107df572a4, type: 3}
   charaDrawSpriteNoList: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   charaFrontFlgList: 0001000001000000000100000000010101000101000000000101000000010000
   FRONT_COLOR: {r: 1, g: 1, b: 1, a: 1}
@@ -2249,7 +2249,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 836ff52bdb3597946b7a4dd85d62d457, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6df3039c98620a5469ce74107df572a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3599,8 +3599,8 @@ RectTransform:
   m_Father: {fileID: 224751593984766770}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3, y: 0.3}
-  m_AnchorMax: {x: 0.63, y: 0.8}
+  m_AnchorMin: {x: 0.4, y: 0.3}
+  m_AnchorMax: {x: 0.6, y: 0.8}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
