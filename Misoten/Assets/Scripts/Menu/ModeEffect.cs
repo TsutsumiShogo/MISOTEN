@@ -81,12 +81,10 @@ public class ModeEffect : MonoBehaviour {
     public void OnScalling(){
         m_scallingFlg = true;
     }
-
     //---------------------------------
     // OnScalling 拡縮開始命令
     public void OnScalling( bool _color )
     {
-        m_scallingFlg = true;
         if (_color){
             GetComponent<Text>().color = m_selectColor;
             GetComponent<Outline>().effectColor = m_defaultColor;
@@ -99,7 +97,6 @@ public class ModeEffect : MonoBehaviour {
         m_scallingFlg = false;
         transform.localScale = new Vector3( m_defaultScall, m_defaultScall, m_defaultScall);
     }
-    
     //---------------------------------
     // OffScalling 拡縮停止命令
     public void OffScalling(bool _color)
