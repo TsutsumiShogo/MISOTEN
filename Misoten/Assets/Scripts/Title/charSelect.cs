@@ -139,6 +139,8 @@ public class charSelect : MonoBehaviour {
                 GM_StaticParam.g_selectCharacter[m_playerId] = m_selectNo;
                 m_decisionFlg = true;
                 m_decision.SetActive(true);
+                m_cursor[0].SetActive(false);
+                m_cursor[1].SetActive(false);
                 SoundManager.PlaySe("decision_1", m_playerId);
             }
 
@@ -170,6 +172,8 @@ public class charSelect : MonoBehaviour {
             SoundManager.PlaySe("cansel", m_playerId);
             m_decisionFlg = false;
             m_decision.SetActive(false);
+            m_cursor[0].SetActive(true);
+            m_cursor[1].SetActive(true);
         }
     }
     //---------------------------------------------------------------

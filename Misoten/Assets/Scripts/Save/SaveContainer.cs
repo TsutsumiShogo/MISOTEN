@@ -84,7 +84,7 @@ public class SaveContainer : MonoBehaviour {
             PlayerPrefs.SetInt("Score_" + i.ToString(), g_rankingScore[i]);
             PlayerPrefs.SetString("Name_" + i.ToString(), g_rankingName[i]);
         }
-        PlayerPrefs.SetInt("PlayerCount", g_playCount);
+        PlayerPrefs.SetInt("PlayCount", g_playCount);
         PlayerPrefs.Save();     // セーブデータ更新
     }
 
@@ -110,7 +110,7 @@ public class SaveContainer : MonoBehaviour {
             PlayerPrefs.SetInt("Score_" + i.ToString(), 0);
             PlayerPrefs.SetString("Name_" + i.ToString(), "No." + "TEST");
         }
-        PlayerPrefs.SetInt("PlayerCount", 0);
+        PlayerPrefs.SetInt("PlayCount", 0);
         PlayerPrefs.Save();     // セーブデータ更新
     }
 }

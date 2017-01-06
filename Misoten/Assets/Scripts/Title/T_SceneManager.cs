@@ -48,6 +48,7 @@ public class T_SceneManager : MonoBehaviour {
     private float m_timer = 0;
     public float m_cTimer = 0;
     private const float TIME = 0.0f;
+   
     //===============================================================
     // 未公開関数
 
@@ -230,6 +231,7 @@ public class T_SceneManager : MonoBehaviour {
                 {
                     m_moveBackObj.transform.localPosition = m_charaSelePos;
                     m_sceneCanvas[(int)m_nowSceneType].transform.localPosition = new Vector3(0, 0, 0);
+                    
                     m_cameraMoveFlg = false;
                     m_cTimer = 0.0f;           
                 }

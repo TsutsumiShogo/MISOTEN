@@ -217,7 +217,7 @@ public class ObjectManager : MonoBehaviour {
                 break;
             // ビル生成
             case GM_MathFlowerParam.EFlowerType.BigBill:
-                Vector3 pos_B = new Vector3(-26, -0.3f, 8.5f);
+                Vector3 pos_B = new Vector3(_position.x + -10.0f, -0.3f, 8.5f);
                 objectList[Id] = Instantiate(prefabBigBill, pos_B, Quaternion.Euler(0, 150.0f, -1.7f)) as GameObject;
                 rendererList[Id] = objectList[Id].transform.FindChild("pCube23").GetComponent<Renderer>();
                 objectList[Id].GetComponent<ObjectParam>().BigBillInit();

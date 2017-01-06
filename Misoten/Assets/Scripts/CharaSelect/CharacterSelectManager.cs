@@ -19,6 +19,8 @@ public class CharacterSelectManager : MonoBehaviour {
     [SerializeField]
     private GameObject m_lastMenu;      // 選択
 
+    public GameObject[] m_arrows = new GameObject[6];
+
     //===============================================================
     // 公開関数　T_SceneManagerで呼び出す
     
@@ -32,6 +34,9 @@ public class CharacterSelectManager : MonoBehaviour {
         }
         m_lastMenu.GetComponent<CS_LastQ>().Init(); // 初期化
         m_allSelectedFlg = false;
+        for( int i=0;i<6;i++){
+            m_arrows[i].SetActive(true);
+        }
     }
 	
 	

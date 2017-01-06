@@ -11,7 +11,9 @@ public class ArrowMove : MonoBehaviour {
 	void Start ()
     {
         Init();
-	}
+        LeftArrow.SetActive(true);
+        RightArrow.SetActive(true);
+    }
 
 	void Init()
     { 
