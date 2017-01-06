@@ -23,7 +23,7 @@ public class XboxController : MonoBehaviour
         if (!stickUp[playerNo])
         {
             // スティック倒し
-            if (GetLeftY(playerNo) <= -1.0f){
+            if (GetLeftY(playerNo) <= -0.5f){
                 stickUp[playerNo] = true;
                 stickDown[playerNo] = false;
                 return true;
@@ -43,8 +43,8 @@ public class XboxController : MonoBehaviour
         {
             if (!stickUp[i])
             {
-                // スティック倒し
-                if (GetLeftY(i) <= -1.0f)
+                // スティック倒しs
+                if (GetLeftY(i) <= -0.5f)
                 {
                     stickUp[i] = true;
                     stickDown[i] = false;
@@ -67,7 +67,7 @@ public class XboxController : MonoBehaviour
         if (!stickDown[playerNo])
         {
             // スティック倒し
-            if (GetLeftY(playerNo) >= 1.0f){
+            if (GetLeftY(playerNo) >= 0.5f){
                 stickDown[playerNo] = true;
                 stickUp[playerNo] = false;
                 return true;
@@ -87,7 +87,7 @@ public class XboxController : MonoBehaviour
         for (int i = 0; i < 3; i++){
             if (!stickDown[i]){
                 // スティック倒し
-                if (GetLeftY(i) >= 1.0f){
+                if (GetLeftY(i) >= 0.5f){
                     stickDown[i] = true;
                     stickUp[i] = false;
                     return true;
@@ -146,7 +146,7 @@ public class XboxController : MonoBehaviour
         if (!stickRight[playerNo])
         {
             // スティック倒し
-            if (AxisX <= -1.0f)
+            if (AxisX <= -0.5f)
             {
                 stickRight[playerNo] = true;
                 stickLeft[playerNo] = false;
@@ -246,9 +246,9 @@ public class XboxController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Joystick1Button0))
             return true;
-        if(Input.GetKeyDown(KeyCode.Joystick1Button1))
+        if(Input.GetKeyDown(KeyCode.Joystick2Button0))
             return true;
-        if(Input.GetKeyDown(KeyCode.Joystick1Button2))
+        if(Input.GetKeyDown(KeyCode.Joystick3Button0))
             return true;
 
         return false;
