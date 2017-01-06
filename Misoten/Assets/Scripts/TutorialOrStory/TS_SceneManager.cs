@@ -38,7 +38,7 @@ public class TS_SceneManager : MonoBehaviour {
 
     //内部変数
     private float nowActionTime;    //行動した時間
-
+    private bool soundFlg;
 
 	// Use this for initialization
 	void Awake () {
@@ -74,6 +74,8 @@ public class TS_SceneManager : MonoBehaviour {
 
         //スコア初期化
         GM_ScoreCtrl.Reset();
+
+        soundFlg = false;
     }
     //終了処理
     public void Delete()
@@ -84,6 +86,15 @@ public class TS_SceneManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+        //チュートリアルスキップ確認
+        if (nowPhaseNo <= E_TSPhaseNo.TS_PlayBill)
+        {
+            if (XboxController.GetButtonHoldStart(0))
+            {
+                Skip();
+            }
+        }
 
         //アクション中なら何もしない
         if (nowActionTime > 0.0f)
@@ -105,20 +116,21 @@ public class TS_SceneManager : MonoBehaviour {
             return;
         }
 
+        //今のテキストで音声が再生されていないのなら鳴らす
+        if (soundFlg == false)
+        {
+            //前なってたボイスを止めてからSEを鳴らす
+            SoundManager.StopSe(3);
+            SoundManager.PlaySe("TVoice" + nowTextNo.ToString(), 3);
+            soundFlg = true;
+        }
 
         if (XboxController.GetButtonA(0))
         {
             //テキスト番号を進める
             NextText();
         }
-        //チュートリアルスキップ確認
-        if (nowPhaseNo <= E_TSPhaseNo.TS_PlayBill)
-        {
-            if (XboxController.GetButtonHoldStart(0))
-            {
-                Skip();
-            }
-        }
+        
 	}
 
     //========================テキスト番号の管理===========================
@@ -130,6 +142,9 @@ public class TS_SceneManager : MonoBehaviour {
             return;
         }
         nowTextNo++;
+
+        //サウンドフラグを戻す
+        soundFlg = false;
 
         //待機時間設定
         nowActionTime = TEXT_START_WAIT_TIME_LIST[nowTextNo];

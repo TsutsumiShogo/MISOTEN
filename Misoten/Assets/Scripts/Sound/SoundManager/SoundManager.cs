@@ -274,7 +274,13 @@ public class SoundManager
         GetInstance()._StopBgm2();
     }
 
-
+    //
+    //SEを停止させたかったので追加しました　@Tsutsumi
+    //
+    public static void StopSe(int _channel = -1)
+    {
+        GetInstance()._StopSe(_channel);
+    }
 
     //
     // BGMを停止
@@ -292,6 +298,15 @@ public class SoundManager
     {
         // 今なっているオーディオソースを取得
         GetAudioSource(SoundType.BGM2).Stop();
+    }
+
+    //
+    //SEを停止させたかったので追加しました　@Tsutsumi
+    //
+    void _StopSe(int _channel = -1)
+    {
+        // 今なっているオーディオソースを取得
+        GetAudioSource(SoundType.SE).Stop();
     }
 
     //
