@@ -9,7 +9,7 @@ public class ModeEffect : MonoBehaviour {
     public float m_maxScall;                // 最大サイズ
     public float m_scallMag = 1.5f;         // 倍率    
     public float m_defaultScall;            // 標準サイズ
-    public float m_speedPer = 20.0f;        // 速度の割合
+    public float m_time = 1.0f;        // 速度の割合
     public Color m_selectColor;             // 選択時カラー
     public Color m_defaultColor;            // 通常時カラー
     private float m_speed;                  // 拡縮速度
@@ -32,7 +32,7 @@ public class ModeEffect : MonoBehaviour {
     public void Init() {
         m_defaultScall = 1;
         m_maxScall = m_defaultScall * m_scallMag;
-        m_speed = (m_maxScall - m_defaultScall) / m_speedPer;
+        //m_speed = (m_maxScall - m_defaultScall) / m_speedPer;
        
     }
 
@@ -49,8 +49,8 @@ public class ModeEffect : MonoBehaviour {
             {
                 //-----------------------
                 // 拡大
-                _scall.x = transform.localScale.x + m_speed;
-                _scall.y = transform.localScale.y + m_speed;
+                _scall.x = transform.localScale.x + (m_maxScall - m_defaultScall)*Time.deltaTime/m_time;
+                _scall.y = transform.localScale.y + (m_maxScall - m_defaultScall) * Time.deltaTime / m_time;
                 _scall.z = 1;
                 transform.localScale = _scall;
                 if (_scall.x >= m_maxScall)
@@ -63,8 +63,8 @@ public class ModeEffect : MonoBehaviour {
             {
                 //-----------------------
                 // 縮小
-                _scall.x = transform.localScale.x - m_speed;
-                _scall.y = transform.localScale.y - m_speed;
+                _scall.x = transform.localScale.x - (m_maxScall - m_defaultScall) * Time.deltaTime / m_time;
+                _scall.y = transform.localScale.y - (m_maxScall - m_defaultScall) * Time.deltaTime / m_time;
                 _scall.z = 1;
                 transform.localScale = _scall;
                 if (_scall.x <= m_defaultScall)

@@ -11,6 +11,7 @@ public class CS_LastQ : MonoBehaviour {
     private bool m_closeFlg;    // 閉じる
     private float m_time = 0.25f;    // 開くのにかかる時間
     private int m_selectNo;         // 選択項目
+    private bool m_changeSceneFlg;  // シーン移動Flag
     //===============================================================
     // 公開関数
     
@@ -24,39 +25,53 @@ public class CS_LastQ : MonoBehaviour {
         m_selectNo = 0;
         m_closeFlg = false;
         m_openFlg = false;
+        m_changeSceneFlg = false;
     }
 
     // Action - 更新処理
     //---------------------------------
     //
     public void Action(){
-        if( !m_openFlg && !m_closeFlg){
-            m_mode[m_selectNo].GetComponent<ModeEffect>().Action();
-        }
-        if( XboxController.GetLeftTriggerDown_All() || Input.GetKeyDown(KeyCode.UpArrow)){
-            if (m_selectNo != 0){
-                SoundManager.PlaySe("cursol", 1);
-                m_selectNo = 0;
-                m_mode[0].GetComponent<ModeEffect>().OnScalling(true);
-                m_mode[1].GetComponent<ModeEffect>().OffScalling(true);
+        if (!m_changeSceneFlg)
+        {
+            if (!m_openFlg && !m_closeFlg)
+            {
+                m_mode[m_selectNo].GetComponent<ModeEffect>().Action();
             }
-        }
-        if(XboxController.GetLeftTriggerUp_All() || Input.GetKeyDown(KeyCode.DownArrow)){
-            if (m_selectNo != 1){
-                SoundManager.PlaySe("cursol", 1);
-                m_selectNo = 1;
-                m_mode[0].GetComponent<ModeEffect>().OffScalling(true);
-                m_mode[1].GetComponent<ModeEffect>().OnScalling(true);
+            if (XboxController.GetLeftTriggerDown_All() || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if (m_selectNo != 0)
+                {
+                    SoundManager.PlaySe("cursol", 1);
+                    m_selectNo = 0;
+                    m_mode[0].GetComponent<ModeEffect>().OnScalling(true);
+                    m_mode[1].GetComponent<ModeEffect>().OffScalling(true);
+                }
             }
-        }
-        if( XboxController.GetButtonA_All() || Input.GetKeyDown(KeyCode.A)){
-            SoundManager.StopBgm();     // bgm停止
-            SoundManager.PlaySe("decision_1", 0);
-            if(m_selectNo == 0){
-                GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_STORY);
+            if (XboxController.GetLeftTriggerUp_All() || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (m_selectNo != 1)
+                {
+                    SoundManager.PlaySe("cursol", 1);
+                    m_selectNo = 1;
+                    m_mode[0].GetComponent<ModeEffect>().OffScalling(true);
+                    m_mode[1].GetComponent<ModeEffect>().OnScalling(true);
+                }
             }
-            else{
-                GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);
+            if (XboxController.GetButtonA_All() || Input.GetKeyDown(KeyCode.A))
+            {
+                SoundManager.StopBgm();     // bgm停止
+                SoundManager.PlaySe("decision_1", 0);
+
+                if (m_selectNo == 0)
+                {
+                    m_changeSceneFlg = true;
+                    GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_STORY);
+                }
+                else {
+                    m_changeSceneFlg = true;
+                    GameObject.Find("SceneChangeManager").GetComponent<SceneChangeManager>().SceneChange(SceneChangeManager.ESceneNo.SCENE_GAME);
+                }
             }
         }
     }

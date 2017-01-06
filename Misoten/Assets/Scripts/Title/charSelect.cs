@@ -164,7 +164,7 @@ public class charSelect : MonoBehaviour {
         }
         //---------------------
         // B押下で選択取り消し
-        if (XboxController.GetButtonB(m_playerId))
+        if (XboxController.GetButtonB(m_playerId) && m_decisionFlg)
         {
             Debug.Log("キャンセル");
             SoundManager.PlaySe("cansel", m_playerId);

@@ -52,7 +52,7 @@ public class XboxController : MonoBehaviour
                 }
             }
             else {
-                if (GetLeftY(i) > -1.0f)
+                if (GetLeftY(i) > -0.5f)
                     stickUp[i] = false;
             }
         }
@@ -74,7 +74,7 @@ public class XboxController : MonoBehaviour
             }
         }
         else{
-            if (GetLeftY(playerNo) < 1.0f)
+            if (GetLeftY(playerNo) < 0.5f)
                 stickDown[playerNo] = false;
         }
         return false;
@@ -93,7 +93,7 @@ public class XboxController : MonoBehaviour
                     return true;
                 }
             }else{
-                if (GetLeftY(i) < 1.0f)
+                if (GetLeftY(i) < 0.5f)
                     stickDown[i] = false;
             }
         }
@@ -155,7 +155,7 @@ public class XboxController : MonoBehaviour
         }
         else
         {
-            if (AxisX > -1.0f)
+            if (AxisX > -0.5f)
                 stickRight[playerNo] = false;
         }
         // -------------
