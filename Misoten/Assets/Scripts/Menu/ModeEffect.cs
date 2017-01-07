@@ -85,6 +85,7 @@ public class ModeEffect : MonoBehaviour {
     // OnScalling 拡縮開始命令
     public void OnScalling( bool _color )
     {
+        m_scallingFlg = true;
         if (_color){
             GetComponent<Text>().color = m_selectColor;
             GetComponent<Outline>().effectColor = m_defaultColor;

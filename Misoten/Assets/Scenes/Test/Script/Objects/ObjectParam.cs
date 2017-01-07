@@ -21,6 +21,7 @@ public class ObjectParam : MonoBehaviour {
     public GameObject m_particleObj;                // パーティクルオブジェクト
     private float m_seTime = 0.5f;
     private float m_seTimer = 0.0f;
+   
 
     //-----------------------------------------------------
     // 花用辺巣
@@ -36,6 +37,7 @@ public class ObjectParam : MonoBehaviour {
     private bool m_particleOn = false;
     private int m_menberNum = 0;
     public int m_playerId;
+    private int m_no;
 	
     //-------------------------------
     // パラメータオブジェクト取得
@@ -58,8 +60,9 @@ public class ObjectParam : MonoBehaviour {
     // ----------------------------------------------------
     //  家初期化処理
     // ----------------------------------------------------
-    public void HouseInit()
+    public void HouseInit( int _no )
     {
+        m_no = _no;
         m_type = GM_MathFlowerParam.EFlowerType.House;
         m_particle = m_particleObj.GetComponent<ParticleSystem>();
         m_levelParticle = m_levelPartcleObj.GetComponent<ParticleSystem>();
@@ -157,6 +160,9 @@ public class ObjectParam : MonoBehaviour {
             m_menberNum = m_param.GetGrowthNowPlayerNum();
         }
         Growing();
+    }
+    public int HouseNo(){
+        return m_no;
     }
     //-------------------------------
     // 中ビル更新処理

@@ -222,6 +222,18 @@ public class PlayerUnit : MonoBehaviour {
 
         inputVec.x = XboxController.GetLeftX(PLAYER_NO);
         inputVec.y = XboxController.GetLeftY(PLAYER_NO);
+        
+        // 3P操作
+        if( PLAYER_NO == 2){
+            if (Input.GetKey(KeyCode.N)){
+                inputVec.x = -1.0f;
+            }
+            if (Input.GetKey(KeyCode.M))
+            {
+                inputVec.x = 1.0f;
+            }
+        
+        }
 
         //詳細な状態毎の処理
         switch (state)

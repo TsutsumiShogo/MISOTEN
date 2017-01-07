@@ -31,16 +31,15 @@ public class ObjectManager : MonoBehaviour {
     public static Material[] g_hisuiFlowerMaterials = new Material[7];
     public Material[] m_aoiFlowerMaterials = new Material[7];
     public static Material[] g_aoiFlowerMaterials = new Material[7];
-   
-    //------------------
-    // 家マテリアル
-    public Material[] mMaterialsMiddleBill;
-    public static Material[] gMaterialsMiddleBill;
 
     //------------------
     // 中ビルマテリアル
-    public Material[] mMaterialsHouse;
-    public static Material[] gMaterialsHouse;
+    public Material[] mMaterialsMiddleBill;
+    public static Material[] gMaterialsMiddleBill;
+    public Material[] mMaterialsMiddleBill_1;
+    public static Material[] gMaterialsMiddleBill_1;
+    public Material[] mMaterialsMiddleBill_2;
+    public static Material[] gMaterialsMiddleBill_2;
 
     //-----------------
     // 大ビルマテリアル
@@ -77,7 +76,8 @@ public class ObjectManager : MonoBehaviour {
 
         // ビルマテリアルをセット
         gMaterialsMiddleBill = mMaterialsMiddleBill;
-
+        gMaterialsMiddleBill_1 = mMaterialsMiddleBill_1;
+        gMaterialsMiddleBill_2 = mMaterialsMiddleBill_2;
         // ビッグビルマテリアルセット
         gMaterialBig = mMaterialsBig;
 
@@ -199,11 +199,24 @@ public class ObjectManager : MonoBehaviour {
                 // 家
             case GM_MathFlowerParam.EFlowerType.House:
                 // プレハブインスタンス
+                int _rand = Random.RandomRange(0, 3);
                 Vector3 pos_h = new Vector3(_position.x - 3.8f, _position.y, _position.z);
                 objectList[Id] = Instantiate(prefabHouse, pos_h, Quaternion.Euler(0, 0, 0)) as GameObject;
                 rendererList[Id] = objectList[Id].transform.FindChild("pCube26").GetComponent<Renderer>();
-                objectList[Id].GetComponent<ObjectParam>().HouseInit();
+                objectList[Id].GetComponent<ObjectParam>().HouseInit(_rand);
                 objectList[Id].GetComponent<ObjectParam>().SetParam(_param);
+                switch (_rand)
+                {
+                    case 0:
+                        rendererList[Id].material = gMaterialsMiddleBill[0];
+                        break;
+                    case 1:
+                        rendererList[Id].material = gMaterialsMiddleBill_1[0];
+                        break;
+                    case 2:
+                        rendererList[Id].material = gMaterialsMiddleBill_2[0];
+                        break;
+                }
                 break;
 
             // ビル生成
@@ -284,14 +297,38 @@ public class ObjectManager : MonoBehaviour {
                     //-----------------------
                     // 家
                 case GM_MathFlowerParam.EFlowerType.House:
-                    rendererList[no].material = gMaterialsMiddleBill[level - 1];
-                     objectList[no].GetComponent<ObjectParam>().LevelUpEff();     // レベルアップ時エフェクト
-                    if (level == 2){
-                        rendererList[no].materials = new Material[2]{
-                            rendererList[no].materials[0],
-                            gMaterialsMiddleBill[level - 1]
-                        };
+                    switch (objectList[no].GetComponent<ObjectParam>().HouseNo()) {
+                        case 0:
+                            rendererList[no].material = gMaterialsMiddleBill[level];
+                            if (level == 2){
+                                rendererList[no].materials = new Material[2]{
+                                rendererList[no].materials[0],
+                                gMaterialsMiddleBill[level] };
+                            }
+                            break;
+                        case 1:
+                            rendererList[no].material = gMaterialsMiddleBill_1[level];
+                            if (level == 2)
+                            {
+                                rendererList[no].materials = new Material[2]{
+                                rendererList[no].materials[0],
+                                gMaterialsMiddleBill_1[level] };
+                            }
+                            break;
+                        case 2:
+                            rendererList[no].material = gMaterialsMiddleBill_2[level];
+                            if (level == 2)
+                            {
+                                rendererList[no].materials = new Material[2]{
+                                rendererList[no].materials[0],
+                                gMaterialsMiddleBill_2[level] };
+                            }
+                            break;
                     }
+
+                    
+                    objectList[no].GetComponent<ObjectParam>().LevelUpEff();     // レベルアップ時エフェクト
+                    
                     break;
 
                     //-----------------------
