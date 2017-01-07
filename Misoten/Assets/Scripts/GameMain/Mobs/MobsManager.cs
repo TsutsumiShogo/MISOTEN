@@ -49,6 +49,7 @@ public class MobsManager : MonoBehaviour {
     private GameObject m_fixObj;
     // 固定オブジェクト配列
     public GameObject[] m_fixMobs;
+    private GameObject[] m_stepObj = new GameObject[3];
     private int m_fixMobCnt;
 
     private int m_stageId;
@@ -65,6 +66,10 @@ public class MobsManager : MonoBehaviour {
     // 初期化
     //-----------------------------------------------------
     public void Init(){
+        for( int i= 0;i<3;i++){
+            m_mapObj[i].SetActive(false);
+            
+        }
         //prefab = (GameObject)Resources.Load("Prefabs/GameMain/Boy_Ouen");
         m_beeActive = false;
         m_bee.SetActive(false);
@@ -183,7 +188,9 @@ public class MobsManager : MonoBehaviour {
 
     public void move(){
         Debug.Log("ステージUP" + m_stageNo.ToString());
+        m_stepObj[m_stageNo].SetActive(false);
         m_stageNo++;
+        m_stepObj[m_stageNo].SetActive(true);
         AddMob();
         SetMob();
     }
@@ -231,7 +238,13 @@ public class MobsManager : MonoBehaviour {
     private void SetFixObj()
     {
         m_stageId = m_mathManager.GetComponent<GM_MathManager>()._randamStageTypeNo; // ステージ番号取得
+        m_mapObj[m_stageId].SetActive(true);
         m_fixObj = m_mapObj[m_stageId].transform.FindChild("FixMob").gameObject;     // 固定モブの親取得
+        m_stepObj[0] = m_mapObj[m_stageId].transform.FindChild("Step_1").gameObject;
+        m_stepObj[1] = m_mapObj[m_stageId].transform.FindChild("Step_2").gameObject;
+        m_stepObj[2] = m_mapObj[m_stageId].transform.FindChild("Step_3").gameObject;
+        m_stepObj[1].SetActive(false);
+        m_stepObj[2].SetActive(false);
         m_fixMobCnt = m_fixObj.transform.GetChildCount();              // この数の配列作成
         m_fixMobs = new GameObject[m_fixMobCnt];
         for ( int i=0;i< m_fixMobCnt; i++){

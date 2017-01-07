@@ -38,6 +38,8 @@ public class PlayerUnit : MonoBehaviour {
     private string[] m_canvasPass = new string[3];
     private bool m_splayChangeFlg;
     private float m_splayTimer;
+    private bool m_growFlg;
+    private float m_growTimer;
 	// Use this for initialization
 	void Awake () {
         m_canvasPass[0] = "1PCanvas/";
@@ -156,6 +158,20 @@ public class PlayerUnit : MonoBehaviour {
         nextState = PlayerStatus.EStateTransition.KNOCKBACK;
         ChangeStateTransitionProcess();
         GameObject.Find("Bee").GetComponent<Bee>().HitBee();    // 蜂に接触を伝える
+
+        // 悲鳴再生
+        switch (PLAYER_NO) {         
+            case 0:
+                SoundManager.PlaySe("damege_1", 5);
+                break;
+            case 1:
+                SoundManager.PlaySe("damege_2", 6);
+                break;
+            case 2:
+                SoundManager.PlaySe("damege_3", 7);
+                break;
+        }
+
     }
 
     //============================非公開関数=================================
@@ -307,6 +323,20 @@ public class PlayerUnit : MonoBehaviour {
             case PlayerStatus.EStateTransition.GROWING:
                 //移動処理
                 controll.SetMoveVec(inputVec * 0.5f);
+                if (!m_growFlg)
+                {
+                    SoundManager.PlaySe("grow_se", 6);
+                    m_growFlg = true;
+                }
+                else {
+                    Debug.Log("成長SE");
+                    m_growTimer += Time.deltaTime;
+                    if (m_growTimer >= 1.0f)
+                    {
+                        m_growFlg = false;
+                        m_growTimer = 0.0f;
+                    }
+                }
                 sprayCon.Spray(PlayerSprayControll.EPlayerSprayMode.GRAW, 0.1f);
                 break;
             case PlayerStatus.EStateTransition.SPRAY:
@@ -359,10 +389,12 @@ public class PlayerUnit : MonoBehaviour {
                     //スプレー切り替え
                     if (XboxController.GetButtonL(PLAYER_NO) == true)
                     {
+                        SoundManager.PlaySe("cursol",8);
                         m_splayChangeFlg = true;
                         status.ChangeSprayMode(true);
                         switch (PLAYER_NO)
                         {
+                           
                             case 0:
                                 GameObject.Find("1PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
                                 break;
@@ -376,6 +408,7 @@ public class PlayerUnit : MonoBehaviour {
                     }
                     if (XboxController.GetButtonR(PLAYER_NO) == true)
                     {
+                        SoundManager.PlaySe("cursol", 8);
                         m_splayChangeFlg = true;
                         status.ChangeSprayMode(false);
                         switch (PLAYER_NO)
@@ -414,6 +447,19 @@ public class PlayerUnit : MonoBehaviour {
                             break;
                         case PlayerSprayControll.EPlayerSprayMode.COLOR:
                             Debug.Log("色変え");
+                            // 悲鳴再生
+                            switch (PLAYER_NO)
+                            {
+                                case 0:
+                                    SoundManager.PlaySe("color_1", 5);
+                                    break;
+                                case 1:
+                                    SoundManager.PlaySe("color_2", 6);
+                                    break;
+                                case 2:
+                                    SoundManager.PlaySe("color_3", 7);
+                                    break;
+                            }
                             m_particleColor.GetComponent<ParticleSystem>().Play();
                             nextState = PlayerStatus.EStateTransition.SPRAY;
                             break;

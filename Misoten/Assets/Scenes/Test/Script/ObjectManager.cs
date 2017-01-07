@@ -310,6 +310,7 @@ public class ObjectManager : MonoBehaviour {
                     //-----------------------
                     // 家
                 case GM_MathFlowerParam.EFlowerType.House:
+                    SoundManager.PlaySe("house_up", 7);
                     switch (objectList[no].GetComponent<ObjectParam>().HouseNo()) {
                         case 0:
                             rendererList[no].material = gMaterialsMiddleBill[level];

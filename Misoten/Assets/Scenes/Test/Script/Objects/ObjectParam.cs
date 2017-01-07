@@ -21,7 +21,8 @@ public class ObjectParam : MonoBehaviour {
     public GameObject m_particleObj;                // パーティクルオブジェクト
     private float m_seTime = 0.5f;
     private float m_seTimer = 0.0f;
-   
+    private float m_growSETimer = 0.0f;
+    private bool m_growSeFlg;
 
     //-----------------------------------------------------
     // 花用辺巣
@@ -52,7 +53,10 @@ public class ObjectParam : MonoBehaviour {
     // ----------------------------------------------------
     public void FlowerInit()
     {
+        m_growSeFlg = false;
+        m_growSETimer = 0.0f;
         m_type = GM_MathFlowerParam.EFlowerType.Flower1;
+        m_growSETimer = 0.0f;
         m_particle = m_particleObj.GetComponent<ParticleSystem>();
         m_compParticle = m_compParticleObj.GetComponent<ParticleSystem>();
         m_lastParticle = m_lastParticleObj.GetComponent<ParticleSystem>();
@@ -135,6 +139,17 @@ public class ObjectParam : MonoBehaviour {
             // 成長中のみ、パーティクルエフェクト生成
             if (m_param.GetGrowthNowPlayerNum() > 0)
             {
+                if( !m_growSeFlg){
+                    //SoundManager.PlaySe("grow_se", 6);
+                    m_growSeFlg = true;
+                    m_growSETimer = 0.0f;
+                }else{
+                    m_growSETimer += Time.deltaTime;
+                    if( m_growSETimer > 0.5f){
+                        m_growSETimer = 0.0f;
+                        m_growSeFlg = false;
+                    }
+                }
                 if (!m_paricleFlg)
                 {
                     m_paricleFlg = true;
@@ -143,6 +158,7 @@ public class ObjectParam : MonoBehaviour {
             }
             else
             {
+                //SoundManager.PlaySe("grow_se", 6);
                 if (m_paricleFlg)
                 {
                     m_paricleFlg = false;
