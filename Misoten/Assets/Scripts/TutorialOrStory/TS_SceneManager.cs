@@ -31,6 +31,9 @@ public class TS_SceneManager : MonoBehaviour {
     //シーンチェンジマネージャー
     private SceneChangeManager sceneChangeManager;
 
+    [SerializeField]
+    private GM_MathCell billCell;       //Unity上で設置
+
     //公開変数
     public E_TSPhaseNo nowPhaseNo;  //今のフェーズ番号
     public int nowTextNo;           //今表示中のセリフ番号 0~MAX_TEXT_NUM-1;
@@ -96,6 +99,14 @@ public class TS_SceneManager : MonoBehaviour {
             }
         }
 
+        if (nowPhaseNo >= E_TSPhaseNo.TS_Rule)
+        {
+            tutorialUiManager.HouseAlpha(false);
+        }
+        else{
+            tutorialUiManager.HouseAlpha(true);
+        }
+
         //アクション中なら何もしない
         if (nowActionTime > 0.0f)
         {
@@ -106,6 +117,18 @@ public class TS_SceneManager : MonoBehaviour {
             {
                 tutorialUiManager.SetTimeText(nowActionTime);
             }
+
+            //ビル成長フェーズ中でビルがレベルアップしたら終わる
+            if (nowPhaseNo == E_TSPhaseNo.TS_PlayBill && billCell != null)
+            {
+                if(billCell.flowerParams[0].flowerLevel >= GM_MathFlowerParam.EFlowerLevel.Level2){
+                    if (nowActionTime > 3.0f)
+                    {
+                        nowActionTime = 3.0f;
+                    }
+                }
+            }
+
             return;
         }
 

@@ -16,9 +16,9 @@ public class TS_UIManager : MonoBehaviour {
     private float CHANGE_TIME = 2.0f;
 
     //オブジェクト
-    private GM_UIGreenPercent greenScore;   //緑化スコア
     private GameObject tutorialObject;      //テキストなどの親オブジェクト
     private Image backGround;               //説明時の背景表示部分
+    private Image houseImage;               //家の背景
 
     private List<TS_CharaDrawData> charactorImages = new List<TS_CharaDrawData>();    //キャラクター表示部分
     private Text charaName;                 //キャラ名表示部分
@@ -31,9 +31,9 @@ public class TS_UIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-        greenScore = transform.FindChild("GreenScore").GetComponent<GM_UIGreenPercent>();
         tutorialObject = transform.FindChild("TS_Tutorial").gameObject;
         backGround = transform.FindChild("TS_BackGround").GetComponent<Image>();
+        houseImage = transform.FindChild("TS_HouseImage").GetComponent<Image>();
 
         charactorImages.Add(transform.FindChild("TS_Tutorial/TS_Sango").GetComponent<TS_CharaDrawData>());
         charactorImages.Add(transform.FindChild("TS_Tutorial/TS_Hisui").GetComponent<TS_CharaDrawData>());
@@ -49,7 +49,6 @@ public class TS_UIManager : MonoBehaviour {
 	}
     public void Init()
     {
-        greenScore.Init();
         backGround.color = BACK_GROUND_COLOR;
 
         for (int i = 0; i < charactorImages.Count; ++i)
@@ -61,6 +60,10 @@ public class TS_UIManager : MonoBehaviour {
         changeTime = CHANGE_TIME + 1.0f;
         SetTimeText(0.0f);
         ActiveSwtich(activeFlg);
+
+        Color _houseCol = houseImage.color;
+        _houseCol.a = 1.0f;
+        houseImage.color = _houseCol;
     }
 	
 	// Update is called once per frame
@@ -126,5 +129,24 @@ public class TS_UIManager : MonoBehaviour {
         int _intTime = (int)_drawTime;
 
         actionTimeText.text = "残り" + _intTime.ToString() + "秒";
+    }
+
+    //家の画像のα操作(trueで出てくるしfalseで隠していく。)
+    public void HouseAlpha(bool _flg)
+    {
+        Color _houseCol = houseImage.color;
+        
+        if (_flg == true)
+        {
+            _houseCol.a += Time.deltaTime * 2.0f;
+        }
+        else
+        {
+            _houseCol.a -= Time.deltaTime * 2.0f;
+        }
+        if (_houseCol.a < 0) _houseCol.a = 0;
+        if (_houseCol.a > 1.0f) _houseCol.a = 1.0f;
+
+        houseImage.color = _houseCol;
     }
 }

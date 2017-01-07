@@ -3654,11 +3654,12 @@ MonoBehaviour:
   - 0.2
   - 0.2
   - 0.2
-  - 20
+  - 60
   - 0.2
   - 0.2
   - 1000
   PHACE_NEXT_TEXT_NO: 00000000090000000c00000016000000160000001c0000001c0000001f0000001f000000
+  billCell: {fileID: 114554486683090636}
   nowPhaseNo: 0
   nowTextNo: 0
   playerActionFlg: 0
