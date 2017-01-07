@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class RE_Bonus : MonoBehaviour {
 
     private bool m_openWindow = false;  // ウィンドウ出現
+    [SerializeField]
+    private GameObject m_mathManager;                   // マスManager
 
     [SerializeField]
     private GameObject[] m_bar = new GameObject[1];     // ボーナスバー
@@ -22,7 +25,9 @@ public class RE_Bonus : MonoBehaviour {
         m_openWindow = false;
         transform.localScale = new Vector3(0,1,1);
         m_clearCnt = 0;
-        m_bar[0].GetComponent<RE_BonusBar>().Init();
+        for (int i = 0; i < m_bar.Length; i++){
+            m_bar[i].GetComponent<RE_BonusBar>().Init();
+        }
         GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore = GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_score;
         m_actionNo = 0;
         m_timer = 0.0f;
@@ -75,9 +80,40 @@ public class RE_Bonus : MonoBehaviour {
     //---------------------------------
     //
     private void CheckBonus(){
+        m_clearCnt = 0;
+        CheckColorNum();        // カラー数
         if( m_clearCnt == 0){
             m_bar[0].GetComponent<RE_BonusBar>().OnActive(m_barPos[0]);
         }
     }
     
+    // CheckColorNUm - 何色花が植えられているか
+    //---------------------------------
+    //
+    private void CheckColorNum(){
+        int _colorNum = 0;
+        for (int i = 0; i < 7; i++) {
+            if (m_mathManager.GetComponent<GM_MathManager>().GetFlowerColorNum((GM_MathFlowerParam.EFlowerColor)Enum.ToObject(typeof(GM_MathFlowerParam.EFlowerColor), i)) > 0){
+                i++;
+            }
+        }
+        // 7色
+        if(  _colorNum >= 7){
+            m_bar[1].GetComponent<RE_BonusBar>().OnActive(m_barPos[0]);
+            GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore += GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore*0.3f;
+            m_clearCnt++;
+        }
+        else if(_colorNum >= 5){
+            m_bar[2].GetComponent<RE_BonusBar>().OnActive(m_barPos[0]);
+            GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore += GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore * 0.2f;
+            m_clearCnt++;
+        }
+        else if(_colorNum >= 3){
+            m_bar[3].GetComponent<RE_BonusBar>().OnActive(m_barPos[0]);
+            GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore += GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore * 0.1f;
+            m_clearCnt++;
+        }
+       
+    }
+
 }

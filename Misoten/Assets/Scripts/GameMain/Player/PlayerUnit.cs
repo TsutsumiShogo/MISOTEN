@@ -36,6 +36,8 @@ public class PlayerUnit : MonoBehaviour {
 
     private bool m_canvasInit;      // キャンバス初期設定用
     private string[] m_canvasPass = new string[3];
+    private bool m_splayChangeFlg;
+    private float m_splayTimer;
 	// Use this for initialization
 	void Awake () {
         m_canvasPass[0] = "1PCanvas/";
@@ -53,6 +55,8 @@ public class PlayerUnit : MonoBehaviour {
 	}
 
     public void Init(PlayerManager _manager) {
+        m_splayTimer = 0.0f;
+        m_splayChangeFlg = false;
         m_soundTimer = 0.0f;
         nextState = PlayerStatus.EStateTransition.START;
 
@@ -338,40 +342,52 @@ public class PlayerUnit : MonoBehaviour {
             case PlayerStatus.EStateTransitionMode.SYSTEM_MODE:
                 break;
             case PlayerStatus.EStateTransitionMode.NORMAL:
-                //スプレー切り替え
-                if (XboxController.GetButtonL(PLAYER_NO) == true)
+                if (!m_splayChangeFlg)
                 {
-                    status.ChangeSprayMode(false);
-                    switch (PLAYER_NO)
+                    //スプレー切り替え
+                    if (XboxController.GetButtonL(PLAYER_NO) == true)
                     {
-                        case  0:
-                            GameObject.Find("1PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
-                            break;
-                        case 1:
-                            GameObject.Find("2PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
-                            break;
-                        case 2:
-                            GameObject.Find("3PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
-                            break;
+                        m_splayChangeFlg = true;
+                        status.ChangeSprayMode(false);
+                        switch (PLAYER_NO)
+                        {
+                            case 0:
+                                GameObject.Find("1PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
+                                break;
+                            case 1:
+                                GameObject.Find("2PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
+                                break;
+                            case 2:
+                                GameObject.Find("3PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(false);
+                                break;
+                        }
+                    }
+                    if (XboxController.GetButtonR(PLAYER_NO) == true)
+                    {
+                        m_splayChangeFlg = true;
+                        status.ChangeSprayMode(true);
+                        switch (PLAYER_NO)
+                        {
+                            case 0:
+                                GameObject.Find("1PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
+                                break;
+                            case 1:
+                                GameObject.Find("2PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
+                                break;
+                            case 2:
+                                GameObject.Find("3PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
+                                break;
+                        }
                     }
                 }
-                if (XboxController.GetButtonR(PLAYER_NO) == true)
+                else
                 {
-                    status.ChangeSprayMode(true);
-                    switch (PLAYER_NO)
-                    {
-                        case 0:
-                            GameObject.Find("1PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
-                            break;
-                        case 1:
-                            GameObject.Find("2PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
-                            break;
-                        case 2:
-                            GameObject.Find("3PCanvas/SplayMode").GetComponent<ChengeSplay>().SplayChenge(true);
-                            break;
+                    m_splayTimer += Time.deltaTime;
+                    if (m_splayTimer >= 0.3f){
+                        m_splayTimer = 0.0f;
+                        m_splayChangeFlg = false;
                     }
                 }
-
                 //スプレー入力
                 if (XboxController.GetButtonHoldA(PLAYER_NO) == true)
                 {

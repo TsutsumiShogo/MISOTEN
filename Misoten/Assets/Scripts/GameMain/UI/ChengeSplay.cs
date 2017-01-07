@@ -4,17 +4,17 @@ using System.Collections;
 
 public class ChengeSplay : MonoBehaviour {
 
-    public GameObject[] m_Icon;           // 種まき
-    public int m_frame;
-    
-    private Vector3 m_centerPos;        // 選択位置
-    private Vector3 m_rightPos;         // 右位置
-    private Vector3 m_leftPos;          // 左位置
+    [SerializeField]
+    private GameObject[] m_Icon = new GameObject[6];            // 種まき
+
+    private int[] m_IconId = new int[6];
+
+    private float m_time = 0.3f;                                // 0.5秒で処理速度
+
+    public Vector3[] m_iconPos = new Vector3[6];                      // 座標
 
     private bool m_moveFlg;             // 移動フラグ
     private bool m_moveDir;             // 移動向き true 右　false 左
-
-    private float m_moveSpeed;          // 移動速度  
 
     private float m_selectY;
     private float m_selectX;
@@ -41,6 +41,8 @@ public class ChengeSplay : MonoBehaviour {
     
     private bool[] m_pushFlg = new bool[2];
     private float[] m_pushTimer = new float[2];
+    private int m_select = 0;
+    
     //===============================================================
     // 公開関数
 
@@ -50,18 +52,28 @@ public class ChengeSplay : MonoBehaviour {
     public void Init()
     {
         m_moveFlg = false;
-        m_selectY = 5.0f / m_frame;
-        m_selectX = 30.0f / m_frame;
-        m_scallUp = 0.3f / m_frame;
-        m_leftPos = new Vector3(-30.0f, -10.0f, 0);
-        m_centerPos = new Vector3(0.0f, -5.0f, 0);
-        m_rightPos = new Vector3(30.0f, -10.0f, 0);
-        m_frameCnt = 0;
-        m_selectNo = 1;
+      
+        // 座標初期化
+        for( int i=0;i<6;i++){
+            m_Icon[i].transform.localPosition = m_iconPos[i];
+            m_IconId[i] = i;
+        }
+
+        // スケール初期化
+        m_Icon[0].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
+        m_Icon[1].transform.localScale = new Vector3(0.7f, 0.7f, 1.0f);
+        m_Icon[2].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
+        m_Icon[3].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
+        m_Icon[4].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
+        m_Icon[5].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
+
+
+        // スプレー以外のUI
+        m_select = 1;
         m_splayStr[0] = "カラーモード";
         m_splayStr[1] = "種まきモード";
         m_splayStr[2] = "成長モード";
-        m_color[0] = new Color(255.0f/255.0f, 143.0f/255.0f, 239.0f/255.0f);
+        m_color[0] = new Color(255.0f / 255.0f, 143.0f / 255.0f, 239.0f / 255.0f);
         m_color[1] = new Color(115.0f / 255.0f, 255.0f / 255.0f, 0);
         m_color[2] = new Color(255.0f / 255.0f, 142.0f / 255.0f, 0);
         m_colorLR[0] = new Color(176.0f / 255.0f, 176.0f / 255.0f, 176.0f / 255.0f);
@@ -70,16 +82,8 @@ public class ChengeSplay : MonoBehaviour {
         m_button[1].GetComponent<Image>().color = m_colorLR[0];
         m_pushFlg[0] = false;
         m_pushFlg[1] = false;
-
-        m_Icon[0].transform.localPosition = m_leftPos;
-        m_Icon[1].transform.localPosition = m_centerPos;
-        m_Icon[2].transform.localPosition = m_rightPos;
-        m_Icon[0].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
-        m_Icon[1].transform.localScale = new Vector3(0.7f, 0.7f, 1.0f);
-        m_Icon[2].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
         m_splayName.GetComponent<Text>().text = m_splayStr[1];
         m_splayName.GetComponent<Text>().color = m_color[1];
-
     }
 
     // SplayChenge - スプレー切り替え演出 プレイヤー操作から呼び出される
@@ -89,31 +93,16 @@ public class ChengeSplay : MonoBehaviour {
     {
         m_moveFlg = true;
         m_moveDir = _dir;
-        m_selectOld = m_selectNo;
-        if (_dir)
-        {
-            m_selectNo++;
-            m_selectNo = m_selectNo % 3;
-            if (m_selectNo == 2)
-                m_selectOther = 0;
-            else
-                m_selectOther = m_selectNo + 1;
+        if (_dir) {
+            m_select--;
+            if (m_select < 0) m_select = 2;
+        }else{ 
+            m_select = (m_select + 1) % 3;
+
         }
-        else
-        {
-            m_selectNo--;
-            if (m_selectNo < 0)
-            {
-                m_selectNo = 2;
-                m_selectOther = 1;
-            }
-            else if (m_selectNo == 0)
-                m_selectOther = 2;
-            else
-                m_selectOther = 0;
-        }
-        m_splayName.GetComponent<Text>().text = m_splayStr[m_selectNo];
-        m_splayName.GetComponent<Text>().color = m_color[m_selectNo];
+        
+        m_splayName.GetComponent<Text>().text = m_splayStr[m_select];
+        m_splayName.GetComponent<Text>().color = m_color[m_select];
         SoundManager.PlaySe("chengesplay", 6);
     }
 
@@ -145,60 +134,188 @@ public class ChengeSplay : MonoBehaviour {
 	}
 
 
-    
 
-    // スプレー移動処理
+
+    // move - スプレー移動処理
+    //---------------------------------
+    //
     void move(){
-        // 右と切り替え
-        if (m_moveDir){
+
+        if (m_moveDir)
+        {
+
+            //-------------------------
+            // Rボタン入力処理
             m_pushFlg[0] = true;
             m_pushTimer[0] = 0.3f;
-            m_button[0].GetComponent<Image>().color = m_colorLR[1]; 
-            
-            // 右のが真ん中へ
-            m_Icon[m_selectNo].transform.localPosition = new Vector3(m_Icon[m_selectNo].transform.localPosition.x - m_selectX, m_Icon[m_selectNo].transform.localPosition.y + m_selectY, m_Icon[m_selectNo].transform.localPosition.z);
-            m_Icon[m_selectNo].transform.localScale = new Vector3(m_Icon[m_selectNo].transform.localScale.x + m_scallUp, m_Icon[m_selectNo].transform.localScale.y + m_scallUp, 1.0f);
-            
-            // 真ん中のが左へ
-            m_Icon[m_selectOld].transform.localPosition = new Vector3(m_Icon[m_selectOld].transform.localPosition.x - m_selectX, m_Icon[m_selectOld].transform.localPosition.y - m_selectY, m_Icon[m_selectOld].transform.localPosition.z);
-            m_Icon[m_selectOld].transform.localScale = new Vector3(m_Icon[m_selectOld].transform.localScale.x - m_scallUp, m_Icon[m_selectOld].transform.localScale.y - m_scallUp, 1.0f);
-            m_frameCnt++;
+            m_button[0].GetComponent<Image>().color = m_colorLR[1];
+            RollRight();
 
-            if(m_frameCnt > m_frame){
-                m_frameCnt = 0;
-                m_moveFlg = false;
-                m_Icon[m_selectNo].transform.localPosition = m_centerPos;
-                m_Icon[m_selectNo].transform.localScale = new Vector3(0.7f, 0.7f, 1.0f);
-                m_Icon[m_selectOld].transform.localPosition = m_leftPos;
-                m_Icon[m_selectOld].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
-                m_Icon[m_selectOther].transform.localPosition = m_rightPos;   
-            }
 
         }
         else
         {
-            // 左と切り替え
+            //-------------------------
+            // Lボタン入力処理
             m_pushFlg[1] = true;
             m_pushTimer[1] = 0.3f;
             m_button[1].GetComponent<Image>().color = m_colorLR[1];
-            // 左のが真ん中へ
-            m_Icon[m_selectNo].transform.localPosition = new Vector3(m_Icon[m_selectNo].transform.localPosition.x + m_selectX, m_Icon[m_selectNo].transform.localPosition.y + m_selectY, m_Icon[m_selectNo].transform.localPosition.z);
-            m_Icon[m_selectNo].transform.localScale = new Vector3(m_Icon[m_selectNo].transform.localScale.x + m_scallUp, m_Icon[m_selectNo].transform.localScale.y + m_scallUp, 1.0f);
-            
-            // 真ん中のが右へ
-            m_Icon[m_selectOld].transform.localPosition = new Vector3(m_Icon[m_selectOld].transform.localPosition.x + m_selectX, m_Icon[m_selectOld].transform.localPosition.y - m_selectY, m_Icon[m_selectOld].transform.localPosition.z);
-            m_Icon[m_selectOld].transform.localScale = new Vector3(m_Icon[m_selectOld].transform.localScale.x - m_scallUp, m_Icon[m_selectOld].transform.localScale.y - m_scallUp, 1.0f);
-            m_frameCnt++;
+            RollLeft();
+        }
+    }
 
-            if (m_frameCnt > m_frame){
-                m_frameCnt = 0;
-                m_moveFlg = false;
-                m_Icon[m_selectNo].transform.localPosition = m_centerPos;
-                m_Icon[m_selectNo].transform.localScale = new Vector3(0.7f, 0.7f, 1.0f);
-                m_Icon[m_selectOld].transform.localPosition = m_rightPos;
-                m_Icon[m_selectOld].transform.localScale = new Vector3(0.4f, 0.4f, 1.0f);
-                m_Icon[m_selectOther].transform.localPosition = m_leftPos;
+    // RollRight - 右回転
+    //---------------------------------
+    //
+    private void RollRight(){
+       
+        for( int i = 0; i<6;i++){
+            int _next = (m_IconId[i] + 1)%6;
+            switch (m_IconId[i]){
+                case 0:
+                    m_Icon[i].transform.localPosition = new Vector3(
+                        m_Icon[i].transform.localPosition.x + (m_iconPos[_next].x - m_iconPos[m_IconId[i]].x) * Time.deltaTime / m_time,
+                        m_Icon[i].transform.localPosition.y + (m_iconPos[_next].y - m_iconPos[m_IconId[i]].y) * Time.deltaTime / m_time,
+                        1.0f);
+                    m_Icon[i].transform.localScale = new Vector3(
+                        m_Icon[i].transform.localScale.x +  0.3f * Time.deltaTime / m_time,
+                        m_Icon[i].transform.localScale.y +  0.3f * Time.deltaTime / m_time,
+                        1.0f);
+                    break;
+                case 1:
+                    m_Icon[i].transform.localPosition = new Vector3(
+                         m_Icon[i].transform.localPosition.x + (m_iconPos[_next].x - m_iconPos[m_IconId[i]].x) * Time.deltaTime / m_time,
+                         m_Icon[i].transform.localPosition.y + (m_iconPos[_next].y - m_iconPos[m_IconId[i]].y) * Time.deltaTime / m_time,
+                         1.0f);
+                    m_Icon[i].transform.localScale = new Vector3(
+                        m_Icon[i].transform.localScale.x - 0.3f * Time.deltaTime / m_time,
+                        m_Icon[i].transform.localScale.y - 0.3f * Time.deltaTime / m_time,
+                        1.0f);
+                    break;
+                case 2:
+                    m_Icon[i].transform.localPosition = new Vector3(
+                        m_Icon[i].transform.localPosition.x + (m_iconPos[_next].x - m_iconPos[m_IconId[i]].x) * Time.deltaTime / m_time,
+                        m_Icon[i].transform.localPosition.y + (m_iconPos[_next].y - m_iconPos[m_IconId[i]].y) * Time.deltaTime / m_time,
+                        1.0f);
+                    break;
+                case 3:
+                    m_Icon[i].transform.localPosition = new Vector3(
+                          m_Icon[i].transform.localPosition.x + (m_iconPos[_next].x - m_iconPos[m_IconId[i]].x) * Time.deltaTime / m_time,
+                          m_Icon[i].transform.localPosition.y + (m_iconPos[_next].y - m_iconPos[m_IconId[i]].y) * Time.deltaTime / m_time,
+                          1.0f);
+                    break;
+                case 4:
+                    m_Icon[i].transform.localPosition = new Vector3(
+                         m_Icon[i].transform.localPosition.x + (m_iconPos[_next].x - m_iconPos[m_IconId[i]].x) * Time.deltaTime / m_time,
+                         m_Icon[i].transform.localPosition.y + (m_iconPos[_next].y - m_iconPos[m_IconId[i]].y) * Time.deltaTime / m_time,
+                         1.0f);
+                    break;
+                case 5:
+                    m_Icon[i].transform.localPosition = new Vector3(
+                         m_Icon[i].transform.localPosition.x + (m_iconPos[_next].x - m_iconPos[m_IconId[i]].x) * Time.deltaTime / m_time,
+                         m_Icon[i].transform.localPosition.y + (m_iconPos[_next].y - m_iconPos[m_IconId[i]].y) * Time.deltaTime / m_time,
+                         1.0f);
+                    break;
+                
+            }
+        }
+       
+        for( int i = 0;i<6;i++){
+            if (m_IconId[i] == 0){
+                if(m_Icon[i].transform.localPosition.x >= m_iconPos[1].x){
+                    for( int j = 0;j<6;j++){
+                        int __next = (m_IconId[j] + 1) % 6;
+                        m_Icon[j].transform.localPosition = m_iconPos[__next];
+                        m_IconId[j] = __next;
+                    }
+                    m_moveFlg = false;
+                    break;
+                }
+            }
+        } 
+    }
+
+
+    // RollLeft - 左回転
+    //---------------------------------
+    //
+    private void RollLeft()
+    {
+
+        for (int i = 0; i < 6; i++)
+        {
+            int _next = (m_IconId[i] - 1);
+            if (_next < 0) _next = 5;
+            switch (m_IconId[i])
+            {
+                case 0:
+                    m_Icon[i].transform.localPosition = new Vector3(
+                        m_Icon[i].transform.localPosition.x + (m_iconPos[_next].x - m_iconPos[m_IconId[i]].x) * Time.deltaTime / m_time,
+                        m_Icon[i].transform.localPosition.y + (m_iconPos[_next].y - m_iconPos[m_IconId[i]].y) * Time.deltaTime / m_time,
+                        1.0f);
+                    break;
+                case 1:
+                    m_Icon[i].transform.localPosition = new Vector3(
+                         m_Icon[i].transform.localPosition.x + (m_iconPos[_next].x - m_iconPos[m_IconId[i]].x) * Time.deltaTime / m_time,
+                         m_Icon[i].transform.localPosition.y + (m_iconPos[_next].y - m_iconPos[m_IconId[i]].y) * Time.deltaTime / m_time,
+                         1.0f);
+                    m_Icon[i].transform.localScale = new Vector3(
+                        m_Icon[i].transform.localScale.x - 0.3f * Time.deltaTime / m_time,
+                        m_Icon[i].transform.localScale.y - 0.3f * Time.deltaTime / m_time,
+                        1.0f);
+                    break;
+                case 2:
+                    m_Icon[i].transform.localPosition = new Vector3(
+                        m_Icon[i].transform.localPosition.x + (m_iconPos[_next].x - m_iconPos[m_IconId[i]].x) * Time.deltaTime / m_time,
+                        m_Icon[i].transform.localPosition.y + (m_iconPos[_next].y - m_iconPos[m_IconId[i]].y) * Time.deltaTime / m_time,
+                        1.0f);
+                    m_Icon[i].transform.localScale = new Vector3(
+                        m_Icon[i].transform.localScale.x + 0.3f * Time.deltaTime / m_time,
+                        m_Icon[i].transform.localScale.y + 0.3f * Time.deltaTime / m_time,
+                        1.0f);
+                    break;
+                case 3:
+                    m_Icon[i].transform.localPosition = new Vector3(
+                          m_Icon[i].transform.localPosition.x + (m_iconPos[_next].x - m_iconPos[m_IconId[i]].x) * Time.deltaTime / m_time,
+                          m_Icon[i].transform.localPosition.y + (m_iconPos[_next].y - m_iconPos[m_IconId[i]].y) * Time.deltaTime / m_time,
+                          1.0f);
+                    break;
+                case 4:
+                    m_Icon[i].transform.localPosition = new Vector3(
+                         m_Icon[i].transform.localPosition.x + (m_iconPos[_next].x - m_iconPos[m_IconId[i]].x) * Time.deltaTime / m_time,
+                         m_Icon[i].transform.localPosition.y + (m_iconPos[_next].y - m_iconPos[m_IconId[i]].y) * Time.deltaTime / m_time,
+                         1.0f);
+                    break;
+                case 5:
+                    m_Icon[i].transform.localPosition = new Vector3(
+                         m_Icon[i].transform.localPosition.x + (m_iconPos[_next].x - m_iconPos[m_IconId[i]].x) * Time.deltaTime / m_time,
+                         m_Icon[i].transform.localPosition.y + (m_iconPos[_next].y - m_iconPos[m_IconId[i]].y) * Time.deltaTime / m_time,
+                         1.0f);
+                    break;
+
+            }
+        }
+
+        for (int i = 0; i < 6; i++)
+        {
+            if (m_IconId[i] == 2)
+            {
+                if (m_Icon[i].transform.localPosition.x <= m_iconPos[1].x)
+                {
+                    for (int j = 0; j < 6; j++)
+                    {
+                        int __next = (m_IconId[j] - 1);
+                        if (__next < 0) __next = 5;
+                        m_Icon[j].transform.localPosition = m_iconPos[__next];
+                        m_IconId[j] = __next;
+                    }
+                    m_moveFlg = false;
+                    break;
+                }
             }
         }
     }
+
+
+
 }
