@@ -84,65 +84,65 @@ MonoBehaviour:
   - key: call_2
     clip: {fileID: 8300000, guid: 66fa9990fc2de684ca6ac62acd7e7bbf, type: 3}
   - key: TVoice0
-    clip: {fileID: 8300000, guid: 4836eeadd39318a459cca3f01e11aa3f, type: 3}
+    clip: {fileID: 8300000, guid: b3df737f5c1559142a61db9973bf53a3, type: 3}
   - key: TVoice1
-    clip: {fileID: 8300000, guid: b021769b3e7b624489635dc34984eb7b, type: 3}
+    clip: {fileID: 8300000, guid: acc44dc786aaeb743aabcefc2fef575b, type: 3}
   - key: TVoice3
-    clip: {fileID: 8300000, guid: 340a25a2d7a43514e8a14f198efd5860, type: 3}
+    clip: {fileID: 8300000, guid: 48763a82a2c3eb64cba8f7cd11d18fb3, type: 3}
   - key: TVoice4
-    clip: {fileID: 8300000, guid: c9f5d77ac6c1eaf49935ed26bdb7293a, type: 3}
+    clip: {fileID: 8300000, guid: 437cbff364058d545a6c9832f381eeb1, type: 3}
   - key: TVoice5
-    clip: {fileID: 8300000, guid: 0e445c4a8600ef34fbca21c3e740632e, type: 3}
+    clip: {fileID: 8300000, guid: 3f5655056bc81fd48a954389d7558d77, type: 3}
   - key: TVoice6
-    clip: {fileID: 8300000, guid: 3e6f48c6547d6d84aba88857d3edc16d, type: 3}
+    clip: {fileID: 8300000, guid: 2b8d140a4d85372478f4fb80854ee643, type: 3}
   - key: TVoice7
-    clip: {fileID: 8300000, guid: 386e2497022a3614588025fabed9c1ce, type: 3}
+    clip: {fileID: 8300000, guid: 48bba9d9289ea1c49b27c455bbff5dbc, type: 3}
   - key: TVoice8
-    clip: {fileID: 8300000, guid: 4870bfbf78e5afe4996d51b63a30f23e, type: 3}
+    clip: {fileID: 8300000, guid: 647e0e7031ba8ba46b9680bc0a9a71c7, type: 3}
   - key: TVoice9
-    clip: {fileID: 8300000, guid: bfe95a2e381dae040b5ce7fd71febc62, type: 3}
+    clip: {fileID: 8300000, guid: f5491e6611e1c6048af883bb90dd07ca, type: 3}
   - key: TVoice10
-    clip: {fileID: 8300000, guid: bf782d6b88bef6945adfb1feffcf1ad3, type: 3}
+    clip: {fileID: 8300000, guid: d9623c672807ff7418d2bc036f3411d4, type: 3}
   - key: TVoice11
-    clip: {fileID: 8300000, guid: a3958ab7b9a11ff43a656b8dfc878dc7, type: 3}
+    clip: {fileID: 8300000, guid: c93a97eee5f31cd408660766409c8011, type: 3}
   - key: TVoice12
-    clip: {fileID: 8300000, guid: 09bf189087a47114c995b138d243b5c5, type: 3}
+    clip: {fileID: 8300000, guid: 15a23a38a56c5ea4abec85d3dd63e79d, type: 3}
   - key: TVoice13
-    clip: {fileID: 8300000, guid: 85b2b407419818a468779b2ffdfc0c79, type: 3}
+    clip: {fileID: 8300000, guid: 090714394d920da40af054c47ccc4698, type: 3}
   - key: TVoice14
-    clip: {fileID: 8300000, guid: 961ec7e25e40b1e4fbc2b63921583f4a, type: 3}
+    clip: {fileID: 8300000, guid: 47f3eabb6dbb91a42b00aa7e75b8a10a, type: 3}
   - key: TVoice15
-    clip: {fileID: 8300000, guid: 8b92c2f228dc1fd41bde2c6986fe7be7, type: 3}
+    clip: {fileID: 8300000, guid: e4af270a2cf5a1542995524a2f9e026f, type: 3}
   - key: TVoice16
-    clip: {fileID: 8300000, guid: bb78a1f858b50214eae13a4db856dfb0, type: 3}
+    clip: {fileID: 8300000, guid: c8385a8eb334afc469bbb7052cdfa4d2, type: 3}
   - key: TVoice17
-    clip: {fileID: 8300000, guid: fe4144aec8519f947886077239610444, type: 3}
+    clip: {fileID: 8300000, guid: 43ac95239501ad54a920cd3fe7291958, type: 3}
   - key: TVoice18
-    clip: {fileID: 8300000, guid: bd7c631187afff0429a6bd49324a73a9, type: 3}
+    clip: {fileID: 8300000, guid: 242b58d106fca7a4188fb488f8067269, type: 3}
   - key: TVoice19
-    clip: {fileID: 8300000, guid: 155e9f20a0bba4444911c7249d9d325b, type: 3}
+    clip: {fileID: 8300000, guid: de9ce00198215924993ff5200d150e3a, type: 3}
   - key: TVoice20
-    clip: {fileID: 8300000, guid: 853632b412cd13441960e82db9d44b2f, type: 3}
+    clip: {fileID: 8300000, guid: 3dfc455a9e10b3f44a959667929008d3, type: 3}
   - key: TVoice21
-    clip: {fileID: 8300000, guid: 5ffbb600af6a9e74bbca3ac55eb61085, type: 3}
+    clip: {fileID: 8300000, guid: 207b53153bf001949a9111f76395a4f5, type: 3}
   - key: TVoice22
-    clip: {fileID: 8300000, guid: 5ab43ee8ef4f71c4f93dc08f98ebdf34, type: 3}
+    clip: {fileID: 8300000, guid: 1920b2006daf5364c84f7574ed919256, type: 3}
   - key: TVoice23
-    clip: {fileID: 8300000, guid: 66f69436af17eeb4eaeb5796610b7383, type: 3}
+    clip: {fileID: 8300000, guid: 1bfc8224d9e481e419caeb13e1b52cd1, type: 3}
   - key: TVoice24
-    clip: {fileID: 8300000, guid: 622f27986e8a9f74da818d26135f290a, type: 3}
+    clip: {fileID: 8300000, guid: 085ec3f2a0215f340a5308ce415ed42d, type: 3}
   - key: TVoice25
-    clip: {fileID: 8300000, guid: c3f362a73ade75744a3f4e6d507695b9, type: 3}
+    clip: {fileID: 8300000, guid: 5e5b410e23c905c49acb3e56d4e75506, type: 3}
   - key: TVoice26
-    clip: {fileID: 8300000, guid: 1faf5be36516ae34f9fbadb447432fd2, type: 3}
+    clip: {fileID: 8300000, guid: cb40885a7c03236448f132d976dceacc, type: 3}
   - key: TVoice27
-    clip: {fileID: 8300000, guid: 69d74a942572e0c40b496b4d8159c20b, type: 3}
+    clip: {fileID: 8300000, guid: dd816fbdecfaebc47a672984d1809374, type: 3}
   - key: TVoice28
-    clip: {fileID: 8300000, guid: a864827f0aebb5942864a03c0bdac023, type: 3}
+    clip: {fileID: 8300000, guid: 0bc20db8b4107c44ca3aa5ab4069bc3d, type: 3}
   - key: TVoice29
-    clip: {fileID: 8300000, guid: 7f4497a5de121f4439816eeeebb69944, type: 3}
+    clip: {fileID: 8300000, guid: d2b9efe09de487d4286e12ccb13302e4, type: 3}
   - key: TVoice30
-    clip: {fileID: 8300000, guid: 2ca0322793fc37f4c92191d9713923fd, type: 3}
+    clip: {fileID: 8300000, guid: 9367ac20407fd2647850568c5b63419d, type: 3}
   g_StartPlay: 1
   g_StartPlay2: 0
 --- !u!1001 &100100000
