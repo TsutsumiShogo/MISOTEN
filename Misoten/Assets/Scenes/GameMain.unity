@@ -27,7 +27,7 @@ NavMeshSettings:
     manualCellSize: 0
     cellSize: 0.16666667
     accuratePlacement: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 257dc3cbe9ea2654682db8b42336ab11, type: 2}
 --- !u!1 &41
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,7 +683,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.451401, g: 0.5008942, b: 0.5723129, a: 1}
+  m_IndirectSpecularColor: {r: 0.45140028, g: 0.50089264, b: 0.57231236, a: 1}
 --- !u!108 &6316
 Light:
   m_ObjectHideFlags: 0
@@ -9440,6 +9440,10 @@ Prefab:
       propertyPath: stageObj.Array.data[2]
       value: 
       objectReference: {fileID: 2138826931}
+    - target: {fileID: 1921998646415690, guid: 5430e1f3bc1757e4d8cc84db7c225651, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5430e1f3bc1757e4d8cc84db7c225651, type: 2}
   m_IsPrefabParent: 0
@@ -10129,6 +10133,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114300299885491194, guid: 58b1a51b920bab94683fcf10f4d32b9c,
+        type: 2}
+      propertyPath: m_bee
+      value: 
+      objectReference: {fileID: 1663782941}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58b1a51b920bab94683fcf10f4d32b9c, type: 2}
   m_IsPrefabParent: 0
@@ -10142,6 +10151,11 @@ Camera:
   m_PrefabParentObject: {fileID: 20802344333830788, guid: 42d74e9cefc215d4bba556e1ecaa2ae8,
     type: 2}
   m_PrefabInternal: {fileID: 1314118852}
+--- !u!1 &1663782941 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1580321114465236, guid: 08f14d490a670eb488a6a7eaf10c0cee,
+    type: 2}
+  m_PrefabInternal: {fileID: 1737427645}
 --- !u!1001 &1667905818
 Prefab:
   m_ObjectHideFlags: 0
@@ -10632,16 +10646,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114929993709451476, guid: 08f14d490a670eb488a6a7eaf10c0cee,
-        type: 2}
-      propertyPath: mathManager
-      value: 
-      objectReference: {fileID: 8345}
     - target: {fileID: 114244308038069714, guid: 08f14d490a670eb488a6a7eaf10c0cee,
         type: 2}
       propertyPath: m_mathManager
       value: 
       objectReference: {fileID: 1188}
+    - target: {fileID: 114929993709451476, guid: 08f14d490a670eb488a6a7eaf10c0cee,
+        type: 2}
+      propertyPath: mathManager
+      value: 
+      objectReference: {fileID: 8345}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08f14d490a670eb488a6a7eaf10c0cee, type: 2}
   m_IsPrefabParent: 0
