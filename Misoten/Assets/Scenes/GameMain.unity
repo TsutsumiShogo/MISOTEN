@@ -10414,7 +10414,7 @@ Prefab:
         type: 2}
       propertyPath: mMaterialsMiddleBill.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ea709f858310c974fa2d0fb0c1f87d2b, type: 2}
+      objectReference: {fileID: 2100000, guid: abc4275b78bb7da448b5a19ad209a257, type: 2}
     - target: {fileID: 114718245384755234, guid: f6d3c8cc97bd6a14f98bd3c017fb35b6,
         type: 2}
       propertyPath: mMaterialsMiddleBill.Array.data[1]

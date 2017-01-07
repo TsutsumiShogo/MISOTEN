@@ -70,8 +70,9 @@ public class ObjectParam : MonoBehaviour {
     // ----------------------------------------------------
     //  中ビル初期化処理
     // ----------------------------------------------------
-    public void MiddleBillInit()
+    public void MiddleBillInit( int _no)
     {
+        m_no = _no;
         // パーティクルコンポ―ネント取得
         m_type = GM_MathFlowerParam.EFlowerType.Bill;
         m_particle = m_particleObj.GetComponent<ParticleSystem>();
