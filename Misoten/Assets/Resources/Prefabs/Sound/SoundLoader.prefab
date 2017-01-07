@@ -84,7 +84,7 @@ MonoBehaviour:
   - key: call_2
     clip: {fileID: 8300000, guid: 66fa9990fc2de684ca6ac62acd7e7bbf, type: 3}
   - key: TVoice0
-    clip: {fileID: 8300000, guid: d7f5b616e8b652440ab898a59c527328, type: 3}
+    clip: {fileID: 8300000, guid: 415f6c7d4a469114da96e40b7455d179, type: 3}
   - key: TVoice1
     clip: {fileID: 8300000, guid: b021769b3e7b624489635dc34984eb7b, type: 3}
   - key: TVoice3
