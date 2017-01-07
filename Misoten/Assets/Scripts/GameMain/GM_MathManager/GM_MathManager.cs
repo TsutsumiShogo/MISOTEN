@@ -50,6 +50,7 @@ public class GM_MathManager : MonoBehaviour {
     //debug用
     [SerializeField]
     private int debug_StageTypeNo;
+    public int _randamStageTypeNo;
 
     void Awake()
     {
@@ -59,7 +60,6 @@ public class GM_MathManager : MonoBehaviour {
     public void Init()
     {
         //生成するステージパターン番号を決定
-        int _randamStageTypeNo;
         _randamStageTypeNo = Random.Range(0, 3);    //min <= range < max
 
         debug_StageTypeNo = _randamStageTypeNo;

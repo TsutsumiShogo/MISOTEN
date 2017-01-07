@@ -313,28 +313,39 @@ public class ObjectManager : MonoBehaviour {
                     switch (objectList[no].GetComponent<ObjectParam>().HouseNo()) {
                         case 0:
                             rendererList[no].material = gMaterialsMiddleBill[level];
-                            if (level == 2){
+                            if (level == 3){
                                 rendererList[no].materials = new Material[2]{
-                                rendererList[no].materials[0],
+                                gMaterialsMiddleBill[level-1],
                                 gMaterialsMiddleBill[level] };
+                            }
+                            else
+                            {
+                                rendererList[no].material = gMaterialsMiddleBill[level];
                             }
                             break;
                         case 1:
-                            rendererList[no].material = gMaterialsMiddleBill_1[level];
-                            if (level == 2)
+                            
+                            if (level == 3)
                             {
                                 rendererList[no].materials = new Material[2]{
-                                rendererList[no].materials[0],
+                                gMaterialsMiddleBill_1[level-1],
                                 gMaterialsMiddleBill_1[level] };
+                            }
+                            else
+                            {
+                                rendererList[no].material = gMaterialsMiddleBill_1[level];
                             }
                             break;
                         case 2:
-                            rendererList[no].material = gMaterialsMiddleBill_2[level];
-                            if (level == 2)
+                            if (level == 3)
                             {
                                 rendererList[no].materials = new Material[2]{
-                                rendererList[no].materials[0],
+                                gMaterialsMiddleBill_2[level-1],
                                 gMaterialsMiddleBill_2[level] };
+                            }
+                            else
+                            {
+                                rendererList[no].material = gMaterialsMiddleBill_2[level];
                             }
                             break;
                     }

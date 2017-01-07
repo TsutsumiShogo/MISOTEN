@@ -238,7 +238,7 @@ public class GM_SceneManager : MonoBehaviour {
         {
             if (startObj.gameObject.active == false){
                 // 「ようい」の掛け声
-                SoundManager.PlaySe("call_1",2);
+                SoundManager.PlaySe("call_1",6);
                 startObj.gameObject.SetActive(true);
             }
         }
@@ -251,7 +251,7 @@ public class GM_SceneManager : MonoBehaviour {
         if (m_callFlg_2 == false ){
             m_callFlg_2 = true;
             // 「スタート」の掛け声
-            SoundManager.PlaySe("call_2",3);
+            SoundManager.PlaySe("call_2",6);
         }
 
         //ゲーム開始

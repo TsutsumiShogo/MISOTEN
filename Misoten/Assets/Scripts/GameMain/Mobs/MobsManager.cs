@@ -13,11 +13,15 @@ public class MobsManager : MonoBehaviour {
         HouseWife,      // 主婦
     };
 
+    [SerializeField]
+    private GameObject m_mathManager;           // マスManager
     // 半径
     [SerializeField]
     private float[] m_radius = new float[3];        // Unityから設定
     [SerializeField]
     private int[] m_childNum = new int[3];      // Mob追加
+
+
 
     // Boyプレハブ
     [SerializeField]
@@ -38,6 +42,16 @@ public class MobsManager : MonoBehaviour {
     [SerializeField]
     private GameObject m_bee;
 
+    // マップごとのObj
+    [SerializeField]
+    private GameObject[] m_mapObj = new GameObject[3];
+    // マップ内固定オブジェクト
+    private GameObject m_fixObj;
+    // 固定オブジェクト配列
+    public GameObject[] m_fixMobs;
+    private int m_fixMobCnt;
+
+    private int m_stageId;
 
     private GameObject[] m_objList = new GameObject[500];
     private int m_objId = 0;
@@ -55,6 +69,7 @@ public class MobsManager : MonoBehaviour {
         m_beeActive = false;
         m_bee.SetActive(false);
         m_beeTimer = 0.0f;
+        SetFixObj();
         CreateMobs();
         SetMob();
     }
@@ -205,9 +220,23 @@ public class MobsManager : MonoBehaviour {
     {
         int _objID;
 
-        _objID = Random.Range(0, m_childNum[m_stageNo]);
+        _objID = Random.Range(0, m_fixMobCnt);
 
-        return m_objList[_objID];
+        return m_fixMobs[_objID];
     }
 
+    // SeetFixObj
+    //---------------------------------
+    //
+    private void SetFixObj()
+    {
+        m_stageId = m_mathManager.GetComponent<GM_MathManager>()._randamStageTypeNo; // ステージ番号取得
+        m_fixObj = m_mapObj[m_stageId].transform.FindChild("FixMob").gameObject;     // 固定モブの親取得
+        m_fixMobCnt = m_fixObj.transform.GetChildCount();              // この数の配列作成
+        m_fixMobs = new GameObject[m_fixMobCnt];
+        for ( int i=0;i< m_fixMobCnt; i++){
+            m_fixMobs[i] = m_fixObj.transform.GetChild(i).gameObject;   // モブのオブジェクトを配列にセット
+        }
+        
+    }
 }

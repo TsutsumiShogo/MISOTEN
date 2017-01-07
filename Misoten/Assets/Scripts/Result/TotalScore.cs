@@ -104,7 +104,6 @@ public class TotalScore : MonoBehaviour {
                     m_nextStep = m_stepObj[(int)m_nowStep].GetComponent<RE_Bonus>().Action();
                     if (m_nowStep != m_nextStep)
                     {
-                        SoundManager.PlaySe("cursol", 0);
                         m_waitFlg = true;
                         m_nowStep = m_nextStep;
                     }
@@ -115,7 +114,7 @@ public class TotalScore : MonoBehaviour {
                     m_nextStep = m_stepObj[(int)m_nowStep].GetComponent<RE_LastScore>().Action();
                     if (m_nowStep != m_nextStep)
                     {
-                        SoundManager.PlaySe("cursol", 0);
+                        SoundManager.PlaySe("cheer2", 2);    // 歓声SE
                         m_waitFlg = true;
                         m_nowStep = m_nextStep;
                     }

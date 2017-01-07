@@ -137,6 +137,7 @@ public class RE_PersonalScore : MonoBehaviour {
         }
          
         if(m_timer >= 6.0f){
+            SoundManager.PlaySe("cheer2", 2);        // 歓声SE
             for (int i = 0; i < 3; i++){    
                 m_playerScore[i].transform.FindChild("rank").GetComponent<RE_PlayerRank>().OnScall(m_rank[i]+1);    
             }

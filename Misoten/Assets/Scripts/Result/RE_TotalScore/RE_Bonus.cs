@@ -49,6 +49,7 @@ public class RE_Bonus : MonoBehaviour {
             if( m_actionNo <= m_clearCnt){
                 if( m_bar[m_actionNo].GetComponent<RE_BonusBar>().Action()){
                     m_actionNo++;
+                    SoundManager.PlaySe("cursol", 1);
                 }
             }else{
                 m_timer += Time.deltaTime;

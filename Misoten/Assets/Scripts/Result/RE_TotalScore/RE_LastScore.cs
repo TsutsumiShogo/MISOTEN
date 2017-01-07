@@ -8,6 +8,7 @@ public class RE_LastScore : MonoBehaviour {
     private float m_score;
     private float m_afterScore;
     private float m_rollTimer;
+    private bool m_rollSeFlg;
     //===============================================================
     // 公開関数
 
@@ -15,6 +16,7 @@ public class RE_LastScore : MonoBehaviour {
     //---------------------------------
     //
     public void Init(){
+        m_rollSeFlg = false;
         m_rollTimer = 0.0f;
         m_score = GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_score; // スコア
         m_afterScore = GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore; // スコア
@@ -41,12 +43,17 @@ public class RE_LastScore : MonoBehaviour {
             transform.GetComponent<TextInEffect>().Action();
             transform.FindChild("score").GetComponent<Text>().text = "";
         } else if (m_rollTimer < 3.0f) {
+            if(!m_rollSeFlg){
+                m_rollSeFlg = true;
+                SoundManager.PlaySe("lastscore_roll",1);
+            }
             m_rollTimer += Time.deltaTime;
             int _score;
             _score = Random.Range(100000, 999999);
             transform.FindChild("score").GetComponent<Text>().text = string.Format("{0:#,##0}", _score);
         } else{
-
+            SoundManager.StopSe(1);
+            SoundManager.PlaySe("lastscore_stop", 1);
             transform.FindChild("score").GetComponent<Text>().text = string.Format("{0:#,##0}", m_afterScore);
 
             return TotalScore.RE_TOTAL_STEP.NEXT_BUTTON;
