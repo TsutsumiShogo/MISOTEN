@@ -34,17 +34,27 @@ public class MobsManager : MonoBehaviour {
     // HouseWife
     [SerializeField]
     private GameObject[] m_prefabHouseWife = new GameObject[3];
+    // 蜂
+    [SerializeField]
+    private GameObject m_bee;
+
 
     private GameObject[] m_objList = new GameObject[500];
     private int m_objId = 0;
     private int m_stageNo = 0;
     private int m_cnt = 0;
     private bool m_moveFlg = false;
+    private bool m_beeActive;
+    private float m_beeTimer = 0.0f;
+    private float m_beeTime = 20.0f;
     //-----------------------------------------------------
     // 初期化
     //-----------------------------------------------------
     public void Init(){
         //prefab = (GameObject)Resources.Load("Prefabs/GameMain/Boy_Ouen");
+        m_beeActive = false;
+        m_bee.SetActive(false);
+        m_beeTimer = 0.0f;
         CreateMobs();
         SetMob();
     }
@@ -68,6 +78,25 @@ public class MobsManager : MonoBehaviour {
 
     void Update()
     {
+        if( !m_beeActive){
+            m_beeTimer += Time.deltaTime;
+            if( m_beeTimer >= m_beeTime){
+                m_beeActive = true;
+                m_bee.SetActive(true);
+                m_bee.transform.localPosition = new Vector3(25.0f, 4.0f, 0);
+                m_beeTimer = 0.0f;
+            }
+        }
+        else
+        {
+            m_beeTimer += Time.deltaTime;
+            if( m_beeTimer >= (m_beeTime*3.0f)){
+                m_beeActive = false;
+                m_beeTimer = 0.0f;
+                m_bee.SetActive(false);
+            }
+        }
+
         if (m_moveFlg)
         {
             move();
