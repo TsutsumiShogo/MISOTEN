@@ -68,8 +68,28 @@ public class PlayerSprayControll : MonoBehaviour {
         sprayMode = _mode;
         sprayActiveTime = _activeTime;
         sprayEffect[(int)_mode].SetActive(true);
+
+        Color _areaEffectStartColor = Color.white;
         if (areaEffect.isPlaying == false)
         {
+            switch(_mode){
+                case EPlayerSprayMode.SEED:
+                    _areaEffectStartColor.r = 0.3f;
+                    _areaEffectStartColor.g = 1.0f;
+                    _areaEffectStartColor.b = 0.21f;
+                    break;
+                case EPlayerSprayMode.GRAW:
+                    _areaEffectStartColor.r = 0.21f;
+                    _areaEffectStartColor.g = 0.34f;
+                    _areaEffectStartColor.b = 1.0f;
+                    break;
+                case EPlayerSprayMode.COLOR:
+                    _areaEffectStartColor.r = 1.0f;
+                    _areaEffectStartColor.g = 0.3f;
+                    _areaEffectStartColor.b = 0.3f;
+                    break;
+            }
+            areaEffect.startColor = _areaEffectStartColor;
             areaEffect.Play(true);
         }
     }
