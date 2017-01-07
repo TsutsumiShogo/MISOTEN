@@ -7,6 +7,7 @@ public class RE_LastScore : MonoBehaviour {
 
     private float m_score;
     private float m_afterScore;
+    private float m_rollTimer;
     //===============================================================
     // 公開関数
 
@@ -14,6 +15,7 @@ public class RE_LastScore : MonoBehaviour {
     //---------------------------------
     //
     public void Init(){
+        m_rollTimer = 0.0f;
         m_score = GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_score; // スコア
         m_afterScore = GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore; // スコア
 
@@ -25,7 +27,8 @@ public class RE_LastScore : MonoBehaviour {
             SaveContainer.Save();
         }
         // スコアセット
-        transform.FindChild("score").GetComponent<Text>().text = string.Format("{0:#,##0}", m_score);
+        //transform.FindChild("score").GetComponent<Text>().text = string.Format("{0:#,##0}", m_score);
+        transform.FindChild("score").GetComponent<Text>().text = "";
         transform.GetComponent<TextInEffect>().Init();
     }
 
@@ -34,18 +37,20 @@ public class RE_LastScore : MonoBehaviour {
     //
     public TotalScore.RE_TOTAL_STEP Action()
     {
-        if( !transform.GetComponent<TextInEffect>().m_goalFlg){
+        if (!transform.GetComponent<TextInEffect>().m_goalFlg) {
             transform.GetComponent<TextInEffect>().Action();
-        }
-        else
-        {
-            if( m_score < m_afterScore){
-                m_score++;
-            }
-            else
-            {
-                return TotalScore.RE_TOTAL_STEP.NEXT_BUTTON;
-            }
+            transform.FindChild("score").GetComponent<Text>().text = "";
+        } else if (m_rollTimer < 3.0f) {
+            m_rollTimer += Time.deltaTime;
+            int _score;
+            _score = Random.Range(100000, 999999);
+            transform.FindChild("score").GetComponent<Text>().text = string.Format("{0:#,##0}", _score);
+        } else{
+
+            transform.FindChild("score").GetComponent<Text>().text = string.Format("{0:#,##0}", m_afterScore);
+
+            return TotalScore.RE_TOTAL_STEP.NEXT_BUTTON;
+            
         }
 
         return TotalScore.RE_TOTAL_STEP.LASTSCORE_IN;

@@ -23,8 +23,8 @@ public class GM_MathFlowerParam : MonoBehaviour {
     };
     public enum EFlowerColor
     {
-        NONE,
-        RED,
+        NONE = -1,
+        RED = 0,
         GREEN,
         BLUE,
         CYAN,
