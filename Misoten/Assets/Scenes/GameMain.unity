@@ -683,7 +683,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45140028, g: 0.50089264, b: 0.57231236, a: 1}
+  m_IndirectSpecularColor: {r: 0.451401, g: 0.5008934, b: 0.5723126, a: 1}
 --- !u!108 &6316
 Light:
   m_ObjectHideFlags: 0
@@ -8925,7 +8925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32d344c123a85c41b8e9b87cbac28ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  START_SCENE_NO: 0
+  START_SCENE_NO: 2
   SceneTopObjects:
   - {fileID: 892}
   - {fileID: 1107}
@@ -10876,7 +10876,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4266276315582338, guid: a8a622a199549954885e83426732a225, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -32.307674
+      value: -32.307
       objectReference: {fileID: 0}
     - target: {fileID: 4266276315582338, guid: a8a622a199549954885e83426732a225, type: 2}
       propertyPath: m_LocalPosition.z
@@ -10901,10 +10901,6 @@ Prefab:
     - target: {fileID: 4266276315582338, guid: a8a622a199549954885e83426732a225, type: 2}
       propertyPath: m_RootOrder
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1798837665845308, guid: a8a622a199549954885e83426732a225, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8a622a199549954885e83426732a225, type: 2}
