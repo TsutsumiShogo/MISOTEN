@@ -693,7 +693,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45140028, g: 0.50089264, b: 0.57231236, a: 1}
+  m_IndirectSpecularColor: {r: 0.451401, g: 0.5008934, b: 0.5723126, a: 1}
 --- !u!108 &6316
 Light:
   m_ObjectHideFlags: 0
@@ -8956,7 +8956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7a28d9e954c8c4b97bf5d92cce415b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GAME_TIME: 300
+  GAME_TIME: 3
   gameTime: 0
   stageOutColObj:
   - {fileID: 1621}
@@ -9305,7 +9305,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1325993394658842, guid: 40ac1579971638f458a50e834f94bf70, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40ac1579971638f458a50e834f94bf70, type: 2}
@@ -10208,11 +10208,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1848827626052196, guid: 5430e1f3bc1757e4d8cc84db7c225651, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1646553112567242, guid: 5430e1f3bc1757e4d8cc84db7c225651, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5430e1f3bc1757e4d8cc84db7c225651, type: 2}
@@ -11872,10 +11872,6 @@ Prefab:
     - target: {fileID: 4266276315582338, guid: a8a622a199549954885e83426732a225, type: 2}
       propertyPath: m_RootOrder
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1798837665845308, guid: a8a622a199549954885e83426732a225, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8a622a199549954885e83426732a225, type: 2}
