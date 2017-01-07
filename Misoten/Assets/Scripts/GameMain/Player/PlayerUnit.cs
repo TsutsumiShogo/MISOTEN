@@ -348,7 +348,7 @@ public class PlayerUnit : MonoBehaviour {
                     if (XboxController.GetButtonL(PLAYER_NO) == true)
                     {
                         m_splayChangeFlg = true;
-                        status.ChangeSprayMode(false);
+                        status.ChangeSprayMode(true);
                         switch (PLAYER_NO)
                         {
                             case 0:
@@ -365,7 +365,7 @@ public class PlayerUnit : MonoBehaviour {
                     if (XboxController.GetButtonR(PLAYER_NO) == true)
                     {
                         m_splayChangeFlg = true;
-                        status.ChangeSprayMode(true);
+                        status.ChangeSprayMode(false);
                         switch (PLAYER_NO)
                         {
                             case 0:

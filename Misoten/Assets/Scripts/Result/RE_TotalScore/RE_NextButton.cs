@@ -18,6 +18,7 @@ public class RE_NextButton : MonoBehaviour {
     // 
     public void Init(){
         GetComponent<Text>().color = new Color(1, 1, 1, 0);
+        transform.FindChild("Image").GetComponent<Image>().color = new Color(1, 1, 1, 0);
         transform.localPosition = new Vector3(m_startPos,transform.localPosition.y, transform.localPosition.z);
     }
     // Action - 更新処理
@@ -26,11 +27,13 @@ public class RE_NextButton : MonoBehaviour {
     public TotalScore.RE_TOTAL_STEP Action()
     {
         GetComponent<Text>().color = new Color(1, 1, 1, 1);
+        transform.FindChild("Image").GetComponent<Image>().color = new Color(1, 1, 1, 1);
         Move();
         if (XboxController.GetButtonA_All() || Input.GetKeyDown(KeyCode.A))
         {
             SoundManager.PlaySe("decision_1", 2);
             GetComponent<Text>().color = new Color(1, 1, 1,0);
+            transform.FindChild("Image").GetComponent<Image>().color = new Color(1, 1, 1, 0);
             return TotalScore.RE_TOTAL_STEP.RE_TOTAL_STEP_MAX;
         }
         return TotalScore.RE_TOTAL_STEP.NEXT_BUTTON;

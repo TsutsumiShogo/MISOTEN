@@ -343,17 +343,17 @@ public class ObjectManager : MonoBehaviour {
                     //------------------
                     // サンゴが植えた花
                 case GM_MathFlowerParam.EFlowerColor.RED:
-                    rendererList[no].material = g_sangoFlowerMaterials[((int)_color) - 1];
+                    rendererList[no].material = g_sangoFlowerMaterials[((int)_color)];
                     break;
                     //------------------
                     // アオイが植えた花
                 case GM_MathFlowerParam.EFlowerColor.BLUE:
-                    rendererList[no].material = g_aoiFlowerMaterials[((int)_color) - 1];
+                    rendererList[no].material = g_aoiFlowerMaterials[((int)_color)];
                     break;
                     //------------------
                     // ヒスイが植えた花
                 case GM_MathFlowerParam.EFlowerColor.GREEN:
-                    rendererList[no].material = g_hisuiFlowerMaterials[((int)_color) - 1];
+                    rendererList[no].material = g_hisuiFlowerMaterials[((int)_color)];
                     break;
             }
         }
