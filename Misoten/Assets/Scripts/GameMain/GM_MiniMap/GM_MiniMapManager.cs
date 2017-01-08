@@ -23,11 +23,12 @@ public class GM_MiniMapManager : MonoBehaviour {
     private int nowCameraPointNo;
     private int updateCellNo;       //更新対象セル番号
 
+    private GameObject missionEffectObject;
 
 	// Use this for initialization
 	void Awake () {
         mathManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects/Stage/MathManager").GetComponent<GM_MathManager>();
-        minimapPlayer = transform.FindChild("Map_Players").GetComponent<GM_MiniMapPlayers>();	
+        minimapPlayer = transform.FindChild("Map_Players").GetComponent<GM_MiniMapPlayers>();
     }
     //マスマネージャーのInitが呼ばれた後に呼んで下さい。
     public void Init()
@@ -127,5 +128,10 @@ public class GM_MiniMapManager : MonoBehaviour {
         }
 
         nowCameraPointNo = (int)stageNo;
+    }
+
+    public void StartMissionEffect(Vector3 _missionPos)
+    {
+        
     }
 }

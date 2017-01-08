@@ -11546,16 +11546,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114929993709451476, guid: 08f14d490a670eb488a6a7eaf10c0cee,
-        type: 2}
-      propertyPath: mathManager
-      value: 
-      objectReference: {fileID: 8345}
     - target: {fileID: 114244308038069714, guid: 08f14d490a670eb488a6a7eaf10c0cee,
         type: 2}
       propertyPath: m_mathManager
       value: 
       objectReference: {fileID: 1188}
+    - target: {fileID: 114929993709451476, guid: 08f14d490a670eb488a6a7eaf10c0cee,
+        type: 2}
+      propertyPath: mathManager
+      value: 
+      objectReference: {fileID: 8345}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08f14d490a670eb488a6a7eaf10c0cee, type: 2}
   m_IsPrefabParent: 0

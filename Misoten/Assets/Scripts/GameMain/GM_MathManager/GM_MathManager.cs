@@ -48,7 +48,7 @@ public class GM_MathManager : MonoBehaviour {
     float levelGetTimeCount = 0.0f;
 
     private int updateColorFlowerCount;
-    public int[] colorFlowerNum = new int[(int)GM_MathFlowerParam.EFlowerColor.MAX_NUM];
+    private int[] colorFlowerNum = new int[(int)GM_MathFlowerParam.EFlowerColor.MAX_NUM];
 
     //debug用
     [SerializeField]
