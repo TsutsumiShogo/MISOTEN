@@ -13,7 +13,7 @@ public class GM_MiniMapManager : MonoBehaviour {
     [SerializeField]
     private GameObject cameraObject;            //ズームアウト処理を掛けたい。
     private GM_MiniMapPlayers minimapPlayer;    //ミニマップのプレイヤー管理部
-
+    private GM_MathCellColorControll missionEffectObject;     //ミッションエフェクトオブジェクト
 
     //外部公開変数
     public GM_MathManager mathManager;              //マスマネージャ
@@ -23,12 +23,15 @@ public class GM_MiniMapManager : MonoBehaviour {
     private int nowCameraPointNo;
     private int updateCellNo;       //更新対象セル番号
 
-    private GameObject missionEffectObject;
+    private float missionEffectTimeCount;   //エフェクト点滅間隔に使用する
+    private bool missionEffectColorFlg;     //エフェクト点滅のOnOffフラグ
+    
 
 	// Use this for initialization
 	void Awake () {
         mathManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects/Stage/MathManager").GetComponent<GM_MathManager>();
         minimapPlayer = transform.FindChild("Map_Players").GetComponent<GM_MiniMapPlayers>();
+        missionEffectObject = transform.FindChild("MiniMapMissionEffect").GetComponent<GM_MathCellColorControll>();
     }
     //マスマネージャーのInitが呼ばれた後に呼んで下さい。
     public void Init()
@@ -79,6 +82,13 @@ public class GM_MiniMapManager : MonoBehaviour {
         //最初のステージを開始
         StartStage(GM_MathManager.EMathStageNo.STAGE1);
 
+        //ミッションエフェクトオブジェクト初期化
+        missionEffectTimeCount = 0.0f;
+        missionEffectColorFlg = false;
+        missionEffectObject.gameObject.SetActive(true);
+        missionEffectObject.ChangeMathColor(Color.red);
+        missionEffectObject.gameObject.SetActive(false);
+
     }
     public void Delete()
     {
@@ -113,6 +123,36 @@ public class GM_MiniMapManager : MonoBehaviour {
         distance = cameraPoint[nowCameraPointNo] - camPos.y;
         camPos.y += distance * 0.1f;
         cameraObject.transform.position = camPos;
+
+        //ミッションエフェクト
+        if (missionEffectObject.gameObject.active == true)
+        {
+            missionEffectTimeCount += Time.deltaTime;
+
+            if (missionEffectTimeCount > 0.5f)
+            {
+                missionEffectTimeCount -= 0.5f;
+                Color _setColor = Color.white;
+                if (missionEffectColorFlg == true)
+                {
+                    _setColor.r = 1.0f;
+                    _setColor.g = 0.0f;
+                    _setColor.b = 0.0f;
+                    _setColor.a = 0.0f;
+                    missionEffectColorFlg = false;
+                }
+                else
+                {
+                    _setColor.r = 1.0f;
+                    _setColor.g = 0.0f;
+                    _setColor.b = 0.0f;
+                    _setColor.a = 1.0f;
+                    missionEffectColorFlg = true;
+                }
+
+                missionEffectObject.ChangeMathColor(_setColor, 0.5f);
+            }
+        }
 	}
 
     //=============================公開関数=====================================
@@ -130,8 +170,15 @@ public class GM_MiniMapManager : MonoBehaviour {
         nowCameraPointNo = (int)stageNo;
     }
 
+    //ミッションエフェクトを出す
     public void StartMissionEffect(Vector3 _missionPos)
     {
-        
+        missionEffectObject.transform.position = _missionPos + transform.position;
+
+        missionEffectObject.gameObject.SetActive(true);
+    }
+    public void StopMissionEffect()
+    {
+        missionEffectObject.gameObject.SetActive(false);
     }
 }

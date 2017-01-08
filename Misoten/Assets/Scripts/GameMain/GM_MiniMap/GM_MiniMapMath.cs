@@ -58,16 +58,16 @@ public class GM_MiniMapMath : MonoBehaviour {
         switch (_level)
         {
             case GM_MathFlowerParam.EFlowerLevel.Level0:
-                colorCon.ChangeMathColor(new Color(0.5f, 0.5f, 0.5f, 1.0f), 0.5f);
+                colorCon.ChangeMathColor(new Color(0.5f, 0.5f, 0.5f, 1.0f), 0.3f);
                 break;
             case GM_MathFlowerParam.EFlowerLevel.Level1:
-                colorCon.ChangeMathColor(Color.white, 0.5f);
+                colorCon.ChangeMathColor(Color.white, 0.3f);
                 break;
             case GM_MathFlowerParam.EFlowerLevel.Level2:
-                colorCon.ChangeMathColor(Color.yellow, 0.5f);
+                colorCon.ChangeMathColor(Color.yellow, 0.3f);
                 break;
             case GM_MathFlowerParam.EFlowerLevel.Level3:
-                colorCon.ChangeMathColor(new Color(1.0f, 0.5f, 0.016f, 1.0f), 0.5f);
+                colorCon.ChangeMathColor(new Color(1.0f, 0.5f, 0.016f, 1.0f), 0.3f);
                 break;
         }
     }

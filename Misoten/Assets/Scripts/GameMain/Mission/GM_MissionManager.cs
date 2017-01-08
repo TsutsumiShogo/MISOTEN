@@ -17,6 +17,7 @@ public class GM_MissionManager : MonoBehaviour {
     private GM_SceneManager sceneManager;   //シーンマネージャー(試合の経過時間が欲しい)
     private GM_MathManager mathManager;     //マスマネージャ(セルの位置欲しい)
     private MobsManager mobManager;         //モブマネージャ
+    private GM_MiniMapManager minimapManager;   //ミニマップマネージャ(ミッションエフェクト出したい)
 
     //変数宣言
     private bool canMissionCreateFlg;       //ミッション作成許可
@@ -36,6 +37,7 @@ public class GM_MissionManager : MonoBehaviour {
         announce = GameObject.Find("SceneCanvas").transform.Find("GameMainUI/Game/MissionAnnounce").GetComponent<GM_UIMissionAnnounce>();
         mobManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects/MobsManager").GetComponent<MobsManager>();
         peopleMission = transform.FindChild("PeopleMission").GetComponent<GM_PeopleMissionStarter>();
+        minimapManager = GameObject.Find("SceneChangeManager").transform.Find("GameMainObjects/GameObjects/MiniMapManager").GetComponent<GM_MiniMapManager>();
     }
 
 	public void Init () {
@@ -170,6 +172,9 @@ public class GM_MissionManager : MonoBehaviour {
 
         //アナウンス再生
         announce.AnnounceMessage(_type, _clearColor);
+
+        //ミッションエフェクト出現
+        minimapManager.StartMissionEffect(_pos);
     }
 
     //ミッションオブジェクトから失敗のシグナルが来た
@@ -179,6 +184,9 @@ public class GM_MissionManager : MonoBehaviour {
 
         //ミッション失敗アナウンスを流す
         announce.FailedAnnounceMessage();
+
+        //エフェクト停止
+        minimapManager.StopMissionEffect();
     }
     //ミッションオブジェクトから成功のシグナルが来た
     public void SuccessSignal()
@@ -193,6 +201,9 @@ public class GM_MissionManager : MonoBehaviour {
 
         //ミッション成功アナウンスを流す
         announce.SuccessAnnounceMessage((int)CLEAR_SCORE_POINT*3);
+
+        //エフェクト停止
+        minimapManager.StopMissionEffect();
     }
     //住人ミッションの作成(何回も来る恐れあり)
     public void StartPeopleMissionSignal()

@@ -1012,7 +1012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1991451263665692
 GameObject:
   m_ObjectHideFlags: 1
@@ -1311,8 +1311,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1980311675153292}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.8, y: 1.8, z: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_Children: []
   m_Father: {fileID: 4252037149701986}
   m_RootOrder: 0
@@ -3012,8 +3012,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bbb7a7aa8ecc6242b65382e236bd4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextColor: {r: 0, g: 0, b: 0, a: 0}
-  oldColor: {r: 0, g: 0, b: 0, a: 0}
+  nextColor: {r: 0, g: 0, b: 0, a: 1}
+  oldColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &114965908287357584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5935,7 +5935,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -524198123
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: c4d80389803335540a7019f7143e42b3, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
