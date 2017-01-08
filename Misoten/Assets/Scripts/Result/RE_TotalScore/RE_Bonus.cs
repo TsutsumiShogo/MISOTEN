@@ -15,6 +15,8 @@ public class RE_Bonus : MonoBehaviour {
     private float[] m_barPos = new float[3];            // バーのポジション
     private int m_actionNo;
     private float m_timer;
+    private int[] m_clear = new int[4];
+    private int m_num = 0;
     //===============================================================
     // 公開関数
 
@@ -22,6 +24,7 @@ public class RE_Bonus : MonoBehaviour {
     //---------------------------------
     //
     public void Init(){
+        m_num = 0;
         m_openWindow = false;
         transform.localScale = new Vector3(0,1,1);
         m_clearCnt = 0;
@@ -46,10 +49,19 @@ public class RE_Bonus : MonoBehaviour {
         {
             OpenWindow();
         }else{
-            if( m_actionNo <= m_clearCnt){
-                if( m_bar[m_actionNo].GetComponent<RE_BonusBar>().Action()){
+            if(m_actionNo <= m_clearCnt){
+                if (m_bar[m_actionNo].GetComponent<RE_BonusBar>().GetActive())
+                {
+                    if (m_bar[m_actionNo].GetComponent<RE_BonusBar>().Action())
+                    {
+                        m_actionNo++;
+                        m_num++;
+                        SoundManager.PlaySe("cursol", 1);
+                    }
+                }
+                else
+                {
                     m_actionNo++;
-                    SoundManager.PlaySe("cursol", 1);
                 }
             }else{
                 m_timer += Time.deltaTime;
@@ -150,7 +162,7 @@ public class RE_Bonus : MonoBehaviour {
             GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore += GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore * 0.2f;
             m_clearCnt++;
         }
-        else if(_colorNum >= 3){
+        else if(_colorNum >= 2){
             m_bar[3].GetComponent<RE_BonusBar>().OnActive(m_barPos[0]);
             GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore += GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore * 0.1f;
             m_clearCnt++;

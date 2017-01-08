@@ -57,6 +57,10 @@ public class RE_BonusBar : MonoBehaviour {
         m_targetPos = _target;
     }
 
+    public bool GetActive()
+    {
+        return m_activeFlg;
+    }
     //===============================================================
     // 未公開関数
 
