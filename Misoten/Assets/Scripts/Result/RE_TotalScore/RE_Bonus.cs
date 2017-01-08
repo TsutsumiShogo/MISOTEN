@@ -94,9 +94,50 @@ public class RE_Bonus : MonoBehaviour {
     private void CheckColorNum(){
         int _colorNum = 0;
         for (int i = 0; i < 7; i++) {
-            if (m_mathManager.GetComponent<GM_MathManager>().GetFlowerColorNum((GM_MathFlowerParam.EFlowerColor)Enum.ToObject(typeof(GM_MathFlowerParam.EFlowerColor), i)) > 0){
-                i++;
+            switch (i) {
+                case 0:
+                    if( m_mathManager.GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.RED) > 0){
+                        _colorNum++;
+                    }
+                    break;
+                case 1:
+                    if (m_mathManager.GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.GREEN) > 0)
+                    {
+                        _colorNum++;
+                    }
+                    break;
+                case 2:
+                    if (m_mathManager.GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.BLUE) > 0)
+                    {
+                        _colorNum++;
+                    }
+                    break;
+                case 3:
+                    if (m_mathManager.GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.CYAN) > 0)
+                    {
+                        _colorNum++;
+                    }
+                    break;
+                case 4:
+                    if (m_mathManager.GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.MAGENTA) > 0)
+                    {
+                        _colorNum++;
+                    }
+                    break;
+                case 5:
+                    if (m_mathManager.GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.WHITE) > 0)
+                    {
+                        _colorNum++;
+                    }
+                    break;
+                case 6:
+                    if (m_mathManager.GetComponent<GM_MathManager>().GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor.YELLOW) > 0)
+                    {
+                        _colorNum++;
+                    }
+                    break;
             }
+        
         }
         // 7色
         if(  _colorNum >= 7){
@@ -114,7 +155,7 @@ public class RE_Bonus : MonoBehaviour {
             GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore += GameObject.Find("RE_TotalScore").GetComponent<TotalScore>().m_afterScore * 0.1f;
             m_clearCnt++;
         }
-       
+        Debug.Log("colorCHECK");
     }
 
 }
