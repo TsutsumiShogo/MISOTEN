@@ -9324,6 +9324,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 4664}
     m_Modifications:
+    - target: {fileID: 114063986461099930, guid: 5430e1f3bc1757e4d8cc84db7c225651,
+        type: 2}
+      propertyPath: colorFlowerNum.Array.size
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4428158892178622, guid: 5430e1f3bc1757e4d8cc84db7c225651, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11561,6 +11566,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 4574}
     m_Modifications:
+    - target: {fileID: 114136612981622504, guid: 42d74e9cefc215d4bba556e1ecaa2ae8,
+        type: 2}
+      propertyPath: colorFlowerNum.Array.size
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4123462479949752, guid: 42d74e9cefc215d4bba556e1ecaa2ae8, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
