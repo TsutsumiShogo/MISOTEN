@@ -34,12 +34,12 @@ public class RE_BonusBar : MonoBehaviour {
             // 使用フラグを立てないと処理されない
             m_alpha += 1.0f * Time.deltaTime / m_time;  // α値
             transform.localPosition = new Vector3(0,transform.localPosition.y + (m_targetPos+50.0f)*Time.deltaTime/m_time,0);
-            m_text[0].GetComponent<Text>().color = new Color(0, 0, 0, m_alpha);
-            m_text[1].GetComponent<Text>().color = new Color(0, 0, 0, m_alpha);
+            m_text[0].GetComponent<Text>().color = new Color(1, 1, 1, m_alpha);
+            m_text[1].GetComponent<Text>().color = new Color(1, 1, 1, m_alpha);
             if ( transform.localPosition.y >= m_targetPos){
                 transform.localPosition = new Vector3(0, m_targetPos, 0);
-                m_text[0].GetComponent<Text>().color = new Color(0, 0, 0, 1);
-                m_text[1].GetComponent<Text>().color = new Color(0, 0, 0, 1);
+                m_text[0].GetComponent<Text>().color = new Color(1, 1, 1, 1);
+                m_text[1].GetComponent<Text>().color = new Color(1, 1, 1, 1);
                 m_activeFlg = false;
                 return true;
             }
