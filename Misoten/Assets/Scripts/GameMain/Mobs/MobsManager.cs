@@ -75,8 +75,8 @@ public class MobsManager : MonoBehaviour {
         m_bee.SetActive(false);
         m_beeTimer = 0.0f;
         SetFixObj();
-        CreateMobs();
-        SetMob();
+        //CreateMobs();
+        //SetMob();
     }
 
     //---------------------------------
@@ -119,7 +119,7 @@ public class MobsManager : MonoBehaviour {
 
         if (m_moveFlg)
         {
-            move();
+            //move();
         }
     }
     
@@ -191,8 +191,8 @@ public class MobsManager : MonoBehaviour {
         m_stepObj[m_stageNo].SetActive(false);
         m_stageNo++;
         m_stepObj[m_stageNo].SetActive(true);
-        AddMob();
-        SetMob();
+        //AddMob();
+        //SetMob();
     }
 
     private void AddMob()
