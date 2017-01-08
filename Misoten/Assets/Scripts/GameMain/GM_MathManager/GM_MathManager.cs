@@ -47,6 +47,9 @@ public class GM_MathManager : MonoBehaviour {
     float timeCount = 0.0f;
     float levelGetTimeCount = 0.0f;
 
+    private int updateColorFlowerCount;
+    public int[] colorFlowerNum = new int[(int)GM_MathFlowerParam.EFlowerColor.MAX_NUM];
+
     //debug用
     [SerializeField]
     private int debug_StageTypeNo;
@@ -92,7 +95,8 @@ public class GM_MathManager : MonoBehaviour {
         levelGetTimeCount = 0.0f;
         totalFlowerLevel = 0;
         totalFlowerScore = 0;
-
+        updateColorFlowerCount = 0;
+        
         //ビルリストを作成
         billList.MakeBillList();
 
@@ -107,6 +111,10 @@ public class GM_MathManager : MonoBehaviour {
 
         //STAGE1のセルを利用開始状態へ
         StartStage(EMathStageNo.STAGE1);
+        for (int i = 0; i < (int)GM_MathFlowerParam.EFlowerColor.MAX_NUM; ++i)
+        {
+            colorFlowerNum[i] = CalcFlowerColorNum((GM_MathFlowerParam.EFlowerColor)i);
+        }
     }
 	
 	// Update is called once per frame
@@ -147,6 +155,13 @@ public class GM_MathManager : MonoBehaviour {
             cells[i].UpdateFlower();
         }
 
+        //色花のカウントをチェック(8フレームに1回)
+        colorFlowerNum[updateColorFlowerCount] = CalcFlowerColorNum((GM_MathFlowerParam.EFlowerColor)updateColorFlowerCount);
+        updateColorFlowerCount++;
+        if (updateColorFlowerCount >= (int)GM_MathFlowerParam.EFlowerColor.MAX_NUM)
+        {
+            updateColorFlowerCount = 0;
+        }
 	}
 
     //=============================公開関数=====================================
@@ -184,6 +199,14 @@ public class GM_MathManager : MonoBehaviour {
 
     //指定の色の花の数を調べる
     public int GetFlowerColorNum(GM_MathFlowerParam.EFlowerColor _color)
+    {
+        int _num = 0;
+
+        _num = colorFlowerNum[(int)_color];
+
+        return _num;
+    }
+    private int CalcFlowerColorNum(GM_MathFlowerParam.EFlowerColor _color)
     {
         int _num = 0;
 
