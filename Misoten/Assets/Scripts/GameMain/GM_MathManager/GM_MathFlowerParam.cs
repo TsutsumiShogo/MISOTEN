@@ -23,14 +23,15 @@ public class GM_MathFlowerParam : MonoBehaviour {
     };
     public enum EFlowerColor
     {
-        NONE = -1,
-        RED = 0,
+        NONE = 0,
+        RED,
         GREEN,
         BLUE,
         CYAN,
         MAGENTA,
         YELLOW,
         WHITE,
+        MAX_NUM,
     };
 
     //セル

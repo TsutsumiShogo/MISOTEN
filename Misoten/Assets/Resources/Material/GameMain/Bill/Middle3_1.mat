@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Middle3_1
-  m_Shader: {fileID: 4800000, guid: 054a31a99d11e49d110086ba44295342, type: 3}
-  m_ShaderKeywords: _EMISSION
+  m_Shader: {fileID: 4800000, guid: 5cb02b08a03fd6341a4e398b74bab844, type: 3}
+  m_ShaderKeywords: _EMISSION _ENHANCEDRIMCOLOR_ON
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -58,6 +58,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
+        name: _MetallicTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
         name: _OcclusionMap
       second:
         m_Texture: {fileID: 0}
@@ -92,14 +98,23 @@ Material:
         name: _DetailNormalMapScale
       second: 1
     - first:
+        name: _DissolveDepth
+      second: 0.02
+    - first:
+        name: _DissolveSize
+      second: 1
+    - first:
         name: _DstBlend
       second: 0
+    - first:
+        name: _EnhancedRimColor
+      second: 1
     - first:
         name: _GlossMapScale
       second: 1
     - first:
         name: _Glossiness
-      second: 0.5
+      second: 0.019
     - first:
         name: _GlossyReflections
       second: 1
@@ -110,6 +125,9 @@ Material:
         name: _Mode
       second: 0
     - first:
+        name: _NoiseSize
+      second: 1.24
+    - first:
         name: _OcclusionStrength
       second: 1
     - first:
@@ -118,6 +136,12 @@ Material:
     - first:
         name: _Parallax
       second: 0.02
+    - first:
+        name: _RimIntensity
+      second: 2
+    - first:
+        name: _RimSize
+      second: 0.1
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -129,6 +153,9 @@ Material:
       second: 1
     - first:
         name: _UVSec
+      second: 0
+    - first:
+        name: _UseMetallicTex
       second: 0
     - first:
         name: _ZWrite
@@ -143,3 +170,6 @@ Material:
     - first:
         name: _OutlineColor
       second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _RimColor
+      second: {r: 0.07586217, g: 1, b: 0, a: 0.553}
