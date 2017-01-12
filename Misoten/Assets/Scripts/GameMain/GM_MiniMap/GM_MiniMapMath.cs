@@ -26,6 +26,10 @@ public class GM_MiniMapMath : MonoBehaviour {
     {
         mapCell = _mapCell;
         colorCon.Init();
+        if (stageMath == null)
+        {
+            Debug.LogError("stageMath is Null", gameObject);
+        }
         mathLevel = stageMath.GetMinMathLevel();
     }
     public void MathStart()

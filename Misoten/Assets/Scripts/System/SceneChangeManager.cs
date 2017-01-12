@@ -42,9 +42,13 @@ public class SceneChangeManager : MonoBehaviour {
     //フェードユニット
     private SY_Fade sy_Fade;
 
+    //タイトルへ遷移するボタン押し時間保存場所
+    private float startButtonPushTime;
+
     void Awake()
     {
         sy_Fade = GameObject.Find("SY_Fade").GetComponent<SY_Fade>();
+        startButtonPushTime = 0;
     }
 	void Start () {
         int SCENE_NUM = (int)ESceneNo.SCENE_NUM_MAX;
@@ -67,6 +71,21 @@ public class SceneChangeManager : MonoBehaviour {
 
     void Update()
     {
+        if (XboxController.GetButtonHoldStart(0) == true)
+        {
+            startButtonPushTime += Time.deltaTime;
+            
+            if (startButtonPushTime > 4.0f)
+            {
+                SceneChange(ESceneNo.SCENE_TITLE);
+                startButtonPushTime = 0.0f;
+            }
+        }
+        else
+        {
+            startButtonPushTime = 0.0f;
+        }
+
         //切り替え完了済みなら何もしない
         if (changeEndFlg == true)
         {
@@ -78,6 +97,9 @@ public class SceneChangeManager : MonoBehaviour {
         {
             return;
         }
+
+        //タイトルへの強制遷移用時間の初期化
+        startButtonPushTime = 0.0f;
 
         //シーン終了処理
         SceneEndProcess(nowSceneNo);
@@ -200,6 +222,16 @@ public class SceneChangeManager : MonoBehaviour {
                 GM_UIManager gameUiManager;
                 gameUiManager = SceneCanvasTopObjects[(int)ESceneNo.SCENE_GAME].GetComponent<GM_UIManager>();
                 //gameUiManager.Init();
+
+                //ミニマップで削除処理を走らせる
+                GameObject minimapManager = GameObject.Find("MiniMapManager");
+                if (minimapManager)
+                {
+                    minimapManager.GetComponent<GM_MiniMapManager>().Delete();
+                }
+
+                //BGM停止
+                SoundManager.StopBgm2();
 
                 break;
             default:
