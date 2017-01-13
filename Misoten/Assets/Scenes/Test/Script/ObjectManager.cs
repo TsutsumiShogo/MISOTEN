@@ -33,6 +33,15 @@ public class ObjectManager : MonoBehaviour {
     public static Material[] g_aoiFlowerMaterials = new Material[7];
 
     //------------------
+    // 家マテリアル
+    public Material[] mMaterialsHouse;
+    public static Material[] gMaterialsHouse;
+    public Material[] mMaterialsHouse_1;
+    public static Material[] gMaterialsHouse_1;
+    public Material[] mMaterialsHouse_2;
+    public static Material[] gMaterialsHouse_2;
+
+    //------------------
     // 中ビルマテリアル
     public Material[] mMaterialsMiddleBill;
     public static Material[] gMaterialsMiddleBill;
@@ -73,6 +82,11 @@ public class ObjectManager : MonoBehaviour {
         g_sangoFlowerMaterials = m_sangoFlowerMaterials;
         g_aoiFlowerMaterials = m_aoiFlowerMaterials;
         g_hisuiFlowerMaterials = m_hisuiFlowerMaterials;
+
+        // 家マテリアルをセット
+        gMaterialsHouse = mMaterialsHouse;
+        gMaterialsHouse_1 = mMaterialsHouse_1;
+        gMaterialsHouse_2 = mMaterialsHouse_2;
 
         // ビルマテリアルをセット
         gMaterialsMiddleBill = mMaterialsMiddleBill;
@@ -208,13 +222,13 @@ public class ObjectManager : MonoBehaviour {
                 switch (_rand)
                 {
                     case 0:
-                        rendererList[Id].material = gMaterialsMiddleBill[0];
+                        rendererList[Id].material = gMaterialsHouse[0];
                         break;
                     case 1:
-                        rendererList[Id].material = gMaterialsMiddleBill_1[0];
+                        rendererList[Id].material = gMaterialsHouse_1[0];
                         break;
                     case 2:
-                        rendererList[Id].material = gMaterialsMiddleBill_2[0];
+                        rendererList[Id].material = gMaterialsHouse_2[0];
                         break;
                 }
                 break;
@@ -313,15 +327,15 @@ public class ObjectManager : MonoBehaviour {
                     SoundManager.PlaySe("house_up", 7);
                     switch (objectList[no].GetComponent<ObjectParam>().HouseNo()) {
                         case 0:
-                            rendererList[no].material = gMaterialsMiddleBill[level];
+                            //rendererList[no].material = gMaterialsMiddleBill[level];
                             if (level == 3){
                                 rendererList[no].materials = new Material[2]{
-                                gMaterialsMiddleBill[level-1],
-                                gMaterialsMiddleBill[level] };
+                                gMaterialsHouse[level],
+                                gMaterialsHouse[level+1] };
                             }
                             else
                             {
-                                rendererList[no].material = gMaterialsMiddleBill[level];
+                                rendererList[no].material = gMaterialsHouse[level];
                             }
                             break;
                         case 1:
@@ -329,24 +343,24 @@ public class ObjectManager : MonoBehaviour {
                             if (level == 3)
                             {
                                 rendererList[no].materials = new Material[2]{
-                                gMaterialsMiddleBill_1[level-1],
-                                gMaterialsMiddleBill_1[level] };
+                                gMaterialsHouse_1[level],
+                                gMaterialsHouse_1[level+1] };
                             }
                             else
                             {
-                                rendererList[no].material = gMaterialsMiddleBill_1[level];
+                                rendererList[no].material = gMaterialsHouse_1[level];
                             }
                             break;
                         case 2:
                             if (level == 3)
                             {
                                 rendererList[no].materials = new Material[2]{
-                                gMaterialsMiddleBill_2[level-1],
-                                gMaterialsMiddleBill_2[level] };
+                                gMaterialsHouse_2[level],
+                                gMaterialsHouse_2[level+1] };
                             }
                             else
                             {
-                                rendererList[no].material = gMaterialsMiddleBill_2[level];
+                                rendererList[no].material = gMaterialsHouse_2[level];
                             }
                             break;
                     }
@@ -369,7 +383,7 @@ public class ObjectManager : MonoBehaviour {
                             {
                                 rendererList[no].materials = new Material[2]{
                                 rendererList[no].materials[0],
-                                gMaterialsMiddleBill[level] };
+                                gMaterialsMiddleBill[level+1] };
                             }
                             break;
                         case 1:
@@ -378,7 +392,7 @@ public class ObjectManager : MonoBehaviour {
                             {
                                 rendererList[no].materials = new Material[2]{
                                 rendererList[no].materials[0],
-                                gMaterialsMiddleBill_1[level] };
+                                gMaterialsMiddleBill_1[level+1] };
                             }
                             break;
                         case 2:
@@ -387,7 +401,7 @@ public class ObjectManager : MonoBehaviour {
                             {
                                 rendererList[no].materials = new Material[2]{
                                 rendererList[no].materials[0],
-                                gMaterialsMiddleBill_2[level] };
+                                gMaterialsMiddleBill_2[level+1] };
                             }
                             break;
                     }
