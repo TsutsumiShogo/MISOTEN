@@ -382,8 +382,8 @@ public class ObjectManager : MonoBehaviour {
                             if (level == 2)
                             {
                                 rendererList[no].materials = new Material[2]{
-                                rendererList[no].materials[0],
-                                gMaterialsMiddleBill[level+1] };
+                                gMaterialsMiddleBill[2],
+                                gMaterialsMiddleBill[3] };
                             }
                             break;
                         case 1:
@@ -391,8 +391,8 @@ public class ObjectManager : MonoBehaviour {
                             if (level == 2)
                             {
                                 rendererList[no].materials = new Material[2]{
-                                rendererList[no].materials[0],
-                                gMaterialsMiddleBill_1[level+1] };
+                                gMaterialsMiddleBill_1[2],
+                                gMaterialsMiddleBill_1[3] };
                             }
                             break;
                         case 2:
@@ -400,8 +400,8 @@ public class ObjectManager : MonoBehaviour {
                             if (level == 2)
                             {
                                 rendererList[no].materials = new Material[2]{
-                                rendererList[no].materials[0],
-                                gMaterialsMiddleBill_2[level+1] };
+                                gMaterialsMiddleBill_2[2],
+                                gMaterialsMiddleBill_2[3] };
                             }
                             break;
                     }
