@@ -77,6 +77,7 @@ public class MobsManager : MonoBehaviour {
         SetFixObj();
         //CreateMobs();
         //SetMob();
+        Clean();
     }
 
     //---------------------------------
