@@ -148,7 +148,7 @@ public class TS_SceneManager : MonoBehaviour {
             soundFlg = true;
         }
 
-        if (XboxController.GetButtonA(0))
+        if (XboxController.GetButtonA_All())
         {
             //テキスト番号を進める
             NextText();

@@ -181,6 +181,14 @@ public class XboxController : MonoBehaviour
     public static float GetLeftY(int playerNo)
     {
         float AxisY = Input.GetAxis("Joystick" + playerNo.ToString() + "AxisY");
+        if( playerNo == 0 && Input.GetKey(KeyCode.W))
+        {
+            AxisY = 1.0f;
+        }
+        if (playerNo == 0 && Input.GetKey(KeyCode.S))
+        {
+            AxisY = -1.0f;
+        }
         //Debug.Log(AxisY.ToString());
         return AxisY;
     }
@@ -191,7 +199,14 @@ public class XboxController : MonoBehaviour
     public static float GetLeftX(int playerNo)
     {
         float AxisX = Input.GetAxis("Joystick" + playerNo.ToString() + "AxisX");
-        
+        if (playerNo == 0 && Input.GetKey(KeyCode.D))
+        {
+            AxisX = 1.0f;
+        }
+        if (playerNo == 0 && Input.GetKey(KeyCode.A))
+        {
+            AxisX = -1.0f;
+        }
         return AxisX;
     }
 
@@ -263,6 +278,9 @@ public class XboxController : MonoBehaviour
         {
             case 0:
                 if (Input.GetKey(KeyCode.Joystick1Button0)){
+                    return true;
+                }
+                if( Input.GetKey(KeyCode.Q)){
                     return true;
                 }
                 break;
@@ -384,6 +402,8 @@ public class XboxController : MonoBehaviour
         {
             case 0:
                 if (Input.GetKey(KeyCode.Joystick1Button2))
+                    return true;
+                if (Input.GetKey(KeyCode.X))
                     return true;
                 break;
             case 1:

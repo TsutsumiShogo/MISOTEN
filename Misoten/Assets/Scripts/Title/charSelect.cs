@@ -144,22 +144,22 @@ public class charSelect : MonoBehaviour {
                 SoundManager.PlaySe("decision_1", m_playerId);
             }
 
-            
+            m_desideObj[0].SetActive(false);
+            m_desideObj[1].SetActive(false);
+            m_desideObj[2].SetActive(false);
 
+            // 他キャラ選択中に選択済み表示
             if (m_otherChar[0].GetComponent<charSelect>().m_decisionFlg)
             {
                 m_desideObj[m_otherChar[0].GetComponent<charSelect>().m_selectNo].SetActive(true);
             }
-            else {
-                m_desideObj[m_otherChar[0].GetComponent<charSelect>().m_selectNo].SetActive(false);
-            }
+            
             if (m_otherChar[1].GetComponent<charSelect>().m_decisionFlg)
             {
                 m_desideObj[m_otherChar[1].GetComponent<charSelect>().m_selectNo].SetActive(true);
             }
-            else {
-                m_desideObj[m_otherChar[1].GetComponent<charSelect>().m_selectNo].SetActive(false);
-            }
+            
+            
 
 
             

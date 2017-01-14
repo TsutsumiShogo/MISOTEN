@@ -378,30 +378,30 @@ public class ObjectManager : MonoBehaviour {
                     switch (objectList[no].GetComponent<ObjectParam>().HouseNo())
                     {
                         case 0:
-                            rendererList[no].material = gMaterialsMiddleBill[level];
-                            if (level == 2)
+                            rendererList[no].material = gMaterialsMiddleBill[level-1];
+                            if (level == 3)
                             {
                                 rendererList[no].materials = new Material[2]{
-                                gMaterialsMiddleBill[2],
-                                gMaterialsMiddleBill[3] };
+                                gMaterialsMiddleBill[level-1],
+                                gMaterialsMiddleBill[level] };
                             }
                             break;
                         case 1:
-                            rendererList[no].material = gMaterialsMiddleBill_1[level];
-                            if (level == 2)
+                            rendererList[no].material = gMaterialsMiddleBill_1[level-1];
+                            if (level == 3)
                             {
                                 rendererList[no].materials = new Material[2]{
-                                gMaterialsMiddleBill_1[2],
-                                gMaterialsMiddleBill_1[3] };
+                                gMaterialsMiddleBill_1[level-1],
+                                gMaterialsMiddleBill_1[level] };
                             }
                             break;
                         case 2:
-                            rendererList[no].material = gMaterialsMiddleBill_2[level];
-                            if (level == 2)
+                            rendererList[no].material = gMaterialsMiddleBill_2[level-1];
+                            if (level == 3)
                             {
                                 rendererList[no].materials = new Material[2]{
-                                gMaterialsMiddleBill_2[2],
-                                gMaterialsMiddleBill_2[3] };
+                                gMaterialsMiddleBill_2[level-1],
+                                gMaterialsMiddleBill_2[level] };
                             }
                             break;
                     }
