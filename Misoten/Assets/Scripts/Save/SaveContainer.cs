@@ -30,7 +30,7 @@ public class SaveContainer : MonoBehaviour {
     // プレイ回数
     public static int g_playCount;
 
-    private bool m_clearDataFlg = true;        // 起動時、これがtrueでデータ消去　エディタ起動用
+    private bool m_clearDataFlg = false;        // 起動時、これがtrueでデータ消去　エディタ起動用
 
     //===============================================================
     // 未公開関数

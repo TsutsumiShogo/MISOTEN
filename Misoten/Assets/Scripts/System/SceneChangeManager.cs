@@ -163,6 +163,7 @@ public class SceneChangeManager : MonoBehaviour {
             case ESceneNo.SCENE_TITLE:
                 GameObject.Find("T_SceneManager").GetComponent<T_SceneManager>().Init();
                 ObjectManager.Clean();              // オブジェクト初期化
+                GM_StaticParam.g_titleStartStep = 0;
                 break;
 
             case ESceneNo.SCENE_STORY:
